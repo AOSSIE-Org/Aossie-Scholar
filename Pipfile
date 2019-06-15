@@ -15,6 +15,7 @@ gunicorn = "*"
 python-dotenv = "*"
 django-heroku = "*"
 bs4 = "*"
+selenium = "*"
 
 [requires]
 python_version = "3.6"
