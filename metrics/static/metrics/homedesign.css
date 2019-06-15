@@ -1,0 +1,75 @@
+/*html,
+body {
+	height: 150%;
+	width: 100%;
+}
+*/
+img#ann {
+	position: absolute;
+	width: 69.88px;
+	height: 102.42px;
+	left: 102px;
+	top: 379.69px;
+	border-radius: 324px;
+	transform: rotate(-0.57deg);
+}
+
+img#Alogo {
+	position: absolute;
+	width: 176px;
+	height: 163px;
+	left: 483px;
+	top: 155px;
+	border-radius: 14px;
+}
+
+img#Slogo {
+	position: absolute;
+	width: 279px;
+	height: 230px;
+	left: 617px;
+	top: 246px;
+	border-radius: 378.5px;
+}
+img#index {
+	position: absolute;
+	width: 77px;
+	height: 105px;
+	left: 541px;
+	top: 317px;
+	border-radius: 34px;
+}
+
+img#scholar {
+	position: absolute;
+	width: 96.02px;
+	height: 76.82px;
+	left: 696.86px;
+	top: 240px;
+	border-radius: 83.709px;
+	transform: rotate(0.64deg);
+}
+
+img#cap {
+	position: absolute;
+	width: 83px;
+	height: 75px;
+	left: 30px;
+	top: 19px;
+}
+
+div#index_form {
+	position: absolute;
+	left: 976px;
+	top: 579px;
+}
+
+div#search_form {
+	position: absolute;
+	top: 410px;
+	left: 646px;
+}
+
+input.form-control {
+	width : 300px;
+}
