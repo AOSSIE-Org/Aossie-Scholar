@@ -94,8 +94,10 @@ class Scraper():
 		url_to_counter= CoauthsAndUrls[1]
 
 		n_author_names_list= CoauthsAndUrls[0]
+		print "b"
 
 		coAuths= seleniumScraper(url_to_counter, N_author_url)
+		print ('c')
 
 		number_of_coauths= coAuthors(n_author_names_list, coAuths)
 
