@@ -14,6 +14,7 @@ psycopg2 = "*"
 gunicorn = "*"
 python-dotenv = "*"
 django-heroku = "*"
+bs4 = "*"
 
 [requires]
 python_version = "3.6"
