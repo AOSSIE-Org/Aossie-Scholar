@@ -29,11 +29,13 @@ class Scraper():
 
 	
 		for j in range(0,pageSize, 100):		#{ looping trough pages to get all the publications
-
+			print ('1')
 			S_url=self.url + "&cstart=" + str(j) +"&pagesize=100"
 			with urllib.request.urlopen(S_url) as my_url:
-
+				print ('2')
 				page_html = my_url.read()	
+				print ('3')
+
 
 			my_url.close()	
 
@@ -42,8 +44,9 @@ class Scraper():
 			if (j == 0):
 				Name= page_soup.find('div', {'id': 'gsc_prf_in'})			# extracting the author's name
 				scholar_name= Name.text
-
+				print ('4')
 			Years = page_soup.findAll('td', {'class': 'gsc_a_y'})
+			print ('5')
 			for year in Years:
 				try:
 					years.append(int(year.text))
