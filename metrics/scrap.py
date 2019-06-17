@@ -31,6 +31,7 @@ class Scraper():
 		for j in range(0,pageSize, 100):		#{ looping trough pages to get all the publications
 			print ('1')
 			S_url=self.url + "&cstart=" + str(j) +"&pagesize=100"
+			print ('26')
 			with urllib.request.urlopen(S_url) as my_url:
 				print ('2')
 				page_html = my_url.read()	
