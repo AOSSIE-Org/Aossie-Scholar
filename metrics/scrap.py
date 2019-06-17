@@ -36,15 +36,15 @@ class Scraper():
 			print ('1')
 			S_url=self.url + "&cstart=" + str(j) +"&pagesize=100"
 			print ('26')
-			opener = AppURLopener()
-			response = opener.open(S_url)
-			#with urllib.request.urlopen(S_url) as my_url:
-			print ('2')
-			page_html = response.read()	
-			print ('3')
+			#opener = AppURLopener()
+			#response = opener.open(S_url)
+			with urllib.request.urlopen(S_url) as my_url:
+				print ('2')
+				page_html = my_url.read()	
+				print ('3')
 
 
-			response.close()	
+			my_url.close()	
 
 			page_soup = soup(page_html, "html.parser")		
 
