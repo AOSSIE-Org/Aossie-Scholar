@@ -5,6 +5,7 @@ import re
 from django.utils import timezone
 from .extract import rawauthorscounterurl, seleniumScraper, coAuthors, getnewCitations, getNpapersNcitationsTcitations
 from metrics.newmetrics import Simple_Metrics
+import requests
 
 class AppURLopener(urllib.request.FancyURLopener):
     version = "Mozilla/5.0"
@@ -36,17 +37,18 @@ class Scraper():
 			print ('1')
 			S_url=self.url + "&cstart=" + str(j) +"&pagesize=100"
 			print ('26')
-			opener = AppURLopener()
-			response = opener.urlopen(S_url)
-			#with urllib.request.urlopen(S_url) as my_url:
-			print ('2')
-			page_html = response.read()	
-			print ('3')
+			#opener = AppURLopener()
+			#response = opener.urlopen(S_url)
+			with urllib.request.urlopen(S_url) as response:
+				print ('2')
+				response= requests.get(S_url)
+				page_html = response.read()	
+				print ('3')
 
 
 			response.close()	
 
-			page_soup = soup(page_html, "html.parser")		
+			page_soup = soup(response, "html.parser")		
 
 			if (j == 0):
 				Name= page_soup.find('div', {'id': 'gsc_prf_in'})			# extracting the author's name
