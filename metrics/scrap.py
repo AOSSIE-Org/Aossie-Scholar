@@ -37,7 +37,7 @@ class Scraper():
 			S_url=self.url + "&cstart=" + str(j) +"&pagesize=100"
 			print ('26')
 			opener = AppURLopener()
-			response = opener.open(S_url)
+			response = opener.urlopen(S_url)
 			#with urllib.request.urlopen(S_url) as my_url:
 			print ('2')
 			page_html = response.read()	
