@@ -56,7 +56,7 @@ class Scraper():
 				Title = title.a.text
 				x=Title.encode('utf-8')
 				title_list.append(x.decode('utf-8', 'ignore'))				#title_list has all the titles
-
+			print (title_list)
 			info_page = page_soup.findAll('a', {'class' : 'gsc_a_at'})
 
 			for author in info_page:										# loop to get all the pop up urls and then collect number of co-authors from there
@@ -94,7 +94,7 @@ class Scraper():
 		url_to_counter= CoauthsAndUrls[1]
 
 		n_author_names_list= CoauthsAndUrls[0]
-		print ("b")
+		print ("d")
 
 		coAuths= seleniumScraper(url_to_counter, N_author_url)
 		print ('c')
