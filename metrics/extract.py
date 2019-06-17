@@ -30,8 +30,7 @@ def seleniumScraper(url_to_counter, N_author_url):
             title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
             page_element = title[0].text
             coAuths.append(len(page_element.split(',')))
-
-    driver.quit()
+        driver.quit()
     return (coAuths)    
 
 def coAuthors(n_author_names_list, coAuths):

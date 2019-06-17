@@ -1,5 +1,5 @@
 from .models import ScholarProfile
-import urllib.request
+import urllib.request #import Request, urlopen
 from bs4 import BeautifulSoup as soup 
 import re
 from django.utils import timezone
@@ -40,15 +40,18 @@ class Scraper():
 			#opener = AppURLopener()
 			#response = opener.urlopen(S_url)
 			with urllib.request.urlopen(S_url) as response:
+			#req= urllib.request.Request(S_url, headers={'User-Agent': 'Mozilla/5.0'})
+			#web_byte= urllib.request.urlopen(req).read()
+			#response= web_byte.decode('utf-8')
 				print ('2')
-				response= requests.get(S_url)
+				#response= requests.get(S_url)
 				page_html = response.read()	
 				print ('3')
 
 
 			response.close()	
 
-			page_soup = soup(response, "html.parser")		
+			page_soup = soup(page_html, "html.parser")		
 
 			if (j == 0):
 				Name= page_soup.find('div', {'id': 'gsc_prf_in'})			# extracting the author's name
@@ -107,6 +110,7 @@ class Scraper():
 
 		n_author_names_list= CoauthsAndUrls[0]
 		print ("d")
+		print (len(N_author_url), url_to_counter, len(n_author_names_list))
 
 		coAuths= seleniumScraper(url_to_counter, N_author_url)
 		print ('c')
