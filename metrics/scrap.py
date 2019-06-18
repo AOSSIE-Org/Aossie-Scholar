@@ -1,5 +1,6 @@
 from .models import ScholarProfile
-from urllib.request import Request, urlopen
+import urllib.request
+#from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup as soup 
 import re
 from django.utils import timezone
@@ -7,8 +8,8 @@ from .extract import rawauthorscounterurl, seleniumScraper, coAuthors, getnewCit
 from metrics.newmetrics import Simple_Metrics
 import requests
 
-#class AppURLopener(urllib.request.FancyURLopener):
- #   version = "Mozilla/5.0"
+class AppURLopener(urllib.request.FancyURLopener):
+    version = "Mozilla/5.0"
 
 
 
@@ -37,15 +38,15 @@ class Scraper():
 			print ('1')
 			S_url=self.url + "&cstart=" + str(j) +"&pagesize=100"
 			print ('26')
-			#opener = AppURLopener()
-			#response = opener.open(S_url)
+			opener = AppURLopener()
+			response = opener.open(S_url)
 			#with urllib.request.urlopen(S_url) as response:
-			req= Request(S_url, headers={'User-Agent': 'Mozilla/5.0'})
-			response= urlopen(req).read()
+			#req= Request(S_url, headers={'User-Agent': 'Mozilla/5.0'})
+			#response= urlopen(req).read()
 			#response= web_byte.decode('utf-8')
 			print ('2')
 			#response= requests.get(S_url)
-			#page_html = response.read()	
+			page_html = response.read()	
 			print ('3')
 
 
