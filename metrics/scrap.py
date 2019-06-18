@@ -52,7 +52,7 @@ class Scraper():
 
 			#response.close()	
 
-			page_soup = soup(response, "html.parser")		
+			page_soup = soup(page_html, "html.parser")		
 
 			if (j == 0):
 				Name= page_soup.find('div', {'id': 'gsc_prf_in'})			# extracting the author's name
