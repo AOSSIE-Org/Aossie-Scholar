@@ -7,8 +7,8 @@ from .extract import rawauthorscounterurl, seleniumScraper, coAuthors, getnewCit
 from metrics.newmetrics import Simple_Metrics
 import requests
 
-class AppURLopener(urllib.request.FancyURLopener):
-    version = "Mozilla/5.0"
+#class AppURLopener(urllib.request.FancyURLopener):
+ #   version = "Mozilla/5.0"
 
 
 
