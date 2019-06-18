@@ -39,17 +39,17 @@ class Scraper():
 			print ('26')
 			#opener = AppURLopener()
 			#response = opener.open(S_url)
-			with urllib.request.urlopen(S_url) as response:
-			#req= urllib.request.Request(S_url, headers={'User-Agent': 'Mozilla/5.0'})
-			#web_byte= urllib.request.urlopen(req).read()
-			#response= web_byte.decode('utf-8')
-				print ('2')
-				#response= requests.get(S_url)
-				page_html = response.read()	
-				print ('3')
+			#with urllib.request.urlopen(S_url) as response:
+			req= urllib.request.Request(S_url, headers={'User-Agent': 'Mozilla/5.0'})
+			web_byte= urllib.request.urlopen(req).read()
+			response= web_byte.decode('utf-8')
+			print ('2')
+			#response= requests.get(S_url)
+			#page_html = response.read()	
+			print ('3')
 
 
-			response.close()	
+			#response.close()	
 
 			page_soup = soup(page_html, "html.parser")		
 
