@@ -37,11 +37,11 @@ class Scraper():
 			print ('1')
 			S_url=self.url + "&cstart=" + str(j) +"&pagesize=100"
 			print ('26')
-			opener = AppURLopener()
-			response = opener.open(S_url)
+			#opener = AppURLopener()
+			#response = opener.open(S_url)
 			#with urllib.request.urlopen(S_url) as response:
-			#req= Request(S_url, headers={'User-Agent': 'Mozilla/5.0'})
-			#response= urlopen(req).read()
+			req= Request(S_url, headers={'User-Agent': 'Mozilla/5.0'})
+			response= urlopen(req).read()
 			#response= web_byte.decode('utf-8')
 			print ('2')
 			#response= requests.get(S_url)
