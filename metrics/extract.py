@@ -21,16 +21,17 @@ def rawauthorscounterurl(author_names_list):
 def seleniumScraper(url_to_counter, N_author_url):
     coAuths=[]
     if len(url_to_counter) != 0:
-        options= webdriver.FirefoxOptions()
-        options.add_argument('-headless')
+       # options= webdriver.FirefoxOptions()
+        #options.add_argument('-headless')
        # gecko = os.path.normpath(os.path.join(os.path.dirname(__file__), 'geckodriver'))
-        driver= webdriver.Firefox(firefox_options=options)# executable_path=gecko+'.exe')
-        #driver= webdriver.PhantomJS()
-        driver.implicitly_wait(0.5)
+        #driver= webdriver.Firefox(firefox_options=options)# executable_path=gecko+'.exe')
+        driver= webdriver.PhantomJS()
+        driver.implicitly_wait(5)
         for url in url_to_counter:
             driver.get(N_author_url[url])
-            time.sleep(0.5)
+            driver.implicitly_wait(5)
             title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
+            print (N_author_url[url])
             page_element = title[0].text
             coAuths.append(len(page_element.split(',')))
         driver.quit()
