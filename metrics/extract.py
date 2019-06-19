@@ -1,6 +1,7 @@
 from selenium import webdriver
 import time
 import os
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
 
 def rawauthorscounterurl(author_names_list):
@@ -23,15 +24,16 @@ def seleniumScraper(url_to_counter, N_author_url):
     if len(url_to_counter) != 0:
         options= webdriver.FirefoxOptions()
         options.add_argument('-headless')
+        binary = FirefoxBinary('app/vendor/firefox/')
        # gecko = os.path.normpath(os.path.join(os.path.dirname(__file__), 'geckodriver'))
-        driver= webdriver.Firefox(firefox_options=options)
+        driver= webdriver.Firefox(firefox_options=options, firefox_binary= binary, executable_path= 'app/vendor/geckodriver/')
         driver= webdriver.PhantomJS()
         driver.implicitly_wait(5)
         for url in url_to_counter:
             driver.get(N_author_url[url])
             driver.implicitly_wait(5)
             title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
-            print (N_author_url[url])
+            #print (N_author_url[url])
             page_element = title[0].text
             coAuths.append(len(page_element.split(',')))
         driver.quit()
