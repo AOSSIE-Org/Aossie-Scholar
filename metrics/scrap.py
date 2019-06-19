@@ -40,6 +40,7 @@ class Scraper():
 			print ('26')
 			opener = AppURLopener()
 			response = opener.open(S_url)
+			print (response)
 			#with urllib.request.urlopen(S_url) as response:
 			#req= Request(S_url, headers={'User-Agent': 'Mozilla/5.0'})
 			#response= urlopen(req).read()
