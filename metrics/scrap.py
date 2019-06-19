@@ -1,5 +1,6 @@
 from .models import ScholarProfile
 import urllib.request
+from urllib.request import Request, urlopen
 #from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup as soup 
 import re
@@ -35,27 +36,27 @@ class Scraper():
 
 	
 		for j in range(0,pageSize, 100):		#{ looping trough pages to get all the publications
-			S_url=self.url + "&cstart=" + str(j) +"&pagesize=100"
 			headers= {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) ',
 			'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 			'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
 			'Accept-Encoding': 'none',
 			'Accept-Language': 'en-US,en;q=0.8',
 			'Connection': 'keep-alive'}
+			S_url=self.url + "&cstart=" + str(j) +"&pagesize=100"
 			#opener = AppURLopener()
 			#response = opener.open(S_url)
 			#print (response)
-			with urllib.request.urlopen(S_url, headers=headers) as response:
-			#req= Request(S_url, headers={'User-Agent': 'Mozilla/5.0'})
-			#response= urlopen(req).read()
+			#with urllib.request.urlopen(S_url, headers=headers) as response:
+			req= Request(S_url, headers=headers)
+			response= urlopen(req).read()
 			#response= web_byte.decode('utf-8')
 			#response= requests.get(S_url)
-				page_html = response.read()	
+			#	page_html = response.read()	
 
 
-			response.close()	
+			#response.close()	
 
-			page_soup = soup(page_html, "html.parser")		
+			page_soup = soup(response, "html.parser")		
 
 			if (j == 0):
 				Name= page_soup.find('div', {'id': 'gsc_prf_in'})			# extracting the author's name
