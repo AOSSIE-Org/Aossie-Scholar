@@ -50,14 +50,14 @@ class Scraper():
 			print ('3')
 
 
-			#response.close()	
+			response.close()	
 
 			page_soup = soup(page_html, "html.parser")		
 
 			if (j == 0):
 				Name= page_soup.find('div', {'id': 'gsc_prf_in'})			# extracting the author's name
 				scholar_name= Name.text
-				print ('4')
+				print (scholar_name)
 			Years = page_soup.findAll('td', {'class': 'gsc_a_y'})
 			print ('5')
 			for year in Years:
@@ -65,6 +65,7 @@ class Scraper():
 					years.append(int(year.text))
 				except:
 					years.append(None)
+			print (years)
 
 			Titles = page_soup.findAll('td', {'class': 'gsc_a_t'})			# publication titles
 
@@ -75,11 +76,14 @@ class Scraper():
 			print (title_list)
 			info_page = page_soup.findAll('a', {'class' : 'gsc_a_at'})
 
-			for author in info_page:										# loop to get all the pop up urls and then collect number of co-authors from there
+			for author in info_page:	
+				
+				print (author)									# loop to get all the pop up urls and then collect number of co-authors from there
 
 				Author_names_link = author["data-href"]
 
-				user=Author_names_link[53:65]
+				user=Author_names_link[44:56]
+				print (user)
 
 				n_input=Author_names_link[-12:]
 
