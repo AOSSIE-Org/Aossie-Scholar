@@ -50,7 +50,9 @@ class Scraper():
 			'Accept-Encoding': 'none',
 			'Accept-Language': 'en-US,en;q=0.8',
 			'Connection': 'keep-alive'}
-			req= Request(S_url, headers=headers)
+			session= requests.Session()
+			req= session.get(S_url, headers= headers)
+			#req= Request(S_url, headers=headers)
 			response= urlopen(req).read()
 			#response= web_byte.decode('utf-8')
 			#response= requests.get(S_url)
