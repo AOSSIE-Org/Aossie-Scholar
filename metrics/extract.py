@@ -24,9 +24,8 @@ def seleniumScraper(url_to_counter, N_author_url):
     if len(url_to_counter) != 0:
         options= webdriver.FirefoxOptions()
         options.add_argument('-headless')
-       # gecko = os.path.normpath(os.path.join(os.path.dirname(__file__), 'geckodriver'))
-        binary = FirefoxBinary(str(os.environ.get('FIREFOX_BIN')))
-        driver= webdriver.Firefox(firefox_options=options, firefox_binary= binary, executable_path=str(os.environ.get('GECKODRIVER'))) #executable_path= "/usr/local/bin:/usr/bin:/bin:/metrics/vendor/")                                      # executable_path= "/tmp/build_f1b375df49e68e9d0628cfb83907ac6c/vendor/geckodriver/")
+        #binary = FirefoxBinary(str(os.environ.get('FIREFOX_BIN')))
+        driver= webdriver.Firefox(firefox_options=options, executable_path=str(os.environ.get('GECKODRIVER'))) #executable_path= "/usr/local/bin:/usr/bin:/bin:/metrics/vendor/")                                      # executable_path= "/tmp/build_f1b375df49e68e9d0628cfb83907ac6c/vendor/geckodriver/")
         driver.implicitly_wait(5)
         for url in url_to_counter:
             driver.get(N_author_url[url])
