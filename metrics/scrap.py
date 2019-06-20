@@ -53,7 +53,7 @@ class Scraper():
 			session= requests.Session()
 			req= session.get(S_url, headers= headers)
 			#req= Request(S_url, headers=headers)
-			response= urlopen(req).read()
+			#response= urlopen(req).read()
 			#response= web_byte.decode('utf-8')
 			#response= requests.get(S_url)
 			#	page_html = response.read()	
@@ -61,7 +61,7 @@ class Scraper():
 
 			#response.close()	
 
-			page_soup = soup(response, "html.parser")		
+			page_soup = soup(req, "html.parser")		
 
 			if (j == 0):
 				Name= page_soup.find('div', {'id': 'gsc_prf_in'})			# extracting the author's name
