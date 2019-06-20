@@ -44,9 +44,7 @@ class Scraper():
 			#print (response)
 			#with urllib.request.urlopen(S_url, headers=headers) as response:
 			headers= {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) ' 'AppleWebKit/537.11 (KHTML, like Gecko) '
-                      'Chrome/23.0.1271.64 Safari/537.11', 'Mozilla/5.0 (Linux; Android 6.0.1; SM-G935S Build/MMB29K; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/55.0.2883.91 Mobile Safari/537.36'
-					  'Mozilla/5.0 (Linux; Android 7.0; SM-T827R4 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.116 Safari/537.36' 'Mozilla/5.0 (CrKey armv7l 1.5.16041) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.0 Safari/537.36'
-					  'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0'
+                      'Chrome/23.0.1271.64 Safari/537.11',
 			'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 			'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
 			'Accept-Encoding': 'none',
