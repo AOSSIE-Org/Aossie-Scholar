@@ -54,7 +54,7 @@ class Scraper():
 			'Accept-Language': 'en-US,en;q=0.5',
 			'Cache-Control': 'max-age=0',
 			'Connection': 'keep-alive',
-			'Upgrade-Insecure-Requests': 1}
+			'Upgrade-Insecure-Requests': '1'}
 			session= requests.Session()
 			response= session.get(S_url, headers=headers)
 			print (response, type(response))
