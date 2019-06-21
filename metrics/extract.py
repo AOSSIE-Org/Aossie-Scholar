@@ -25,10 +25,11 @@ def seleniumScraper(url_to_counter, N_author_url):
     if len(url_to_counter) != 0:
         options= webdriver.FirefoxOptions()
         options.add_argument('-headless')
+        options.add_argument('-remote-debugging-port=9222')
         cap = DesiredCapabilities().FIREFOX
         cap["marionette"] = False
         binary = FirefoxBinary(str(os.environ.get('FIREFOX_BIN')))
-        driver= webdriver.Firefox(capabilities=cap, firefox_options=options, firefox_binary= binary, executable_path=str(os.environ.get('GECKODRIVER'))) #executable_path= "/usr/local/bin:/usr/bin:/bin:/metrics/vendor/")                                      # executable_path= "/tmp/build_f1b375df49e68e9d0628cfb83907ac6c/vendor/geckodriver/")
+        driver= webdriver.Firefox(capabilities=cap, firefox_options=options, firefox_binary= binary, executable_path=str(os.environ.get('GECKODRIVER')))
         driver.implicitly_wait(5)
         for url in url_to_counter:
             driver.get(N_author_url[url])
