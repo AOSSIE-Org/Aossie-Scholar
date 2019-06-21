@@ -42,7 +42,7 @@ class Scraper():
 
 	
 		for j in range(0,pageSize, 100):		#{ looping trough pages to get all the publications
-			S_url=self.url + "&cstart=" + str(j) +"&pagesize=100"
+			S_url=self.url #+ "&cstart=" + str(j) +"&pagesize=100"
 			#opener = AppURLopener()
 			#response = opener.open(S_url)
 			#print (response)
@@ -64,7 +64,7 @@ class Scraper():
 
 
 			session= requests.Session()
-			response= session.get(S_url, headers=headers)
+			response= session.get(S_url)#, headers=headers)
 			print (response, type(response))
 			#req= Request(url=S_url, headers=headers)
 			#response= urlopen(req).read()
