@@ -1,6 +1,7 @@
 from selenium import webdriver
 import time
 import os
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
@@ -23,15 +24,17 @@ def rawauthorscounterurl(author_names_list):
 def seleniumScraper(url_to_counter, N_author_url):
     coAuths=[]
     if len(url_to_counter) != 0:
-        options= webdriver.FirefoxOptions()
-        options.add_argument('-headless')
-        options.add_argument('-disable-gpu')
-        options.add_argument('-no-sandbox')
-        options.add_argument('-remote-debugging-port=9222')
-        cap = DesiredCapabilities().FIREFOX
-        cap["marionette"] = True
-        binary = FirefoxBinary(str(os.environ.get('FIREFOX_BIN')))
-        driver= webdriver.Firefox(capabilities=cap, firefox_options=options, firefox_binary= binary, executable_path=str(os.environ.get('GECKODRIVER')))
+        options= Options()
+        #options= webdriver.FirefoxOptions()
+        options.binary_location= os.environ.get('GOOGLE_CHROME_BIN')
+        options.add_argument('--headless')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--remote-debugging-port=9222')
+       # cap = DesiredCapabilities().FIREFOX
+        #cap["marionette"] = True
+        #binary = FirefoxBinary(str(os.environ.get('FIREFOX_BIN')))
+        driver= webdriver.Chrome(chrome_options=options, executable_path=str(os.environ.get('CHROMEDRIVER_PATH')))
         driver.implicitly_wait(5)
         for url in url_to_counter:
             driver.get(N_author_url[url])
