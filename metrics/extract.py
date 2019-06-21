@@ -29,7 +29,7 @@ def seleniumScraper(url_to_counter, N_author_url):
         options.add_argument('-no-sandbox')
         options.add_argument('-remote-debugging-port=9222')
         cap = DesiredCapabilities().FIREFOX
-        cap["marionette"] = False
+        cap["marionette"] = True
         binary = FirefoxBinary(str(os.environ.get('FIREFOX_BIN')))
         driver= webdriver.Firefox(capabilities=cap, firefox_options=options, firefox_binary= binary, executable_path=str(os.environ.get('GECKODRIVER')))
         driver.implicitly_wait(5)
