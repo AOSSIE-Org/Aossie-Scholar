@@ -47,14 +47,22 @@ class Scraper():
 			#response = opener.open(S_url)
 			#print (response)
 			#with urllib.request.urlopen(S_url, headers=headers) as response:
-			headers= {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0' ,
-			'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-			#'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-			'Accept-Encoding': 'gzip, deflate, br',
-			'Accept-Language': 'en-US,en;q=0.5',
-			'Cache-Control': 'max-age=0',
-			'Connection': 'keep-alive',
-			'Upgrade-Insecure-Requests': '1'}
+			headers= {
+		
+					"Host": "cholar.google.com.au",
+					"User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0",
+					"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+					"Accept-Language": "en-US,en;q=0.5",
+					"Accept-Encoding": "gzip, deflate, br",
+					"Connection": "keep-alive",
+					"Cookie": "NID=186=AGEM3APRRVUW5OmB40B_G1NSUGRvnti8_HvJLJdcKKN75fdy-asQDdUZ0qEdcZzif46uH325IZC5glqFgwXszpYfHmDQstoT_xz_2ivMbq-bInEHjb5FbH_XZ1jKS1JbZqwnv2BvC5hWvD3Z95vgVsJxzAMnrWzGrwkYQiZmS8w",
+					"Upgrade-Insecure-Requests": "1",
+					"Cache-Control": "max-age=0",
+					"TE": "Trailers"
+			}
+
+
+
 			session= requests.Session()
 			response= session.get(S_url, headers=headers)
 			print (response, type(response))
