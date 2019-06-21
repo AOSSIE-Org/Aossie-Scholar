@@ -8,13 +8,17 @@ from django.utils import timezone
 from .extract import rawauthorscounterurl, seleniumScraper, coAuthors, getnewCitations, getNpapersNcitationsTcitations
 from metrics.newmetrics import Simple_Metrics
 import requests
+import random
 
 
 
 class AppURLopener(urllib.request.FancyURLopener):
     version = "Mozilla/5.0"
 
-
+Uagents= ['Mozilla/5.0 (X11; Linux x86_64) ' 
+                      'AppleWebKit/537.11 (KHTML, like Gecko) ' 
+                      'Chrome/23.0.1271.64 Safari/537.11', 'Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14',
+					  'Googlebot/2.1 (+http://www.google.com/bot.html)' ]
 
 class Scraper():
 	def __init__(self, url, maxP, country):
@@ -43,7 +47,7 @@ class Scraper():
 			#response = opener.open(S_url)
 			#print (response)
 			#with urllib.request.urlopen(S_url, headers=headers) as response:
-			headers= {'User-Agent': "Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14" ,
+			headers= {'User-Agent': random.choice(Uagents) ,
 			'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 			'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
 			'Accept-Encoding': 'none',
