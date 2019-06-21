@@ -50,7 +50,7 @@ class Scraper():
 			headers= {'User-Agent': random.choice(Uagents) ,
 			'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 			'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-			'Accept-Encoding': 'none',#gzip, deflate, br',
+			'Accept-Encoding': 'gzip, deflate, br',
 			'Accept-Language': 'en-US,en;q=0.8',
 			'Connection': 'keep-alive'}
 			session= requests.Session()
