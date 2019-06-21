@@ -34,7 +34,7 @@ def seleniumScraper(url_to_counter, N_author_url):
        # cap = DesiredCapabilities().FIREFOX
         #cap["marionette"] = True
         #binary = FirefoxBinary(str(os.environ.get('FIREFOX_BIN')))
-        driver= webdriver.Chrome(desired_capabilities=options.to_capabilities,chrome_options=options, executable_path=str(os.environ.get('CHROMEDRIVER_PATH')))
+        driver= webdriver.Chrome(desired_capabilities=options.to_capabilities(),chrome_options=options, executable_path=str(os.environ.get('CHROMEDRIVER_PATH')))
         driver.implicitly_wait(5)
         for url in url_to_counter:
             driver.get(N_author_url[url])
