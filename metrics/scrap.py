@@ -52,7 +52,6 @@ class Scraper():
 			'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
 			'Accept-Encoding': 'gzip, deflate, br',
 			'cookie': 'NID=186=af-CVNC8GNzt8rJ07GDHalL_UUDdkX2KjTTNM61dG10jjPp2cCPdl-Spob7J9B84281Du-VmKr65GvXvQWgnTVfTrpl7r9H_Bkdnwgbvc9xAWhDXRj-2FjSV_fAzueAwE8PhCgEzRTvWm7PFqZ4I0fEmQ0fdXsNaTfbV6V-L5aI6rBkkgslTYqsZWJfrZfGEdInOTT_VKCcOSgpwnqDThGw1Csszv6sCg7UNfNwNq6Mj; SID=cwcEQIJPThIyE2505P_0U3sFu7cjBdH8pxIkUcgZA5sDvDQxzfX0Y7b2bWLEgAjmJekvvQ.; HSID=AazwSocT1Hhvv2MSm; SSID=AQm3kmHTvfwSSQQnh; APISID=2922JlQjqOog42XH/AqxPpbuzeqtt4Ky1M; SAPISID=ioDH3BBSO7wXdAH6/Ag3swezHRw17luS_g; CONSENT=YES+IN.en+',
-			'Host': 'scholar.google.com/au',
 			'Accept-Language': 'en-US,en;q=0.8',
 			'Connection': 'keep-alive'}
 			req= Request(url=S_url, headers=headers)
