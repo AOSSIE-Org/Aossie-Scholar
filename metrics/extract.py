@@ -25,6 +25,8 @@ def seleniumScraper(url_to_counter, N_author_url):
     if len(url_to_counter) != 0:
         options= webdriver.FirefoxOptions()
         options.add_argument('-headless')
+        options.add_argument('-disable-gpu')
+        options.add_argument('-no-sandbox')
         options.add_argument('-remote-debugging-port=9222')
         cap = DesiredCapabilities().FIREFOX
         cap["marionette"] = False
