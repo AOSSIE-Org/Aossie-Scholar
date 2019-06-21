@@ -43,7 +43,7 @@ class Scraper():
 			#response = opener.open(S_url)
 			#print (response)
 			#with urllib.request.urlopen(S_url, headers=headers) as response:
-			headers= {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OSX10_1_2) AppleWebKit/537.36(KHTML,like Gecko) Chrome/51.0.2704.84 Safari/537.36',
+			headers= {'User-Agent': "Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14" ,
 			'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 			'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
 			'Accept-Encoding': 'none',
