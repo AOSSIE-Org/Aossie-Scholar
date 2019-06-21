@@ -55,6 +55,7 @@ class Scraper():
 			'Connection': 'keep-alive'}
 			session= requests.Session()
 			response= session.get(S_url, headers=headers)
+			print (response, type(response))
 			#req= Request(url=S_url, headers=headers)
 			#response= urlopen(req).read()
 			page_soup = soup(response.text, "html.parser")		
