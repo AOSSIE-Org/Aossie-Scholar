@@ -60,9 +60,6 @@ class Scraper():
 					"Cache-Control": "max-age=0",
 					"TE": "Trailers"
 			}
-
-
-
 			session= requests.Session()
 			response= session.get(S_url)#, headers=headers)
 			print (response, type(response))
