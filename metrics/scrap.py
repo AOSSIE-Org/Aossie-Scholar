@@ -83,7 +83,6 @@ class Scraper():
 				temp= re.findall(r"user=.*[&]+?", Author_names_link)
 				user= temp[0][5:-1]
 				print (user)
-
 				n_input=Author_names_link[-12:]
 
 				n_author_url="https://scholar.google.com.au/citations?user="+user+"&hl=en#d=gs_md_cita-d&u=%2Fcitations%3Fview_op%3Dview_citation%26hl%3Den%26user%3D"+user+"%26citation_for_view%3D"+user+"%3A"+n_input+"%26tzom%3D-330"
@@ -113,15 +112,14 @@ class Scraper():
 		print ("d")
 		print (len(N_author_url), url_to_counter, len(n_author_names_list))
 		coAuths=[]
-
 		if len(url_to_counter) != 0:
-	        driver.implicitly_wait(5)
-	        for url in url_to_counter:
-	            driver.get(N_author_url[url])
-	            try:
-	                driver.implicitly_wait(5)
-	                title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
-	            except:
+			driver.implicitly_wait(5)
+			for url in url_to_counter:
+				driver.get(N_author_url[url])
+				try:
+					driver.implicitly_wait(5)
+					title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
+				except:
 					driver.implicitly_wait(8)
 					title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
 				try:
@@ -130,8 +128,8 @@ class Scraper():
 					print(title.text)
 
 				coAuths.append(len(page_element.split(',')))
-			driver.quit()
 
+			driver.quit()
 
 		#coAuths= seleniumScraper(url_to_counter, N_author_url)
 		print ('c')
@@ -154,7 +152,6 @@ class Scraper():
 		q.save()
 
 		total_normalized_citations= int(sum(normalized_citations))
-		#normalized_h_index= int(sum(n_citations)/len(title_list))
 
 		nn_citations= normalized_citations[0:total_normalized_papers]
 		nn_citations.sort(reverse= True)
@@ -172,4 +169,3 @@ class Scraper():
 		
 
 
-zfg tdhgb
