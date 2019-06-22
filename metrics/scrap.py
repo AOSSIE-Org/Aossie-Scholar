@@ -72,7 +72,7 @@ class Scraper():
 					years.append(None)
 			print (years)
 
-			Titles= driver.find_elements_by_xpath('//td[@class="gsc_a_at"]')	# publication titles
+			Titles= driver.find_elements_by_xpath('//a[@class="gsc_a_at"]')	# publication titles
 			for title in Titles:
 				Title = title.text
 				title_list.append(str(Title))
