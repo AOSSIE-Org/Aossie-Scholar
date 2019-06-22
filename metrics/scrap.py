@@ -101,7 +101,7 @@ class Scraper():
 
 		total_citations= myvar[2]
 
-		q= ScholarProfile(author_name= Name.text, profile_url= self.url, publication_title= title_list,
+		q= ScholarProfile(author_name= Name.text, profile_url= self.url[-18:], publication_title= title_list,
 		created_at= timezone.now())
 		q.save()
 
