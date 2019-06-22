@@ -1,14 +1,18 @@
+import os
 from .models import ScholarProfile
 import urllib.request
 from urllib.request import Request, urlopen
 #from urllib.request import Request, urlopen
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup as soup 
 import re
 from django.utils import timezone
-from .extract import rawauthorscounterurl, seleniumScraper, coAuthors, getnewCitations, getNpapersNcitationsTcitations
+from .extract import rawauthorscounterurl, coAuthors, getnewCitations, getNpapersNcitationsTcitations
 from .newmetrics import Simple_Metrics
 import requests
 import random
+import time
 
 
 
@@ -26,12 +30,12 @@ class Scraper():
 		self.maxP= maxP
 		self.country= country
 
-	def f(self):
+	def getScholarData(self):	 
 		for i in range(0, 1000, 100):
 			if (self.maxP <=i):
 				pageSize = i
 				break
-                    									
+                   									
 		ncounter= 0
 		bcounter= 0																					          
 		Citations =[]  												# to count total numbers citations an author recieved. 
@@ -39,41 +43,28 @@ class Scraper():
 		N_author_url= []
 		author_names_list= []
 		years= []
-
-	
-		for j in range(0,pageSize, 100):		#{ looping trough pages to get all the publications
-			S_url=self.url #+ "&cstart=" + str(j) +"&pagesize=100"
-			#opener = AppURLopener()
-			#response = opener.open(S_url)
-			#print (response)
-			#with urllib.request.urlopen(S_url, headers=headers) as response:
-			headers= {
 		
-					"Host": "cholar.google.com.au",
-					"User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0",
-					"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-					"Accept-Language": "en-US,en;q=0.5",
-					"Accept-Encoding": "gzip, deflate, br",
-					"Connection": "keep-alive",
-					"Cookie": "NID=186=AGEM3APRRVUW5OmB40B_G1NSUGRvnti8_HvJLJdcKKN75fdy-asQDdUZ0qEdcZzif46uH325IZC5glqFgwXszpYfHmDQstoT_xz_2ivMbq-bInEHjb5FbH_XZ1jKS1JbZqwnv2BvC5hWvD3Z95vgVsJxzAMnrWzGrwkYQiZmS8w",
-					"Upgrade-Insecure-Requests": "1",
-					"Cache-Control": "max-age=0",
-					"TE": "Trailers"
-			}
-			session= requests.Session()
-			print (S_url)
-			response= session.get(S_url, headers=headers)
-			print (response, type(response))
-			#req= Request(url=S_url, headers=headers)
-			#response= urlopen(req).read()
-			page_soup = soup(response.text, "html.parser")		
+		options= Options()
+		options.binary_location= os.environ.get('GOOGLE_CHROME_BIN')
+		options.add_argument('--headless')
+		options.add_argument('--disable-gpu')
+		options.add_argument('--no-sandbox')
+		options.add_argument('--remote-debugging-port=9222')
+
+		driver= webdriver.Chrome(desired_capabilities=options.to_capabilities(), executable_path=str(os.environ.get('CHROMEDRIVER_PATH')))
+		
+		for j in range(0,pageSize, 100):		#{ looping trough pages to get all the publications
+			driver.implicitly_wait(0.2)
+			S_url=self.url + "&cstart=" + str(j) +"&pagesize=100"
+			driver.get(S_url)
+			time.sleep(0.2)
 
 			if (j == 0):
-				Name= page_soup.find('div', {'id': 'gsc_prf_in'})			# extracting the author's name
+				Name= driver.find_element_by_xpath('//div[@id="gsc_prf_in"]')
 				scholar_name= Name.text
 				print (scholar_name)
-			Years = page_soup.findAll('td', {'class': 'gsc_a_y'})
-			print ('5')
+
+			Years= driver.find_elements_by_xpath('//td[@class="gsc_a_y"]')
 			for year in Years:
 				try:
 					years.append(int(year.text))
@@ -81,21 +72,14 @@ class Scraper():
 					years.append(None)
 			print (years)
 
-			Titles = page_soup.findAll('td', {'class': 'gsc_a_t'})			# publication titles
-
+			Titles= driver.find_elements_by_xpath('//td[@class="gsc_a_at"]')	# publication titles
 			for title in Titles:
-				Title = title.a.text
-				x=Title.encode('utf-8')
-				title_list.append(x.decode('utf-8', 'ignore'))				#title_list has all the titles
+				Title = title.text
+				title_list.append(str(Title))
 			print (title_list)
-			info_page = page_soup.findAll('a', {'class' : 'gsc_a_at'})
-
-			for author in info_page:	
-				
-				print (author)									# loop to get all the pop up urls and then collect number of co-authors from there
-
-				Author_names_link = author["data-href"]
-
+			
+			for author in Titles:							# loop to get all the pop up urls and then collect number of co-authors from there
+				Author_names_link = author.get_attribute("data-href")
 				temp= re.findall(r"user=.*[&]+?", Author_names_link)
 				user= temp[0][5:-1]
 				print (user)
@@ -106,18 +90,15 @@ class Scraper():
 
 				N_author_url.append(n_author_url)
 
-			authors_soup= page_soup.findAll('div', {'class': 'gs_gray'})
-
+			authors_soup= driver.find_elements_by_xpath('//div[@class= "gs_gray"]')
 			less_authors_name=[]
-
 			for a in authors_soup:
 				less_authors_name.append(a.text)
 
 			for i in range(0, len(less_authors_name), 2):
 				author_names_list.append(less_authors_name[i])
 
-			Citations_soup = page_soup.findAll('td', {'class': 'gsc_a_c'})
-			
+			Citations_soup = driver.find_elements_by_xpath('//td[@class= "gsc_a_c"]')
 			for c in Citations_soup:
 				p= c.text.encode('utf-8')
 				r=p.decode('utf-8', 'ignore')
@@ -131,8 +112,28 @@ class Scraper():
 		n_author_names_list= CoauthsAndUrls[0]
 		print ("d")
 		print (len(N_author_url), url_to_counter, len(n_author_names_list))
+		coAuths=[]
 
-		coAuths= seleniumScraper(url_to_counter, N_author_url)
+		if len(url_to_counter) != 0:
+	        driver.implicitly_wait(5)
+	        for url in url_to_counter:
+	            driver.get(N_author_url[url])
+	            try:
+	                driver.implicitly_wait(5)
+	                title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
+	            except:
+					driver.implicitly_wait(8)
+					title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
+				try:
+					page_element= title[0].text
+				except:
+					print(title.text)
+
+				coAuths.append(len(page_element.split(',')))
+			driver.quit()
+
+
+		#coAuths= seleniumScraper(url_to_counter, N_author_url)
 		print ('c')
 		print (len(title_list), len(coAuths))
 
@@ -171,3 +172,4 @@ class Scraper():
 		
 
 
+zfg tdhgb

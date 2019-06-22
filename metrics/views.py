@@ -31,7 +31,7 @@ class HomeView(TemplateView):
 			text3 = indexform.cleaned_data['country']
 			print(text1, text2, text3)
 			z= Scraper(text1, text2, text3)
-			p_url= z.f()
+			p_url= z.getScholarData()
 			key= p_url[-18:]
 
 			return HttpResponseRedirect(reverse('metrics:results', args= (key,)))
