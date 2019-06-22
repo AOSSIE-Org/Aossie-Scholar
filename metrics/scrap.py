@@ -81,7 +81,7 @@ class Scraper():
 			
 			for author in Titles:							# loop to get all the pop up urls and then collect number of co-authors from there
 				Author_names_link = author.get_attribute("data-href")
-				temp= re.findall(r"user=.*[&]+?", Author_names_link)
+				temp= re.findall("user=.+?[&]", Author_names_link)
 				user= temp[0][5:-1]
 				print (user)
 				n_input=Author_names_link[-12:]
@@ -118,7 +118,7 @@ class Scraper():
 				driver.implicitly_wait(5)
 				driver.get(N_author_url[url])
 				try:
-					time.sleep(5)
+					time.sleep(2)
 					title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
 				except:
 					time.sleep(5)
