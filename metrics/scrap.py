@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup as soup
 import re
 from django.utils import timezone
 from .extract import rawauthorscounterurl, seleniumScraper, coAuthors, getnewCitations, getNpapersNcitationsTcitations
-from metrics.newmetrics import Simple_Metrics
+from .newmetrics import Simple_Metrics
 import requests
 import random
 
@@ -95,7 +95,8 @@ class Scraper():
 
 				Author_names_link = author["data-href"]
 
-				user=Author_names_link[44:56]
+				temp= re.findall(r"user=.*[&]", Author_names_link)
+				user= temp[0][5:-1]
 				print (user)
 
 				n_input=Author_names_link[-12:]

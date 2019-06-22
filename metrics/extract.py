@@ -38,8 +38,12 @@ def seleniumScraper(url_to_counter, N_author_url):
         driver.implicitly_wait(5)
         for url in url_to_counter:
             driver.get(N_author_url[url])
-            driver.implicitly_wait(5)
-            title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
+            try:
+                driver.implicitly_wait(5)
+                title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
+            except:
+                 driver.implicitly_wait(8)
+                 title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
             #print (N_author_url[url])
             page_element = title[0].text
             coAuths.append(len(page_element.split(',')))
