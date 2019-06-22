@@ -61,6 +61,7 @@ class Scraper():
 					"TE": "Trailers"
 			}
 			session= requests.Session()
+			print (S_url)
 			response= session.get(S_url, headers=headers)
 			print (response, type(response))
 			#req= Request(url=S_url, headers=headers)
