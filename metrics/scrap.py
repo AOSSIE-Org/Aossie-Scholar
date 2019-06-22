@@ -54,15 +54,16 @@ class Scraper():
 		driver= webdriver.Chrome(desired_capabilities=options.to_capabilities(), executable_path=str(os.environ.get('CHROMEDRIVER_PATH')))
 		
 		for j in range(0,pageSize, 100):		#{ looping trough pages to get all the publications
-			driver.implicitly_wait(0.2)
 			S_url=self.url + "&cstart=" + str(j) +"&pagesize=100"
+			driver.implicitly_wait(5)
 			driver.get(S_url)
-			time.sleep(0.2)
-
 			if (j == 0):
+				time.sleep(3)
 				Name= driver.find_element_by_xpath('//div[@id="gsc_prf_in"]')
 				scholar_name= Name.text
 				print (scholar_name)
+			else:
+				time.sleep(3)
 
 			Years= driver.find_elements_by_xpath('//td[@class="gsc_a_y"]')
 			for year in Years:
@@ -113,14 +114,14 @@ class Scraper():
 		print (len(N_author_url), url_to_counter, len(n_author_names_list))
 		coAuths=[]
 		if len(url_to_counter) != 0:
-			driver.implicitly_wait(5)
 			for url in url_to_counter:
+				driver.implicitly_wait(5)
 				driver.get(N_author_url[url])
 				try:
-					driver.implicitly_wait(5)
+					time.sleep(5)
 					title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
 				except:
-					driver.implicitly_wait(8)
+					time.sleep(5)
 					title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
 				try:
 					page_element= title[0].text
