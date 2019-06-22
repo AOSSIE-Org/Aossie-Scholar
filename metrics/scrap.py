@@ -59,9 +59,12 @@ class Scraper():
 			driver.get(S_url)
 			if (j == 0):
 				time.sleep(3)
-				Name= driver.find_element_by_xpath('//div[@id="gsc_prf_in"]')
-				scholar_name= Name.text
-				print (scholar_name)
+				try:
+					Name= driver.find_element_by_id("gsc_prf_in")
+					scholar_name= Name.text
+					print (scholar_name)
+				except:
+					print ("couldn't get Name element")
 			else:
 				time.sleep(3)
 
