@@ -58,7 +58,8 @@ class Scraper():
 
 				Author_names_link = author["data-href"]
 
-				user=Author_names_link[53:65]
+				temp= re.findall("user=.+?[&]", Author_names_link)
+				user= temp[0][5:-1]
 
 				n_input=Author_names_link[-12:]
 

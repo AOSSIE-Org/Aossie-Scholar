@@ -25,10 +25,10 @@ def seleniumScraper(url_to_counter, N_author_url):
         options = Options()
         options.headless = True
         driver= webdriver.Firefox(options=options)
-        driver.implicitly_wait(0.2)
+        driver.implicitly_wait(2)
         for url in url_to_counter:
             driver.get(N_author_url[url])
-            time.sleep(0.5)
+            time.sleep(2)
             title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
             page_element = title[0].text
             coAuths.append(len(page_element.split(',')))
