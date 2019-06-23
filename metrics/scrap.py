@@ -22,8 +22,11 @@ class Scraper():
 		for i in range(0, 1000, 100):
 			if (self.maxP <=i):
 				pageSize = i
-				break
-                    									# to count normalized papers.
+				break        									# to count normalized papers.
+		title_list = []
+		Citations =[]
+		N_author_url= []
+		author_names_list= []
 		ncounter = 0
 		bcounter= 0            												# to count total numbers citations an author recieved. 
 
