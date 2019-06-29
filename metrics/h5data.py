@@ -59,9 +59,5 @@ for lastlink in A:
         T.append(temp_list)   
     T_list.append(T)
 
-for i in category_list:
-    for j in B:
-        for k in T_list:
-            print (i, j, k)     
-
+print (category_list, B, T_list)
 print (len(category_list), len(B), len(A))
