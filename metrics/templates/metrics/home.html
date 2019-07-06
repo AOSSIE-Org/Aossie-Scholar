@@ -27,6 +27,7 @@
 					<button type="submit" class="btn btn-outline-secondary">submit</button>
 				</div>
 			</form>
+			<p class="text-success">Scholars who own a Google Scholar profile, register here to get better metrics for them</p>
 
 			<form method="post">
 				{% csrf_token %}
@@ -34,7 +35,7 @@
 				<div id="search_form">
 				{{ searchform.search }}
 				<br>
-				<button type="submit" class="btn btn-outline-secondary">Search</button>
+				<button type="submit" class="btn btn-outline-success">Search</button>
 				</div>
 			</form>
 

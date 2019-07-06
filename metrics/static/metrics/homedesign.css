@@ -73,3 +73,16 @@ div#search_form {
 input.form-control {
 	width : 300px;
 }
+p.text-success{
+	position: absolute;
+	width: 141px;
+	height: 230px;
+	left: 3107px;
+	top: 2852px;
+
+	font-family: Rock Salt;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 96px;
+	line-height: 229px;
+}

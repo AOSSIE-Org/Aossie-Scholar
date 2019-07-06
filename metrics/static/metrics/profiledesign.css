@@ -1,0 +1,23 @@
+div.rectangle-up{
+	position: absolute;
+	width: 1301px;
+	height: 60px;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	background: #EADFDF;
+}
+
+a.sign_in_text{
+	position: absolute;
+	width: 392px;
+	height: 230px;
+	left: 10px;
+	top: 0px;
+	font-family:Rock Salt !important;
+	font-style: normal; 
+	font-weight: normal;
+	font-size: 26px;
+	line-height: 55px;
+	color: #2EAADF;
+}

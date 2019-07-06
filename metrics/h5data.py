@@ -5,6 +5,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.options import Options
 import time
+import pandas as pd
+import csv
 h5data={}
 B=[]
 A=[]
@@ -44,9 +46,11 @@ for category in category_links:
     B.append(subcategory_list)
 T_list=[]
 for lastlink in A:
+    sub_touple_list=[]
     for linklast in lastlink:
-        T= []
+        T= ()
         driver.get(linklast)
+        driver.implicitly_wait(5)
         h5index= driver.find_elements_by_xpath('//a[@class="gs_ibl gsc_mp_anchor"]')
         h5median= driver.find_elements_by_xpath('//span[@class="gs_ibl gsc_mp_anchor"]')
         l1 =[]
@@ -55,9 +59,36 @@ for lastlink in A:
             l1.append(i.text)
         for j in h5median:    
             l2.append(j.text)
-        temp_list= [l1,l2]    
-        T.append(temp_list)   
-    T_list.append(T)
+        T= (l1,l2)    
+        sub_touple_list.append(T)   
+    T_list.append(sub_touple_list)
 
-print (category_list, B, T_list)
-print (len(category_list), len(B), len(A))
+
+class my_dictionary(dict): 
+  
+    def __init__(self): 
+        self = dict() 
+
+    def add(self, key, value): 
+        self[key] = value 
+
+dict_all=my_dictionary()   
+for cat, i, j in zip(category_list, B, T_list):
+    list_of_dicts=[]
+    for k,l in zip(i,j):
+        dictA=my_dictionary()
+        dictA.add(k,l)
+        list_of_dicts.append(dictA)
+    dict_all.add(cat, list_of_dicts)
+
+print (dict_all)
+
+#df= pd.DataFrame(dict_all)
+#print (df)
+#df.to_csv(h5data.csv)
+
+w = csv.writer(open("output.csv", "w"))
+for key, val in dict_all.items():
+    w.writerow([key, val])
+           
+

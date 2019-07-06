@@ -1,5 +1,22 @@
-<h1>{{ Name }}</h1>
-<ul>
-{% for publication in list %}
-    <li>{{ publication }}
-{% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+   <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/cosmo/bootstrap.min.css">
+    {%load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'metrics/profiledesign.css' %}">
+	<title>Aossie Scholar</title>
+</head>
+	<body>
+		<div class= "rectangle-up">
+			<a class= "sign_in_text" href="{% url 'metrics:home' %}">Sign In</a>
+		</div>
+
+	</body>
+	<h1>{{ Name }}</h1>
+	<ul>
+	{% for publication in list %}
+	    <li>{{ publication }}</li>
+	{% endfor %}
