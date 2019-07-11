@@ -3,20 +3,65 @@
 <head>
 	<meta charset="UTF-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/cosmo/bootstrap.min.css">
     {%load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'metrics/profiledesign.css' %}">
 	<title>Aossie Scholar</title>
 </head>
 	<body>
+
 		<div class= "rectangle-up">
+
 			<a class= "sign_in_text" href="{% url 'metrics:home' %}">Sign In</a>
+
+			<form method="post">
+				{% csrf_token %}
+				<!-- {{ searchform.errors }} -->
+				<div id="search_form">
+				{{ searchform.search }}
+				<button type="submit" class="btn btn-outline-primary">Search</button>
+				</div>
+			</form>
+
+			<img id = "Alogo" src = "{% static 'metrics/images/AOSSIE_logo.png' %}" alt = "aossie_logo">
+			<img id = "cap" src = "{% static 'metrics/images/cap.png' %}" alt = "Scholar_cap">
+			<img id = "Slogo" src = "{% static 'metrics/images/Scholar_logo.png' %}" alt="scholar_logo">
+			<!--<img id = "index" src = "{% static 'metrics/images/index.png' %}" alt = "Index">
+			<img id = "scholar" src = "{% static 'metrics/images/scholar.jpg' %}" alt = "Scholar"> -->
 		</div>
 
-	</body>
-	<h1>{{ Name }}</h1>
+		<button type="button" class="btn btn-default" aria-label="Left Align">
+		  <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+		</button>
+		<div class="dropdown">
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    Menu
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		    <li><a href="#">Home</a></li>
+		    <li><a href="#">Profile</a></li>
+		    <li><a href="#">Charts and stats</a></li>
+		    <li><a href="#">General metric information</a></li>
+		    <li role="separator" class="divider"></li>
+		    <li><a href="#">Separated link</a></li>
+		  </ul>
+		</div>
+
+		<div class= "round_design">
+			<img id = "pro_cur" src = "{% static 'metrics/images/pro_cur.png' %}" alt = "design">
+		</div>
+		<div>
+		<img id="profile" src= "{{ img_url }}" alt="pic"/>
+		<br>
+		<h1>{{ Name }}</h1>
+		<div class= "info_rect">
+		</div>
+
+	</div>
 	<ul>
 	{% for publication in list %}
 	    <li>{{ publication }}</li>
 	{% endfor %}
+		</ul>
+	</body>

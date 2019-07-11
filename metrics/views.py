@@ -31,8 +31,7 @@ class HomeView(TemplateView):
 			text3 = indexform.cleaned_data['country']
 			print(text1, text2, text3)
 			z= Scraper(text1, text2, text3)
-			p_url= z.getScholarData()
-			key= p_url[-18:]
+			key= z.getScholarData()
 
 			return HttpResponseRedirect(reverse('metrics:results', args= (key,)))
 
@@ -45,8 +44,10 @@ class ResultView(ListView):
 		scholar_object= ScholarProfile.objects.get(profile_url= scholar_url)
 		publications= scholar_object.publication_title
 		scholar_name= scholar_object.author_name
+		search_form= SearchForm
+		img_url="https://scholar.google.com.au/citations?view_op=view_photo&user="+scholar_url+"&citpid=2"
 		print ('b')
-		return (render (request, self.template_name, {'Name': scholar_name, 'list': publications}))
+		return (render (request, self.template_name, {'Name': scholar_name, 'list': publications, 'searchform': search_form, 'img_url': img_url}))
 		
 
 

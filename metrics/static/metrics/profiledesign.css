@@ -1,9 +1,14 @@
+html{
+	width: 1301px;
+}
+
 div.rectangle-up{
 	position: absolute;
 	width: 1301px;
-	height: 60px;
+	height: 100px;
 	left: 0px;
 	top: 0px;
+	font-family: Rock Salt !important;
 	right: 0px;
 	background: #EADFDF;
 }
@@ -14,10 +19,126 @@ a.sign_in_text{
 	height: 230px;
 	left: 10px;
 	top: 0px;
-	font-family:Rock Salt !important;
+	font-family: Rock Salt !important;
 	font-style: normal; 
 	font-weight: normal;
 	font-size: 26px;
 	line-height: 55px;
 	color: #2EAADF;
+}
+
+div#search_form{
+	position: absolute;
+	top : 10px;
+	left : 400px;
+}
+
+input.form-control{
+	
+	width : 400px;
+
+}
+
+button.btn.btn-outline-primary{
+	position: absolute;
+	left: 400px;
+	top: 0px;
+}
+img#Alogo {
+	position: absolute;
+	width: 80px;
+	height: 100px;
+	left: 1113px;
+	top: 0px;
+	border-radius: 14px;
+}
+img#Slogo {
+	position: absolute;
+	height: 120px;
+	top: 15px;
+	left: 1185px;
+}
+img#cap {
+	position: absolute;
+	width: 79px;
+	height: 60px;
+	left: 1200px;
+	top: 0px;
+	border-radius: 378.5px;
+	color: 010101;
+}
+img#index {
+	position: absolute;
+	width: 77px;
+	height: 50px;
+	left: 1163px;
+	top: 50px;
+	border-radius: 34px;
+	background-color: #EADFDF;
+
+}
+
+img#scholar {
+	position: absolute;
+	width: 60px;
+	height: 90px;
+	left: 1243px;
+	top: 40px;
+	border-radius: 83.709px;
+	transform: rotate(0.64deg);
+}
+
+span.glyphicon.glyphicon-align-justify{
+	position: absolute;
+	top: 110px;
+	left: 555px;
+
+}
+
+div.dropdown{
+	position: absolute;
+	top: 50px;
+	left: 555px;
+}
+img#pro_cur{
+	position: absolute;
+	width: 1301px;
+	height: 100px;
+	left: 0px;
+	top: 100px;
+
+	background: #FFFFFF;
+}
+img#profile{
+	position: absolute;
+	top: 210px;
+	border-radius: 421.5px;
+	left: 552px;
+}
+
+h1{
+	position: absolute;
+	font-family: Rock Salt !important;
+	font-style: normal;
+	font-weight: normal;
+	top: 340px;
+	color: #2EAADF;
+	left: 490px;
+
+}
+
+div.info_rect{
+	position: absolute;
+	left: 220px;
+	top: 390px;
+	width: 800px;
+	height: 200px;
+	border: 1px #2EAADF;
+	background: #BCE1F0;
+	border-radius: 121px;
+}
+
+ul{
+	position: absolute;
+	top: 700px;
 }

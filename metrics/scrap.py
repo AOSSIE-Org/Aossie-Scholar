@@ -44,6 +44,8 @@ class Scraper():
 			if (j == 0):
 				Name= page_soup.find('div', {'id': 'gsc_prf_in'})			# extracting the author's name
 				scholar_name= Name.text
+				img = page_soup.find('img', {'id': 'gsc_prf_pup-img'})
+				img_url= img["src"]
 
 			Titles = page_soup.findAll('td', {'class': 'gsc_a_t'})			# publication titles
 
@@ -105,7 +107,7 @@ class Scraper():
 
 		total_citations= myvar[2]
 
-		q= ScholarProfile(author_name= Name.text, profile_url= self.url[-18:], publication_title= title_list,
+		q= ScholarProfile(author_name= Name.text, profile_url= user, publication_title= title_list,
 		created_at= timezone.now())
 		q.save()
 
@@ -126,4 +128,4 @@ class Scraper():
 		h_index= Simple_Metrics.h_index(newCitations)
 		g_index= Simple_Metrics.g_index(newCitations)
 
-		return (self.url)
+		return (user)
