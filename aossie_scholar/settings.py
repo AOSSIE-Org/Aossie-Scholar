@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_tables2',
     'metrics',
     'rest_framework',
     
@@ -47,6 +48,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'aossie_scholar.urls'
 
+DJANGO_TABLES2_TEMPLATE = 'django_tables2/bootstrap4.html'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -62,6 +65,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'aossie_scholar.wsgi.application'
 
@@ -125,5 +129,3 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 STATICfiLES_DIRS = (
     os.path.join(BASE_DIR,'metrics/static'),)
-
-django_heroku.settings(locals())

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load render_table from django_tables2 %}
 <head>
 	<meta charset="UTF-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,9 +60,13 @@
 		</div>
 
 	</div>
-	<ul>
+
+	<div class="Table">
+		{% render_table table %}
+	</div>
+	<!--<ul>
 	{% for publication in list %}
 	    <li>{{ publication }}</li>
 	{% endfor %}
-		</ul>
+		</ul> -->
 	</body>

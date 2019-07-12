@@ -14,6 +14,8 @@ from django.urls import reverse
 
 from .models import ScholarProfile
 
+from .metrictables import NameTable
+
 
 class HomeView(TemplateView):
 	template_name = 'metrics/home.html'
@@ -45,9 +47,18 @@ class ResultView(ListView):
 		publications= scholar_object.publication_title
 		scholar_name= scholar_object.author_name
 		search_form= SearchForm
+		dlist=[]
+		for i, j in zip(publications, scholar_object.normalized_citations):
+			d={}
+			d["Title"]= i
+			d["Ncitations"]= j
+			dlist.append(d)
+
+		#data= [{'Title': publications}, {'Normalized citations': scholar_object.normalized_citations}]
+		table= NameTable(dlist)
 		img_url="https://scholar.google.com.au/citations?view_op=view_photo&user="+scholar_url+"&citpid=2"
 		print ('b')
-		return (render (request, self.template_name, {'Name': scholar_name, 'list': publications, 'searchform': search_form, 'img_url': img_url}))
+		return (render (request, self.template_name, {'Name': scholar_name, 'list': publications, 'searchform': search_form, 'img_url': img_url, 'table': table}))
 		
 
 

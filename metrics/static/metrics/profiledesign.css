@@ -10,7 +10,7 @@ div.rectangle-up{
 	top: 0px;
 	font-family: Rock Salt !important;
 	right: 0px;
-	background: #EADFDF;
+	background: #010101;
 }
 
 a.sign_in_text{
@@ -123,7 +123,7 @@ h1{
 	font-weight: normal;
 	top: 340px;
 	color: #2EAADF;
-	left: 490px;
+	left: 290px;
 
 }
 
@@ -137,7 +137,10 @@ div.info_rect{
 	background: #BCE1F0;
 	border-radius: 121px;
 }
-
+div.Table{
+	position: absolute;
+	top: 600px;
+}
 ul{
 	position: absolute;
 	top: 700px;
