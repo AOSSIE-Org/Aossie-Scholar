@@ -48,10 +48,12 @@ class ResultView(ListView):
 		scholar_name= scholar_object.author_name
 		search_form= SearchForm
 		dlist=[]
-		for i, j in zip(publications, scholar_object.normalized_citations):
+		for i, j, k, l in zip(publications, scholar_object.normalized_citations, scholar_object.citations, scholar_object.coAuthors):
 			d={}
 			d["Title"]= i
 			d["Ncitations"]= j
+			d["Citations"]= k
+			d["CoAuthors"]= l
 			dlist.append(d)
 
 		#data= [{'Title': publications}, {'Normalized citations': scholar_object.normalized_citations}]

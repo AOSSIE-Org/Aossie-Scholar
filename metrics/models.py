@@ -7,6 +7,8 @@ class ScholarProfile(models.Model):
 	profile_url= models.URLField(max_length=200, primary_key= True)
 	publication_title= ArrayField(models.CharField(max_length=500))
 	normalized_citations= ArrayField(models.CharField(max_length=50), null= True)
+	citations= ArrayField(models.CharField(max_length=50), null= True)
+	coAuthors= ArrayField(models.CharField(max_length=50), null= True)
 	created_at= models.DateTimeField(auto_now_add= True)
 	def __str__(self):
 		return (self.author_name)

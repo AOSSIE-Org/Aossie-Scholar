@@ -4,3 +4,5 @@ from .models import ScholarProfile
 class NameTable(tables.Table):
    	Title = tables.Column()
    	Ncitations= tables.Column()
+   	Citations= tables.Column()
+   	CoAuthors= tables.Column()
