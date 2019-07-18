@@ -44,23 +44,32 @@ class ResultView(ListView):
 	
 	def get(self, request, scholar_url):
 		scholar_object= ScholarProfile.objects.get(profile_url= scholar_url)
+		country= scholar_object.country
+		t_publications= scholar_object.publications
+		t_citations= scholar_object.Tcitations
+		Year= scholar_object.Year
+		g_index= scholar_object.Gindex
+		h_index= scholar_object.Hindex
+		m_index= scholar_object.Mindex
 		publications= scholar_object.publication_title
 		scholar_name= scholar_object.author_name
 		search_form= SearchForm
 		dlist=[]
-		for i, j, k, l in zip(publications, scholar_object.normalized_citations, scholar_object.citations, scholar_object.coAuthors):
+		for i, j, k, l, m in zip(publications, scholar_object.normalized_citations, scholar_object.citations, scholar_object.coAuthors, Year):
 			d={}
 			d["Title"]= i
 			d["Ncitations"]= j
 			d["Citations"]= k
 			d["CoAuthors"]= l
+			d["Year"]= m
 			dlist.append(d)
 
 		#data= [{'Title': publications}, {'Normalized citations': scholar_object.normalized_citations}]
 		table= NameTable(dlist)
 		img_url="https://scholar.google.com.au/citations?view_op=view_photo&user="+scholar_url+"&citpid=2"
 		print ('b')
-		return (render (request, self.template_name, {'Name': scholar_name, 'list': publications, 'searchform': search_form, 'img_url': img_url, 'table': table}))
+		return (render (request, self.template_name, {'Name': scholar_name, 'user': scholar_url, 'list': publications, 'searchform': search_form, 'img_url': img_url, 'table': table,
+						 'Country': country, 'publications': t_publications, 'Tcitations': t_citations, 'g_index': g_index, 'h_index': h_index, 'm_index': m_index}))
 		
 
 

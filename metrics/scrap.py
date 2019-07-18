@@ -5,6 +5,7 @@ import re
 from django.utils import timezone
 from .extract import rawauthorscounterurl, seleniumScraper, coAuthors, getnewCitations, getNpapersNcitationsTcitations
 from .newmetrics import Simple_Metrics
+from .graphs import Graph
 
 title_list = []
 Citations =[]
@@ -27,6 +28,8 @@ class Scraper():
 		Citations =[]
 		N_author_url= []
 		author_names_list= []
+		YEARS=[]
+		year_list=[]
 		ncounter = 0
 		bcounter= 0            												# to count total numbers citations an author recieved. 
 
@@ -87,6 +90,18 @@ class Scraper():
 				q= re.findall('[0-9]+',r)
 				Citations.append(q)
 		
+			Years = page_soup.findAll('td', {'class': 'gsc_a_y'})
+			for year in Years:
+				YEARS.append(year.text)
+
+			for year in Years:
+				try:
+					y= int(year.text)
+				except:
+					y= 0
+				year_list.append(y)
+			print (year_list)
+
 		CoauthsAndUrls= rawauthorscounterurl(author_names_list)
 
 		url_to_counter= CoauthsAndUrls[1]
@@ -107,10 +122,6 @@ class Scraper():
 
 		total_citations= myvar[2]
 
-		q= ScholarProfile(author_name= Name.text, normalized_citations= normalized_citations, profile_url= user, publication_title= title_list, citations=newCitations,
-			coAuthors=number_of_coauths, created_at= timezone.now())
-		q.save()
-
 		total_normalized_citations= int(sum(normalized_citations))
 		#normalized_h_index= int(sum(n_citations)/len(title_list))
 
@@ -127,5 +138,13 @@ class Scraper():
 
 		h_index= Simple_Metrics.h_index(newCitations)
 		g_index= Simple_Metrics.g_index(newCitations)
+		print ('a', min(year_list))
+		m_index= Simple_Metrics.m_index(h_index, min(year_list))
+
+		Graph.piechart(h_index, g_index, m_index, user)
+
+		q= ScholarProfile(author_name= scholar_name, normalized_citations= normalized_citations, profile_url= user, publication_title= title_list, citations=newCitations,
+			coAuthors=number_of_coauths, country=self.country, publications= len(title_list),Tcitations= total_citations, Year= YEARS, Gindex= g_index, Hindex= h_index, Mindex= m_index, created_at= timezone.now())
+		q.save()
 
 		return (user)

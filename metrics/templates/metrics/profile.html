@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/cosmo/bootstrap.min.css">
+   <link href="https://fonts.googleapis.com/css?family=Rock Salt" rel='stylesheet'>
     {%load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'metrics/profiledesign.css' %}">
 	<title>Aossie Scholar</title>
@@ -20,7 +21,7 @@
 				<!-- {{ searchform.errors }} -->
 				<div id="search_form">
 				{{ searchform.search }}
-				<button type="submit" class="btn btn-outline-primary">Search</button>
+				<button id="search" type="submit" class="btn btn-outline-primary">Search</button>
 				</div>
 			</form>
 
@@ -31,34 +32,27 @@
 			<img id = "scholar" src = "{% static 'metrics/images/scholar.jpg' %}" alt = "Scholar"> -->
 		</div>
 
-		<button type="button" class="btn btn-default" aria-label="Left Align">
-		  <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
-		</button>
-		<div class="dropdown">
-		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-		    Menu
-		    <span class="caret"></span>
-		  </button>
-		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-		    <li><a href="#">Home</a></li>
-		    <li><a href="#">Profile</a></li>
-		    <li><a href="#">Charts and stats</a></li>
-		    <li><a href="#">General metric information</a></li>
-		    <li role="separator" class="divider"></li>
-		    <li><a href="#">Separated link</a></li>
-		  </ul>
-		</div>
+		
 
 		<div class= "round_design">
 			<img id = "pro_cur" src = "{% static 'metrics/images/pro_cur.png' %}" alt = "design">
 		</div>
+		</div>
 		<div>
 		<img id="profile" src= "{{ img_url }}" alt="pic"/>
 		<br>
-		<h1>{{ Name }}</h1>
-		<div class= "info_rect">
+		<h1 class="name"> {{ Name }}</h1>
+		<div class= "info_rect"><p class= "info_rect_text" id= "country">{{ Country }}</p>
+			<p class= "info_rect_text" id= "publications">Publications {{ publications }}</p>
+			<p class= "info_rect_text" id= "tcitations">Citations {{ Tcitations }}</p>
+			<p class= "info_rect_text" id= "gindex">G-index {{ g_index }}</p>
+			<p class= "info_rect_text" id= "hindex">h-index {{ h_index }}</p>
+			<p class= "info_rect_text" id= "mindex">m-index {{ m_index }}</p>
 		</div>
 
+	</div>
+	<div class="piechart">
+		<img src="{% static 'metrics/images/user.png' %}">
 	</div>
 
 	<div class="Table">

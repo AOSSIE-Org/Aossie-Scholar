@@ -9,7 +9,6 @@ div.rectangle-up{
 	height: 100px;
 	left: 0px;
 	top: 0px;
-	font-family: Rock Salt !important;
 	right: 0px;
 	background: #010101;
 }
@@ -17,9 +16,9 @@ div.rectangle-up{
 a.sign_in_text{
 	position: absolute;
 	width: 392px;
-	height: 230px;
+	height: 30px;
 	left: 10px;
-	top: 0px;
+	top: 20px;
 	font-family: Rock Salt !important;
 	font-style: normal; 
 	font-weight: normal;
@@ -98,7 +97,7 @@ span.glyphicon.glyphicon-align-justify{
 
 div.dropdown{
 	position: absolute;
-	top: 50px;
+	top: 120px;
 	left: 555px;
 }
 img#pro_cur{
@@ -113,11 +112,11 @@ img#pro_cur{
 img#profile{
 	position: absolute;
 	top: 210px;
-	border-radius: 421.5px;
+	border-radius: 321.5px;
 	left: 552px;
 }
 
-h1{
+.name{
 	position: absolute;
 	font-family: Rock Salt !important;
 	font-style: normal;
@@ -134,7 +133,7 @@ div.info_rect{
 	top: 390px;
 	width: 800px;
 	height: 200px;
-	border: 1px #2EAADF;
+	border: 3px #010101;
 	background: #BCE1F0;
 	border-radius: 121px;
 }
@@ -142,7 +141,55 @@ div.Table{
 	position: absolute;
 	top: 600px;
 }
-ul{
+.info_rect_text{
+	color: #010101;
+	font-family: Rock Salt !important;
+	
+}
+#country{
 	position: absolute;
-	top: 700px;
+	left: 350px;
+	top: 10px;
+	font-size: 18px;
+
+}
+#publications{
+	position: absolute;
+	left: 40px;
+	top: 40px;
+	font-size: 22px;
+	color: #2EAADF;
+}
+#tcitations{
+	position: absolute;
+	left: 550px;
+	top: 40px;
+	font-size: 22px;
+	color: #2EAADF;
+}
+#gindex{
+	position: absolute;
+	left: 335px;
+	top: 50px;
+	font-size: 18px;
+	color: #1CB019;
+}
+#hindex{
+	position: absolute;
+	left: 350px;
+	top: 82px;
+	font-size: 18px;
+	color: #1CB019;
+}
+#mindex{
+	position: absolute;
+	left: 335px;
+	top: 114px;
+	font-size: 18px;
+	color: #1CB019;
+}
+.piechart{
+	position: absolute;
+	left: 1000px;
+	top: 210px;
 }
