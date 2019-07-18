@@ -113,7 +113,7 @@ img#profile{
 	position: absolute;
 	top: 210px;
 	border-radius: 321.5px;
-	left: 552px;
+	left: 332px;
 }
 
 .name{
@@ -123,13 +123,13 @@ img#profile{
 	font-weight: normal;
 	top: 340px;
 	color: #2EAADF;
-	left: 290px;
+	left: 70px;
 
 }
 
 div.info_rect{
 	position: absolute;
-	left: 220px;
+	left: 0px;
 	top: 390px;
 	width: 800px;
 	height: 200px;
@@ -190,6 +190,6 @@ div.Table{
 }
 .piechart{
 	position: absolute;
-	left: 1000px;
-	top: 210px;
+	left: 800px;
+	top: 198px;
 }

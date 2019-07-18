@@ -27,6 +27,7 @@ class Simple_Metrics():
                 continue
             else:
                 break
+        return(g_index)
 
     def m_index(h_index, ist_pub_year):
         now = datetime.datetime.now()

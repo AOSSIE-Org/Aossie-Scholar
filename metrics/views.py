@@ -67,8 +67,9 @@ class ResultView(ListView):
 		#data= [{'Title': publications}, {'Normalized citations': scholar_object.normalized_citations}]
 		table= NameTable(dlist)
 		img_url="https://scholar.google.com.au/citations?view_op=view_photo&user="+scholar_url+"&citpid=2"
-		print ('b')
-		return (render (request, self.template_name, {'Name': scholar_name, 'user': scholar_url, 'list': publications, 'searchform': search_form, 'img_url': img_url, 'table': table,
+		gpath= '/static/metrics/images/'+scholar_url+'.png'
+		print (gpath)
+		return (render (request, self.template_name, {'Name': scholar_name, 'user': gpath, 'list': publications, 'searchform': search_form, 'img_url': img_url, 'table': table,
 						 'Country': country, 'publications': t_publications, 'Tcitations': t_citations, 'g_index': g_index, 'h_index': h_index, 'm_index': m_index}))
 		
 
