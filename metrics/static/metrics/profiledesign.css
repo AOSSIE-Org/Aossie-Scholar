@@ -112,7 +112,7 @@ img#pro_cur{
 img#profile{
 	position: absolute;
 	top: 210px;
-	border-radius: 321.5px;
+	border-radius: 180.5px;
 	left: 332px;
 }
 
@@ -170,28 +170,45 @@ div.Table{
 }
 #gindex{
 	position: absolute;
-	left: 335px;
-	top: 50px;
-	font-size: 18px;
-	color: #1CB019;
+	left: 70px;
+	top: 140px;
+	font-size: 25px;
+	color: #C4C4C4;
 }
 #hindex{
 	position: absolute;
-	left: 350px;
-	top: 82px;
-	font-size: 18px;
-	color: #1CB019;
+	left: 320px;
+	top: 160px;
+	font-size: 25px;
+	color: #F3E355;
 }
 #mindex{
 	position: absolute;
-	left: 335px;
-	top: 114px;
-	font-size: 18px;
-	color: #1CB019;
+	left: 550px;
+	top: 140px;
+	font-size: 25px;
+	color: #D50BF6;
 }
 .piechart{
 	position: absolute;
 	left: 800px;
-	top: 198px;
-	background: #1CB019;
+	top: 248px;
+}
+#pie{
+	position: absolute;
+	height: 420px;
+	width: 420px;
+}
+#company{
+	position: absolute;
+	left: 240px;
+	top: 90px;
+	font-size: 18px;
+}
+#website{
+	position: absolute;
+	left: 335px;
+	top: 52px;
+	font-size: 18px;
+
 }

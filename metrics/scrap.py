@@ -49,6 +49,16 @@ class Scraper():
 				scholar_name= Name.text
 				img = page_soup.find('img', {'id': 'gsc_prf_pup-img'})
 				img_url= img["src"]
+				Website = page_soup.findAll('a', {'class': 'gsc_prf_ila'})
+				work_info = page_soup.find('div', {'class': 'gsc_prf_il'})	
+				company= work_info.text	
+				counter=0
+				for site in Website:
+					if(len(Website)==2):
+						if(counter==0):
+							counter+=1
+							continue
+					website = site["href"]
 
 			Titles = page_soup.findAll('td', {'class': 'gsc_a_t'})			# publication titles
 
@@ -141,7 +151,7 @@ class Scraper():
 
 		Graph.piechart(h_index, g_index, m_index, user)
 
-		q= ScholarProfile(author_name= scholar_name, normalized_citations= normalized_citations, profile_url= user, publication_title= title_list, citations=newCitations,
+		q= ScholarProfile(author_name= scholar_name, Company= company, Website= website, normalized_citations= normalized_citations, profile_url= user, publication_title= title_list, citations=newCitations,
 			coAuthors=number_of_coauths, country=self.country, publications= len(title_list),Tcitations= total_citations, Year= YEARS, Gindex= g_index, Hindex= h_index, Mindex= m_index, created_at= timezone.now())
 		q.save()
 

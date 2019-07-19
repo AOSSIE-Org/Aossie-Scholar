@@ -5,6 +5,8 @@ from django.contrib.postgres.fields import ArrayField
 class ScholarProfile(models.Model):
 	author_name= models.CharField(max_length=100)
 	profile_url= models.URLField(max_length=200, primary_key= True)
+	Company= models.CharField(max_length=100, null=True)
+	Website= models.CharField(max_length=100, null=True)
 	publication_title= ArrayField(models.CharField(max_length=500))
 	normalized_citations= ArrayField(models.CharField(max_length=50), null= True)
 	citations= ArrayField(models.CharField(max_length=50), null= True)

@@ -45,6 +45,8 @@ class ResultView(ListView):
 	def get(self, request, scholar_url):
 		scholar_object= ScholarProfile.objects.get(profile_url= scholar_url)
 		country= scholar_object.country
+		company= scholar_object.Company
+		website=scholar_object.Website
 		t_publications= scholar_object.publications
 		t_citations= scholar_object.Tcitations
 		Year= scholar_object.Year
@@ -70,8 +72,10 @@ class ResultView(ListView):
 		img_url="https://scholar.google.com.au/citations?view_op=view_photo&user="+scholar_url+"&citpid=2"
 		gpath= '/static/metrics/images/'+scholar_url+'.png'
 		print (gpath)
-		return (render (request, self.template_name, {'Name': scholar_name, 'user': gpath, 'list': publications, 'searchform': search_form, 'img_url': img_url, 'table': table,
-						 'Country': country, 'publications': t_publications, 'Tcitations': t_citations, 'g_index': g_index, 'h_index': h_index, 'm_index': m_index}))
+		return (render (request, self.template_name, {'Name': scholar_name, 'user': gpath,
+		 'list': publications, 'searchform': search_form, 'img_url': img_url, 'table': table, 
+		 'company': company, 'website':website, 'Country': country, 'publications': t_publications, 
+		 'Tcitations': t_citations, 'g_index': g_index, 'h_index': h_index, 'm_index': m_index}))
 		
 
 

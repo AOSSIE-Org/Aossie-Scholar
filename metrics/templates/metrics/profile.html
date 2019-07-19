@@ -43,6 +43,8 @@
 		<br>
 		<h1 class="name"> {{ Name }}</h1>
 		<div class= "info_rect"><p class= "info_rect_text" id= "country">{{ Country }}</p>
+			<p class= "info_rect_text" id= "company"> {{ company }}</p>
+			<a class=" info_rect_text" id= "website" href="{{ website }}">Website</a>
 			<p class= "info_rect_text" id= "publications">Publications {{ publications }}</p>
 			<p class= "info_rect_text" id= "tcitations">Citations {{ Tcitations }}</p>
 			<p class= "info_rect_text" id= "gindex">G-index {{ g_index }}</p>
@@ -52,7 +54,7 @@
 
 	</div>
 	<div class="piechart">
-		<img src="{{ user }}">
+		<img id= "pie" src="{{ user }}">
 	</div>
 
 	<div class="Table">
