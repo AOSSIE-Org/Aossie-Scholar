@@ -66,6 +66,7 @@ class ResultView(ListView):
 
 		#data= [{'Title': publications}, {'Normalized citations': scholar_object.normalized_citations}]
 		table= NameTable(dlist)
+		table.paginate(page=request.GET.get('page', 1), per_page=25)
 		img_url="https://scholar.google.com.au/citations?view_op=view_photo&user="+scholar_url+"&citpid=2"
 		gpath= '/static/metrics/images/'+scholar_url+'.png'
 		print (gpath)

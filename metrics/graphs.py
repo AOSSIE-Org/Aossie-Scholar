@@ -7,7 +7,7 @@ class Graph():
 		print (h_index, g_index, m_index)
 		data_to_fill= [h_index, g_index, m_index]
 		labels= ['h_index', 'g_index', 'm_index']
-		colors= ['#9CF0E0', '#0DF408', '#D50BF6']
+		colors= ['#F3E355', '#C4C4C4', '#D50BF6']
 		plt.pie(data_to_fill, labels= labels, colors= colors, startangle=90, autopct='%.1f%%')
 		plt.title('Metrics')
 		plt.savefig('metrics/static/metrics/images/'+ user +'.png', bbox_inches=None)

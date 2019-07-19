@@ -97,10 +97,10 @@ class Scraper():
 			for year in Years:
 				try:
 					y= int(year.text)
+					year_list.append(y)
 				except:
-					y= 0
-				year_list.append(y)
-			print (year_list)
+					continue 
+				
 
 		CoauthsAndUrls= rawauthorscounterurl(author_names_list)
 
@@ -130,7 +130,6 @@ class Scraper():
 
 		for i in nn_citations:
 			ncounter+= 1
-			print (ncounter, i)
 			if(ncounter> i):
 				normalized_h_index= ncounter-1
 				break
@@ -138,7 +137,6 @@ class Scraper():
 
 		h_index= Simple_Metrics.h_index(newCitations)
 		g_index= Simple_Metrics.g_index(newCitations)
-		print ('a', min(year_list))
 		m_index= Simple_Metrics.m_index(h_index, min(year_list))
 
 		Graph.piechart(h_index, g_index, m_index, user)
