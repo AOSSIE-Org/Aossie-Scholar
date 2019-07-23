@@ -1,0 +1,72 @@
+<%
+    def getChart
+        chartData = {
+                    "chart": {
+                        "caption": "Countries With Most Oil Reserves [2017-18]",
+                        "subCaption": "In MMbbl = One Million barrels",
+                        "xAxisName": "Country",
+                        "yAxisName": "Reserves (MMbbl)",
+                        "numberSuffix": "K",
+                        "theme": "fusion",
+                    },
+                    "data": [{
+                        "label": "Venezuela",
+                        "value": "290"
+                    }, {
+                        "label": "Saudi",
+                        "value": "260"
+                    }, {
+                        "label": "Canada",
+                        "value": "180"
+                    }, {
+                        "label": "Iran",
+                        "value": "140"
+                    }, {
+                        "label": "Russia",
+                        "value": "115"
+                    }, {
+                        "label": "UAE",
+                        "value": "100"
+                    }, {
+                        "label": "US",
+                        "value": "30"
+                    }, {
+                        "label": "China",
+                        "value": "30"
+                    }]
+                }
+
+        # Chart rendering 
+        chart = Fusioncharts::Chart.new({
+                width: "700",
+                height: "400",
+                type: "column2d",
+                renderAt: "chartContainer",
+                dataSource: chartData
+            })
+
+        chart.addEvent("dataplotClick", "onDataplotClick");
+        return chart
+    end
+%>
+
+<script>
+    function onDataplotClick(eventObj) {
+        var dataValue = eventObj.data.dataValue;
+        var categoryLabel = eventObj.data.categoryLabel;
+
+        document.getElementById("plotclick").innerHTML = "Category: " + categoryLabel + "\n" + "value: " + dataValue;
+        
+    }
+</script>
+
+<h3>Show data plot value on click</h3>
+<div id="chartContainer"></div>
+<%= getChart.render() %>
+<br/>
+   <div>
+        <p id ="plotclick">Click on data plot above</p>
+    </div>
+<br/>
+<br/>
+<a href="index">Go Back</a>

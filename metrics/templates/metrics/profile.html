@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load render_table from django_tables2 %}
+{% load el_pagination_tags %}
+
 <head>
+	<title>Aossie Scholar</title>
 	<meta charset="UTF-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/cosmo/bootstrap.min.css">
    <link href="https://fonts.googleapis.com/css?family=Rock Salt" rel='stylesheet'>
     {%load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'metrics/profiledesign.css' %}">
-	<title>Aossie Scholar</title>
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+	
 </head>
 	<body>
 
@@ -21,7 +26,7 @@
 				<!-- {{ searchform.errors }} -->
 				<div id="search_form">
 				{{ searchform.search }}
-				<button id="search" type="submit" class="btn btn-outline-primary">Search</button>
+				<button id="search" type="submit" class="btn btn-outline-info">Search</button>
 				</div>
 			</form>
 
@@ -34,11 +39,12 @@
 
 		
 
-		<div class= "round_design">
+		<!--<div class= "round_design">
 			<img id = "pro_cur" src = "{% static 'metrics/images/pro_cur.png' %}" alt = "design">
-		</div>
+		</div> -->
 		</div>
 		<div>
+			<img id="cap_up_scholar" src="{% static 'metrics/images/cap1.svg' %}" alt= "cap" />
 		<img id="profile" src= "{{ img_url }}" alt="pic"/>
 		<br>
 		<h1 class="name"> {{ Name }}</h1>
@@ -60,6 +66,12 @@
 	<div class="Table">
 		{% render_table table %}
 	</div>
+
+	<div id="chart-1">
+    <!-- dumping JavaScript code here -->
+    {{ output|safe }}
+
+    </div>
 	<!--<ul>
 	{% for publication in list %}
 	    <li>{{ publication }}</li>

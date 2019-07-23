@@ -1,9 +1,17 @@
-/*html,
-body {
-	height: 150%;
-	width: 100%;
+
+
+html{
+	height: 1301px;
+	width: 1301px;
+	overflow-x: hidden;
+	overflow-y: visible;
+	padding-bottom: 40px;
+	margin: 20px;
+	scroll-snap-type: mandatory;
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
 }
-*/
+
 img#ann {
 	position: absolute;
 	width: 69.88px;
