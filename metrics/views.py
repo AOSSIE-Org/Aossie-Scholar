@@ -17,8 +17,10 @@ from .models import ScholarProfile
 from .metrictables import NameTable
 
 from django_tables2 import RequestConfig
+
 from django_tables2.paginators import LazyPaginator
-from .fusioncharts import FusionCharts
+
+from .graphs import Graph
 
 
 class HomeView(TemplateView):
@@ -60,74 +62,16 @@ class ResultView(ListView):
 		publications= scholar_object.publication_title
 		scholar_name= scholar_object.author_name
 		search_form= SearchForm
-		dlist=[]
 
+		table= NameTable.createtable(publications, scholar_object.normalized_citations, scholar_object.citations, scholar_object.coAuthors, Year)
 
-		chartObj = FusionCharts( 'column2d', 'ex1', '600', '400', 'chart-1', 'json', """{
-			  "chart": {
-			    "caption": "Countries With Most Oil Reserves [2017-18]",
-			    "subcaption": "In MMbbl = One Million barrels",
-			    "xaxisname": "Country",
-			    "yaxisname": "Reserves (MMbbl)",
-			    "numbersuffix": "K",
-			    "theme": "fusion"
-				  },
-				  "data": [
-				    {
-				      "label": "Venezuela",
-				      "value": "290"
-				    },
-				    {
-				      "label": "Saudi",
-				      "value": "260"
-				    },
-				    {
-				      "label": "Canada",
-				      "value": "180"
-				    },
-				    {
-				      "label": "Iran",
-				      "value": "140"
-				    },
-				    {
-				      "label": "Russia",
-				      "value": "115"
-				    },
-				    {
-				      "label": "UAE",
-				      "value": "100"
-				    },
-				    {
-				      "label": "US",
-				      "value": "30"
-				    },
-				    {
-				      "label": "China",
-				      "value": "30"
-				    }
-				  ]
-				}""")
+		RequestConfig(request, paginate={'paginator_class': LazyPaginator}).configure(table)				#table.paginate(page=request.GET.get('page', 1), per_page=25)
 
-		for i, j, k, l, m in zip(publications, scholar_object.normalized_citations, scholar_object.citations, scholar_object.coAuthors, Year):
-			d={}
-			d["Title"]= i
-			d["Ncitations"]= j
-			d["Citations"]= k
-			d["CoAuthors"]= l
-			d["Year"]= m
-			dlist.append(d)
-
-		table= NameTable(dlist)
-
-		RequestConfig(request, paginate={'paginator_class': LazyPaginator}).configure(table)
-
-		#table.paginate(page=request.GET.get('page', 1), per_page=25)
+		chartObj= Graph.histFusionchart(scholar_object.citations)
 
 		img_url="https://scholar.google.com.au/citations?view_op=view_photo&user="+scholar_url+"&citpid=2"
 
-		gpath= '/static/metrics/images/'+scholar_url+'.png'
-
-		return (render (request, self.template_name, {'Name': scholar_name, 'user': gpath,
+		return (render (request, self.template_name, {'Name': scholar_name,
 		 'list': publications, 'searchform': search_form, 'img_url': img_url, 'table': table, 
 		 'company': company, 'website':website, 'Country': country, 'publications': t_publications, 
 		 'Tcitations': t_citations, 'g_index': g_index, 'h_index': h_index, 'm_index': m_index, 'output': chartObj.render()}))

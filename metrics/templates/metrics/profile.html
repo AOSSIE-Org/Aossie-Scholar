@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load render_table from django_tables2 %}
-{% load el_pagination_tags %}
 
 <head>
 	<title>Aossie Scholar</title>
@@ -12,7 +11,7 @@
     {%load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'metrics/profiledesign.css' %}">
     <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
-    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.gammel.js"></script>
 	
 </head>
 	<body>
@@ -59,22 +58,15 @@
 		</div>
 
 	</div>
-	<div class="piechart">
-		<img id= "pie" src="{{ user }}">
-	</div>
+	<div id="chart-1" class="chart">
+    <!-- dumping JavaScript code here -->
+    {{ output|safe }}
+
+    </div>
 
 	<div class="Table">
 		{% render_table table %}
 	</div>
 
-	<div id="chart-1">
-    <!-- dumping JavaScript code here -->
-    {{ output|safe }}
-
-    </div>
-	<!--<ul>
-	{% for publication in list %}
-	    <li>{{ publication }}</li>
-	{% endfor %}
-		</ul> -->
+	
 	</body>

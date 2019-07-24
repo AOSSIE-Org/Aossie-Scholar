@@ -149,8 +149,6 @@ class Scraper():
 		g_index= Simple_Metrics.g_index(newCitations)
 		m_index= Simple_Metrics.m_index(h_index, min(year_list))
 
-		Graph.piechart(h_index, g_index, m_index, user)
-
 		q= ScholarProfile(author_name= scholar_name, Company= company, Website= website, normalized_citations= normalized_citations, profile_url= user, publication_title= title_list, citations=newCitations,
 			coAuthors=number_of_coauths, country=self.country, publications= len(title_list),Tcitations= total_citations, Year= YEARS, Gindex= g_index, Hindex= h_index, Mindex= m_index, created_at= timezone.now())
 		q.save()

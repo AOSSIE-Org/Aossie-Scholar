@@ -81,14 +81,34 @@ for cat, i, j in zip(category_list, B, T_list):
         list_of_dicts.append(dictA)
     dict_all.add(cat, list_of_dicts)
 
-print (dict_all)
+print(len(category_list), len(B), len(T_list))
+
+
+dic1= my_dictionary()
+for i, j in zip(category_list, B):
+    dic1.add(i, j)
+
+df1= pd.DataFrame(dic1)
+
+dic2= my_dictionary()
+for i, j in zip(B, T_list):
+    dic2.add(i, j)
+
+df2= pd.DataFrame(dic2)
+
+
+d_f= df1.to_csv("H5data.csv", header=True)
+d__f=df2.to_csv("H52data.csv", header=True)
+
+#df1=pd.DataFrame(dict_all, columns= subcategory_list)
+#d_f= df1.to_csv("H5.csv", index= None, header= True)
 
 #df= pd.DataFrame(dict_all)
 #print (df)
 #df.to_csv(h5data.csv)
 
-w = csv.writer(open("output.csv", "w"))
-for key, val in dict_all.items():
-    w.writerow([key, val])
+#w = csv.writer(open("output.csv", "w"))
+#for key, val in dict_all.items():
+#    w.writerow([key, val])
            
 
