@@ -157,8 +157,8 @@ div.Table{
 }
 #country{
 	position: absolute;
-	left: 325px;
-	top: 94px;
+	left: 260px;
+	top: 234px;
 	font-size: 22px;
 	color: #010101;
 	font-family: Rhodium Libre !important;
@@ -166,9 +166,9 @@ div.Table{
 }
 #company{
 	position: absolute;
-	left: 300px;
-	top: 10px;
-	column-width: 360px;
+	left: 230px;
+	top: 200px;
+	column-width: 400px;
 	font-size: 22px;
 	color: #010101;
 	font-family: Rhodium Libre !important;

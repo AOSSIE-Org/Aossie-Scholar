@@ -3,7 +3,7 @@
 {% load render_table from django_tables2 %}
 
 <head>
-	<title>Aossie Scholar</title>
+	<title>{{ Name }}</title>
 	<meta charset="UTF-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/cosmo/bootstrap.min.css">
@@ -47,8 +47,10 @@
 		<img id="profile" src= "{{ img_url }}" alt="pic"/>
 		<br>
 		<h1 class="name"> {{ Name }}</h1>
-		<div class= "info_rect"><p class= "info_rect_text" id= "country">{{ Country }}</p>
-			<p class= "info_rect_text" id= "company"> {{ company }}</p>
+		<p class= "info_rect_text" id= "company"> {{ company }}</p>
+		<p class= "info_rect_text" id= "country">{{ Country }}</p>
+		<div class= "info_rect">
+			
 			<a class=" info_rect_text" id= "website" href="{{ website }}">Website</a>
 			<p class= "info_rect_text" id= "publications">Publications {{ publications }}</p>
 			<p class= "info_rect_text" id= "tcitations">Citations {{ Tcitations }}</p>

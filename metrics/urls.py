@@ -6,4 +6,5 @@ app_name= 'metrics'
 urlpatterns = [
 path('', views.HomeView.as_view(), name='home'),
 path('<str:scholar_url>/results/', views.ResultView.as_view(), name= 'results'),
+path('info_page', views.InfoPageView.as_view(), name= 'info_page')
 ]

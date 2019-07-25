@@ -1,0 +1,160 @@
+.rect_up{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 1313px;
+	height: 100px;
+	background: #35485b; 
+}
+a.sign_in_text{
+	position: absolute;
+	width: 392px;
+	height: 30px;
+	left: 10px;
+	top: 20px;
+	font-family: Rock Salt !important;
+	font-size: 26px;
+	line-height: 55px;
+	color: #F6DF0D;
+}
+body{
+	position: absolute;
+	width: 1301px;
+	background-color: #DBD5D5;
+}
+img#Alogo {
+	position: absolute;
+	width: 80px;
+	height: 100px;
+	left: 518px;
+	top: 0px;
+	border-radius: 14px;
+}
+img#Slogo {
+	position: absolute;
+	height: 120px;
+	top: 15px;
+	left: 590px;
+}
+img#index {
+	position: absolute;
+	width: 77px;
+	height: 100px;
+	left: 1235px;
+	top: 0px;
+	border-radius: 20px;
+}
+.rect_head {
+	position: absolute;
+	height: 100px;
+	width: 1313px;
+	top: 100px;
+	background: #F6DF0D;
+	color: #35485b;
+	font-size: 25px;
+}
+#general{
+	position: absolute;
+	left: 550px;
+}
+#vector{
+	position: absolute;
+	left: 565px;
+	top: 40px;
+	height: 50px;
+}
+#metric{
+	position: absolute;
+	left: 470px;
+	top: 50px; 
+}
+#information{
+	position: absolute;
+	left: 620px;
+	top: 50px;
+}
+.def{
+	position: absolute;
+	width:1301px;
+	height: 75px;
+	background: #F2DFDF;
+	font-size: 18px;
+}
+#hindex{
+	position: absolute;
+	top: 220px;
+	font-size: 22px;
+	font-family: Saira Stencil One;
+	left: 0px;
+	color: #35485b;
+}
+#mindex{
+	position: absolute;
+	top: 660px;
+	font-size: 22px;
+	left: 0px;
+	font-family: Saira Stencil One;
+	color: #35485b;
+}
+#gindex{
+	position: absolute;
+	top: 1000px;
+	font-size: 22px;
+	left: 0px;
+	font-family: Saira Stencil One;
+	color: #35485b;
+
+}
+#Hindex{
+	position: absolute;
+	left: 100px;
+	top: 5px;
+	font-family: Rhodium Libre;
+	font-size: 16px;
+	color: #010101;
+}
+#Mindex{
+	position: absolute;
+	left: 100px;
+	top: 5px;
+	font-family: Rhodium Libre;
+	font-size: 16px;
+	color: #010101;
+
+}
+#defi{
+	position: absolute;
+	left: 100px;
+	top: 5px;
+	font-family: Rhodium Libre;
+	font-size: 16px;
+	color: #010101;
+}
+#hgraphimg{
+	position: absolute;
+	left: 30px;
+	top: 300px;
+}
+#hindeximg{
+	position: absolute;
+	left: 650px;
+	top: 320px;
+	height: 300px;
+	width: 500px;
+
+}
+#mindeximg{
+	position: absolute;
+	left: 450px;
+	top: 745px;
+	height:240px;
+	
+}
+#gindeximg{
+	position: absolute;
+	left: 450px;
+	top: 1080px;
+	height:240px;
+
+
+}

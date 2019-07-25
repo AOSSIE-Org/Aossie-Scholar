@@ -76,3 +76,11 @@ class ResultView(ListView):
 		 'company': company, 'website':website, 'Country': country, 'publications': t_publications, 
 		 'Tcitations': t_citations, 'g_index': g_index, 'h_index': h_index, 'm_index': m_index, 'output': chartObj.render()}))
 		
+
+
+
+class InfoPageView(TemplateView):
+	template_name= 'metrics/info.html'
+
+	def get(self, request):
+		return (render(request, self.template_name, {}))
