@@ -54,12 +54,12 @@
 			<a class=" info_rect_text" id= "website" href="{{ website }}">Website</a>
 			<p class= "info_rect_text" id= "publications">Publications {{ publications }}</p>
 			<p class= "info_rect_text" id= "tcitations">Citations {{ Tcitations }}</p>
-			<p class= "info_rect_text" id= "gindex">G-index {{ g_index }}</p>
-			<p class= "info_rect_text" id= "hindex">h-index {{ h_index }}</p>
-			<p class= "info_rect_text" id= "mindex">m-index {{ m_index }}</p>
+			<a class= "info_rect_text" id= "gindex" href="{% url 'metrics:info_page' %}">G-index {{ g_index }}</a>
+			<a class= "info_rect_text" id= "hindex" href="{% url 'metrics:info_page' %}">h-index {{ h_index }}</a>
+			<a class= "info_rect_text" id= "mindex" href="{% url 'metrics:info_page' %}">m-index {{ m_index }}</a>
 		</div>
 
-	</div>
+	</diva
 	<div id="chart-1" class="chart">
     <!-- dumping JavaScript code here -->
     {{ output|safe }}
