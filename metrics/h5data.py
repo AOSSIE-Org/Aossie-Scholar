@@ -89,9 +89,9 @@ for cat, i, j in zip(category_list, B, T_list):
 print (dict_all)
 
 
-#def save_dict_to_file(dict_all):
-#    f = open('h5data.txt','w')
-#    f.write(str(dict_all))
-#    f.close()
+def save_dict_to_file(dict_all):
+    f = open('h5data.txt','w')
+    f.write(str(dict_all))
+    f.close()
 
-#save_dict_to_file(dict_all)
+save_dict_to_file(dict_all)
