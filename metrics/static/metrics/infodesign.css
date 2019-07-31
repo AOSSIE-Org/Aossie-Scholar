@@ -1,8 +1,15 @@
+html{
+	height: 1301px;
+	width: 1301px;
+	overflow-x: hidden;
+	overflow-y: visible;
+	
+}
 .rect_up{
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	width: 1313px;
+	width: 1301px;
 	height: 100px;
 	background: #35485b; 
 }
@@ -40,14 +47,14 @@ img#index {
 	position: absolute;
 	width: 77px;
 	height: 100px;
-	left: 1235px;
+	left: 1223px;
 	top: 0px;
 	border-radius: 20px;
 }
 .rect_head {
 	position: absolute;
 	height: 100px;
-	width: 1313px;
+	width: 1301px;
 	top: 100px;
 	background: #F6DF0D;
 	color: #35485b;

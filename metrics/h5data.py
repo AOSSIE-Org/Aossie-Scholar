@@ -50,9 +50,14 @@ for lastlink in A:
     for linklast in lastlink:
         T= ()
         driver.get(linklast)
-        driver.implicitly_wait(5)
-        h5index= driver.find_elements_by_xpath('//a[@class="gs_ibl gsc_mp_anchor"]')
-        h5median= driver.find_elements_by_xpath('//span[@class="gs_ibl gsc_mp_anchor"]')
+        driver.implicitly_wait(10)
+        try:
+            h5index= driver.find_elements_by_xpath('//a[@class="gs_ibl gsc_mp_anchor"]')
+            h5median= driver.find_elements_by_xpath('//span[@class="gs_ibl gsc_mp_anchor"]')
+        except:
+            time.sleep(3)
+            h5index= driver.find_elements_by_xpath('//a[@class="gs_ibl gsc_mp_anchor"]')
+            h5median= driver.find_elements_by_xpath('//span[@class="gs_ibl gsc_mp_anchor"]')
         l1 =[]
         l2=[]
         for i in h5index:
@@ -81,34 +86,12 @@ for cat, i, j in zip(category_list, B, T_list):
         list_of_dicts.append(dictA)
     dict_all.add(cat, list_of_dicts)
 
-print(len(category_list), len(B), len(T_list))
+print (dict_all)
 
 
-dic1= my_dictionary()
-for i, j in zip(category_list, B):
-    dic1.add(i, j)
+#def save_dict_to_file(dict_all):
+#    f = open('h5data.txt','w')
+#    f.write(str(dict_all))
+#    f.close()
 
-df1= pd.DataFrame(dic1)
-
-dic2= my_dictionary()
-for i, j in zip(B, T_list):
-    dic2.add(i, j)
-
-df2= pd.DataFrame(dic2)
-
-
-d_f= df1.to_csv("H5data.csv", header=True)
-d__f=df2.to_csv("H52data.csv", header=True)
-
-#df1=pd.DataFrame(dict_all, columns= subcategory_list)
-#d_f= df1.to_csv("H5.csv", index= None, header= True)
-
-#df= pd.DataFrame(dict_all)
-#print (df)
-#df.to_csv(h5data.csv)
-
-#w = csv.writer(open("output.csv", "w"))
-#for key, val in dict_all.items():
-#    w.writerow([key, val])
-           
-
+#save_dict_to_file(dict_all)
