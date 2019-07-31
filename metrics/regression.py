@@ -6,6 +6,7 @@ import json
 
 categories=[]
 sub_categories=[]
+tup_list=[]
 
 def load_dict_from_file():
     f = open('h5data.txt','r')
@@ -17,22 +18,24 @@ Data= load_dict_from_file()
 
 for key, value in Data.items():
     categories.append(key)
+    sub_cat_categories=[]
+    sub_tup_list=[]
     for i in value:
         for j, k in i.items():
-            sub_categories.append(j)
-            print (k)
-            break
-        break
-    break
-
-
-
+            sub_cat_categories.append(j)
+            sub_tup_list.append(k)
+            
+    sub_categories.append(sub_cat_categories)
+    tup_list.append(sub_tup_list)
+        
 
 
 
 
 def estimate_coef(x, y): 
     # number of observations/points 
+    x=np.array(x)
+    y=np.array(y)
     n = np.size(x) 
   
     # mean of x and y vector 
@@ -51,13 +54,24 @@ def estimate_coef(x, y):
 
 
 def main(): 
-    # observations 
-    x = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]) 
-    y = np.array([1, 3, 2, 5, 7, 8, 8, 9, 10, 12]) 
-  
-    # estimating coefficients 
-    b = estimate_coef(x, y) 
-    print("Estimated coefficients:\nb_0 = {}  \\nb_1 = {}".format(b[0], b[1]))
+    observations=[]     
+    for i in tup_list:
+        coeff_list=[]
+        for j in i:
+            tup=()
+            x= list(map(int, j[0]))
+            y= list(map(int, j[1]))
+            coeff=estimate_coef(x, y)
+            tup=(coeff[0], coeff[1])
+            coeff_list.append(tup)
+        observations.append(coeff_list)
+
+
+    print(observations)
+
+
+
+
 
 main() 
   
