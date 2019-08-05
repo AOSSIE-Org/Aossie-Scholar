@@ -22,13 +22,17 @@ from django_tables2.paginators import LazyPaginator
 
 from .graphs import Graph
 
+from django.db.models import Q 
+
 
 class HomeView(TemplateView):
 	template_name = 'metrics/home.html'
+	
 
 	def get(self, request):
 		index_form = IndexForm
 		search_form = SearchForm
+	
 		return render(request, self.template_name, {'indexform': index_form, 'searchform': search_form})
 
 	def post(self, request):
@@ -76,6 +80,19 @@ class ResultView(ListView):
 		 'company': company, 'website':website, 'Country': country, 'publications': t_publications, 
 		 'Tcitations': t_citations, 'g_index': g_index, 'h_index': h_index, 'm_index': m_index, 'output': chartObj.render()}))
 		
+
+
+
+class SearchResultsView(ListView):
+    model = ScholarProfile
+    template_name = 'metrics/search_results.html'
+
+    def get_queryset(self): 
+        query = self.request.GET.get('search')
+        object_list = ScholarProfile.objects.filter(
+            Q(author_name__icontains=query) #| Q(state__icontains=query)
+        )
+        return object_list
 
 
 

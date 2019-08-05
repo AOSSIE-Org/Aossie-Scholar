@@ -5,6 +5,7 @@
  	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/cyborg/bootstrap.min.css">
+   <link href="https://fonts.googleapis.com/css?family=Sofia" rel='stylesheet'>
     {%load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'metrics/homedesign.css' %}">
 	<title>Aossie Scholar</title>
@@ -15,6 +16,8 @@
 		<img id = "index" src = "{% static 'metrics/images/index.png' %}" alt = "Index">
 		<img id = "scholar" src = "{% static 'metrics/images/scholar.jpg' %}" alt = "Scholar">
 		<img id = "cap" src= "{% static 'metrics/images/cap.png' %}" alt = "scholar cap">
+		<p class="text-info">Scholars with a google Scholar profile, register here for better metrics...</p>
+
 		
 		<div class="container">
 
@@ -27,13 +30,19 @@
 					<button type="submit" class="btn btn-outline-secondary">submit</button>
 				</div>
 			</form>
-			<p class="text-info">Scholars with a google Scholar profile, register here for better metrics...</p>
-
-			<form method="post">
-				{% csrf_token %}
+			
+			<form action= "{% url 'metrics:search_results' %}" method= "get" class="form-inline my-2 my-lg-0">
+				<!--{% csrf_token %} -->
 				<!-- {{ searchform.errors }} -->
 				<div id="search_form">
-				{{ searchform.search }}
+				<div class="active-purple-3 active-purple-4 mb-4">
+				  <input class="form-control mr-sm-2"  
+				  type="search" 
+				  placeholder="Search" 
+				  name="search"
+				  value="{{ search_term }}"
+				  aria-label="Search">
+				</div>
 				<br>
 				<button type="submit" class="btn btn-outline-success">Search</button>
 				</div>

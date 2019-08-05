@@ -67,14 +67,21 @@ def main():
         observations.append(coeff_list)
 
 
-    print(observations)
+   # print(observations)
+    l1=[]
+    for i,j in zip(sub_categories, observations):
+        subCat_coeff= { x:y for x,y in zip(i,j)}
+        l1.append(subCat_coeff)
+
+    print (l1)
 
 
 
 
 
 main() 
-  
+
+
 
 
 
