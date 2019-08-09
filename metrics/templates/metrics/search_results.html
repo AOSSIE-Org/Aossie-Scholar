@@ -1,9 +1,32 @@
-<h1>Search Results</h1>
+<head>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'metrics/searchdesign.css' %}">
+	
+</head>
+<body>
+	<h1>Search Results</h1>
 
-<ul>
-  {% for city in object_list %}
-    <li>
-      {{ city.author_name }}
-    </li>
-  {% endfor %}
-</ul>
+		
+			
+		  {% for city in object_list %}
+		  
+		    
+		    	<div class= "search_list">
+
+		    		<a id="name" href="{{ city.profile_url }}/results">{{ city.author_name }}</a>
+		    		<img id="profile" src= "https://scholar.google.com.au/citations?view_op=view_photo&user={{ city.profile_url }}&citpid=2" alt="pic"/>
+		    		<br>
+		    		<p id="company">{{ city.Company }}</p>
+		    		<br><br>
+		    		<a id= "personal" href="{{ city.Website }}">Personal</a>
+				
+				
+
+				
+		   
+		   </div>
+		   <br>
+		  {% endfor %}
+		   
+		
+	</body>

@@ -44,6 +44,7 @@ class HomeView(TemplateView):
 			print(text1, text2, text3)
 			z= Scraper(text1, text2, text3)
 			key= z.getScholarData()
+			
 
 			return HttpResponseRedirect(reverse('metrics:results', args= (key,)))
 
@@ -74,8 +75,9 @@ class ResultView(ListView):
 		chartObj= Graph.histFusionchart(scholar_object.citations)
 
 		img_url="https://scholar.google.com.au/citations?view_op=view_photo&user="+scholar_url+"&citpid=2"
+		user= "url 'metrics:results' scholar_url={}".format(scholar_url)
 
-		return (render (request, self.template_name, {'Name': scholar_name,
+		return (render (request, self.template_name, {'Name': scholar_name, 'user': scholar_url,
 		 'list': publications, 'searchform': search_form, 'img_url': img_url, 'table': table, 
 		 'company': company, 'website':website, 'Country': country, 'publications': t_publications, 
 		 'Tcitations': t_citations, 'g_index': g_index, 'h_index': h_index, 'm_index': m_index, 'output': chartObj.render()}))

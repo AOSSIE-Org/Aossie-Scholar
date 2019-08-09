@@ -1,6 +1,7 @@
 html{
 	width: 1301px;
 	height: 1301px;
+	overflow-x: hidden;
 }
 
 div.rectangle-up{
@@ -18,7 +19,7 @@ a.sign_in_text{
 	width: 392px;
 	height: 30px;
 	left: 10px;
-	top: 20px;
+	top: 30px;
 	font-family: Rock Salt !important;
 	font-style: normal; 
 	font-weight: normal;
@@ -33,7 +34,7 @@ div#search_form{
 	left : 400px;
 }
 
-input.form-control{
+.form-inline .form-control{
 	
 	width : 400px;
 
@@ -95,9 +96,8 @@ span.glyphicon.glyphicon-align-justify{
 
 }
 
-div.dropdown{
-	position: absolute;
-	top: 120px;
+.menu{
+	top: 100px;
 	left: 555px;
 }
 img#pro_cur{
@@ -120,6 +120,7 @@ img#profile{
 	position: absolute;
 	top: 160px;
 	height: 120px;
+	width: 110.133px;
 	border-radius: 100.5px;
 	left: 92px;
 }
@@ -129,6 +130,7 @@ img#profile{
 	font-family: Roboto !important;
 	font-style: normal;
 	font-weight: normal;
+	font-size: 2.34375rem;
 	top: 285px;
 	color: #2EAADF;
 	left: 70px;
@@ -168,7 +170,7 @@ div.Table{
 	position: absolute;
 	left: 230px;
 	top: 200px;
-	column-width: 400px;
+	
 	font-size: 22px;
 	color: #010101;
 	font-family: Rhodium Libre !important;
@@ -217,4 +219,10 @@ div.Table{
 	position: absolute;
 	left: 710px;
 	top: 213px;
+}
+.menu{
+	position: absolute;
+	left: 555px;
+
+
 }

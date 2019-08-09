@@ -78,14 +78,19 @@ div#search_form {
 input.form-control {
 	width : 300px;
 }
+.form-inline .form-control {
+    display: inline-block;
+    width: 300px;
+    vertical-align: middle;
+}
 p.text-info{
 	position: absolute;
 	height: 230px;
-	left: 970px;
-	top: 440px;
+	left: 500px;
+	top: 630px;
 	column-width: 400px;
-	font-family: Sofia;
+	font-family: Rhodium Libre;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 22px;
+	font-size: 18px;
 }
