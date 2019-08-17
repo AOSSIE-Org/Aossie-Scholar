@@ -81,6 +81,8 @@
 			<a class=" info_rect_text" id= "website" href="{{ website }}">Website</a>
 			<p class= "info_rect_text" id= "publications">Publications {{ publications }}</p>
 			<p class= "info_rect_text" id= "tcitations">Citations {{ Tcitations }}</p>
+			<a class= "info_rect_text" id= "TNCc" href= "{% url 'metrics:info_page' %}">Citations normalized per country {{ TNCc }}</a>
+
 			<a class= "info_rect_text" id= "gindex" href="{% url 'metrics:info_page' %}">G-index {{ g_index }}</a>
 			<a class= "info_rect_text" id= "hindex" href="{% url 'metrics:info_page' %}">h-index {{ h_index }}</a>
 			<a class= "info_rect_text" id= "mindex" href="{% url 'metrics:info_page' %}">m-index {{ m_index }}</a>

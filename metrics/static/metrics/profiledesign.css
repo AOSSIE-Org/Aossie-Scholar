@@ -16,6 +16,10 @@ div.rectangle-up{
 
 a.sign_in_text{
 	position: absolute;
+	margin: 0;
+	border: 0;
+	padding: 0;
+	outline: 0;
 	width: 392px;
 	height: 30px;
 	left: 10px;
@@ -169,8 +173,7 @@ div.Table{
 #company{
 	position: absolute;
 	left: 230px;
-	top: 200px;
-	
+	top: 200px;	
 	font-size: 22px;
 	color: #010101;
 	font-family: Rhodium Libre !important;
@@ -179,7 +182,7 @@ div.Table{
 #website{
 	position: absolute;
 	left: 325px;
-	top: 52px;
+	top: 15px;
 	font-size: 22px;
 	color: #010101;
 	font-family: Rhodium Libre !important;
@@ -188,13 +191,13 @@ div.Table{
 #publications{
 	position: absolute;
 	left: 40px;
-	top: 40px;
+	top: 20px;
 	font-size: 25px;
 }
 #tcitations{
 	position: absolute;
 	left: 520px;
-	top: 40px;
+	top: 20px;
 	font-size: 25px;
 }
 #gindex{
@@ -202,18 +205,28 @@ div.Table{
 	left: 70px;
 	top: 140px;
 	font-size: 25px;
+	outline: 0;
 }
 #hindex{
 	position: absolute;
 	left: 320px;
 	top: 160px;
 	font-size: 25px;
+	outline: 0;
 }
 #mindex{
 	position: absolute;
 	left: 520px;
 	top: 140px;
 	font-size: 25px;
+	outline: 0;
+}
+#TNCc{
+	position: absolute;
+	left: 160px;
+	top: 80px;
+	outline: 0;
+	font-size: 18px;
 }
 .chart{
 	position: absolute;

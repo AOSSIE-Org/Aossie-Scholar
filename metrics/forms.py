@@ -1,4 +1,5 @@
 from django import forms
+from .SCI import get_df
 
 class IndexForm(forms.Form):
 	scholar_url = forms.URLField(widget=forms.URLInput(
@@ -12,11 +13,15 @@ class IndexForm(forms.Form):
 			'class': 'form-control',
 		}
 	))
-	country = forms.CharField(widget=forms.TextInput(
+
+	df=get_df()
+	Country_list= [tuple([x,x]) for x in df["Country"]]
+	Country_list.sort()
+	country = forms.CharField(widget=forms.Select(choices= Country_list,
 		attrs={
 				'class': 'form-control',
 		}
-	))
+	))																			#forms.Select(choices=Country_list)))
 
 class SearchForm(forms.Form):
 	search= forms.CharField(widget=forms.TextInput(
@@ -25,3 +30,5 @@ class SearchForm(forms.Form):
 			'placeholder': 'search for a scholar...'
 		}
 	)) 
+
+	
