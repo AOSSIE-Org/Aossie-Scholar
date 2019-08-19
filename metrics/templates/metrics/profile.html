@@ -23,7 +23,25 @@
 
 		<div class= "rectangle-up">
 
-			<a class= "sign_in_text" href="{% url 'metrics:home' %}">Sign In</a>
+			<div class="menu">
+				<div class="btn-group dropright">
+				  <button type="button" class="btn btn-secondary">
+				   Menu
+				  </button>
+				  <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    <span class="sr-only">Toggle Dropright</span>
+				  </button>
+				  <div class="dropdown-menu">
+
+				  	<a class= "dropdown-item" href="{% url 'metrics:home' %}">Sign In</a>
+				    <a class="dropdown-item" href="./../../{{ user }}/results">Profile</a>
+				    <a class="dropdown-item" href="{% url 'metrics:stats' %}">Stats</a>
+				    <a class="dropdown-item" href="{% url 'metrics:info_page' %}">Metrics info</a>
+				  </div>
+				</div>
+			</div>
+
+			
 
 			<form action= "{% url 'metrics:search_results' %}" method= "get" class="form-inline my-2 my-lg-0">
 				<!--{% csrf_token %} -->
@@ -47,28 +65,9 @@
 			<!--<img id = "index" src = "{% static 'metrics/images/index.png' %}" alt = "Index">
 			<img id = "scholar" src = "{% static 'metrics/images/scholar.jpg' %}" alt = "Scholar"> -->
 		</div>
-		<div class="menu">
-		<div class="btn-group dropright">
-		  <button type="button" class="btn btn-secondary">
-		   Menu
-		  </button>
-		  <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		    <span class="sr-only">Toggle Dropright</span>
-		  </button>
-		  <div class="dropdown-menu">
-		    <a class="dropdown-item" href="./../../{{ user }}/results">Profile</a>
-		    <a class="dropdown-item" href="{% url 'metrics:info_page' %}">Metrics info</a>
-		    <a class="dropdown-item" href="#">Something else here</a>
-		  </div>
-		</div>
-	</div>
-
 		
 
-		<!--<div class= "round_design">
-			<img id = "pro_cur" src = "{% static 'metrics/images/pro_cur.png' %}" alt = "design">
-		</div> -->
-		</div>
+		
 		<div>
 			<img id="cap_up_scholar" src="{% static 'metrics/images/cap1.svg' %}" alt= "cap" />
 		<img id="profile" src= "{{ img_url }}" alt="pic"/>
@@ -81,7 +80,7 @@
 			<a class=" info_rect_text" id= "website" href="{{ website }}">Website</a>
 			<p class= "info_rect_text" id= "publications">Publications {{ publications }}</p>
 			<p class= "info_rect_text" id= "tcitations">Citations {{ Tcitations }}</p>
-			<a class= "info_rect_text" id= "TNCc" href= "{% url 'metrics:info_page' %}">Citations normalized per country {{ TNCc }}</a>
+			<a class= "info_rect_text" id= "TNCc" href= "{% url 'metrics:info_page' %}">TNCc {{ TNCc }}</a>
 
 			<a class= "info_rect_text" id= "gindex" href="{% url 'metrics:info_page' %}">G-index {{ g_index }}</a>
 			<a class= "info_rect_text" id= "hindex" href="{% url 'metrics:info_page' %}">h-index {{ h_index }}</a>

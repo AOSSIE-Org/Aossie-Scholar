@@ -14,24 +14,6 @@ div.rectangle-up{
 	background: #343535;
 }
 
-a.sign_in_text{
-	position: absolute;
-	margin: 0;
-	border: 0;
-	padding: 0;
-	outline: 0;
-	width: 392px;
-	height: 30px;
-	left: 10px;
-	top: 30px;
-	font-family: Rock Salt !important;
-	font-style: normal; 
-	font-weight: normal;
-	font-size: 26px;
-	line-height: 55px;
-	color: #2EAADF;
-}
-
 div#search_form{
 	position: absolute;
 	top : 30px;
@@ -181,29 +163,30 @@ div.Table{
 }
 #website{
 	position: absolute;
-	left: 325px;
-	top: 15px;
+	left: 320px;
+	top: 80px;
 	font-size: 22px;
-	color: #010101;
 	font-family: Rhodium Libre !important;
 
 }
 #publications{
 	position: absolute;
 	left: 40px;
-	top: 20px;
+	top: 25px;
 	font-size: 25px;
+	color: #010101;
 }
 #tcitations{
 	position: absolute;
-	left: 520px;
-	top: 20px;
+	left: 515px;
+	top: 25px;
 	font-size: 25px;
+	color: #010101;
 }
 #gindex{
 	position: absolute;
 	left: 70px;
-	top: 140px;
+	top: 135px;
 	font-size: 25px;
 	outline: 0;
 }
@@ -216,17 +199,18 @@ div.Table{
 }
 #mindex{
 	position: absolute;
-	left: 520px;
-	top: 140px;
+	left: 515px;
+	top: 135px;
 	font-size: 25px;
 	outline: 0;
 }
 #TNCc{
 	position: absolute;
-	left: 160px;
-	top: 80px;
+	left: 305px;
+	top: 5px;
 	outline: 0;
-	font-size: 18px;
+	font-size: 25px;
+
 }
 .chart{
 	position: absolute;
@@ -235,7 +219,7 @@ div.Table{
 }
 .menu{
 	position: absolute;
-	left: 555px;
-
-
+	left: 0px;
+	color: #2EAADF;
+	top: 30px;
 }

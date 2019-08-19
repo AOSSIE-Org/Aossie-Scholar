@@ -71,7 +71,8 @@ class ResultView(ListView):
 
 		table= NameTable.createtable(publications, scholar_object.normalized_citations, scholar_object.citations, scholar_object.coAuthors, Year)
 
-		RequestConfig(request, paginate={'paginator_class': LazyPaginator}).configure(table)				#table.paginate(page=request.GET.get('page', 1), per_page=25)
+		table.paginate(page=request.GET.get('page', 1), per_page=100)
+#RequestConfig(request, paginate={'paginator_class': LazyPaginator}).configure(table)				table.paginate(page=request.GET.get('page', 1), per_page=25)
 
 		chartObj= Graph.histFusionchart(scholar_object.citations)
 

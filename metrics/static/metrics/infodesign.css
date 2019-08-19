@@ -15,6 +15,7 @@ html{
 }
 a.sign_in_text{
 	position: absolute;
+	outline: 0;
 	width: 392px;
 	height: 30px;
 	left: 10px;
@@ -73,7 +74,7 @@ img#index {
 #metric{
 	position: absolute;
 	left: 470px;
-	top: 50px; 
+	top: 50px;
 }
 #information{
 	position: absolute;
@@ -95,6 +96,10 @@ img#index {
 	left: 0px;
 	color: #35485b;
 }
+#h-index{
+	column-width: 30px;
+
+}
 #mindex{
 	position: absolute;
 	top: 660px;
@@ -110,24 +115,17 @@ img#index {
 	left: 0px;
 	font-family: Saira Stencil One;
 	color: #35485b;
-
 }
-#Hindex{
+#tnc{
 	position: absolute;
-	left: 100px;
-	top: 5px;
-	font-family: Rhodium Libre;
-	font-size: 16px;
-	color: #010101;
+	top: 1340px;
+	font-size: 22px;
 }
-#Mindex{
+#tncc{
 	position: absolute;
-	left: 100px;
-	top: 5px;
-	font-family: Rhodium Libre;
-	font-size: 16px;
-	color: #010101;
-
+	top: 1420px;
+	font-size: 22px;
+	left: 0px;
 }
 #defi{
 	position: absolute;
@@ -148,20 +146,21 @@ img#index {
 	top: 320px;
 	height: 300px;
 	width: 500px;
-
 }
 #mindeximg{
 	position: absolute;
 	left: 450px;
 	top: 745px;
-	height:240px;
-	
+	height:240px;	
 }
 #gindeximg{
 	position: absolute;
 	left: 450px;
-	top: 1080px;
+	top: 1090px;
 	height:240px;
-
-
+}
+#tncimg{
+	position: absolute;
+	left: 450px;
+	top: 1500px;
 }
