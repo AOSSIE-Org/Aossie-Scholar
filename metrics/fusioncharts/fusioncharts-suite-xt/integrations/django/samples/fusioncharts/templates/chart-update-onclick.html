@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FC-python wrapper</title>
+
+<!-- If you are using downloaded FusionCharts libraries, uncomment the below code   -->
+<!--
+	{% load static %} 
+   	<script type="text/javascript" src="{% static "fusioncharts/fusioncharts.js" %}"></script>
+   	<script type="text/javascript" src="{% static "fusioncharts/themes/fusioncharts.theme.fusion.js" %}"></script>	
+-->
+
+   <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+   <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+
+</head>
+<body style="font-family:'Helvetica Neue', Arial; font-size: 16px;">
+	<h3>{{ chartTitle|safe }}</h3>
+    
+    <script type="text/javascript">
+        
+        function updateChart(value) {
+            var chartData = "";
+            switch (value) {
+                case 'Europe':
+                    chartData = {
+                                "chart": {
+                                    "caption": "Sales by Country",
+                                    "xaxisname": "Country",
+                                    "yaxisname": "Total Sales",
+                                    "numbersuffix": "K",
+                                    "theme": "fusion"
+                                },
+                                "data": [{
+                                    "label": "Austria",
+                                    "value": "139488"
+                                }, {
+                                    "label": "Belgium",
+                                    "value": "35132"
+                                }, {
+                                    "label": "Denmark",
+                                    "value": "34779"
+                                }, {
+                                    "label": "Finland",
+                                    "value": "19776"
+                                }]
+                            }
+                    break;
+            
+                case 'NA':
+                    chartData = {
+                                "chart": {
+                                    "caption": "Sales by Country",
+                                    "xaxisname": "Country",
+                                    "yaxisname": "Total Sales",
+                                    "numbersuffix": "K",
+                                    "theme": "fusion"
+                                },
+                                "data": [{
+                                    "label": "Canada",
+                                    "value": "55329",
+                                }, {
+                                    "label": "Mexico",
+                                    "value": "24072",
+                                }, {
+                                    "label": "USA",
+                                    "value": "263546",
+                                }]
+                            }
+                    break;
+                case 'SA':
+                    chartData = {
+                            "chart": {
+                                "caption": "Sales by Country",
+                                "xaxisname": "Country",
+                                "yaxisname": "Total Sales",
+                                "numbersuffix": "K",
+                                "theme": "fusion"
+                            },
+                            "data": [{
+                                "label": "Argentina",
+                                "value": "8119"
+                            }, {
+                                "label": "Brazil",
+                                "value": "114954"
+                            }, {
+                                "label": "Venezuela",
+                                "value": "60806"
+                            }]
+                    }
+                    break;
+            } // switch ends
+            FusionCharts.items["chartTwo"].setJSONData(chartData);
+        }
+   </script>
+    <table style="width: 100%;" >
+        <tr>
+            <td>
+                <div id="chart-1">{{ output1|safe }}</div>
+            </td>
+            <td>
+                <span>Click on the left chart to update this one</span>
+                <div id="chart-2">{{ output2|safe }}</div>
+            </td>
+        </tr>
+    </table> 
+    <br/>
+    <br/>
+    <a href="/">Go Back</a>
+</body>
+</html>

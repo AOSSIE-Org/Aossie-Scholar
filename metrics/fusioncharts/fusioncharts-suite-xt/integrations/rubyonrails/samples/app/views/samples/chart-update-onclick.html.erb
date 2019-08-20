@@ -1,0 +1,152 @@
+<%
+    def getChart1
+        chartData = {
+            "chart": {
+                "caption": "Sales by Region",
+                "xaxisname": "Region",
+                "yaxisname": "Total Sales",
+                "numbersuffix": "K",
+                "theme": "fusion"
+            },
+            "data": [{
+                "label": "Europe",
+                "value": "827508",
+                "link": "j-updateChart-Europe"
+            }, {
+                "label": "North America",
+                "value": "342947",
+                "link": "j-updateChart-NA"
+            }, {
+                "label": "South America",
+                "value": "183881",
+                "link": "j-updateChart-SA"
+            }]
+        }
+
+        # Chart rendering 
+        chart = Fusioncharts::Chart.new({
+                width: "600",
+                height: "400",
+                type: "column2d", 
+                renderAt: "chart-1",
+                dataSource: chartData
+            })
+    end
+
+    def getChart2
+    
+        chartData = {  
+            "chart": {
+                
+            }
+        }
+
+        # Chart rendering 
+        chart = Fusioncharts::Chart.new({
+                id: "chartTwo",
+                width: "600",
+                height: "400",
+                type: "column2d", 
+                renderAt: "chart-2",
+                dataSource: chartData,
+                dataEmptyMessage: "Click on the left chart to update this one" # Chart empty data message
+            })
+    end
+%>
+
+   <script type="text/javascript">
+        
+        function updateChart(value) {
+            var chartData = "";
+            switch (value) {
+                case 'Europe':
+                    chartData = {
+                                "chart": {
+                                    "caption": "Sales by Country",
+                                    "xaxisname": "Country",
+                                    "yaxisname": "Total Sales",
+                                    "numbersuffix": "K",
+                                    "theme": "fusion"
+                                },
+                                "data": [{
+                                    "label": "Austria",
+                                    "value": "139488"
+                                }, {
+                                    "label": "Belgium",
+                                    "value": "35132"
+                                }, {
+                                    "label": "Denmark",
+                                    "value": "34779"
+                                }, {
+                                    "label": "Finland",
+                                    "value": "19776"
+                                }]
+                            }
+                    break;
+            
+                case 'NA':
+                    chartData = {
+                                "chart": {
+                                    "caption": "Sales by Country",
+                                    "xaxisname": "Country",
+                                    "yaxisname": "Total Sales",
+                                    "numbersuffix": "K",
+                                    "theme": "fusion"
+                                },
+                                "data": [{
+                                    "label": "Canada",
+                                    "value": "55329",
+                                }, {
+                                    "label": "Mexico",
+                                    "value": "24072",
+                                }, {
+                                    "label": "USA",
+                                    "value": "263546",
+                                }]
+                            }
+                    break;
+                case 'SA':
+                    chartData = {
+                            "chart": {
+                                "caption": "Sales by Country",
+                                "xaxisname": "Country",
+                                "yaxisname": "Total Sales",
+                                "numbersuffix": "K",
+                                "theme": "fusion"
+                            },
+                            "data": [{
+                                "label": "Argentina",
+                                "value": "8119",
+                            }, {
+                                "label": "Brazil",
+                                "value": "114954",
+                            }, {
+                                "label": "Venezuela",
+                                "value": "60806",
+                            }]
+                    }
+                    break;
+            } // switch ends
+
+            FusionCharts.items["chartTwo"].setJSONData(chartData);
+        }
+
+   </script>
+
+    <h3>Updating Different Chart</h3>
+    <table style="width: 100%;" >
+        <tr>
+            <td>
+                <div id="chart-1"><%= getChart1.render() %></div>
+            </td>
+            <td>
+                <div id="chart-2" ><%= getChart2.render() %></div>
+            </td>
+        </tr>
+    </table> 
+    <br/>
+    <br/>
+    <br/>
+<br/>
+<br/>
+<a href="index">Go Back</a>

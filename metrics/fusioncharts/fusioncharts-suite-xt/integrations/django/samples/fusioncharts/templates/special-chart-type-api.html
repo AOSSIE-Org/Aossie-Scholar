@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FC-python wrapper</title>
+
+<!-- If you are using downloaded FusionCharts libraries, uncomment the below code   -->
+<!--
+
+	{% load static %} 
+   	<script type="text/javascript" src="{% static "fusioncharts/fusioncharts.js" %}"></script>
+   	<script type="text/javascript" src="{% static "fusioncharts/themes/fusioncharts.theme.fusion.js" %}"></script>
+	
+-->
+
+   <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+   <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+   <script>
+        plotClickHandler = function(event){
+           clickedPlot = (event.data.categoryLabel).toLowerCase();
+             if (selectedItem !== clickedPlot) {
+                   selectedItem = clickedPlot;
+             } else{
+                   selectedItem = 'none';
+             }
+       };
+       selectedItem = "none";
+       getFusionChart = function(){
+           return FusionCharts("ex1");
+       }
+
+       noneChecked = function(){
+            getFusionChart().slicePlotItem(0,false);
+            getFusionChart().slicePlotItem(1,false);
+            getFusionChart().slicePlotItem(2,false);
+            getFusionChart().slicePlotItem(3,false);
+       }
+       apacheChecked = function(){
+            getFusionChart().slicePlotItem(0,true);
+       }
+       microsoftChecked = function(){
+            getFusionChart().slicePlotItem(1,true);
+       }
+       zeusChecked = function(){
+            getFusionChart().slicePlotItem(2,true);
+       }
+       otherChecked = function(){
+            getFusionChart().slicePlotItem(3,true);
+       }
+   </script>
+</head>
+<body style="font-family:'Helvetica Neue', Arial; font-size: 16px;">
+	<h3>{{ chartTitle|safe }}</h3>
+	<div align="center"  id="chart-1">{{ output|safe }}</div>
+    <br/>
+    <br/>
+    <div id="controllers" align="center" style="font-family:'Helvetica Neue', Arial; font-size: 14px;">
+        <label style="padding: 0px 5px !important;">
+            <input type="radio" name="rdGrp-options" checked onClick="noneChecked()"/> None
+        </label>
+        <label style="padding: 0px 5px !important;">
+            <input type="radio" name="rdGrp-options" onClick="apacheChecked()"/> Apache
+        </label>
+        <label style="padding: 0px 5px !important;">
+                <input type="radio" name="rdGrp-options" onClick="microsoftChecked()"/> Microsoft
+        </label>
+        <label style="padding: 0px 5px !important;">
+            <input type="radio" name="rdGrp-options" onClick="zeusChecked()"/> Zeus
+        </label>
+        <label style="padding: 0px 5px !important;">
+            <input type="radio" name="rdGrp-options" onClick="otherChecked()"/> Other
+        </label>        
+    </div>
+	<br/>
+	<a href="/">Back</a>
+</body>
+</html>
