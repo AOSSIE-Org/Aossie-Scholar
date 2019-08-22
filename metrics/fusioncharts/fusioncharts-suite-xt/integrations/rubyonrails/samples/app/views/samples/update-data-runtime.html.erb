@@ -1,0 +1,64 @@
+<%
+    def getChart
+        chartData = {
+                'chart': {
+                    'caption': 'Customer Satisfaction Score',
+                    'subcaption': 'Los Angeles Topanga',
+                    'plotToolText': 'Current Score: $value',
+                    'theme': 'fint',
+                    'chartBottomMargin': '50',
+                    'showValue': '1'
+                },
+                'colorRange': {
+                    'color': [{
+                        'minValue': '0',
+                        'maxValue': '45',
+                        'code': '#e44a00'
+                    }, {
+                        'minValue': '45',
+                        'maxValue': '75',
+                        'code': '#f8bd19'
+                    }, {
+                        'minValue': '75',
+                        'maxValue': '100',
+                        'code': '#6baa01'
+                    }]
+                },
+                'dials': {
+                    'dial': [{
+                        'value': '70',
+                        'id': 'dial1'
+                    }]
+                }
+        }
+
+        # Chart rendering 
+        chart = Fusioncharts::Chart.new({
+                id: "angular_gauge",
+                width: "700",
+                height: "400",
+                type: "angulargauge",
+                renderAt: "chartContainer",
+                dataSource: chartData
+            })
+
+        return chart
+    end
+%>
+
+<script>
+    updateData = function () {
+        var value = document.getElementById("dial-val").value;
+        FusionCharts("angular_gauge").setDataForId("dial1",value);
+    }
+</script>
+
+<h3>Update dial value at runtime</h3>
+<div id="chartContainer"></div>
+<%= getChart.render() %>
+<br/>
+        <label for="dial-val">Input dial value</label>
+        <input name="dial-val" id="dial-val" type= "number"/><input type ="button" name ="update dial" value ="Update Dial" onclick ="updateData()" />
+<br/>
+<br/>
+<a href="index">Go Back</a>

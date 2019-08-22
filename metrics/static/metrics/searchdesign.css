@@ -1,0 +1,32 @@
+#profile{
+	position: absolute;
+	left: 5px;
+	height: 100px;
+	width:100px;
+	border-radius: 100.5px;
+}
+.search_list{
+	
+	left: 0px;
+	width: 1300px;
+	height: 100px;
+	border: 3px #010101;
+	background: #DDF1FA;
+	border-radius: 121px;
+}
+#name{
+	position: absolute;
+	left: 100px;
+	font-size: 18px;
+	color: #2EAADF;
+}
+#company{
+	position: absolute;
+	left: 130px;
+	color: #2EAADF;
+}
+#personal{
+	position: absolute;
+	left: 130px;
+	color: #2EAADF;
+}

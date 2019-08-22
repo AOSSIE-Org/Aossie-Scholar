@@ -1,0 +1,24 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+
+[packages]
+django = "*"
+djangorestframework = "*"
+django-rest-knox = "*"
+psycopg2 = "*"
+gunicorn = "*"
+python-dotenv = "*"
+django-heroku = "*"
+bs4 = "*"
+selenium = "*"
+requests = "*"
+pandas = "*"
+django-tables2 = "*"
+
+[requires]
+python_version = "3.6"
