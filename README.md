@@ -17,7 +17,15 @@ Deployed project app can be viewed [here](http://13.232.12.252/metrics/)
 
 # ![User with 300 citations](Images/A.png)
 # ![](Images/B.png)
-
+# ![](Images/C.png)
+# ![](Images/D.png)
+# ![](Images/E.png)
+# ![](Images/F.png)
+# ![](Images/G.png)
+# ![](Images/H.png)
+# ![](Images/I.png)
+# ![](Images/Screenshot_from_2019-08-22_20-11-54.png.png)
+# ![](Images/Screenshot_from_2019-08-22_20-11-58.png.png)
 
 
 
