@@ -17,7 +17,14 @@ And then display this information and metrics with more fairer stats in another 
 
 [More commits](https://gitlab.com/Manikaran20/aossie-scholar/commits/dep)
 
-Deployed project app can be viewed [here](http://13.232.12.252/metrics/)
+## To run the app locally,
+    # git remote add origin https://gitlab.com/aossie/aossie-scholar.git
+    # git pull origin GSoC_2019
+    # pip install -r requirements.txt
+    # python manage.py runserver
+    
+  # Now, you should be able to see the app running on your local server here -http://127.0.0.1:8000/metrics/
+  # One of the User Profile here- http://127.0.0.1:8000/metrics/m8dFEawAAAAJ/results/
 
 
 ## Some screenshots of the app
