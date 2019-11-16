@@ -1,5 +1,4 @@
-import matplotlib
-import matplotlib.pyplot as plt
+
 from .fusioncharts import FusionCharts
 
 
