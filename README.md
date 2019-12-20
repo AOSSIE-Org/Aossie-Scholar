@@ -9,14 +9,6 @@ It is used by people to see how many papers a researcher has written, how many c
 But these metrics are flawed. The goal of the project would be to extract information from Google Scholar and compute better metrics about a researcher's performance.
 And then display this information and metrics with more fairer stats in another website.
 
-### This Branch contains all work done By Manikaran Singh during Google Summer of Code 2019
-
-[Final GSoC Report of Aossie-Scholar website](https://docs.google.com/document/d/1nfCF9jkd8i678sxWSRwS4kjNlXcWteATjSpyIOLkbmw/edit?usp=sharing)
-
-[Link to commits](https://gitlab.com/Manikaran20/aossie-scholar/commits/local)
-
-[More commits](https://gitlab.com/Manikaran20/aossie-scholar/commits/dep)
-
 ## To run the app locally,
     # git remote add origin https://gitlab.com/aossie/aossie-scholar.git
     # git pull origin GSoC_2019
@@ -25,22 +17,3 @@ And then display this information and metrics with more fairer stats in another 
     
    Now, you should be able to see the app running on your local server here -http://127.0.0.1:8000/metrics/
    One of the User Profile here- http://127.0.0.1:8000/metrics/m8dFEawAAAAJ/results/
-
-
-## Some screenshots of the app
-
-# ![User with 300 citations](Images/A.png)
-# ![](Images/B.png)
-# ![](Images/C.png)
-# ![](Images/E.png)
-# ![](Images/G.png)
-# ![](Images/H.png)
-# ![](Images/stephan.png)
-# ![](Images/I.png)
-# ![](Images/S.png)
-# ![](Images/SS.png)
-
-
-
-
-
