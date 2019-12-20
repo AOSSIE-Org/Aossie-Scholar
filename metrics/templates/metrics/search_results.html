@@ -1,0 +1,35 @@
+<head>
+	<meta charset="UTF-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/sketchy/bootstrap.min.css">
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'metrics/searchdesign.css' %}">
+	
+</head>
+<body>
+	<h1>Search Results</h1>
+
+		
+			
+		  {% for city in object_list %}
+		  
+		    
+		    	<div class= "search_list">
+
+		    		<a id="name" href="{{ city.profile_url }}/results">{{ city.author_name }}</a>
+		    		<img id="profile" src= "https://scholar.google.com.au/citations?view_op=view_photo&user={{ city.profile_url }}&citpid=2" alt="pic"/>
+		    		<br>
+		    		<p id="company">{{ city.Company }}</p>
+		    		<br><br>
+		    		<a id= "personal" href="{{ city.Website }}">Personal</a>
+				
+				
+
+				
+		   
+		   </div>
+		   <br>
+		  {% endfor %}
+		   
+		
+	</body>
