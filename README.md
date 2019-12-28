@@ -10,8 +10,7 @@ But these metrics are flawed. The goal of the project would be to extract inform
 And then display this information and metrics with more fairer stats in another website.
 
 ## To run the app locally,
-    # git remote add origin https://gitlab.com/aossie/aossie-scholar.git
-    # git pull origin GSoC_2019
+    # git clone https://gitlab.com/aossie/aossie-scholar.git
     # pip install -r requirements.txt
     # python manage.py runserver
     
