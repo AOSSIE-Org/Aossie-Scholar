@@ -21,4 +21,4 @@ This project runs on postgresql database. For downloading and documentation, ple
     # python manage.py runserver
     
    Now, you should be able to see the app running on your local server here -http://127.0.0.1:8000/metrics/
-   One of the User Profile here- http://127.0.0.1:8000/metrics/m8dFEawAAAAJ/results/
+   You can now use any profile url from google scholar website like this -https://scholar.google.com/citations?hl=en&user=m8dFEawAAAAJ , to fill in the form.
