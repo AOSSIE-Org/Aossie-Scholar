@@ -57,106 +57,57 @@ body {
 	color: #3d404b;
 }
 
-#metric {
-	position: absolute;
-	left: 470px;
-	top: 50px;
-}
-
-#information {
-	position: absolute;
-	left: 620px;
-	top: 50px;
+.information {
+	width: 100vw;
+	min-height: 100vh;
+	background-color: #ffffff;
+	margin-top: 10vh;
 }
 
 .def {
-	position: absolute;
-	width: 1301px;
-	height: 75px;
-	background: #F2DFDF;
-	font-size: 18px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
-#hindex {
-	position: absolute;
-	top: 220px;
-	font-size: 22px;
-	font-family: Saira Stencil One;
-	left: 0px;
-	color: #35485b;
+.def:not(.def--h-index) {
+	margin-top: 15vh;
 }
 
-#h-index {
-	column-width: 30px;
-
+.def__heading {
+	font-size: 2.4rem;
+	color: #3d404b;
+	font-weight: 500;
+	margin: 0;
+	padding: 0;
 }
 
-#mindex {
-	position: absolute;
-	top: 660px;
-	font-size: 22px;
-	left: 0px;
-	font-family: Saira Stencil One;
-	color: #35485b;
+.def__heading::after {
+	content: '';
+	display: inline-block;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	top: -15px;
+	width: 50%;
+	height: 3px;
+	background-color: green;
 }
 
-#gindex {
-	position: absolute;
-	top: 1000px;
-	font-size: 22px;
-	left: 0px;
-	font-family: Saira Stencil One;
-	color: #35485b;
-}
-
-#tnc {
-	position: absolute;
-	top: 1340px;
-	font-size: 22px;
-}
-
-#tncc {
-	position: absolute;
-	top: 1420px;
-	font-size: 22px;
-	left: 0px;
-}
-
-#defi {
-	position: absolute;
-	left: 100px;
-	top: 5px;
-	font-family: Rhodium Libre;
+.def__text {
 	font-size: 16px;
-	color: #010101;
+	width: 60vw;
+	text-align: center;
+	font-weight: 400;
+	color: #0c0c0c;
 }
 
-#hgraphimg {
-	position: absolute;
-	left: 30px;
-	top: 300px;
-}
-
-#hindeximg {
-	position: absolute;
-	left: 650px;
-	top: 320px;
-	height: 300px;
-	width: 500px;
-}
-
-#mindeximg {
-	position: absolute;
-	left: 450px;
-	top: 745px;
-	height: 240px;
-}
-
-#gindeximg {
-	position: absolute;
-	left: 450px;
-	top: 1090px;
-	height: 240px;
+.def__images-wrapper {
+	width: 100vw;
+	display: flex;
+	justify-content: space-evenly;
+	margin-top: 5vh;
 }
 
 #tncimg {
