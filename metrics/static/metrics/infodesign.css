@@ -38,6 +38,27 @@ body {
 	right: 30px;
 	text-decoration: none;
 	font-size: 18px;
+	color: #3d404b;
+}
+
+.nav__link::after {
+	content: '';
+	display: block;
+	position: relative;
+	top: 1px;
+	width: 0;
+	height: 2px;
+	background-color: #3d404b;
+	transition: 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+.nav__link:hover {
+	color: #3d404b;
+	text-decoration: none;
+}
+
+.nav__link:hover::after {
+	width: 100%;
 }
 
 .header {
