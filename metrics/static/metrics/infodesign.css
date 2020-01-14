@@ -40,35 +40,21 @@ body {
 	font-size: 18px;
 }
 
-img#index {
-	position: absolute;
-	width: 77px;
-	height: 100px;
-	left: 1223px;
-	top: 0px;
-	border-radius: 20px;
+.header {
+	background-color: #FBFBFB;
+	width: 100vw;
+	height: 20vh;
+	padding-bottom: 4vh;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
 }
 
-.rect_head {
-	position: absolute;
-	height: 100px;
-	width: 1301px;
-	top: 100px;
-	background: #F6DF0D;
-	color: #35485b;
-	font-size: 25px;
-}
-
-#general {
-	position: absolute;
-	left: 550px;
-}
-
-#vector {
-	position: absolute;
-	left: 565px;
-	top: 40px;
-	height: 50px;
+.header__heading {
+	font-size: 3.2rem;
+	font-weight: 600;
+	text-align: center;
+	color: #3d404b;
 }
 
 #metric {
