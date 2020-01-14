@@ -131,7 +131,12 @@ body {
 	margin-top: 5vh;
 }
 
+.def__image {
+	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
 .footer {
+	margin-top: 10vh;
 	background-color: #34363f;
 	padding: 20px 0;
 	display: flex;
