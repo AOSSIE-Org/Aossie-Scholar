@@ -1,49 +1,45 @@
-html{
-	height: 1301px;
-	width: 1301px;
+@import url('https://rsms.me/inter/inter.css');
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	max-width: 100%;
+	box-sizing: border-box;
+	font-size: 10px;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	min-width: 100vw;
+	max-width: 100%;
+	font-size: 10px;
+	background-color: #fff;
+	font-family: "Inter", Helvetica, Verdana, Arial, sans-serif;
 	overflow-x: hidden;
-	overflow-y: visible;
-	
 }
-.rect_up{
+
+.nav {
+	background-color: #FBFBFB;
+	width: 100vw;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.nav__link {
 	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 1301px;
-	height: 100px;
-	background: #35485b; 
+	right: 30px;
+	text-decoration: none;
+	font-size: 18px;
 }
-a.sign_in_text{
-	position: absolute;
-	outline: 0;
-	width: 392px;
-	height: 30px;
-	left: 10px;
-	top: 20px;
-	font-family: Rock Salt !important;
-	font-size: 26px;
-	line-height: 55px;
-	color: #F6DF0D;
-}
-body{
-	position: absolute;
-	width: 1301px;
-	background-color: #DBD5D5;
-}
-img#Alogo {
-	position: absolute;
-	width: 80px;
-	height: 100px;
-	left: 518px;
-	top: 0px;
-	border-radius: 14px;
-}
-img#Slogo {
-	position: absolute;
-	height: 120px;
-	top: 15px;
-	left: 590px;
-}
+
 img#index {
 	position: absolute;
 	width: 77px;
@@ -52,6 +48,7 @@ img#index {
 	top: 0px;
 	border-radius: 20px;
 }
+
 .rect_head {
 	position: absolute;
 	height: 100px;
@@ -61,34 +58,40 @@ img#index {
 	color: #35485b;
 	font-size: 25px;
 }
-#general{
+
+#general {
 	position: absolute;
 	left: 550px;
 }
-#vector{
+
+#vector {
 	position: absolute;
 	left: 565px;
 	top: 40px;
 	height: 50px;
 }
-#metric{
+
+#metric {
 	position: absolute;
 	left: 470px;
 	top: 50px;
 }
-#information{
+
+#information {
 	position: absolute;
 	left: 620px;
 	top: 50px;
 }
-.def{
+
+.def {
 	position: absolute;
-	width:1301px;
+	width: 1301px;
 	height: 75px;
 	background: #F2DFDF;
 	font-size: 18px;
 }
-#hindex{
+
+#hindex {
 	position: absolute;
 	top: 220px;
 	font-size: 22px;
@@ -96,11 +99,13 @@ img#index {
 	left: 0px;
 	color: #35485b;
 }
-#h-index{
+
+#h-index {
 	column-width: 30px;
 
 }
-#mindex{
+
+#mindex {
 	position: absolute;
 	top: 660px;
 	font-size: 22px;
@@ -108,7 +113,8 @@ img#index {
 	font-family: Saira Stencil One;
 	color: #35485b;
 }
-#gindex{
+
+#gindex {
 	position: absolute;
 	top: 1000px;
 	font-size: 22px;
@@ -116,18 +122,21 @@ img#index {
 	font-family: Saira Stencil One;
 	color: #35485b;
 }
-#tnc{
+
+#tnc {
 	position: absolute;
 	top: 1340px;
 	font-size: 22px;
 }
-#tncc{
+
+#tncc {
 	position: absolute;
 	top: 1420px;
 	font-size: 22px;
 	left: 0px;
 }
-#defi{
+
+#defi {
 	position: absolute;
 	left: 100px;
 	top: 5px;
@@ -135,31 +144,36 @@ img#index {
 	font-size: 16px;
 	color: #010101;
 }
-#hgraphimg{
+
+#hgraphimg {
 	position: absolute;
 	left: 30px;
 	top: 300px;
 }
-#hindeximg{
+
+#hindeximg {
 	position: absolute;
 	left: 650px;
 	top: 320px;
 	height: 300px;
 	width: 500px;
 }
-#mindeximg{
+
+#mindeximg {
 	position: absolute;
 	left: 450px;
 	top: 745px;
-	height:240px;	
+	height: 240px;
 }
-#gindeximg{
+
+#gindeximg {
 	position: absolute;
 	left: 450px;
 	top: 1090px;
-	height:240px;
+	height: 240px;
 }
-#tncimg{
+
+#tncimg {
 	position: absolute;
 	left: 450px;
 	top: 1500px;
