@@ -110,8 +110,12 @@ body {
 	margin-top: 5vh;
 }
 
-#tncimg {
-	position: absolute;
-	left: 450px;
-	top: 1500px;
+.footer {
+	background-color: #34363f;
+	padding: 20px 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #ffffff;
+	font-size: 1.8rem;
 }
