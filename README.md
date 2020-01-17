@@ -1,6 +1,5 @@
 # <img src="https://raw.githubusercontent.com/ayushsnha/hellow-world/master/68747470733a2f2f6d75736573636f72652e6f72672f73697465732f6d75736573636f72652e6f72672f66696c65732f4361707475726525323064253237652543432538316372616e253230323031362d30332d303125323030392e34382e31315f302e706e.png" align="center"/>
 
-## Aossie-Scholar web app for Aossie (GSOC 2019) By Manikaran Singh
 
 # Aossie-Scholar
 
@@ -9,13 +8,21 @@ It is used by people to see how many papers a researcher has written, how many c
 But these metrics are flawed. The goal of the project would be to extract information from Google Scholar and compute better metrics about a researcher's performance.
 And then display this information and metrics with more fairer stats in another website.
 
+# How the app works currently ?
+    Currently the homepage of Aossie Scholar has two options to either search for an already registered Scholar or to register (or see metrics for) a Google Scholar.
+    To register a scholar, it is must that s/he owns a Google Scholar profile because it is from there Aossie Scholar scraps the data required for calculating other new metrics.
+    So the home page contains a registeration form which is to be filled with a Scholar's Google Scholar profile URL. Once you do that, s/he is registered on Aossie Scholar and 
+    you will be directed to his/her profile where you can see all his publications and other metrics.
+    There is also a metric page which defines the metrics.
+
+
 # Setting up the database
 
 This project runs on postgresql database. For downloading and documentation, please go to https://www.postgresql.org/ .
 
 ## To run the app locally,
     # git remote add origin https://gitlab.com/aossie/aossie-scholar.git
-    # git pull origin GSoC_2019
+    # git pull origin master
     # pip install -r requirements.txt
     # Enter your Postgresql credentials in ```settings.py```
     # python manage.py runserver
