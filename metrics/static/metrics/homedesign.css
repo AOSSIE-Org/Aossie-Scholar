@@ -1,3 +1,6 @@
+html{
+    overflow-x: hidden;
+}
 #alogo{
 	width: 80px;
 	height: 100px;
