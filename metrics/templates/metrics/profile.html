@@ -5,103 +5,97 @@
 <head>
 	<title>{{ Name }}</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/cosmo/bootstrap.min.css">
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-	</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-	</script>
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/cosmo/bootstrap.min.css">
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
-		integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
-		integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous">
-	</script>
-	<link href="https://fonts.googleapis.com/css?family=Rock Salt" rel='stylesheet'>
-	{%load static %}
-	<link rel="stylesheet" type="text/css" href="{% static 'metrics/profiledesign.css' %}">
-	<script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
-	<script type="text/javascript"
-		src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.gammel.js"></script>
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+   <link href="https://fonts.googleapis.com/css?family=Rock Salt" rel='stylesheet'>
+    {%load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'metrics/profiledesign.css' %}">
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.gammel.js"></script>
+	
 </head>
+	<body>
 
-<body>
+		<div class= "rectangle-up">
 
-	<div class="rectangle-up">
+			<div class="menu">
+				<div class="btn-group dropright">
+				  <button type="button" class="btn btn-secondary">
+				   Menu
+				  </button>
+				  <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    <span class="sr-only">Toggle Dropright</span>
+				  </button>
+				  <div class="dropdown-menu">
 
-		<div class="menu">
-			<div class="btn-group dropright">
-				<button type="button" class="btn btn-secondary">
-					Menu
-				</button>
-				<button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
-					aria-haspopup="true" aria-expanded="false">
-					<span class="sr-only">Toggle Dropright</span>
-				</button>
-				<div class="dropdown-menu">
-
-					<a class="dropdown-item" href="{% url 'metrics:home' %}">Sign In</a>
-					<a class="dropdown-item" href="./../../{{ user }}/results">Profile</a>
-					<a class="dropdown-item" href="{% url 'metrics:info_page' %}">Metrics info</a>
+				  	<a class= "dropdown-item" href="{% url 'metrics:home' %}">Sign In</a>
+				    <a class="dropdown-item" href="./../../{{ user }}/results">Profile</a>
+				    <a class="dropdown-item" href="{% url 'metrics:info_page' %}">Metrics info</a>
+				  </div>
 				</div>
 			</div>
-		</div>
 
+			
 
-
-		<form action="{% url 'metrics:search_results' %}" method="get" class="form-inline my-2 my-lg-0">
-			<!--{% csrf_token %} -->
-			<!-- {{ searchform.errors }} -->
-			<div id="search_form">
+			<form action= "{% url 'metrics:search_results' %}" method= "get" class="form-inline my-2 my-lg-0">
+				<!--{% csrf_token %} -->
+				<!-- {{ searchform.errors }} -->
+				<div id="search_form">
 				<div class="active-purple-3 active-purple-4 mb-4">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search" name="search"
-						value="{{ search_term }}" aria-label="Search"></input>
+				  <input class="form-control mr-sm-2"  
+				  type="search" 
+				  placeholder="Search" 
+				  name="search"
+				  value="{{ search_term }}"
+				  aria-label="Search"></input>
 				</div>
 				<button id="search" type="submit" class="btn btn-outline-info">Search</button>
-			</div>
-		</form>
+				</div>
+			</form>
 
-		<img id="Alogo" src="{% static 'metrics/images/AOSSIE_logo.png' %}" alt="aossie_logo">
-		<img id="cap" src="{% static 'metrics/images/cap.png' %}" alt="Scholar_cap">
-		<img id="Slogo" src="{% static 'metrics/images/Scholar_logo.png' %}" alt="scholar_logo">
-		<!--<img id = "index" src = "{% static 'metrics/images/index.png' %}" alt = "Index">
+			<img id = "Alogo" src = "{% static 'metrics/images/AOSSIE_logo.png' %}" alt = "aossie_logo">
+			<img id = "cap" src = "{% static 'metrics/images/cap.png' %}" alt = "Scholar_cap">
+			<img id = "Slogo" src = "{% static 'metrics/images/Scholar_logo.png' %}" alt="scholar_logo">
+			<!--<img id = "index" src = "{% static 'metrics/images/index.png' %}" alt = "Index">
 			<img id = "scholar" src = "{% static 'metrics/images/scholar.jpg' %}" alt = "Scholar"> -->
-	</div>
+		</div>
+		
 
-
-
-	<div>
-		<img id="cap_up_scholar" src="{% static 'metrics/images/cap1.svg' %}" alt="cap" />
-		<img id="profile" src="{{ img_url }}" alt="pic" />
+		
+		<div>
+			<img id="cap_up_scholar" src="{% static 'metrics/images/cap1.svg' %}" alt= "cap" />
+		<img id="profile" src= "{{ img_url }}" alt="pic"/>
 		<br>
 		<h1 class="name"> {{ Name }}</h1>
-		<p class="info_rect_text" id="company"> {{ company }}</p>
-		<p class="info_rect_text" id="country">{{ Country }}</p>
-		<div class="info_rect">
+		<p class= "info_rect_text" id= "company"> {{ company }}</p>
+		<p class= "info_rect_text" id= "country">{{ Country }}</p>
+		<div class= "info_rect">
+			
+			<a class=" info_rect_text" id= "website" href="{{ website }}">Website</a>
+			<p class= "info_rect_text" id= "publications">Publications {{ publications }}</p>
+			<p class= "info_rect_text" id= "tcitations">Citations {{ Tcitations }}</p>
+			<a class= "info_rect_text" id= "TNCc" href= "{% url 'metrics:info_page' %}">TNCc {{ TNCc }}</a>
 
-			<a class=" info_rect_text" id="website" href="{{ website }}">Website</a>
-			<p class="info_rect_text" id="publications">Publications {{ publications }}</p>
-			<p class="info_rect_text" id="tcitations">Citations {{ Tcitations }}</p>
-			<a class="info_rect_text" id="TNCc" href="{% url 'metrics:info_page' %}#tncc">TNCc {{ TNCc }}</a>
-
-			<a class="info_rect_text" id="gindex" href="{% url 'metrics:info_page' %}#g-index">G-index {{ g_index }}</a>
-			<a class="info_rect_text" id="hindex" href="{% url 'metrics:info_page' %}#h-index">h-index {{ h_index }}</a>
-			<a class="info_rect_text" id="mindex" href="{% url 'metrics:info_page' %}#m-index">m-index {{ m_index }}</a>
+			<a class= "info_rect_text" id= "gindex" href="{% url 'metrics:info_page' %}">G-index {{ g_index }}</a>
+			<a class= "info_rect_text" id= "hindex" href="{% url 'metrics:info_page' %}">h-index {{ h_index }}</a>
+			<a class= "info_rect_text" id= "mindex" href="{% url 'metrics:info_page' %}">m-index {{ m_index }}</a>
 		</div>
 
 	</div>
 	<div id="chart-1" class="chart">
-		<!-- dumping JavaScript code here -->
-		{{ output|safe }}
+    <!-- dumping JavaScript code here -->
+    {{ output|safe }}
 
-	</div>
+    </div>
 
 	<div class="Table">
 		{% render_table table %}
 	</div>
 
-
-</body>
+	
+	</body>
