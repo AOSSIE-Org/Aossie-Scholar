@@ -53,6 +53,11 @@ class Simple_Metrics():
         tnc= round(TNC*(self.CPDu/CPDc), 3)
         return tnc
 
+    def o_index(self, h_index, maxCitation):
+        product= (h_index*maxCitation)
+        oindex= round(pow(product,(1/2)))
+        return oindex
+
 
 
 

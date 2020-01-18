@@ -64,6 +64,7 @@ class ResultView(ListView):
 		g_index= scholar_object.Gindex
 		h_index= scholar_object.Hindex
 		m_index= scholar_object.Mindex
+		o_index= scholar_object.Oindex
 		tncc= scholar_object.TNCc
 		publications= scholar_object.publication_title
 		scholar_name= scholar_object.author_name
@@ -82,7 +83,7 @@ class ResultView(ListView):
 		return (render (request, self.template_name, {'Name': scholar_name, 'user': scholar_url,
 		 'list': publications, 'searchform': search_form, 'img_url': img_url, 'table': table, 
 		 'company': company, 'website':website, 'Country': country, 'publications': t_publications, 
-		 'Tcitations': t_citations, 'g_index': g_index, 'h_index': h_index, 'm_index': m_index, 'TNCc': tncc, 'output': chartObj.render()}))
+		 'Tcitations': t_citations, 'g_index': g_index, 'h_index': h_index, 'm_index': m_index, 'o_index': o_index, 'TNCc': tncc, 'output': chartObj.render()}))
 		
 
 
