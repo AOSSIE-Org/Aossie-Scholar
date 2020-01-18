@@ -197,6 +197,20 @@ div.Table{
 	font-size: 25px;
 	outline: 0;
 }
+#oindex{
+	position: absolute;
+	left: 70px;
+	top: 80px;
+	font-size: 25px;
+	outline: 0;
+}
+#hmedian{
+	position: absolute;
+	left: 515px;
+	top: 80px;
+	font-size: 25px;
+	outline: 0;
+}
 #mindex{
 	position: absolute;
 	left: 515px;
