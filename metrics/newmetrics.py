@@ -1,6 +1,7 @@
 import datetime
 import pandas as pd
 from .SCI import get_df
+import statistics
 
 
 now = datetime.datetime.now()
@@ -52,6 +53,19 @@ class Simple_Metrics():
         CPDc= a.iloc[0]
         tnc= round(TNC*(self.CPDu/CPDc), 3)
         return tnc
+
+    def o_index(self, h_index, maxCitation):
+        product= (h_index*maxCitation)
+        oindex= round(pow(product,(1/2)))
+        return oindex
+
+    def h_median(self, h_index, newCitations):
+        h_core= [i for i in newCitations if (i>h_index)]
+        hmedian= statistics.median(h_core)
+        return hmedian
+
+
+
 
 
 

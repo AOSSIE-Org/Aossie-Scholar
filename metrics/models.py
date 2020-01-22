@@ -18,6 +18,8 @@ class ScholarProfile(models.Model):
 	Hindex= models.CharField(max_length=100, null= True)
 	Gindex= models.CharField(max_length=100, null= True)
 	Mindex= models.CharField(max_length=100, null= True)
+	Oindex= models.CharField(max_length=100, null= True)
+	Hmedian= models.CharField(max_length=100, null= True)
 	TNCc= models.CharField(max_length=100, default= '00', )
 	Year= ArrayField(models.CharField(max_length=100), null=True)
 	

@@ -148,11 +148,13 @@ class Scraper():
 		h_index= Simple_Metrics_object.h_index(newCitations)
 		g_index= Simple_Metrics_object.g_index(newCitations)
 		m_index= Simple_Metrics_object.m_index(h_index, min(year_list))
+		o_index= Simple_Metrics_object.o_index(h_index,max(newCitations))
+		h_median= Simple_Metrics_object.h_median(h_index,newCitations)
 		TNCc= Simple_Metrics_object.TNCc(total_normalized_citations, self.country)
 		print (TNCc)
 
 		q= ScholarProfile(author_name= scholar_name, Company= company, Website= website, normalized_citations= normalized_citations, profile_url= user, publication_title= title_list, citations=newCitations,
-			coAuthors=number_of_coauths, country=self.country, TNCc= TNCc, publications= len(title_list),Tcitations= total_citations, Year= YEARS, Gindex= g_index, Hindex= h_index, Mindex= m_index, created_at= timezone.now())
+			coAuthors=number_of_coauths, country=self.country, Hmedian=h_median, Oindex= o_index, TNCc= TNCc, publications= len(title_list),Tcitations= total_citations, Year= YEARS, Gindex= g_index, Hindex= h_index, Mindex= m_index, created_at= timezone.now())
 		q.save()
 
 		return (user)
