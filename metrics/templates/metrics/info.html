@@ -80,11 +80,14 @@
 			<p class="def__text">
 				The o-index corresponds to the geometric mean of the h-index and the most cited paper of a researcher.
 			</p>
+			<div class="def__images-wrapper">
+				<img class="def__image" id="mindeximg" src="{% static 'metrics/images/o-index.png' %}" alt="o index">
+			</div>
 		</div>
 		<div class="def def--h-median" id="h-median">
 			<h1 class="def__heading">H-Median</h1>
 			<p class="def__text">
-				h-median is the geometric median of the number of citations in the set of the top-cited h articles of a publication.
+				h-median is the geometric median of the number of citations in the set of the top-cited h articles of a publication. For example, a publication with citations 18, 7, 6, 3 and 2 respectively has a h-index of 3. Its top-cited article set is { 18, 7, 6 }. So, the h-median is its geometric median, which is 7.
 			</p>
 		</div>
 	</section>
