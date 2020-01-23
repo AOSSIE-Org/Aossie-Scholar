@@ -14,34 +14,27 @@ class Simple_Metrics():
     def __init__(self):
         self.CPDu= df.loc[df["Country"]=="United States"]["Citations per document"].iloc[0]
 
-    def h_index(self, newCitations):
-        newCitations.sort(reverse= True)
-        counter= 0
-        for i in (newCitations):
-            counter+= 1
-            if (counter >= i):  
-                h_index= counter
+    def h_index(self, Citations):
+        Citations.sort(reverse= True)
+        for i, j in enumerate(Citations):
+            if i+1>=j:
+                h_index=i+1
                 break
         return (h_index)
 
-    def g_index(self, newCitations):
-        newCitations.sort(reverse= True)
-        counter= 0
+    def g_index(self, Citations):
+        Citations.sort(reverse= True)
         addupC= 0
-        for i in newCitations:
-            counter+= 1
-            addupC+= i
-            if (addupC >= counter**2):
-                g_index= counter
-                continue
-            else:
+        for i, citation in enumerate(Citations):
+            addupC+= citation
+            if pow(i+1,2)>addupC:
+                g_index=i
                 break
         return(g_index)
 
     def m_index(self, h_index, ist_pub_year):
         now = datetime.datetime.now()
         cur_year= now.year
-        print (cur_year, ist_pub_year)
         time_gap= cur_year-int(ist_pub_year)+1
         mindex= float(h_index/time_gap)
         m_index= round(mindex, 2)
@@ -63,14 +56,3 @@ class Simple_Metrics():
         h_core= [i for i in newCitations if (i>h_index)]
         hmedian= statistics.median(h_core)
         return hmedian
-
-
-
-
-
-
-
-
-
-
-
