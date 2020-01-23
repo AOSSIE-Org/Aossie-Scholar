@@ -3,8 +3,7 @@ import urllib.request
 from bs4 import BeautifulSoup as soup 
 import re
 from django.utils import timezone
-from metrics.extract import ScholarRawData 
-from .newmetrics import Simple_Metrics
+from metrics.newmetrics import Simple_Metrics, ScholarRawData
 from .graphs import Graph
 
 
