@@ -3,69 +3,57 @@ import time
 from selenium.webdriver.firefox.options import Options
 
 
+class ScholarRawData():
 
-def rawauthorscounterurl(author_names_list):
-    n_author_names_list=[]
-    counter_urls=[]
-    counter= 0
-    for j in author_names_list:
-        if '...' not in j:
-            n_author_names_list.append(author_names_list[counter])
-            counter+=1
-            continue
+    def rawauthorscounterurl(self,author_mixed_list):
+
+        self.counter_urls=[]
+
+        self.author_raw_list=[j if '...' not in j else '#' for j in author_mixed_list]
+
+        for i, j in enumerate(self.author_raw_list):
+            if j=='#':
+                self.counter_urls.append(i)
+
+    def seleniumScraper(self,N_author_url):
+
+        self.coAuths=[]
+
+        if len(self.counter_urls) != 0:
+            options = Options()
+            options.headless = True
+            driver= webdriver.Firefox(options=options)
+            driver.implicitly_wait(2)
+            for url in self.counter_urls:
+                driver.get(N_author_url[url])
+                time.sleep(2)
+                title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
+                page_element = title[0].text
+                self.coAuths.append(len(page_element.split(',')))
+            driver.quit()
         else:
-            n_author_names_list.append('#')
-            counter_urls.append(counter)
-            counter+= 1
-    return (n_author_names_list, counter_urls)
+            return
+    
+    def coAuthors(self):
 
-def seleniumScraper(url_to_counter, N_author_url):
-    coAuths=[]
-    if len(url_to_counter) != 0:
-        options = Options()
-        options.headless = True
-        driver= webdriver.Firefox(options=options)
-        driver.implicitly_wait(2)
-        for url in url_to_counter:
-            driver.get(N_author_url[url])
-            time.sleep(2)
-            title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
-            page_element = title[0].text
-            coAuths.append(len(page_element.split(',')))
-        driver.quit()
-    return (coAuths)    
+        acounter= 0
 
-def coAuthors(n_author_names_list, coAuths):
-    number_of_coauths= []
-    acounter= 0
-    for name in n_author_names_list:
-        if (name=='#'):
-            number_of_coauths.append(coAuths[acounter])
-            acounter+=1
-        else:
-            number_of_coauths.append(len(name.split(',')))
-    return (number_of_coauths)
+        for pos,name in enumerate(self.author_raw_list):
+            if (name=='#'):
+                self.author_raw_list[pos]=self.coAuths[acounter]
+                acounter+=1
+            else:
+                self.author_raw_list[pos]=len(name.split(','))
 
-def getnewCitations(Citations):
-    newCitations= []
-    for entry in Citations:
-        try:
-            newCitations.append(int(entry[0]))
-        except:
-            newCitations.append(0)			# newCitations has all the citations as a list
-    print (newCitations)
-    return (newCitations)
+        return (self.author_raw_list)
 
 
-def getNpapersNcitationsTcitations(number_of_coauths, newCitations, size):
-    n_citations= []
-    n_papers= 0
-    sum_citations= 0
-    for element in range(size):
-        n_papers +=1/number_of_coauths[element]
-        n_citations.append(int(int(newCitations[element])/number_of_coauths[element]))
+    def getNpapersNcitationsTcitations(self,newCitations, size):
+
+        self.n_papers=int(sum(list(map(lambda x: 1/x, self.author_raw_list))))
+       
+        self.n_citations=[int(i/j) for i, j in zip(newCitations,self.author_raw_list)]
         
-    for k in newCitations:
-        sum_citations+= int(k)
-
-    return (int(n_papers), n_citations, sum_citations)
+        self.sum_citations= sum(newCitations)
+        
+       
