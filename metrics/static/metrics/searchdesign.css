@@ -176,9 +176,8 @@ header nav{
 /*Search bar in header*/
 .search-container{
 	float: left;
-	top: px;
 	position: relative;
-	left: 160px;
+	left: 140px;
 }
 
 header #cap-icon{
