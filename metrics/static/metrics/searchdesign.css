@@ -11,7 +11,7 @@ html{
 }
 .search_list{
 	left: 0px;
-	width: 1300px;
+	width: 90%;
 	height: 100px;
 	border: 3px #010101;	
 	border-radius: 121px;
@@ -34,6 +34,11 @@ html{
 	 color: antiquewhite;
 	 text-decoration: none;
  }
+
+ .pname a:active,a:focus{
+	outline: none;
+ }
+
 
 #company{
 	position: relative;
@@ -66,6 +71,10 @@ html{
 	text-decoration: none;
 }
 
+.proname a:active,a:focus{
+	outline: none;
+}
+
 hr.style{
 	width: 85%;
 	height: 1px;
@@ -76,6 +85,7 @@ hr.style{
 	background-image: -o-linear-gradient(left, #ccc, #333, #ccc);
 	border: 0;
 }
+
 
 .res-head{
 	font-family: Montserrat, "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -88,12 +98,13 @@ hr.style{
 	text-transform: uppercase;
 }
 
+
 /*Header*/
 header{
 	background-color:	#333;
 	color: #ffffff;
 	min-height: 90px; 
-	width: 1355px;
+	width: 90%;
 	right: px;
 	position: relative;
 }
@@ -155,6 +166,7 @@ header nav{
 	z-index: 100;
 }
 
+
 .container-nav{
 	width: 100%;
 	position: fixed;
@@ -166,7 +178,7 @@ header nav{
 	float: left;
 	top: px;
 	position: relative;
-	left: 220px;
+	left: 160px;
 }
 
 header #cap-icon{
@@ -204,6 +216,7 @@ header #sub-btn{
 }
 
 /*Footer*/
+
 		
 .all-cont{
 		margin-bottom: 546px;
@@ -226,25 +239,27 @@ header #sub-btn{
 	text-transform: uppercase;
 }
 	
-h3#sec-subhead{
-	text-transform: none;
-	font-family: "Droid Serif", "Helvetica Neue", Helvetica,Arial,sans-serif;
-	font-size: 18px;
-	font-style: italic;
-	font-weight: 400;
-	margin-bottom: 75px;
-	padding-left: 400px;
-	color: #b4bcc2;
-}
+	h3#sec-subhead{
+		color: #b4bcc2;
+		text-transform: none;
+		font-family: "Droid Serif", "Helvetica Neue", Helvetica,Arial,sans-serif;
+		font-size: 18px;
+		font-style: italic;
+		font-weight: 400;
+		margin-bottom: 75px;
+		padding-left: 400px;
+	}
 	
-.contact-section a{
-	color: #fed136;
-}
+	.contact-section a{
+		color: #fed136;
+	}
 	
-.container-main a{
-	color: #fed136;
-}
+	.contact-section a:hover,a:focus{
+		color: #fed136;
+		outline: none;
+	}
 	
+
 footer{
 	background-color: #f7f7f7;
 	padding: 40px 0;
@@ -299,7 +314,8 @@ footer .fa {
 }
 
 ul.social-buttons li a:hover, ul.social-buttons li a:active {
-    background-color:  #fed136;
+	background-color:  #fed136;
+	outline: none;
 }
 
 

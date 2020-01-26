@@ -11,35 +11,37 @@
 
    
    <link href="https://fonts.googleapis.com/css?family=Sofia" rel='stylesheet'>
+
 	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'metrics/searchdesign.css' %}">
 
-	<title>Search Results-Aossie Scholar</title>
+	<title></title>
 </head>
 <body>
 
 	<header>
 		<div class="nav-sec">
-		  	<div class="container-nav">
-			  	<div id="logo">
-				  	<a href=" http://127.0.0.1:8000/metrics/"><img id = "navlogo" src = "{% static 'metrics/images/AOSSIE_logo_08_cropped_tiny.png' %}" alt = "aossie_logo"></a>
-			  	</div>
-			  	<div class="search-container">
-					<form action= "{% url 'metrics:search_results' %}" method= "get" class="form-inline my-2 my-lg-0">
-						<div id="search_form">
-							<div class="form-row mb-4">
-								<i id="cap-icon" class="fa fa-graduation-cap"></i>  
-								<input class="form-control mr-sm-2"  
-								type="search" 
-								placeholder="Search" 
-								name="search"
-								value="{{ search_term }}"
-								id="search-text"
-								aria-label="Search">
-								<button type="submit" id="sub-btn"><i id="search-icon" class="fa fa-search" aria-hidden="true"></i i></button>
-							</div>
-						</div>
-					</form>
+		  <div class="container-nav">
+			  <div id="logo">
+				  <a href=" http://127.0.0.1:8000/metrics/"><img id = "navlogo" src = "{% static 'metrics/images/AOSSIE_logo_08_cropped_tiny.png' %}" alt = "aossie_logo"></a>
+			  </div>
+			  <div class="search-container">
+				<form action= "{% url 'metrics:search_results' %}" method= "get" class="form-inline my-2 my-lg-0">
+					<div id="search_form">
+					<div class="form-row mb-4">
+					<i id="cap-icon" class="fa fa-graduation-cap"></i>  
+					<input class="form-control mr-sm-2"  
+					type="search" 
+					placeholder="Search" 
+					name="search"
+					value="{{ search_term }}"
+					id="search-text"
+					aria-label="Search">
+					<button type="submit" id="sub-btn"><i id="search-icon" class="fa fa-search" aria-hidden="true"></i i>
+					</button>
+				</div>
+				</div>
+			</form>
 			  </div>
 			  <nav>
 				  <ul> 
@@ -53,25 +55,27 @@
   </header>
 
 			
-			<h2 class="res-head">Search Results</h2>
+				<h2 class="res-head">Search Results</h2>
 			
 			<div class="all-cont">
-		  		{% for city in object_list %}
-		
-				  <div class= "search_list">
-					<div class="pname">
-						<a id="name" href="{{ city.profile_url }}/results">{{ city.author_name }}</a>
-					</div>
+		  			{% for city in object_list %}
+		  
+		    
+		    		<div class= "search_list">
+
+		    			<div class="pname"><a id="name" href="{{ city.profile_url }}/results">{{ city.author_name }}</a></div>
 		    			<img id="profile" src= "https://scholar.google.com.au/citations?view_op=view_photo&user={{ city.profile_url }}&citpid=2" alt="pic"/>
 		    			<br>	
 		    			<p id="company">{{ city.Company }}</p>
 		    			<br><br>
 		    			<div class="proname"><a id= "personal" href="{{ city.Website }}">Personal</a></div>
-			   		</div>
-					<br>
-					<hr class="style">   
-		 	 	{% endfor %}	   
-					</div>
+
+		   		</div>
+				<br>
+				<hr class="style">   
+		 	 {% endfor %}
+		   
+			</div>
 		
 			<div class="contact-section">
 					<h2 class="contact-head">Contact Us</h2>
@@ -80,18 +84,24 @@
 	
 
 		  <footer>
-				<div class="container-foot">
-					<span class="copyright">Copyright © AOSSIE 2020</span>
-				</div>
-				<div class="foot-elements">
-					<ul class="list-inline social-buttons">						
-						<li><a href="https://twitter.com/aossie_org"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+			<div class="container-foot">
+						<span class="copyright">Copyright © AOSSIE 2020</span>
+			</div>
+					<div class="foot-elements">
+						<ul class="list-inline social-buttons">
+						
+							<li><a href="https://twitter.com/aossie_org"><i class="fa fa-twitter" aria-hidden="true"></i>
+							</a>
+							</li>
 							
-						<li><a href="http://www.gitlab.com/aossie"><i class="fa fa-github"></i></a></li>
+							<li><a href="http://www.gitlab.com/aossie"><i class="fa fa-github"></i></a>
+							</li>
 							
-						<li><a href="https://gitter.im/AOSSIE/Lobby"><i class="fa fa-google-plus"></i></a></li>
-					</ul>
-				</div>
+							<li><a href="https://gitter.im/AOSSIE/Lobby"><i class="fa fa-google-plus"></i></a>
+							</li>
+							
+						</ul>
+					</div>
 					
 		</footer>
 		  
