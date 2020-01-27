@@ -22,6 +22,7 @@ class ScholarRawData():
         for i, j in enumerate(self.author_raw_list):
             if j=='#':
                 self.counter_urls.append(i)
+        return self.counter_urls
 
     def seleniumScraper(self,N_author_url):
 
