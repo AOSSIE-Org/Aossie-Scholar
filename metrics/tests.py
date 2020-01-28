@@ -33,22 +33,3 @@ class TestScraper(TestCase):
 		obj.getScholarData()
 		self.assertEqual(obj.total_citations, 3791)
 		self.assertEqual(obj.first_pub_year, 1993)
-
-		
-
-		
-
-	#def test_seleniumScraper(self):
-	#	obj=ScholarRawData()
-	#	coAuths=obj.seleniumScraper(urls,[3,5,7])
-	#	self.assertEqual(coAuths,[13,17,10])
-
-#	def test_CoAuthors(self):
-#		authors=['a','a,b','a,sd,...']
-#		obj=ScholarRawData()
-
-
-	
-		
-
-#def test_getNpapersNcitationsTcitations():
