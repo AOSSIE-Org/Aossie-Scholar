@@ -32,6 +32,7 @@ class TestScraper(TestCase):
 		obj=Scraper('https://scholar.google.com/citations?user=zD0vtfwAAAAJ&hl=en',400)
 		obj.getScholarData()
 		self.assertEqual(obj.total_citations, 3791)
+		self.assertEqual(obj.first_pub_year, 1993)
 
 		
 

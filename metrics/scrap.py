@@ -101,8 +101,7 @@ class Scraper():
 						Citations.append(int(r[:-1:]))
 					except:
 						Citations.append(0)
-			print (Citations)
-			
+						
 			# Scraping published Year data and making it usable
 
 			YearsElement = page_soup.findAll('td', {'class': 'gsc_a_y'})
@@ -112,7 +111,7 @@ class Scraper():
 				YEARS.append(Yea)
 				try:
 					if int(Yea)<self.first_pub_year:
-						self.first_pub_year=Yea
+						self.first_pub_year=int(Yea)
 				except:
 					continue
 				
