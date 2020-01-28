@@ -8,7 +8,7 @@ from .graphs import Graph
 
 
 class Scraper():
-	def __init__(self, url, maxP, country):
+	def __init__(self, url, maxP, country='United States'):
 		self.url= url
 		self.maxP= maxP
 		self.country= country
@@ -20,6 +20,7 @@ class Scraper():
 		N_author_url= []
 		author_names_list= []
 		YEARS=[]
+		self.first_pub_year=float('Inf')
 		for i in range(0, 1000, 100):
 			if (self.maxP <=i):
 				pageSize = i
@@ -96,32 +97,35 @@ class Scraper():
 				try:
 					Citations.append(int(r))
 				except:
-					Citations.append(0)
+					try:
+						Citations.append(int(r[:-1:]))
+					except:
+						Citations.append(0)
+			print (Citations)
 			
 			# Scraping published Year data and making it usable
 
 			YearsElement = page_soup.findAll('td', {'class': 'gsc_a_y'})
 
-			first_pub_year=float('Inf')
 			for year in YearsElement:
 				Yea=year.text
 				YEARS.append(Yea)
 				try:
-					if int(Yea)<first_pub_year:
-						first_pub_year=Yea
+					if int(Yea)<self.first_pub_year:
+						self.first_pub_year=Yea
 				except:
 					continue
 				
 		#ScholarRawData class 
 
 		scholarData=ScholarRawData()
-		scholarData.rawauthorscounterurl(author_names_list) 
-		scholarData.seleniumScraper(N_author_url)
-		number_of_coauths=scholarData.coAuthors()
-		scholarData.getNpapersNcitationsTcitations(Citations, len(title_list))
+		urls_to_counter=scholarData.rawauthorscounterurl(author_names_list) 
+		large_coAuths=scholarData.seleniumScraper(N_author_url,urls_to_counter)
+		number_of_coauths=scholarData.coAuthors(author_names_list,large_coAuths)
+		scholarData.getNpapersNcitationsTcitations(Citations,number_of_coauths)
 		total_normalized_papers= scholarData.n_papers
 		normalized_citations= scholarData.n_citations
-		total_citations= scholarData.sum_citations
+		self.total_citations= sum(Citations)
 
 		for i,j in enumerate(sorted(normalized_citations[:total_normalized_papers],reverse=True)):
 			if(i+1 > j):
@@ -131,13 +135,13 @@ class Scraper():
 		Simple_Metrics_object= Simple_Metrics()
 		h_index= Simple_Metrics_object.h_index(Citations)
 		g_index= Simple_Metrics_object.g_index(Citations)
-		m_index= Simple_Metrics_object.m_index(h_index, first_pub_year)
+		m_index= Simple_Metrics_object.m_index(h_index, self.first_pub_year)
 		o_index= Simple_Metrics_object.o_index(h_index,max(Citations))
 		h_median= Simple_Metrics_object.h_median(h_index,Citations)
 		TNCc= Simple_Metrics_object.TNCc(sum(normalized_citations), self.country)
 
 		q= ScholarProfile(author_name= scholar_name, Company= company, Website= website, normalized_citations= normalized_citations, profile_url= user, publication_title= title_list, citations=Citations,
-			coAuthors=number_of_coauths, country=self.country, Hmedian=h_median, Oindex= o_index, TNCc= TNCc, publications= len(title_list),Tcitations= total_citations, Year= YEARS, Gindex= g_index, Hindex= h_index, Mindex= m_index, created_at= timezone.now())
+			coAuthors=number_of_coauths, country=self.country, Hmedian=h_median, Oindex= o_index, TNCc= TNCc, publications= len(title_list),Tcitations= self.total_citations, Year= YEARS, Gindex= g_index, Hindex= h_index, Mindex= m_index, created_at= timezone.now())
 		q.save()
 
 		return (user)
