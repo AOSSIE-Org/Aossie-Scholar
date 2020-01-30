@@ -5,6 +5,7 @@ import re
 from django.utils import timezone
 from metrics.newmetrics import Simple_Metrics, ScholarRawData
 from .graphs import Graph
+from metrics.decorators import timedecorator
 
 
 class Scraper():
@@ -12,7 +13,7 @@ class Scraper():
 		self.url= url
 		self.maxP= maxP
 		self.country= country
-
+	@timedecorator.my_timer
 	def getScholarData(self):
 
 		title_list = []
