@@ -132,7 +132,7 @@ def author_search(request):
                 'publications': search_query.publications,
                 'total_publications': len(search_query.publications),
                 'l' : [i for i in range(len(search_query.publications))],
-                'publication_title': [(search_query.publications[i].bib['title']) for i in range(20)],
+                'publication_title': enumerate([(search_query.publications[i].bib['title']) for i in range(20)]),
                 'numbers' : numbers,
 				'row':0,
 				#'table':table
