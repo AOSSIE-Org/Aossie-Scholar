@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href= "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cosmo/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <head>
+    <title>Aossie Scholar</title>
+  </head>
+  <body>
+    <!-- Aossie IMG -->
+    <div class="google" style = "margin-top : -100px">
+      <a href="#" id="google_logo"><img src="https://cdn6.f-cdn.com/contestentries/920952/21896557/586f5eb98f817_thumb900.jpg" height = "300px" alt=" photo google-logo_zpspkcztsjo.png"/></a>
+    </div>
+
+   <div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+            <!-- Form -->
+            <form class="form-example" action="{% url 'author_search' %}" method="post">
+            {% csrf_token %}
+                <!-- Input fields -->
+                <div class="form-group">
+                    <label for="username">Author Name:</label>
+                    <input type="text" class="form-control username" id="username" placeholder="Author name ..." name="authorname">
+                </div>
+                <button type="submit" class="btn btn-primary btn-customized">search</button>
+               </form>
+            <!-- Form end -->
+        </div>
+    </div>
+</div>
+</body>
+<style>
+/* Aossie AREA */
+.google #google_logo {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  clear: both;
+  padding-top: 112px;
+  padding-bottom: 20px;
+}
+
+.form {
+  text-align: center;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 400px) {
+ #google_logo {
+   padding: 0;
+ }
+
+@media screen and (max-width: 565px) {
+ #google_logo {
+   padding: 0;
+ }
+
+</style>
