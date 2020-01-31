@@ -24,6 +24,11 @@ from .graphs import Graph
 
 from django.db.models import Q 
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+import scholarly
+
+
 
 class HomeView(TemplateView):
 	template_name = 'metrics/home.html'
@@ -105,3 +110,39 @@ class InfoPageView(TemplateView):
 
 	def get(self, request):
 		return (render(request, self.template_name, {}))
+
+def author_search(request):
+    if request.method == 'POST':
+        author_name = request.POST.get('authorname')
+        numbers_list = range(1, 1000)
+        page = request.GET.get('page', 1)
+        paginator = Paginator(numbers_list, 10)
+        try:
+            search_query = next(scholarly.search_author(author_name), 1).fill()
+            numbers = paginator.page(page)
+            mycontext = {
+                'filled': search_query._filled,
+                'affiliation': search_query.affiliation,
+                'email': search_query.email,
+                'id': search_query.id,
+                'interests': search_query.interests,
+                'citedby': search_query.citedby,
+                'name': search_query.name,
+                'url_picture': search_query.url_picture,
+                'publications': search_query.publications,
+                'total_publications': len(search_query.publications),
+                'l' : [i for i in range(len(search_query.publications))],
+                'publication_title': [(search_query.publications[i].bib['title']) for i in range(20)],
+                'numbers' : numbers,
+				'row':0,
+				#'table':table
+            }
+            return render(request, 'metrics/author_search_result.html', mycontext)
+        except PageNotAnInteger:
+            numbers = paginator.page(1)
+            return render(request, 'metrics/author_search_result.html', {'numbers': numbers})
+        except EmptyPage:
+            numbers = paginator.page(paginator.num_pages)
+            return render(request, 'metrics/author_search_result.html', {'numbers': numbers})
+    else:
+        return render(request, 'metrics/index.html', {})
