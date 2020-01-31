@@ -61,11 +61,11 @@ Name : {{name}}
     </tr>
   </thead>
   <tbody>
-{% for i in publication_title %}
+{% for i,j in publication_title %}
     <tr>
-    <th scope="row">0</th>
-    <td>{{i}}</td>
-    <td><button class= "btn btn-info">Read</button></td>
+    <th scope="row">{{i}}</th>
+    <td>{{j}}</td>
+    <td><a href=""><button class= "btn btn-info">Read</button></a></td>
     </tr>
 {% endfor %}
   </tbody>
