@@ -17,22 +17,21 @@ class ScholarRawData():
 
         self.counter_urls=[]
 
-        self.author_raw_list=[j if '...' not in j else '#' for j in author_mixed_list]
-
-        for i, j in enumerate(self.author_raw_list):
-            if j=='#':
+        for i, j in enumerate(author_mixed_list):
+            if '...' in j:
                 self.counter_urls.append(i)
+        return self.counter_urls
 
-    def seleniumScraper(self,N_author_url):
+    def seleniumScraper(self,N_author_url,counter_urls):
 
         self.coAuths=[]
 
-        if len(self.counter_urls) != 0:
+        if len(counter_urls) != 0:
             options = Options()
             options.headless = True
             driver= webdriver.Firefox(options=options)
             driver.implicitly_wait(2)
-            for url in self.counter_urls:
+            for url in counter_urls:
                 driver.get(N_author_url[url])
                 time.sleep(2)
                 title= driver.find_elements_by_xpath('//div[@class="gsc_vcd_value"]')
@@ -41,28 +40,28 @@ class ScholarRawData():
             driver.quit()
         else:
             return
+        return self.coAuths
     
-    def coAuthors(self):
+    def coAuthors(self,author_raw_list,coAuths):
 
         acounter= 0
 
-        for pos,name in enumerate(self.author_raw_list):
-            if (name=='#'):
-                self.author_raw_list[pos]=self.coAuths[acounter]
+        for pos,name in enumerate(author_raw_list):
+            if ('...' in name):
+                author_raw_list[pos]=coAuths[acounter]
                 acounter+=1
             else:
-                self.author_raw_list[pos]=len(name.split(','))
+                author_raw_list[pos]=len(name.split(','))
+        self.Authors=author_raw_list
 
-        return (self.author_raw_list)
+        return (self.Authors)
 
 
-    def getNpapersNcitationsTcitations(self,newCitations, size):
+    def getNpapersNcitationsTcitations(self,Citations, coAuthors):
 
-        self.n_papers=int(sum(list(map(lambda x: 1/x, self.author_raw_list))))
+        self.n_papers=int(sum(list(map(lambda x: 1/x, coAuthors))))
        
-        self.n_citations=[int(i/j) for i, j in zip(newCitations,self.author_raw_list)]
-        
-        self.sum_citations= sum(newCitations)
+        self.n_citations=[int(i/j) for i, j in zip(Citations,coAuthors)]
         
        
 class Simple_Metrics():
