@@ -15,7 +15,7 @@
 	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'metrics/searchdesign.css' %}">
 
-	<title></title>
+	<title>{{ input }} - Aossie Scholar Search</title>
 </head>
 <body>
 
@@ -55,7 +55,7 @@
   </header>
 
 			
-				<h2 class="res-head">Search Results</h2>
+				<h2 class="res-head">searches results for {{ input }}</h2>
 			
 			<div class="all-cont">
 		  			{% for city in object_list %}
