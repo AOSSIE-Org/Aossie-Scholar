@@ -164,7 +164,7 @@ div.Table{
 #website{
 	position: absolute;
 	left: 320px;
-	top: 80px;
+	top: 60px;
 	font-size: 22px;
 	font-family: Rhodium Libre !important;
 
@@ -182,6 +182,13 @@ div.Table{
 	top: 25px;
 	font-size: 25px;
 	color: #010101;
+}
+#eindex{
+	position: absolute;
+	left: 300px;
+	top: 110px;
+	font-size: 25px;
+	outline: 0;
 }
 #gindex{
 	position: absolute;
