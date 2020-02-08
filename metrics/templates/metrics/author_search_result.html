@@ -35,37 +35,20 @@
   </div>
 </div>
 <h1>
-{% comment %} 
-Email : {{email}}<br>
-id : {{id}}<br>
-affiliation : {{affiliation}}<br>
-filled : {{filled}}<br>
-Name : {{name}}
-<br> profile picture<img src = "{{url_picture}}" />
-<br>
-
-</h1>
-</div>
- <h1>
-<h1>Total Publication : </h1>
-{{total_publications}}
- {% endcomment %}
 
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">Number</th>
       <th scope="col">Publication Title</th>
       <th scope = "col">Read More</th>
     </tr>
   </thead>
   <tbody>
-{% for i,j in publication_title %}
+{% for i,j in final_url %}
     <tr>
-    <th scope="row">{{i}}</th>
-    <td>{{j}}</td>
-    <td><a href=""><button class= "btn btn-info">Read</button></a></td>
+    <td>{{i}}</td>
+    <td><a href="{{j}}"><button class= "btn btn-info">Read</button></a></td>
     </tr>
 {% endfor %}
   </tbody>
