@@ -120,6 +120,13 @@ def author_search(request):
         try:
             search_query = next(scholarly.search_author(author_name), 1).fill()
             numbers = paginator.page(page)
+            pub_title = [(search_query.publications[i].bib['title']) for i in range(20)]
+			pub_url = list()
+			for title in pub_title:
+				publication_search_query = scholarly.search_pubs_query(title)
+				publication_search_query = next(publication_search_query)
+				pub_url.append(publication_search_query.bib['url'])
+			final_url = zip(pub_title, pub_url)
             mycontext = {
                 'filled': search_query._filled,
                 'affiliation': search_query.affiliation,
@@ -129,13 +136,9 @@ def author_search(request):
                 'citedby': search_query.citedby,
                 'name': search_query.name,
                 'url_picture': search_query.url_picture,
-                'publications': search_query.publications,
+                'final_url': final_url,
                 'total_publications': len(search_query.publications),
-                'l' : [i for i in range(len(search_query.publications))],
-                'publication_title': enumerate([(search_query.publications[i].bib['title']) for i in range(20)]),
                 'numbers' : numbers,
-				'row':0,
-				#'table':table
             }
             return render(request, 'metrics/author_search_result.html', mycontext)
         except PageNotAnInteger:
