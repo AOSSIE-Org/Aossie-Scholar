@@ -15,7 +15,13 @@
 	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'metrics/searchdesign.css' %}">
 
-	<title>{{ input }} - Aossie Scholar Search</title>
+	<title>
+		{% if input == "" %}
+			Aossie Scholar Search
+		{% else %}
+			{{ input }} - Aossie Scholar Search
+		{% endif %}
+	</title>
 </head>
 <body>
 
