@@ -1,377 +1,87 @@
-html{
-	height: 1301px;
-	width: 1301px;
-	overflow-x: hidden;
-	overflow-y: visible;
-	padding-bottom: 40px;
-	margin: 20px;
+header {
+  padding: 156px 0 100px;
 }
 
-/*images*/
+section {
+  padding: 150px 0;
+  height: 85vh;
+}
+
 img#Slogo {
-	position: absolute;
-	width: 370px;
-	height: 230px;
-	left: 500px;
-	top: 150px;
+  width: 300px;
+  height: 200px;
 }
-
-i#cap-icon{
-	position: relative;
-	top: 33px;
-	left: 20px;
-	color: #333;
-	font-size: 18px;
-}
-
 img#navlogo {
-	position: relative;
-	left: 40px;
-	width: 43px;
-	height: 44px;
+	width: 55px;
+	height: 55px;
 }
 
-/*divisions*/
-div#index_form {
-	position: absolute;
-	left: 916px;
-	top: 579px;
+/* ===========================
+   ====== Search Box ====== 
+   =========================== */
+
+.search {
+  border: 1px solid #b4bcc2;
+  overflow: auto;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
 }
 
-select#id_country{
-	width: 302px;
-	border: 1px solid grey;
+.search input[type="text"] {
+  border: 0px;
+  width: 67%;
+  padding: 10px 10px;
 }
 
-div#search_form {
-	position: absolute;
-	top: 520px;
-	left: 560px;
+.search input[type="text"]:focus {
+  outline: 0;
 }
 
-input.form-control {
-	width : 380px;
-	border: 3px solid #b4bcc2;
-	border-radius: 10px;
-}
-
-input#search-text{
-	padding-left: 50px;
-}
-
-select {
-	width: 380px !important;
-	border: 3px solid #b4bcc2 !important;
-	border-radius: 10px !important;
-}
-
-.form-inline .form-control {
-    display: inline-block;
-	width: 559px;
-	height: 45px;
-	vertical-align: middle;
-	border-radius: 50px;
-	background-color: white;
-	border: 3px solid #b4bcc2;
-}
-	
-/*header section*/	
-header{
-	background-color:	#333;
-	color: #ffffff;
-	min-height: 70px; 
-	width: 1355px;
-	right: 25px;
-	position: relative;
-	height: 745px;
-}
-
-header a{
-	background:transparent;
-	text-transform: uppercase;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 21px;
-	letter-spacing: 1px;
-	color:#fff;
-	transition: all ease .35s;
-	font-family: Montserrat, "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-
-header a:hover{
-	transition: all ease .35s;
-	text-decoration: none;
-	color: yellow;
-	outline: none;
-}
-
-header ul{
-	position: relative;
-	display: block;
-	padding: 10px 15px;
-    padding: 0;
-    margin: 0;
-}
-
-header li{
-    display: inline;
-    padding: 0 20px 0 20px;
-}
-
-header #logo{
-	padding-left: 40px;
-    float: left;
-}
-
-header nav{
-	padding-right: 85px;
-	position: relative;
-	list-style: none;
-	float: right;
-	margin-top: 10px;
-	border: 0;
-	transition: padding .3s;
-}
-
-.nav-sec{
-	position: fixed;
-	background-color: #333;
-	width: 1355px;
-	height: 95px;
-	top: -1px;
-	padding-top: 35px;
-	z-index: 100;
+.search input[type="submit"] {
+  border: 0px;
+  background: none;
+  background-color: skyblue;
+  color: #fff;
+  float: right;
+  padding: 10px;
+  /* border-radius-top-right: 5px; */
+  -moz-border-radius-top-right: 5px;
+  -webkit-border-radius-top-right: 5px;
+  /* border-radius-bottom-right: 5px; */
+  -moz-border-radius-bottom-right: 5px;
+  -webkit-border-radius-bottom-right: 5px;
+  cursor: pointer;
 }
 
 
-.container-nav{
-	width: 100%;
-	position: fixed;
-    margin: auto;
-	overflow: hidden;
-}
+@media only screen and (min-width : 150px) and (max-width : 780px) {
+    
 
-.src{
-	position: relative;
-	left: -50px;
-	top: -100px;
-}
-
-.section-subheading{
-	top: 590px;
-	left: 55px;
-	position: relative;
-	text-align: center;
-	color: #b4bcc2;
-	text-transform: none;
-	font-family: "Droid Serif", "Helvetica Neue", Helvetica,Arial,sans-serif;
-	font-style: italic;
-	font-weight: 400;
-	font-size: 16px;
-}
-
-.scholar-result{
-	position: relative;
-	top: -220px;
-	left: -150px;
-	width: 20px;
-}
-
-#search-btn{
-	background-color: #b4bcc2;	
-	color: #5F6368;
-	text-transform: none;
-	font-family: "Droid Serif", "Helvetica Neue", Helvetica,Arial,sans-serif;
-	font-style: italic;
-	left: 200px;
-	position: relative;
-	width: 130px;
-	height: 40px;
-}
-
-#search-btn:hover{
-	color: black;
-	border: 2px solid grey;
-	transition: all .2s;
-}
-
-/*Register form*/
-#register-btn{
-	background-color: #b4bcc2;	
-	color: #5F6368;
-	text-transform: none;
-	font-family: "Droid Serif", "Helvetica Neue", Helvetica,Arial,sans-serif;
-	font-style: italic;
-	left: 120px;
-	margin-top: 20px;
-	position: relative;
-	width: 130px;
-	height: 40px;
-}
-
-
-#register-btn:hover{
-	color: black;
-	border: 2px solid grey;
-	transition: all .2s;
-}
-
-.container-main{
-	background-color: #f7f7f7;
-	width: 1500px;
-	margin: none;
-	top: 600px;
-	left: -50px;
-	height: 800px;
-	position: relative;
-	margin-top: -600px;
-}
-
-.search-result{
-	position: relative;
-	top: -420px;
-	right: 400px;
-	}
-
-.section-heading{
-	text-transform: uppercase;
-	font-family: Montserrat, "Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-weight: 700;
-	margin-top: 0;
-	margin-bottom: 15px;
-	font-size: 40px;
-	text-align: center;
-	position: relative;
-	top: 130px;
-	right: 50px;
-}
-
-.scholar-subheading{
-	top: 145px;
-	left: -60px;
-	position: relative;
-	text-align: center;
-	color: #b4bcc2;
-	text-transform: none;
-	font-family: "Droid Serif", "Helvetica Neue", Helvetica,Arial,sans-serif;
-	font-style: italic;
-	font-weight: 400;
-	font-size: 16px;
+  .search {
+    width: 95%;
+    margin: 0 auto;
+  }
 
 }
 
-/*Footer Section*/
-footer{
-	background-color: #f7f7f7;
-	padding: 40px 0;
-	text-align: center;
-	min-height: 70px; 
-	width: 1350px;
-	position: relative;
-	height: 120px;
-	display: flex;
-	top: 840px;
-	left: -20px;
+.contact-head {
+  text-transform: uppercase;
+  font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  text-align: center;
+  position: relative;
 }
 
-.container-foot{
-	position: relative;
-	left: 190px;
-	top: 10px;
+h3#sec-subhead {
+  margin-top: 40px;
+  position: relative;
+  text-align: center;
+  color: #b4bcc2;
+  text-transform: none;
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
 }
-
-.foot-elements{
-	position: relative;
-	left: 390px;
-}
-
-ul.social-buttons li a {
-    display: block;
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-    font-size: 20px;
-    line-height: 40px;
-    outline: 0;
-    color: #fff;
-	background-color:#222;
-	transition: all .3s;
-}
-
-.list-inline > li {
-    display: inline-block;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-.fa {
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: 14px;
-    font-size: inherit;
-    text-rendering: auto;
-	color: #fff;
-}
-
-ul.social-buttons li a:hover, ul.social-buttons li a:active {
-    background-color:  #fed136;
-}
-
-/*contact-section*/
-.contact-section{
-position: relative;
-top: 630px;
-left: 30px;
-width: 1360px;
-height: 250px;
-}
-
-.contact-head{
-	text-transform: uppercase;
-	font-family: Montserrat, "Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-weight: 700;
-	font-size: 40px;
-	text-align: center;
-	position: relative;
-	top: 170px;
-	right: 50px;
-}
-
-h3#sec-subhead{
-	position: relative;
-	left: -40px;
-	top: 200px;
-	color: #b4bcc2;
-	text-transform: none;
-	font-family: "Droid Serif", "Helvetica Neue", Helvetica,Arial,sans-serif;
-	font-size: 18px;
-	font-style: italic;
-	font-weight: 400;
-	margin-bottom: 75px;
-}
-
-.contact-section a{
-	color: #fed136;
-}
-
-.container-main a{
-	color: #fed136;
-}
-
-.container-main a:hover,a:focus{
-	color: #fed136;
-	outline: none;
-}
-.contact-section a:hover,a:focus{
-	color: #fed136;
-	outline: none;
-}
-
-
-
-
-
-
-
-
-
