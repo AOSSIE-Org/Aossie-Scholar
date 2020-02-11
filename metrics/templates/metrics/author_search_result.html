@@ -41,14 +41,20 @@
   <thead>
     <tr>
       <th scope="col">Publication Title</th>
+      <th scope="col">Co-Authors</th>
+      <th scope="col">Publisher</th>
+      <th scope="col">Journal</th>
       <th scope = "col">Read More</th>
     </tr>
   </thead>
   <tbody>
-{% for i,j in final_url %}
+{% for i,j,k,l,m in final_url %}
     <tr>
-    <td>{{i}}</td>
-    <td><a href="{{j}}"><button class= "btn btn-info">Read</button></a></td>
+        <td>{{i}}</td>
+        <td>{{j}}</td>
+        <td>{{k}}</td>
+        <td>{{l}}</td>
+        <td><a href="{{m}}"><button class= "btn btn-info">Read</button></a></td>
     </tr>
 {% endfor %}
   </tbody>
