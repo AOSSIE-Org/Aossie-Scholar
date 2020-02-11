@@ -122,11 +122,17 @@ def author_search(request):
             numbers = paginator.page(page)
             pub_title = [(search_query.publications[i].bib['title']) for i in range(20)]
 			pub_url = list()
+			pub_author = list()
+			pub_publisher = list()
+			pub_journal = list()
 			for title in pub_title:
 				publication_search_query = scholarly.search_pubs_query(title)
 				publication_search_query = next(publication_search_query)
 				pub_url.append(publication_search_query.bib['url'])
-			final_url = zip(pub_title, pub_url)
+				pub_author.append(publication_search_query.bib['author'])
+				pub_journal.append(publication_search_query.bib['journal'])
+				pub_publisher.append(publication_search_query.bib['publisher'])
+			final_url = zip(pub_title, pub_author, pub_publisher, pub_journal, pub_url)
             mycontext = {
                 'filled': search_query._filled,
                 'affiliation': search_query.affiliation,
