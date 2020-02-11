@@ -1,6 +1,7 @@
-body{
+body {
 	overflow-x: hidden;
 }
+
 header {
 	padding: 156px 0 100px;
 }
@@ -64,7 +65,28 @@ img#navlogo {
 .def__image {
 	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 }
+
 .responsive {
+	max-width: 100%;
+	height: auto;
+}
+
+#wrapper {
+	max-width: 1050px;
+	margin: 60px auto 60px auto;
+	background-color: #DDD
+  }
+  #outer {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+  }
+  .itemwrapper {
+	display: table-cell;
+	vertical-align: top;
+	width: 100%;
+  }
+  img {
 	max-width: 100%;
 	height: auto;
   }

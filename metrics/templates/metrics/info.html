@@ -62,10 +62,16 @@
                         <p class="def__text">
                             H-index is the largest number h such that h publications have at least h citations.
                         </p>
-                        <img class="responsive" id="hgraphimg" src="{% static 'metrics/images/hgraph.png' %}"
-                                alt="h index">
-                        <img class="responsive" id="hindeximg" src="{% static 'metrics/images/hindex.png' %}"
-                                alt="h index"> 
+                        <div id="wrapper">
+                            <div id="outer">
+                                <div class="itemwrapper">
+                                    <img id="hgraphimg" src="{% static 'metrics/images/hgraph.png' %}" alt="h index">
+                                </div>
+                                <div class="itemwrapper">
+                                    <img id="hindeximg" src="{% static 'metrics/images/hindex.png' %}" alt="h index">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="def def--m-index" id="m-index">
                         <h1 class="def__heading">M-Index</h1>
@@ -81,7 +87,7 @@
                         <div class="def__images-wrapper">
                             <img class="responsive" id="mindeximg" src="{% static 'metrics/images/m-index.png' %}"
                                 alt="m index">
-                        </div> 
+                        </div>
                     </div>
                     <div class="def def--g-index" id="g-index">
                         <h1 class="def__heading">G-Index</h1>
@@ -90,10 +96,10 @@
                             highly
                             cited papers in a data set. The g-index is always the same as or higher than the h-index.
                         </p>
-                         <div class="def__images-wrapper">
+                        <div class="def__images-wrapper">
                             <img class="responsive" id="mindeximg" src="{% static 'metrics/images/g-index.png' %}"
                                 alt="m index">
-                        </div> 
+                        </div>
                     </div>
                     <div class="def def--tnc" id="tnc">
                         <h1 class="def__heading">TNC</h1>
@@ -115,7 +121,7 @@
                         <div class="def__images-wrapper">
                             <img class="responsive" id="mindeximg" src="{% static 'metrics/images/TNC.jpeg' %}"
                                 alt="m index">
-                        </div> 
+                        </div>
                     </div>
                     <div class="def def--o-index" id="o-index">
                         <h1 class="def__heading">O-Index</h1>
@@ -123,10 +129,10 @@
                             The o-index corresponds to the geometric mean of the h-index and the most cited paper of a
                             researcher.
                         </p>
-                         <div class="def__images-wrapper">
+                        <div class="def__images-wrapper">
                             <img class="responsive" id="mindeximg" src="{% static 'metrics/images/o-index.png' %}"
                                 alt="o index">
-                        </div> 
+                        </div>
                     </div>
                     <div class="def def--h-median" id="h-median">
                         <h1 class="def__heading">H-Median</h1>
