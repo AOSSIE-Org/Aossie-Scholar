@@ -10,14 +10,16 @@
     <meta name="author" content="">
 
     <title>Aossie Scholar</title>
-       <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 
     <!-- Bootstrap core CSS -->
-    <link href="../static/metrics/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 
     <!-- Custom styles for this template -->
-    <link href="../static/metrics/css/scrolling-nav.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'metrics/homedesign.css' %}">
 
 </head>
@@ -60,7 +62,7 @@
                     </div>
                     <div class="search">
                         <form action="{% url 'metrics:search_results' %}" method="get" class="search-form">
-                        <i id="cap-icon" style="margin-left:10px;" class="fa fa-graduation-cap"></i> 
+                            <i id="cap-icon" style="margin-left:10px;" class="fa fa-graduation-cap"></i>
                             <input type="text" name="search" value="{{ search_term }}" required>
                             <input type="submit" value="Search">
                         </form>
@@ -83,7 +85,7 @@
                             {{ indexform.as_p }}
                             <div style="text-align:center;">
 
-                                <button style="text-align:center;" type="button" class="btn btn-primary">Submit</button>
+                                <button style="text-align:center;" type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
                     </form>
@@ -113,14 +115,14 @@
     </footer> {% endcomment %}
 
     <!-- Bootstrap core JavaScript -->
-    <script src="../static/metrics/vendor/jquery/jquery.min.js"></script>
-    <script src="../static/metrics/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="../static/metrics/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 
     <!-- Custom JavaScript for this theme -->
-    <script src="../static/metrics/js/scrolling-nav.js"></script>
+    <script src="{% static 'metrics/js/scrolling-nav.js' %}"></script>
 
 </body>
 
