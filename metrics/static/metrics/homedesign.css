@@ -15,7 +15,20 @@ img#navlogo {
 	width: 55px;
 	height: 55px;
 }
+.scholarlogo{
+  text-align:center
+}
+#cap-icon{
+  margin-left:10px;
+}
 
+.divbtn{
+  text-align:center;
+}
+
+#sbtn{
+  text-align:center;
+}
 /* ===========================
    ====== Search Box ====== 
    =========================== */
@@ -85,3 +98,4 @@ h3#sec-subhead {
   font-style: italic;
   font-weight: 400;
 }
+

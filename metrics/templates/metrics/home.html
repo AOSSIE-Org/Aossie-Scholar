@@ -57,12 +57,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <div class="scholarlogo" style="text-align:center">
+                    <div class="scholarlogo">
                         <img id="Slogo" src="{% static 'metrics/images/Scholar_logo.png' %}" alt="Scholar_logo">
                     </div>
                     <div class="search">
                         <form action="{% url 'metrics:search_results' %}" method="get" class="search-form">
-                            <i id="cap-icon" style="margin-left:10px;" class="fa fa-graduation-cap"></i>
+                            <i id="cap-icon" class="fa fa-graduation-cap"></i>
                             <input type="text" name="search" value="{{ search_term }}" required>
                             <input type="submit" value="Search">
                         </form>
@@ -83,9 +83,8 @@
                         {{ indexform.errors }}
                         <div id="index_form">
                             {{ indexform.as_p }}
-                            <div style="text-align:center;">
-
-                                <button style="text-align:center;" type="submit" class="btn btn-primary">Submit</button>
+                            <div class="divbtn">
+                                <button id="sbtn" type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
                     </form>
@@ -108,11 +107,11 @@
     </section>
 
     <!-- Footer -->
-    {% comment %} <footer class="py-5 bg-dark">
+    <footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; AossieScholar</p>
         </div>
-    </footer> {% endcomment %}
+    </footer> 
 
     <!-- Bootstrap core JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

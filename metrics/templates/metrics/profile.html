@@ -44,32 +44,32 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a class="nav-link js-scroll-trigger" href="http://127.0.0.1:8000/metrics/">Search</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link js-scroll-trigger" href="http://127.0.0.1:8000/metrics/info_page/">Scholar Metrics</a>
+						<form action= "{% url 'metrics:search_results' %}" method= "get"  class="form-inline my-2 my-lg-0">
+							<input class="form-control mr-sm-2" type="search" name="search" value="{{ search_term }}" placeholder="Search" aria-label="Search">
+							<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+						</form>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
-	<section id="search">
+	 <section id="search">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
 					<div>
 						<img id="profile" src="{{ img_url }}" alt="pic" />
 						<h1 class="name"><a href="{{ website }}"> {{ Name }}</a></h1>
-						
+
 						<p class="info_rect_text" id="company"> {{ company }}</p>
 						<p class="info_rect_text" id="country">{{ Country }}</p>
 						<div class="info_rect">
 							<p class="info_rect_text" id="publications">Publications - {{ publications }}</p>
 							<p class="info_rect_text" id="tcitations">Citations - {{ Tcitations }}</p>
-							<a class="info_rect_text" id="TNCc" href="{% url 'metrics:info_page' %}#tncc">TNCc - 
+							<a class="info_rect_text" id="TNCc" href="{% url 'metrics:info_page' %}#tncc">TNCc -
 								{{ TNCc }}</a>
-							<a class="info_rect_text" id="gindex" href="{% url 'metrics:info_page' %}#g-index">g-index - 
+							<a class="info_rect_text" id="gindex" href="{% url 'metrics:info_page' %}#g-index">g-index -
 								{{ g_index }}</a>
 							<a class="info_rect_text" id="hindex" href="{% url 'metrics:info_page' %}#h-index">h-index -
 								{{ h_index }}</a>
@@ -91,28 +91,20 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> 
 
 
 	<section id="register" class="bg-light">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
-					<div class="Table">
+					<div class="table-responsive">
 						{% render_table table %}
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-
-
-	<!-- Footer -->
-	{% comment %} <footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; AossieScholar</p>
-		</div>
-	</footer> {% endcomment %}
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
