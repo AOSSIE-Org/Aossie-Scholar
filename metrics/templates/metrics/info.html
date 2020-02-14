@@ -87,8 +87,28 @@
 		<div class="def def--h-median" id="h-median">
 			<h1 class="def__heading">H-Median</h1>
 			<p class="def__text">
-				h-median is the geometric median of the number of citations in the set of the top-cited h articles of a publication. For example, a publication with citations 18, 7, 6, 3 and 2 respectively has a h-index of 3. Its top-cited article set is { 18, 7, 6 }. So, the h-median is its geometric median, which is 7.
+				h-median is the geometric median of the number of citations in the set of the top-cited h articles of a
+				publication. For example, a publication with citations 18, 7, 6, 3 and 2 respectively has a h-index of
+				3. Its top-cited article set is { 18, 7, 6 }. So, the h-median is its geometric median, which is 7.
 			</p>
+		</div>
+		<div class="def def--e-index" id="e-index">
+			<h1 class="def__heading">e-Index</h1>
+			<p class="def__text">
+				When using h-index, the excess citations which are not there in h-core of a publication are ignored.
+				Here, e-index can be used to complement the h-index for the ignored excess citations. The excess
+				citations is given by
+			</p>
+			<div class="def__images-wrapper">
+				<img class="def__image" id="eindexeq" src="{% static 'metrics/images/eindexeq.png' %}" alt="e index">
+			</div><br><br>
+			<p class="def__text">
+				Where cit<sub>j</sub> is the citations received by the j<sup>th</sup> paper. The graphical representation of e-index is :
+			</p>
+			<div class="def__images-wrapper">
+				<img class="def__image" id="eindexgraph" src="{% static 'metrics/images/eindexgraph.png' %}"
+					alt="e index">
+			</div>
 		</div>
 	</section>
 	<footer class="footer">
