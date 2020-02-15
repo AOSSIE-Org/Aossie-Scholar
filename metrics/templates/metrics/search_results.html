@@ -15,7 +15,13 @@
 	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'metrics/searchdesign.css' %}">
 
-	<title></title>
+	<title>
+		{% if input == "" %}
+			Aossie Scholar Search
+		{% else %}
+			{{ input }} - Aossie Scholar Search
+		{% endif %}
+	</title>
 </head>
 <body>
 
@@ -55,7 +61,20 @@
   </header>
 
 			
-				<h2 class="res-head">Search Results</h2>
+				<h2 class="res-head">
+					{% if object_list.count > 1 %}
+						About {{ object_list.count }} results
+					{% elif object_list.count == 1 %}
+						{{ object_list.count }} result found 
+					{% else %}
+						Your search - <p class="input-text">{{ input }}</p> - did not match any scholars<br>Suggestions:<br>
+						<ul>
+							<li>Make sure that name is spelled correctly.</li>
+							<li>Register the scholar before searching.</li>
+							<li><a href="http://127.0.0.1:8000/metrics/">Click here to register</a></li>
+						</ul>
+					{% endif %}
+				</h2>
 			
 			<div class="all-cont">
 		  			{% for city in object_list %}
@@ -67,7 +86,12 @@
 		    			<img id="profile" src= "https://scholar.google.com.au/citations?view_op=view_photo&user={{ city.profile_url }}&citpid=2" alt="pic"/>
 		    			<br>	
 		    			<p id="company">{{ city.Company }}</p>
-		    			<br><br>
+						<br><br>
+						<div class="gpro">
+							<a id= "g_personal" target="_blank" href="https://scholar.google.com/citations?hl=en&user={{ city.profile_url }}">
+								View Google Scholar Profile
+							</a>
+						</div>
 		    			<div class="proname"><a id= "personal" href="{{ city.Website }}">Personal</a></div>
 
 		   		</div>

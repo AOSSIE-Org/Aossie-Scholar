@@ -91,8 +91,13 @@ class ResultView(ListView):
 
 
 class SearchResultsView(ListView):
-    model = ScholarProfile
     template_name = 'metrics/search_results.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        q = self.request.GET.get("search")
+        context['input'] = q
+        return context
 
     def get_queryset(self): 
         query = self.request.GET.get('search')
