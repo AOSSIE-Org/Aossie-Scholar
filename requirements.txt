@@ -22,6 +22,7 @@ python-dateutil==2.8.0
 python-dotenv==0.10.3
 pytz==2019.1
 requests==2.22.0
+scholarly==0.2.5
 selenium==3.141.0
 six==1.12.0
 soupsieve==1.9.2
