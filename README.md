@@ -1,9 +1,5 @@
 # Aossie-Scholar
 
-https://img.shields.io/gitter/room/aossie/aossie-scholar
-
-## About
-
 Aossie scholar is a metric computation system for researchers with a Google Scholar profile. Google Scholar provides researchers with stats such as the number of publications, citations, h-index and i10 index. But, these metrics are flawed. Aossie Scholar extracts some basic information form Google Scholar and computes better metrics, and displays them on another website. So, researchers can now see better, effective metrics with a single click.
 
 ## Requirements
@@ -34,5 +30,8 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## License
 
-This project is licensed under the GNU General Public License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GNU General Public License - see the [LICENSE.md](https://gitlab.com/adityabisoi/aossie-scholar/-/blob/master/LICENSE) file for details
 
+## Support
+
+If you would like to talk to other Aossie Scholar users and developers, visit our [Gitter channel](https://gitter.im/AOSSIE/AossieScholar)
