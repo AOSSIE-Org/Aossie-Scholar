@@ -8,8 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>Aossie Scholar</title>
+	<title>
+		{% if input == "" %}
+			Aossie Scholar Search
+		{% else %}
+			{{ input }} - Aossie Scholar Search
+		{% endif %}
+	</title>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -50,7 +55,20 @@
         </div>
     </nav>
 
-            <h2 class="res-head">Search Results</h2>
+            <h2 class="res-head">
+					{% if object_list.count > 1 %}
+						About {{ object_list.count }} results
+					{% elif object_list.count == 1 %}
+						{{ object_list.count }} result found 
+					{% else %}
+						Your search - <p class="input-text">{{ input }}</p> - did not match any scholars<br>Suggestions:<br>
+						<ul>
+							<li>Make sure that name is spelled correctly.</li>
+							<li>Register the scholar before searching.</li>
+							<li><a href="http://127.0.0.1:8000/metrics/">Click here to register</a></li>
+						</ul>
+					{% endif %}
+				</h2>
 
 
                     <div class="all-cont">

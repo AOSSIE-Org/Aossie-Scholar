@@ -76,9 +76,9 @@ WSGI_APPLICATION = 'aossie_scholar.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'aodb',         
-        'USER': 'postgres',
-        'PASSWORD': 'burger',
+        'NAME': 'DATABASE NAME HERE',         
+        'USER': 'USERNAME HERE',
+        'PASSWORD': 'PASSWORD HERE',
         'HOST': '127.0.0.1',                #Default host and ports
         'PORT': '5432',  
     }

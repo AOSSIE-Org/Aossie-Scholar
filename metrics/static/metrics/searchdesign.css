@@ -109,14 +109,26 @@ hr.style {
 
 .res-head {
 	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-weight: 700;
-	font-size: 40px;
-	text-align: center;
+	font-weight: 550;
+	line-height: 43px;
+	font-size: 14px;
 	padding-right: 90px;
+	margin-left:150px;
 	padding-bottom: -25px;
 	padding-top: 120px;
 	text-transform: uppercase;
+	transition: all 220ms ease-in-out;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #70757a;
+
 }
+.input-text{
+	color: #000000;
+	display: inline;
+}
+
 
 
 /*Header*/
