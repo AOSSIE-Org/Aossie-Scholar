@@ -75,6 +75,31 @@ html{
 	outline: none;
 }
 
+.gpro{
+	position: absolute;
+	left: 363px;
+	color: #333;
+	background-color:#b4bcc2;
+	width: 240px;
+	height: 50px;
+	margin-top: -64px;
+	padding-left: 18px;
+	padding-top: 12px;
+	border-radius: 5px;
+	font-family: Montserrat, "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+
+.gpro a{
+	color: #333;
+	text-decoration: none;
+}
+
+.gpro a:active,a:focus{
+	outline: none;
+}
+
+
 hr.style{
 	width: 85%;
 	height: 1px;
@@ -89,13 +114,24 @@ hr.style{
 
 .res-head{
 	font-family: Montserrat, "Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-weight: 700;
-	font-size: 40px;
-	text-align: center;
+	font-weight: 550;
+	line-height: 43px;
+	font-size: 14px;
 	padding-right: 90px;
 	padding-bottom: -25px;
 	padding-top: 20px;
+	margin-left: 150px;
 	text-transform: uppercase;
+	transition: all 220ms ease-in-out;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #70757a;
+}
+
+.input-text{
+	color: #000000;
+	display: inline;
 }
 
 
