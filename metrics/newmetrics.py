@@ -110,3 +110,7 @@ class Simple_Metrics():
         h_core= [i for i in newCitations if (i>h_index)]
         hmedian= statistics.median(h_core)
         return hmedian
+        
+    def e_index(self, h_index, Citations):
+        eindex= round((sum(Citations)-(h_index**2))**(1/2),2)
+        return eindex
