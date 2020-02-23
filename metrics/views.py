@@ -30,22 +30,14 @@ import scholarly
 
 
 
-class SearchIndexView(TemplateView):
-	template_name = 'metrics/index.html'
-	def get(self,request):
-		return render(request, self.template_name, {})
-	def post(self,request):
-		pass
-
-
 class HomeView(TemplateView):
 	template_name = 'metrics/home.html'
-
+	
 
 	def get(self, request):
 		index_form = IndexForm
 		search_form = SearchForm
-
+	
 		return render(request, self.template_name, {'indexform': index_form, 'searchform': search_form})
 
 	def post(self, request):
@@ -57,7 +49,7 @@ class HomeView(TemplateView):
 			print(text1, text2, text3)
 			z= Scraper(text1, text2, text3)
 			key= z.getScholarData()
-
+			
 
 			return HttpResponseRedirect(reverse('metrics:results', args= (key,)))
 
@@ -65,7 +57,7 @@ class ResultView(ListView):
 	model = ScholarProfile
 	template_name= 'metrics/profile.html'
 	paginate_by= 100
-
+	
 	def get(self, request, scholar_url):
 		scholar_object= ScholarProfile.objects.get(profile_url= scholar_url)
 		country= scholar_object.country
@@ -77,6 +69,9 @@ class ResultView(ListView):
 		g_index= scholar_object.Gindex
 		h_index= scholar_object.Hindex
 		m_index= scholar_object.Mindex
+		o_index= scholar_object.Oindex
+		e_index= scholar_object.Eindex
+		h_median= scholar_object.Hmedian
 		tncc= scholar_object.TNCc
 		publications= scholar_object.publication_title
 		scholar_name= scholar_object.author_name
@@ -93,18 +88,23 @@ class ResultView(ListView):
 		user= "url 'metrics:results' scholar_url={}".format(scholar_url)
 
 		return (render (request, self.template_name, {'Name': scholar_name, 'user': scholar_url,
-		 'list': publications, 'searchform': search_form, 'img_url': img_url, 'table': table,
-		 'company': company, 'website':website, 'Country': country, 'publications': t_publications,
-		 'Tcitations': t_citations, 'g_index': g_index, 'h_index': h_index, 'm_index': m_index, 'TNCc': tncc, 'output': chartObj.render()}))
-
+		 'list': publications, 'searchform': search_form, 'img_url': img_url, 'table': table, 
+		 'company': company, 'website':website, 'Country': country, 'publications': t_publications, 
+		 'Tcitations': t_citations, 'g_index': g_index, 'e_index': e_index, 'h_index': h_index, 'h_median': h_median, 'm_index': m_index, 'o_index': o_index, 'TNCc': tncc, 'output': chartObj.render()}))
+		
 
 
 
 class SearchResultsView(ListView):
-    model = ScholarProfile
     template_name = 'metrics/search_results.html'
 
-    def get_queryset(self):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        q = self.request.GET.get("search")
+        context['input'] = q
+        return context
+
+    def get_queryset(self): 
         query = self.request.GET.get('search')
         object_list = ScholarProfile.objects.filter(
             Q(author_name__icontains=query) #| Q(state__icontains=query)
