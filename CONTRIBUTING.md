@@ -14,12 +14,35 @@ git checkout -b branch
 
 ### Commits
 
--   Write clear meaningful git commit messages (Do read [https://chris.beams.io/posts/git-commit/](https://chris.beams.io/posts/git-commit/))
 -   Make sure your PR's description contains Gitlab's special keyword references that automatically close the related issue when the PR is merged. 
 -   When you make very minor changes to a PR of yours (like for example fixing a failing Travis build or some small style corrections or minor changes requested by reviewers) make sure you squash your commits afterward so that you don't have an absurd number of commits for a very small fix. (Learn how to squash at [https://davidwalsh.name/squash-commits-git](https://davidwalsh.name/squash-commits-git) )
 -   When you're submitting a PR for a UI-related issue, it would be really awesome if you add a screenshot of your change or a link to a deployment where it can be tested out along with your PR. It makes it very easy for the reviewers and you'll also get reviews quicker.
 
 -   When reporting an issue/ making a MR, use the issue/ MR template for better understanding of changes.  
+
+### Git commit conventions
+
+
+We accept commits as per [Conventional Changelog](https://github.com/ajoslin/conventional-changelog):
+
+```none
+<type>(<scope>): <subject>
+```
+
+Example:
+
+```none
+docs(CONTRIBUTE.md): add contributing conventions
+```
+
+The allowed ```<types>``` are :
+
+*   **feat**: A new feature
+*   **fix**: A bug fix
+*   **docs**: Documentation only changes
+*   **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, newline, line endings, etc)
+*   **perf**: A code change that improves performance
+*   **test**: Adding missing tests
 
 ### Feature Requests and Bug Reports
 
