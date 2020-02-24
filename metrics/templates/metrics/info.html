@@ -40,11 +40,12 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-						<form action= "{% url 'metrics:search_results' %}" method= "get"  class="form-inline my-2 my-lg-0">
-							<input class="form-control mr-sm-2" type="search" name="search" value="{{ search_term }}" placeholder="Search" aria-label="Search">
-							<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-						</form>
-					</li>
+                        <form action="{% url 'metrics:search_results' %}" method="get" class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" name="search" value="{{ search_term }}"
+                                placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -65,14 +66,12 @@
                         <p class="def__text">
                             H-index is the largest number h such that h publications have at least h citations.
                         </p>
-                        <div id="wrapper">
-                            <div id="outer">
-                                <div class="itemwrapper">
-                                    <img id="hgraphimg" src="{% static 'metrics/images/hgraph.png' %}" alt="h index">
-                                </div>
-                                <div class="itemwrapper">
-                                    <img id="hindeximg" src="{% static 'metrics/images/hindex.png' %}" alt="h index">
-                                </div>
+                        <div class="row">
+                            <div class="column">
+                                <img src="{% static 'metrics/images/hgraph.png' %}" alt="h graph" style="width:100%">
+                            </div>
+                            <div class="column">
+                                <img src="{% static 'metrics/images/hindex.png' %}" alt="h index" style="width:100%">
                             </div>
                         </div>
                     </div>

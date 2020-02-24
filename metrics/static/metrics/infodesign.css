@@ -71,22 +71,20 @@ img#navlogo {
 	height: auto;
 }
 
-#wrapper {
-	max-width: 1050px;
-	margin: 60px auto 60px auto;
-	background-color: #DDD
-  }
-  #outer {
+.column {
+	float: left;
+	width: 50%;
+	padding: 5px;
+}
+
+.row::after {
+	content: "";
+	clear: both;
 	display: table;
-	width: 100%;
-	table-layout: fixed;
-  }
-  .itemwrapper {
-	display: table-cell;
-	vertical-align: top;
-	width: 100%;
-  }
-  img {
-	max-width: 100%;
-	height: auto;
-  }
+}
+
+@media screen and (max-width: 500px) {
+	.column {
+		width: 100%;
+	}
+}
