@@ -25,7 +25,7 @@ After running the server, point your browser to http://127.0.0.1:8000/metrics/ .
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://gitlab.com/aossie/aossie-scholar/-/blob/master/CONTRIBUTE.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 
 ## License
