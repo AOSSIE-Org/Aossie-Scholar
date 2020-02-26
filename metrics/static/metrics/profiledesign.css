@@ -156,6 +156,7 @@ div.Table{
 	position: absolute;
 	left: 230px;
 	top: 170px;	
+	max-width: 440px;
 	font-size: 20px;
 	color: #010101;
 	font-family: Rhodium Libre !important;
