@@ -95,13 +95,16 @@ img#pro_cur{
 
 	background: #FFFFFF;
 }
+
 #cap_up_scholar{
 	position: absolute;
-	top: 280px;
-	height: 60px;
-	left: 500px;
+	top: 6px;
+	height: 35px;
 	rotate: 180%;
+	padding-left: 5px;
 }
+
+
 img#profile{
 	position: absolute;
 	top: 160px;
