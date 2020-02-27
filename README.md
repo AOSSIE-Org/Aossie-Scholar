@@ -25,23 +25,6 @@ Postgres as a database server is required. For downloading and documentation, vi
         sudo apt-get install postgresql postgresql-contrib libssl-dev
         ```
         
-    ## Using pipenv
-        
-        Using pipenv, you will not need to set up virtualenv. It will do it automatically for you
-        
-        To setup a virtual environment and install the dependices, enter in a terminal
-        
-        ```sh
-        pipenv --python 3.7.3 install
-        ```
-        
-        Now to activate the virtual environemnt, type
-        
-        ```sh
-        pipenv shell
-        ```
-        
-        
     * **Next Step ** - Create the database. For that we first open the psql shell. Go to the directory where your postgres file is stored.
     
         ```sh
@@ -59,13 +42,47 @@ Postgres as a database server is required. For downloading and documentation, vi
         CREATE DATABASE aossie WITH OWNER aossie;
         
         ```
+    * Now, all we need to do is give our database user access rights to the database we created:
+        ```
+        GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;
+        ```
+    * Go to Settings.py and change accordingly - 
+        ```
+        DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'aossie-scholar',
+            'USER': 'aossie',
+            'PASSWORD': 'aossie',
+            'HOST': 'localhost',
+            'PORT': '',
+                }
+            }
+        ```
     
     * Once the databases are created, exit the psql shell with `\q` followed by ENTER.
+    
     * ###follow this blog if you have any doubts remaining - 
     * https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-14-04   
-
+*  ## Using pipenv
+    
+    Using pipenv, you will not need to set up virtualenv. It will do it automatically for you
+    
+    To setup a virtual environment and install the dependices, enter in a terminal
+    
+    ```sh
+    pipenv --python 3.7.3 install
+    ```
+    
+    Now to activate the virtual environemnt, type
+    
+    ```sh
+    pipenv shell
+        
 
 * git remote add origin https://gitlab.com/aossie/aossie-scholar.git
+* cd aossie-scholar
+* 
 * git pull origin master
 * pip install -r requirements.txt
 * Enter your Postgresql credentials in ```settings.py```
