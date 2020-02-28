@@ -24,7 +24,10 @@ Postgres as a database server is required. For downloading and documentation, vi
         sudo apt-get update
         sudo apt-get install postgresql postgresql-contrib libssl-dev
         ```
-        
+        Also, Linux users need to install some dependencies for PostgreSQL to work with Python.
+        ```
+        sudo apt-get install libpq-dev python3-dev
+        ```
     * **Next Step ** - Create the database. For that we first open the psql shell. Go to the directory where your postgres file is stored.
     
         ```sh
