@@ -1,20 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static %}
+
 <head>
-	<meta charset="UTF-8">
- 	<meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/sketchy/bootstrap.min.css">
 
-   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
-   
-   <link href="https://fonts.googleapis.com/css?family=Sofia" rel='stylesheet'>
-
-	{% load static %}
-	<link rel="stylesheet" type="text/css" href="{% static 'metrics/searchdesign.css' %}">
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 	<title>
 		{% if input == "" %}
 			Aossie Scholar Search
@@ -22,46 +15,47 @@
 			{{ input }} - Aossie Scholar Search
 		{% endif %}
 	</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{% static 'metrics/searchdesign.css' %}">
+
 </head>
-<body>
 
-	<header>
-		<div class="nav-sec">
-		  <div class="container-nav">
-			  <div id="logo">
-				  <a href=" http://127.0.0.1:8000/metrics/"><img id = "navlogo" src = "{% static 'metrics/images/AOSSIE_logo_08_cropped_tiny.png' %}" alt = "aossie_logo"></a>
-			  </div>
-			  <div class="search-container">
-				<form action= "{% url 'metrics:search_results' %}" method= "get" class="form-inline my-2 my-lg-0">
-					<div id="search_form">
-					<div class="form-row mb-4">
-					<i id="cap-icon" class="fa fa-graduation-cap"></i>  
-					<input class="form-control mr-sm-2"  
-					type="search" 
-					placeholder="Search" 
-					name="search"
-					value="{{ search_term }}"
-					id="search-text"
-					aria-label="Search">
-					<button type="submit" id="sub-btn"><i id="search-icon" class="fa fa-search" aria-hidden="true"></i i>
-					</button>
-				</div>
-				</div>
-			</form>
-			  </div>
-			  <nav>
-				  <ul> 
-					  <li><a href="#">About</a></li>
-					  <li><a href="#">Services</a></li>
-					  <li><a href="#">Contact</a></li>
-				  </ul>
-			  </nav>
-		  </div>
-	  </div>
-  </header>
+<body id="page-top">
 
-			
-				<h2 class="res-head">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <div class="aologo">
+                <a href=" http://127.0.0.1:8000/metrics/"><img id="navlogo"
+                        src="{% static 'metrics/images/AOSSIE_logo_08_cropped_tiny.png' %}" alt="aossie_logo"></a>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+						<form action= "{% url 'metrics:search_results' %}" method= "get"  class="form-inline my-2 my-lg-0">
+							<input class="form-control mr-sm-2" type="search" name="search" value="{{ search_term }}" placeholder="Search" aria-label="Search">
+							<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+						</form>
+					</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+            <h2 class="res-head">
 					{% if object_list.count > 1 %}
 						About {{ object_list.count }} results
 					{% elif object_list.count == 1 %}
@@ -75,64 +69,42 @@
 						</ul>
 					{% endif %}
 				</h2>
-			
-			<div class="all-cont">
-		  			{% for city in object_list %}
-		  
-		    
-		    		<div class= "search_list">
-
-		    			<div class="pname"><a id="name" href="{{ city.profile_url }}/results">{{ city.author_name }}</a></div>
-		    			<img id="profile" src= "https://scholar.google.com.au/citations?view_op=view_photo&user={{ city.profile_url }}&citpid=2" alt="pic"/>
-		    			<br>	
-		    			<p id="company">{{ city.Company }}</p>
-						<br><br>
-						<div class="gpro">
-							<a id= "g_personal" target="_blank" href="https://scholar.google.com/citations?hl=en&user={{ city.profile_url }}">
-								View Google Scholar Profile
-							</a>
-						</div>
-		    			<div class="proname"><a id= "personal" href="{{ city.Website }}">Personal</a></div>
-
-		   		</div>
-				<br>
-				<hr class="style">   
-		 	 {% endfor %}
-		   
-			</div>
-		
-			<div class="contact-section">
-					<h2 class="contact-head">Contact Us</h2>
-					<h3 id="sec-subhead" class="section-subheading text-muted">Please use our <a href="https://gitter.im/AOSSIE/AossieScholar">Gitter Channels</a> to communicate with us.</h3>
-			</div>
-	
-
-		  <footer>
-			<div class="container-foot">
-						<span class="copyright">Copyright © AOSSIE 2020</span>
-			</div>
-					<div class="foot-elements">
-						<ul class="list-inline social-buttons">
-						
-							<li><a href="https://twitter.com/aossie_org"><i class="fa fa-twitter" aria-hidden="true"></i>
-							</a>
-							</li>
-							
-							<li><a href="http://www.gitlab.com/aossie"><i class="fa fa-github"></i></a>
-							</li>
-							
-							<li><a href="https://gitter.im/AOSSIE/Lobby"><i class="fa fa-google-plus"></i></a>
-							</li>
-							
-						</ul>
-					</div>
-					
-		</footer>
-		  
-
-	</body>
 
 
+                    <div class="all-cont">
+                        {% for city in object_list %}
 
 
+                        <div class="search_list">
 
+                            <div class="pname"><a id="name"
+                                    href="{{ city.profile_url }}/results">{{ city.author_name }}</a></div>
+                            <img id="profile"
+                                src="https://scholar.google.com.au/citations?view_op=view_photo&user={{ city.profile_url }}&citpid=2"
+                                alt="pic" />
+                            <br>
+                            <p id="company">{{ city.Company }}</p>
+                            <br><br>
+                            <div class="proname"><a id="personal" href="{{ city.Website }}">Personal</a></div>
+
+                        </div>
+                        <br>
+                        <hr class="style">
+                        {% endfor %}
+
+                    </div>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="{% static 'metrics/js/scrolling-nav.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,119 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
+{%load static %}
 
 <head>
-	<title>{{ Info }}</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Rock Salt" rel='stylesheet'>
-	{%load static %}
-	<link rel="stylesheet" type="text/css" href="{% static 'metrics/infodesign.css' %}">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Metrics Info</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{% static 'metrics/infodesign.css' %}">
 
 </head>
 
-<body>
-	<nav class="nav">
-		<img src="{% static 'metrics/images/AOSSIE_logo_text.png' %}" alt="" class="logo">
-		<a class="nav__link" href="{% url 'metrics:home' %}">Sign In</a>
-	</nav>
-	<header class="header">
-		<h1 class="header__heading">
-			Metrics Information
-		</h1>
-	</header>
+<body id="page-top">
 
-	<section class="information">
-		<div class="def def--h-index" id="h-index">
-			<h1 class="def__heading">H-Index</h1>
-			<p class="def__text">
-				H-index is the largest number h such that h publications have at least h citations.
-			</p>
-			<div class="def__images-wrapper">
-				<img class="def__image" id="hgraphimg" src="{% static 'metrics/images/hgraph.png' %}" alt="h index">
-				<img class="def__image" id="hindeximg" src="{% static 'metrics/images/hindex.png' %}" alt="h index">
-			</div>
-		</div>
-		<div class="def def--m-index" id="m-index">
-			<h1 class="def__heading">M-Index</h1>
-			<p class="def__text">
-				m-index is another variant of the h-index that displays h-index per year since first publication. The
-				h-index tends to increase with career length, and m-index can be used in situations where this is a
-				shortcoming, such as comparing researchers within a field but with very different career lengths. The
-				m-index inherently assumes unbroken research activity since the first publication.
-			</p>
-			<div class="def__images-wrapper">
-				<img class="def__image" id="mindeximg" src="{% static 'metrics/images/m-index.png' %}" alt="m index">
-			</div>
-		</div>
-		<div class="def def--g-index" id="g-index">
-			<h1 class="def__heading">G-Index</h1>
-			<p class="def__text">
-				g-index is a variant of the h-index that, in its calculation, gives credit for the most highly
-				cited papers in a data set. The g-index is always the same as or higher than the h-index.
-			</p>
-			<div class="def__images-wrapper">
-				<img class="def__image" id="mindeximg" src="{% static 'metrics/images/g-index.png' %}" alt="m index">
-			</div>
-		</div>
-		<div class="def def--tnc" id="tnc">
-			<h1 class="def__heading">TNC</h1>
-			<p class="def__text">
-				TNC is the sum of "Ncitations" column from the profile, i.e., the sum of, citations recieved for a
-				publication normalized by number of co-Author's worked for that publication.
-			</p>
-		</div>
-		<div class="def def--tncc" id="tncc">
-			<h1 class="def__heading">TNCc</h1>
-			<p class="def__text">
-				Total Normalized Citations(TNCc) normalized per country. As the name suggests the metric is
-				computed taking Author's country into consideration. We use "Citations per document" data as per source.
-				The
-				data can bee seen here <a href="https://www.scimagojr.com/countryrank.php">data</a>
-			</p>
-			<div class="def__images-wrapper">
-				<img class="def__image" id="mindeximg" src="{% static 'metrics/images/TNC.jpeg' %}" alt="m index">
-			</div>
-		</div>
-		<div class="def def--o-index" id="o-index">
-			<h1 class="def__heading">O-Index</h1>
-			<p class="def__text">
-				The o-index corresponds to the geometric mean of the h-index and the most cited paper of a researcher.
-			</p>
-			<div class="def__images-wrapper">
-				<img class="def__image" id="mindeximg" src="{% static 'metrics/images/o-index.png' %}" alt="o index">
-			</div>
-		</div>
-		<div class="def def--h-median" id="h-median">
-			<h1 class="def__heading">H-Median</h1>
-			<p class="def__text">
-				h-median is the geometric median of the number of citations in the set of the top-cited h articles of a
-				publication. For example, a publication with citations 18, 7, 6, 3 and 2 respectively has a h-index of
-				3. Its top-cited article set is { 18, 7, 6 }. So, the h-median is its geometric median, which is 7.
-			</p>
-		</div>
-		<div class="def def--e-index" id="e-index">
-			<h1 class="def__heading">e-Index</h1>
-			<p class="def__text">
-				When using h-index, the excess citations which are not there in h-core of a publication are ignored.
-				Here, e-index can be used to complement the h-index for the ignored excess citations. The excess
-				citations is given by
-			</p>
-			<div class="def__images-wrapper">
-				<img class="def__image" id="eindexeq" src="{% static 'metrics/images/eindexeq.png' %}" alt="e index">
-			</div><br><br>
-			<p class="def__text">
-				Where cit<sub>j</sub> is the citations received by the j<sup>th</sup> paper. The graphical representation of e-index is :
-			</p>
-			<div class="def__images-wrapper">
-				<img class="def__image" id="eindexgraph" src="{% static 'metrics/images/eindexgraph.png' %}"
-					alt="e index">
-			</div>
-		</div>
-	</section>
-	<footer class="footer">
-		AOSSIE Scholar
-	</footer>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <div class="aologo">
+                <a href=" http://127.0.0.1:8000/metrics/"><img id="navlogo"
+                        src="{% static 'metrics/images/AOSSIE_logo_08_cropped_tiny.png' %}" alt="aossie_logo"></a>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <form action="{% url 'metrics:search_results' %}" method="get" class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" name="search" value="{{ search_term }}"
+                                placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="bg-light text-black">
+        <div class="container text-center">
+            <h1><b>Metrics Information</h1>
+        </div>
+    </header>
+
+
+    <section id="search">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="def def--h-index" id="h-index">
+                        <h1 class="def__heading">H-Index</h1>
+                        <p class="def__text">
+                            H-index is the largest number h such that h publications have at least h citations.
+                        </p>
+                        <div class="row">
+                            <div class="column">
+                                <img src="{% static 'metrics/images/hgraph.png' %}" alt="h graph" style="width:100%">
+                            </div>
+                            <div class="column">
+                                <img src="{% static 'metrics/images/hindex.png' %}" alt="h index" style="width:100%">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="def def--m-index" id="m-index">
+                        <h1 class="def__heading">M-Index</h1>
+                        <p class="def__text">
+                            m-index is another variant of the h-index that displays h-index per year since first
+                            publication. The
+                            h-index tends to increase with career length, and m-index can be used in situations where
+                            this is a
+                            shortcoming, such as comparing researchers within a field but with very different career
+                            lengths. The
+                            m-index inherently assumes unbroken research activity since the first publication.
+                        </p>
+                        <div class="def__images-wrapper">
+                            <img class="responsive" id="mindeximg" src="{% static 'metrics/images/m-index.png' %}"
+                                alt="m index">
+                        </div>
+                    </div>
+                    <div class="def def--g-index" id="g-index">
+                        <h1 class="def__heading">G-Index</h1>
+                        <p class="def__text">
+                            g-index is a variant of the h-index that, in its calculation, gives credit for the most
+                            highly
+                            cited papers in a data set. The g-index is always the same as or higher than the h-index.
+                        </p>
+                        <div class="def__images-wrapper">
+                            <img class="responsive" id="mindeximg" src="{% static 'metrics/images/g-index.png' %}"
+                                alt="m index">
+                        </div>
+                    </div>
+                    <div class="def def--tnc" id="tnc">
+                        <h1 class="def__heading">TNC</h1>
+                        <p class="def__text">
+                            TNC is the sum of "Ncitations" column from the profile, i.e., the sum of, citations recieved
+                            for a
+                            publication normalized by number of co-Author's worked for that publication.
+                        </p>
+                    </div>
+                    <div class="def def--tncc" id="tncc">
+                        <h1 class="def__heading">TNCc</h1>
+                        <p class="def__text">
+                            Total Normalized Citations(TNCc) normalized per country. As the name suggests the metric is
+                            computed taking Author's country into consideration. We use "Citations per document" data as
+                            per source.
+                            The
+                            data can bee seen here <a href="https://www.scimagojr.com/countryrank.php">data</a>
+                        </p>
+                        <div class="def__images-wrapper">
+                            <img class="responsive" id="mindeximg" src="{% static 'metrics/images/TNC.jpeg' %}"
+                                alt="m index">
+                        </div>
+                    </div>
+                    <div class="def def--o-index" id="o-index">
+                        <h1 class="def__heading">O-Index</h1>
+                        <p class="def__text">
+                            The o-index corresponds to the geometric mean of the h-index and the most cited paper of a
+                            researcher.
+                        </p>
+                        <div class="def__images-wrapper">
+                            <img class="responsive" id="mindeximg" src="{% static 'metrics/images/o-index.png' %}"
+                                alt="o index">
+                        </div>
+                    </div>
+                    <div class="def def--h-median" id="h-median">
+                        <h1 class="def__heading">H-Median</h1>
+                        <p class="def__text">
+                            h-median is the geometric median of the number of citations in the set of the top-cited h
+                            articles of a publication. For example, a publication with citations 18, 7, 6, 3 and 2
+                            respectively has a h-index of 3. Its top-cited article set is { 18, 7, 6 }. So, the h-median
+                            is its geometric median, which is 7.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="{% static 'metrics/js/scrolling-nav.js' %}"></script>
 
 </body>
 

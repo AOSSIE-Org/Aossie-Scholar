@@ -1,23 +1,40 @@
-html{
+html {
 	overflow-x: hidden;
 }
 
-#profile{
+header {
+	padding: 40px 0 90px;
+}
+
+section {
+	padding: 150px 0;
+	height: 85vh;
+}
+
+
+img#navlogo {
+	width: 55px;
+	height: 55px;
+}
+
+#profile {
 	position: absolute;
 	left: 15px;
 	height: 100px;
-	width:100px;
+	width: 100px;
 	border-radius: 100.5px;
 }
-.search_list{
+
+.search_list {
 	left: 0px;
 	width: 90%;
 	height: 100px;
-	border: 3px #010101;	
+	border: 3px #010101;
 	border-radius: 121px;
 	margin-bottom: 10px;
 }
-.pname{	
+
+.pname {
 	padding-left: 22px;
 	padding-top: 12px;
 	position: relative;
@@ -28,19 +45,21 @@ html{
 	font-size: 15px;
 	background-color: #333;
 	border-radius: 5px;
-	font-family: Montserrat, "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
- .pname a{
-	 color: antiquewhite;
-	 text-decoration: none;
- }
 
- .pname a:active,a:focus{
+.pname a {
+	color: antiquewhite;
+	text-decoration: none;
+}
+
+.pname a:active,
+a:focus {
 	outline: none;
- }
+}
 
 
-#company{
+#company {
 	position: relative;
 	left: 147px;
 	top: -16px;
@@ -49,58 +68,34 @@ html{
 	font-size: 16px;
 	line-height: 21px;
 	letter-spacing: 1px;
-	font-family: Montserrat, "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.proname{
+.proname {
 	position: relative;
 	left: 610px;
 	color: #333;
-	background-color:#b4bcc2;
+	background-color: #b4bcc2;
 	top: -64px;
 	width: 90px;
 	height: 50px;
 	padding-left: 18px;
 	padding-top: 12px;
 	border-radius: 5px;
-	font-family: Montserrat, "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.proname a{
+.proname a {
 	color: #333;
 	text-decoration: none;
 }
 
-.proname a:active,a:focus{
+.proname a:active,
+a:focus {
 	outline: none;
 }
 
-.gpro{
-	position: absolute;
-	left: 363px;
-	color: #333;
-	background-color:#b4bcc2;
-	width: 240px;
-	height: 50px;
-	margin-top: -64px;
-	padding-left: 18px;
-	padding-top: 12px;
-	border-radius: 5px;
-	font-family: Montserrat, "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-
-
-.gpro a{
-	color: #333;
-	text-decoration: none;
-}
-
-.gpro a:active,a:focus{
-	outline: none;
-}
-
-
-hr.style{
+hr.style {
 	width: 85%;
 	height: 1px;
 	background: #333;
@@ -112,77 +107,78 @@ hr.style{
 }
 
 
-.res-head{
-	font-family: Montserrat, "Helvetica Neue",Helvetica,Arial,sans-serif;
+.res-head {
+	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 550;
 	line-height: 43px;
 	font-size: 14px;
 	padding-right: 90px;
+	margin-left:150px;
 	padding-bottom: -25px;
-	padding-top: 20px;
-	margin-left: 150px;
+	padding-top: 120px;
 	text-transform: uppercase;
 	transition: all 220ms ease-in-out;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	color: #70757a;
-}
 
+}
 .input-text{
 	color: #000000;
 	display: inline;
 }
 
 
+
 /*Header*/
-header{
-	background-color:	#333;
+header {
+	background-color: #333;
 	color: #ffffff;
-	min-height: 90px; 
+	min-height: 90px;
 	width: 90%;
 	right: px;
 	position: relative;
 }
 
-header a{
-	background:transparent;
+header a {
+	background: transparent;
 	text-transform: uppercase;
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 21px;
 	letter-spacing: 1px;
-	color:#fff;
+	color: #fff;
 	transition: all ease .35s;
-	font-family: Montserrat, "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-header a:hover{
+header a:hover {
 	transition: all ease .35s;
 	text-decoration: none;
 	color: yellow;
 	outline: none;
 }
 
-header ul{
+header ul {
 	position: relative;
 	display: block;
 	padding: 10px 15px;
-    padding: 0;
-    margin: 0;
+	padding: 0;
+	margin: 0;
 }
 
-header li{
-    display: inline;
-    padding: 0 20px 0 20px;
+header li {
+	display: inline;
+	padding: 0 20px 0 20px;
 }
 
-header #logo{
+header #logo {
 	padding-left: 40px;
-    float: left;
+	float: left;
 }
 
-header nav{
+header nav {
 	padding-right: 85px;
 	position: relative;
 	list-style: none;
@@ -192,7 +188,7 @@ header nav{
 	transition: padding .3s;
 }
 
-.nav-sec{
+.nav-sec {
 	position: fixed;
 	background-color: #333;
 	width: 1455px;
@@ -203,20 +199,21 @@ header nav{
 }
 
 
-.container-nav{
+.container-nav {
 	width: 100%;
 	position: fixed;
-    margin: auto;
+	margin: auto;
 	overflow: hidden;
 }
+
 /*Search bar in header*/
-.search-container{
+.search-container {
 	float: left;
 	position: relative;
 	left: 140px;
 }
 
-header #cap-icon{
+header #cap-icon {
 	position: relative;
 	top: 14px;
 	left: 38px;
@@ -224,25 +221,25 @@ header #cap-icon{
 	font-size: 20px;
 }
 
-input#search-text{
+input#search-text {
 	height: 42px;
 	width: 530px;
 	padding-left: 45px;
 	border-radius: 50px;
 }
 
-input#search-text:focus{
+input#search-text:focus {
 	outline: none;
 	border: none;
 }
 
-header #search-icon{
+header #search-icon {
 	position: relative;
 	color: #333;
 	font-size: 20px;
 }
 
-header #sub-btn{
+header #sub-btn {
 	position: relative;
 	right: 50px;
 	border: none;
@@ -252,20 +249,20 @@ header #sub-btn{
 
 /*Footer*/
 
-		
-.all-cont{
-		margin-bottom: 546px;
-		margin-top: -20px;
+
+.all-cont {
+	margin-bottom: 546px;
+	margin-top: -20px;
 }
 
-.contact-section{
+.contact-section {
 	margin-bottom: 50px;
 	width: 1360px;
 	height: 250px;
-	}
-	
-.contact-head{
-	font-family: Montserrat, "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.contact-head {
+	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 700;
 	font-size: 40px;
 	text-align: center;
@@ -273,33 +270,34 @@ header #sub-btn{
 	padding-bottom: 30px;
 	text-transform: uppercase;
 }
-	
-	h3#sec-subhead{
-		color: #b4bcc2;
-		text-transform: none;
-		font-family: "Droid Serif", "Helvetica Neue", Helvetica,Arial,sans-serif;
-		font-size: 18px;
-		font-style: italic;
-		font-weight: 400;
-		margin-bottom: 75px;
-		padding-left: 400px;
-	}
-	
-	.contact-section a{
-		color: #fed136;
-	}
-	
-	.contact-section a:hover,a:focus{
-		color: #fed136;
-		outline: none;
-	}
-	
 
-footer{
+h3#sec-subhead {
+	color: #b4bcc2;
+	text-transform: none;
+	font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	font-style: italic;
+	font-weight: 400;
+	margin-bottom: 75px;
+	padding-left: 400px;
+}
+
+.contact-section a {
+	color: #fed136;
+}
+
+.contact-section a:hover,
+a:focus {
+	color: #fed136;
+	outline: none;
+}
+
+
+footer {
 	background-color: #f7f7f7;
 	padding: 40px 0;
 	text-align: center;
-	min-height: 70px; 
+	min-height: 70px;
 	width: 1400px;
 	position: absolute;
 	height: 120px;
@@ -308,56 +306,48 @@ footer{
 }
 
 
-.container-foot{
+.container-foot {
 	position: relative;
 	left: 190px;
 	top: 10px;
 }
 
-.foot-elements{
+.foot-elements {
 	position: relative;
 	left: 390px;
 }
 
 ul.social-buttons li a {
-    display: block;
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-    font-size: 20px;
-    line-height: 40px;
-    outline: 0;
-    color: #fff;
-	background-color:#222;
+	display: block;
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+	font-size: 20px;
+	line-height: 40px;
+	outline: 0;
+	color: #fff;
+	background-color: #222;
 	transition: all .3s;
 }
 
-.list-inline > li {
-    display: inline-block;
-    padding-left: 5px;
-    padding-right: 5px;
+.list-inline>li {
+	display: inline-block;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 footer .fa {
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: 14px;
-    font-size: inherit;
-    text-rendering: auto;
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: 14px;
+	font-size: inherit;
+	text-rendering: auto;
 	color: #fff;
 	margin-top: 10px;
 }
 
-ul.social-buttons li a:hover, ul.social-buttons li a:active {
-	background-color:  #fed136;
+ul.social-buttons li a:hover,
+ul.social-buttons li a:active {
+	background-color: #fed136;
 	outline: none;
 }
-
-
-
-
-
-
-
-
-
