@@ -7,5 +7,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('metrics/', include('metrics.urls')),
     path('api/', include(router.urls)),
-    path('',views.author_search,name="author_search")
+    path('scholarly/',views.author_search,name="author_search")
 ]

@@ -22,7 +22,7 @@ from django_tables2.paginators import LazyPaginator
 
 from .graphs import Graph
 
-from django.db.models import Q 
+from django.db.models import Q
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -96,8 +96,13 @@ class ResultView(ListView):
 
 
 class SearchResultsView(ListView):
-    model = ScholarProfile
     template_name = 'metrics/search_results.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        q = self.request.GET.get("search")
+        context['input'] = q
+        return context
 
     def get_queryset(self): 
         query = self.request.GET.get('search')
@@ -115,46 +120,51 @@ class InfoPageView(TemplateView):
 		return (render(request, self.template_name, {}))
 
 def author_search(request):
-    if request.method == 'POST':
-        author_name = request.POST.get('authorname')
-        numbers_list = range(1, 1000)
-        page = request.GET.get('page', 1)
-        paginator = Paginator(numbers_list, 10)
-        try:
-            search_query = next(scholarly.search_author(author_name), 1).fill()
-            numbers = paginator.page(page)
-            pub_title = [(search_query.publications[i].bib['title']) for i in range(20)]
-			pub_url = list()
-			pub_author = list()
-			pub_publisher = list()
-			pub_journal = list()
-			for title in pub_title:
-				publication_search_query = scholarly.search_pubs_query(title)
-				publication_search_query = next(publication_search_query)
-				pub_url.append(publication_search_query.bib['url'])
-				pub_author.append(publication_search_query.bib['author'])
-				pub_journal.append(publication_search_query.bib['journal'])
-				pub_publisher.append(publication_search_query.bib['publisher'])
-			final_url = zip(pub_title, pub_author, pub_publisher, pub_journal, pub_url)
-            mycontext = {
-                'filled': search_query._filled,
-                'affiliation': search_query.affiliation,
-                'email': search_query.email,
-                'id': search_query.id,
-                'interests': search_query.interests,
-                'citedby': search_query.citedby,
-                'name': search_query.name,
-                'url_picture': search_query.url_picture,
-                'final_url': final_url,
-                'total_publications': len(search_query.publications),
-                'numbers' : numbers,
-            }
-            return render(request, 'metrics/author_search_result.html', mycontext)
-        except PageNotAnInteger:
-            numbers = paginator.page(1)
-            return render(request, 'metrics/author_search_result.html', {'numbers': numbers})
-        except EmptyPage:
-            numbers = paginator.page(paginator.num_pages)
-            return render(request, 'metrics/author_search_result.html', {'numbers': numbers})
-    else:
-        return render(request, 'metrics/index.html', {})
+  if request.method == 'POST':
+    author_name = request.POST.get('authorname')
+    numbers_list = range(1, 1000)
+    page = request.GET.get('page', 1)
+    paginator = Paginator(numbers_list, 10)
+    try:
+      search_query = next(scholarly.search_author(author_name), 1).fill()
+      numbers = paginator.page(page)
+      pub_title = [(search_query.publications[i].bib['title']) for i in range(20)]
+      pub_url = list()
+      pub_author = list()
+      pub_abstract = list()
+      #pub_journal = list()
+      pub_publisher = list()
+      pub_year = list()
+      pub_source = list()
+      for title in pub_title:
+        publication_search_query = next(scholarly.search_pubs_query(title))
+        pub_url.append(publication_search_query.bib['url'])
+        pub_abstract.append(publication_search_query.bib['abstract'])
+        pub_author.append(publication_search_query.bib['author'])
+        pub_source.append(publication_search_query.source)
+      final_url = zip(pub_title, pub_author, pub_abstract,pub_source, pub_url)
+      mycontext = {
+        'filled': search_query._filled,
+        'affiliation': search_query.affiliation,
+        'email': search_query.email,
+        'id': search_query.id,
+        'interests': search_query.interests,
+        'citedby': search_query.citedby,
+        'name': search_query.name,
+        'url_picture': search_query.url_picture,
+        'publications': search_query.publications,
+        'total_publications': len(search_query.publications),
+        'l' : [i for i in range(len(search_query.publications))],
+        'final_url': final_url,
+        'numbers' : numbers,
+        'row':0
+			}
+      return render(request, 'metrics/author_search_result.html', mycontext)
+    except PageNotAnInteger:
+      numbers = paginator.page(1)
+      return render(request, 'metrics/author_search_result.html', {'numbers': numbers})
+    except EmptyPage:
+      numbers = paginator.page(paginator.num_pages)
+      return render(request, 'metrics/author_search_result.html', {'numbers': numbers})
+  else:
+    return render(request, 'metrics/index.html', {})
