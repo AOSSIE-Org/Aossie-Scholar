@@ -95,13 +95,16 @@ img#pro_cur{
 
 	background: #FFFFFF;
 }
+
 #cap_up_scholar{
 	position: absolute;
-	top: 280px;
-	height: 60px;
-	left: 500px;
+	top: 6px;
+	height: 35px;
 	rotate: 180%;
+	padding-left: 5px;
 }
+
+
 img#profile{
 	position: absolute;
 	top: 160px;
@@ -155,8 +158,9 @@ div.Table{
 #company{
 	position: absolute;
 	left: 230px;
-	top: 200px;	
-	font-size: 22px;
+	top: 170px;	
+	max-width: 440px;
+	font-size: 20px;
 	color: #010101;
 	font-family: Rhodium Libre !important;
 

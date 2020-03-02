@@ -81,8 +81,9 @@ class Simple_Metrics():
         addupC= 0
         for i, citation in enumerate(Citations):
             addupC+= citation
-            if pow(i+1,2)>addupC:
-                g_index=i
+            if pow(i+1,2)<=addupC:
+                g_index=i+1
+            else:
                 break
         return(g_index)
 
