@@ -1,128 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-{%load static %}
-
 <head>
+	<meta charset="UTF-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+   
+   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <title>Aossie Scholar</title>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-
-    <!-- Custom styles for this template -->
+   
+   <link href="https://fonts.googleapis.com/css?family=Sofia" rel='stylesheet'>
+    {%load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'metrics/homedesign.css' %}">
-
+	<title>Aossie Scholar</title>
 </head>
 
-<body id="page-top">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <div class="container">
-            <div class="aologo">
-                <a href=" http://127.0.0.1:8000/metrics/"><img id="navlogo"
-                        src="{% static 'metrics/images/AOSSIE_logo_08_cropped_tiny.png' %}" alt="aossie_logo"></a>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#search">Search</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#register">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<body>
 
-    <section id="search">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="scholarlogo">
-                        <img id="Slogo" src="{% static 'metrics/images/Scholar_logo.png' %}" alt="Scholar_logo">
-                    </div>
-                    <div class="search">
-                        <form action="{% url 'metrics:search_results' %}" method="get" class="search-form">
-                            <i id="cap-icon" class="fa fa-graduation-cap"></i>
-                            <input type="text" name="search" value="{{ search_term }}" required>
-                            <input type="submit" value="Search">
-                        </form>
-                    </div>
+		<header>
+		  	<div class="nav-sec">
+				<div class="container-nav">
+					<div id="logo">
+						<a href=" http://127.0.0.1:8000/metrics/"><img id = "navlogo" src = "{% static 'metrics/images/AOSSIE_logo_08_cropped_tiny.png' %}" alt = "aossie_logo"></a>
+					</div>
+					<nav>
+						<ul>
+							<li class="current"><a href="http://127.0.0.1:8000/metrics/">Home</a></li>
+							<li><a href="#">Search</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Services</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<div class="intro-text">
+				<img id = "Slogo" src = "{% static 'metrics/images/Scholar_logo.png' %}" alt = "Scholar_logo">
+			</div>
 
+	
+	
+		<div class="head-container">
+
+			<div class="src">	
+				<div class="col-lg-12 text-center">
+                    <h3 class="section-subheading text-muted">Better metrics of researcher's performance with fairer stats in one click.</h3>
                 </div>
-            </div>
-        </div>
-    </section>
+			</div>
 
-    <section id="register" class="bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <form method="post">
+			<div class="scholar-result">				
+					<form action= "{% url 'metrics:search_results' %}" method= "get" class="form-inline my-2 my-lg-0">
+					<!--{% csrf_token %} -->
+					<!-- {{ searchform.errors }} -->
+					<div id="search_form">
+						<div class="form-row mb-4">
+						<i id="cap-icon" class="fa fa-graduation-cap"></i>  
+						<input class="form-control mr-sm-2"  
+						type="search" 
+						id="search-text"
+				  		placeholder="Search" 
+				  		name="search"
+				  		value="{{ search_term }}"
+						  aria-label="Search">
+					</div>
+					<button type="submit" class="btn btn-outline" id="search-btn">Search</button>
+					
+					</div>
+				</form>
+			 </div>
 
-                        {% csrf_token %}
-                        {{ indexform.errors }}
-                        <div id="index_form">
-                            {{ indexform.as_p }}
-                            <div class="divbtn">
-                                <button id="sbtn" type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+		</div>
 
-    <section id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <h2 class="contact-head">Contact Us</h2>
-                    <h3 id="sec-subhead" class="section-subheading text-muted">Please use our <a
-                            href="https://gitter.im/AOSSIE/AossieScholar">Gitter Channel</a> to communicate with us.
-                    </h3>
-                </div>
-            </div>
-        </div>
-    </section>
+		</header>
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; AossieScholar</p>
-        </div>
-    </footer> 
+			
+		
+		<div class="container-main">
+			<h2 class="section-heading">Register</h2>
+			<h3 class="scholar-subheading">Scholars with a google Scholar profile, <br><br> register here to continue to<a href="http://127.0.0.1:8000/metrics/"> AOSSIE Scholar</h3></a>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		  <div class="search-result">
+			<form method="post">
 
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+				{% csrf_token %}
+				{{ indexform.errors }}
+				<div id="index_form">
+					{{ indexform.as_p }}
+					<button type="submit" class="btn btn-outline" id="register-btn">submit</button>
+				</div>
+			</form>
+		</div>
 
-    <!-- Custom JavaScript for this theme -->
-    <script src="{% static 'metrics/js/scrolling-nav.js' %}"></script>
+		</div>
 
-</body>
+		<div class="contact-section">
+			<div class="col-lg-12 text-center con-sec">
+				<h2 class="contact-head">Contact Us</h2>
+				<h3 id="sec-subhead" class="section-subheading text-muted">Please use our <a href="https://gitter.im/AOSSIE/AossieScholar">Gitter Channels</a> to communicate with us.</h3>
+			</div>
+		</div>
 
+
+		<footer>
+
+		  			
+			<div class="container-foot">
+						<span class="copyright">Copyright © AOSSIE 2020</span>
+			</div>
+					<div class="foot-elements">
+						<ul class="list-inline social-buttons">
+						
+							<li><a href="https://twitter.com/aossie_org"><i class="fa fa-twitter" aria-hidden="true"></i>
+							</a>
+							</li>
+							
+							<li><a href="http://www.gitlab.com/aossie"><i class="fa fa-github"></i></a>
+							</li>
+							
+							<li><a href="https://gitter.im/AOSSIE/Lobby"><i class="fa fa-google-plus"></i></a>
+							</li>
+							
+						</ul>
+					</div>
+					
+		</footer>
+
+
+	</body>
+	
 </html>
+
+
+
+
+
+

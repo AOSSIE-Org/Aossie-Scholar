@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-{%load static %}
 {% load render_table from django_tables2 %}
 
 <head>
-
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
-
 	<title>{{ Name }}</title>
-	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/cosmo/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+	</script>
 
-
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-
-	<!-- Custom styles for this template -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+		integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+		integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous">
+	</script>
+	<link href="https://fonts.googleapis.com/css?family=Rock Salt" rel='stylesheet'>
+	{%load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'metrics/profiledesign.css' %}">
 	<script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
 	<script type="text/javascript"
@@ -28,94 +28,82 @@
 
 </head>
 
-<body id="page-top">
+<body>
 
-	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-		<div class="container">
-			<div class="aologo">
-				<a href=" http://127.0.0.1:8000/metrics/"><img id="navlogo"
-						src="{% static 'metrics/images/AOSSIE_logo_08_cropped_tiny.png' %}" alt="aossie_logo"></a>
-			</div>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<form action= "{% url 'metrics:search_results' %}" method= "get"  class="form-inline my-2 my-lg-0">
-							<input class="form-control mr-sm-2" type="search" name="search" value="{{ search_term }}" placeholder="Search" aria-label="Search">
-							<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-						</form>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<div class="rectangle-up">
 
-	 <section id="search">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 mx-auto">
-					<div>
-						<img id="profile" src="{{ img_url }}" alt="pic" />
-						<h1 class="name"><a href="{{ website }}"> {{ Name }}</a></h1>
+		<div class="menu">
+			<div class="btn-group dropright">
+				<button type="button" class="btn btn-secondary">
+					Menu
+				</button>
+				<button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false">
+					<span class="sr-only">Toggle Dropright</span>
+				</button>
+				<div class="dropdown-menu">
 
-						<p class="info_rect_text" id="company"> {{ company }}</p>
-						<p class="info_rect_text" id="country">{{ Country }}</p>
-						<div class="info_rect">
-							<p class="info_rect_text" id="publications">Publications - {{ publications }}</p>
-							<p class="info_rect_text" id="tcitations">Citations - {{ Tcitations }}</p>
-							<a class="info_rect_text" id="TNCc" href="{% url 'metrics:info_page' %}#tncc">TNCc -
-								{{ TNCc }}</a>
-							<a class="info_rect_text" id="gindex" href="{% url 'metrics:info_page' %}#g-index">g-index -
-								{{ g_index }}</a>
-							<a class="info_rect_text" id="hindex" href="{% url 'metrics:info_page' %}#h-index">h-index -
-								{{ h_index }}</a>
-							<a class="info_rect_text" id="mindex" href="{% url 'metrics:info_page' %}#m-index">m-index -
-								{{ m_index }}</a>
-							<a class="info_rect_text" id="oindex" href="{% url 'metrics:info_page' %}#o-index">o-index -
-								{{ o_index }}</a>
-							<a class="info_rect_text" id="hmedian"
-								href="{% url 'metrics:info_page' %}#h-median">h-median -
-								{{ h_median }}</a>
-						</div>
-
-					</div>
-					<div id="chart-1" class="chart">
-						<!-- dumping JavaScript code here -->
-						{{ output|safe }}
-
-					</div>
+					<a class="dropdown-item" href="{% url 'metrics:home' %}">Sign In</a>
+					<a class="dropdown-item" href="./../../{{ user }}/results">Profile</a>
+					<a class="dropdown-item" href="{% url 'metrics:info_page' %}">Metrics info</a>
 				</div>
 			</div>
 		</div>
-	</section> 
 
 
-	<section id="register" class="bg-light">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 mx-auto">
-					<div class="Table">
-						{% render_table table %}
-					</div>
+
+		<form action="{% url 'metrics:search_results' %}" method="get" class="form-inline my-2 my-lg-0">
+			<!--{% csrf_token %} -->
+			<!-- {{ searchform.errors }} -->
+			<div id="search_form">
+				<div class="active-purple-3 active-purple-4 mb-4">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search" name="search"
+						value="{{ search_term }}" aria-label="Search"></input>
 				</div>
+				<button id="search" type="submit" class="btn btn-outline-info">Search</button>
 			</div>
+		</form>
+
+		<img id="Alogo" src="{% static 'metrics/images/AOSSIE_logo.png' %}" alt="aossie_logo">
+		<img id="cap" src="{% static 'metrics/images/cap.png' %}" alt="Scholar_cap">
+		<img id="Slogo" src="{% static 'metrics/images/Scholar_logo.png' %}" alt="scholar_logo">
+		<!--<img id = "index" src = "{% static 'metrics/images/index.png' %}" alt = "Index">
+			<img id = "scholar" src = "{% static 'metrics/images/scholar.jpg' %}" alt = "Scholar"> -->
+	</div>
+
+
+
+	<div>
+		<img id="cap_up_scholar" src="{% static 'metrics/images/cap1.svg' %}" alt="cap" />
+		<img id="profile" src="{{ img_url }}" alt="pic" />
+		<br>
+		<h1 class="name"> {{ Name }}</h1>
+		<p class="info_rect_text" id="company"> {{ company }}</p>
+		<p class="info_rect_text" id="country">{{ Country }}</p>
+		<div class="info_rect">
+
+			<a class=" info_rect_text" id="website" href="{{ website }}">Website</a>
+			<p class="info_rect_text" id="publications">Publications {{ publications }}</p>
+			<p class="info_rect_text" id="tcitations">Citations {{ Tcitations }}</p>
+			<a class="info_rect_text" id="TNCc" href="{% url 'metrics:info_page' %}#tncc">TNCc {{ TNCc }}</a>
+			<a class="info_rect_text" id="gindex" href="{% url 'metrics:info_page' %}#g-index">G-index {{ g_index }}</a>
+			<a class="info_rect_text" id="hindex" href="{% url 'metrics:info_page' %}#h-index">h-index {{ h_index }}</a>
+			<a class="info_rect_text" id="eindex" href="{% url 'metrics:info_page' %}#e-index">e-index {{ e_index }}</a>
+			<a class="info_rect_text" id="mindex" href="{% url 'metrics:info_page' %}#m-index">m-index {{ m_index }}</a>
+			<a class="info_rect_text" id="oindex" href="{% url 'metrics:info_page' %}#o-index">o-index {{ o_index }}</a>
+			<a class="info_rect_text" id="hmedian" href="{% url 'metrics:info_page' %}#h-median">h-median {{ h_median }}</a>
 		</div>
-	</section>
 
-	<!-- Bootstrap core JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	</div>
+	<div id="chart-1" class="chart">
+		<!-- dumping JavaScript code here -->
+		{{ output|safe }}
 
-	<!-- Plugin JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+	</div>
 
-	<!-- Custom JavaScript for this theme -->
-	<script src="{% static 'metrics/js/scrolling-nav.js' %}"></script>
+	<div class="Table">
+		{% render_table table %}
+	</div>
+
 
 </body>
-
-</html>
