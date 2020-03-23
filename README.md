@@ -38,7 +38,7 @@ Postgres as a database server is required. For downloading and documentation, vi
         psql -d postgres
         ```
     
-    * When inside psql, create a user for project and then using the user create the database. 
+    * When inside psql, create a user for project and then using the user create the database. Commands below will create user and database with name aossie.
     
         ```sql
         CREATE USER aossie WITH PASSWORD 'aossie';
@@ -47,14 +47,14 @@ Postgres as a database server is required. For downloading and documentation, vi
         ```
     * Now, all we need to do is give our database user access rights to the database we created:
         ```
-        GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;
+        GRANT ALL PRIVILEGES ON DATABASE aossie TO aossie;
         ```
-    * Go to Settings.py and change accordingly - 
+    * Go to Settings.py and change accordingly -
         ```
         DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'aossie-scholar',
+            'NAME': 'aossie',
             'USER': 'aossie',
             'PASSWORD': 'aossie',
             'HOST': 'localhost',

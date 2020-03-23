@@ -6,6 +6,7 @@ from django.utils import timezone
 from metrics.newmetrics import Simple_Metrics, ScholarRawData
 from .graphs import Graph
 from metrics.decorators import timedecorator
+import math
 
 
 class Scraper():
@@ -22,14 +23,11 @@ class Scraper():
 		author_names_list= []
 		YEARS=[]
 		self.first_pub_year=float('Inf')
-		for i in range(0, 1000, 100):
-			if (self.maxP <=i):
-				pageSize = i
-				break        									
-
+		pageSize= int(math.ceil(self.maxP / 100.0)) * 100									
+        
 		# looping trough pages to get all the publications
 
-		for j in range(0,pageSize, 100): 
+		for j in range(0,pageSize, 100):
 			S_url=self.url + "&cstart=" + str(j) +"&pagesize=100"
 			with urllib.request.urlopen(S_url) as my_url:
 				page_html = my_url.read()			
