@@ -84,8 +84,6 @@ Postgres as a database server is required. For downloading and documentation, vi
         
 
 * git remote add origin https://gitlab.com/aossie/aossie-scholar.git
-* cd aossie-scholar
-* 
 * git pull origin master
 * pip install -r requirements.txt
 * Enter your Postgresql credentials in ```settings.py```
