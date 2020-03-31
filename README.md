@@ -1,6 +1,6 @@
 # Aossie-Scholar
 
-Aossie scholar is a metric computation system for researchers with a Google Scholar profile. Google Scholar provides researchers with stats such as the number of publications, citations, h-index and i10 index. But, these metrics are flawed. Aossie Scholar extracts some basic information form Google Scholar and computes better metrics, and displays them on another website. So, researchers can now see better, effective metrics with a single click.
+Aossie scholar is a metric computation system for researchers with a Google Scholar profile. Google Scholar provides researchers with stats such as the number of publications, citations, h-index and i10 index. But, these metrics are flawed. Aossie Scholar extracts some basic information from Google Scholar and computes better metrics, and displays them on another website. So, researchers can now see better, effective metrics with a single click.
 
 ## Requirements
 
