@@ -1,0 +1,22 @@
+{
+    "name": "popup",
+    "version": "1.0",
+    "manifest_version": 2,
+    "browser_action": {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+        "matches": [
+            "https://scholar.google.com/citations?hl=*&user=*",
+            "https://scholar.google.com/citations?user=*&hl=*"
+        ],
+        "js": [
+            "content.js"
+        ]
+    }
+    ],
+    "permissions": [
+        "storage"
+    ]
+}
