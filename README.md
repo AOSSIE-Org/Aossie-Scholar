@@ -10,8 +10,15 @@ Postgres as a database server is required. For downloading and documentation, vi
 
 
 ### Installation
+
+* #### Installing the extension:
+    * Go to `Extensions` tab of Google Chrome, i.e., `chrome://extensions/`
+    * Enable "Developer mode" from top-right section of the tab.
+    * Click on `Load unpacked` and then select the project's extension folder(`aossie-scholar/extension`)
+    * The extension is loaded and ready to use.
  
 * #### setting up postgres - 
+
 * Dependencies required to run Server
     * Python 3.7
     * Postgres
