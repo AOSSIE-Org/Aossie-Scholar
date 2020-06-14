@@ -16,6 +16,12 @@ Postgres as a database server is required. For downloading and documentation, vi
     * Enable "Developer mode" from top-right section of the tab.
     * Click on `Load unpacked` and then select the project's extension folder(`aossie-scholar/extension`)
     * The extension is loaded and ready to use.
+
+* #### Workflow automation (Gulp)
+    * Run `npm install` to install required dependencies
+    * Run `gulp` to compile the files to a `dist` folder
+    * The gulp server watches for file changes and automatically   compiles them
+    
  
 * #### setting up postgres - 
 
