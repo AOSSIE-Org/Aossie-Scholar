@@ -27,7 +27,7 @@ gulp.task('imageMin',async function(){
 
 gulp.task('run',gulp.series('copy','uglify','imageMin'))
 
-gulp.task('watch',function(){
+gulp.task('watch',async function(){
     gulp.watch('./src/views/*.html',gulp.series('copy'))
     gulp.watch('./src/css/*.css',gulp.series('copy'))
     gulp.watch('./src/manifest.json',gulp.series('copy'))
