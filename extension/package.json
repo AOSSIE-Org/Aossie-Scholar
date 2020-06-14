@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://gitlab.com/aossie/aossie-scholar/issues"
   },
-  "homepage": "https://gitlab.com/aossie/aossie-scholar#readme"
+  "homepage": "https://gitlab.com/aossie/aossie-scholar#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-terser": "^1.2.0",
+    "gulp-uglify": "^3.0.2"
+  }
 }
