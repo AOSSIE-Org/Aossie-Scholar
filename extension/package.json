@@ -1,0 +1,19 @@
+{
+  "name": "aossie-scholar-extension",
+  "version": "1.0.0",
+  "description": "Extension which computes better metrics for scholars and researchers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/aossie/aossie-scholar.git"
+  },
+  "author": "Aditya Bisoi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/aossie/aossie-scholar/issues"
+  },
+  "homepage": "https://gitlab.com/aossie/aossie-scholar#readme"
+}
