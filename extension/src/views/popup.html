@@ -1,18 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./popup.js"></script>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./popup.js"></script>
+  <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-    <div id="searchDiv">
-        <img src="./Search.png" alt="" srcset="">
-    </div>
+  <header id="head">
+    <p>Aossie Scholar</p>
+  </header>
+
+
+  <div id="searchDiv">
+    <form action="" method="post">
+      <img id="logo" src="./logo_only.png">
+      <input type="text" name="scholarName" id="searchInput">
+    </form>
+    <button type="submit" id="formBtn">Search</button>
+  </div>
+
+  <div id="registerDiv">
     <hr>
-    <div id="registerDiv">
-        <img src="./Register.png" alt="" srcset="">
-    </div>
+    <form action="" method="post">
+      <table>
+        <tr>
+          <td><label id="regLabel" for="regNameInput">Scholar:</label></td>
+          <td><input type="text" name="scholarName" id="regNameInput" disabled></td>
+        </tr>
+        <tr>
+          <td><label id="regLabel" for="regCitationInput">Citations:</label></td>
+          <td><input type="text" name="citationCnt" id="regCitationInput" placeholder="Max (approx)"></td>
+        </tr>
+        <tr>
+          <td><label id="regLabel" for="regCountryInput">Country:</label></td>
+          <td>
+            <select name="countryName" id="regCountryInput">
+            </select>
+          </td>
+        </tr>
+      </table>
+    </form>
+    <button type="submit" id="formBtn">Register</button>
+  </div>
+
+  <footer id="foot">
+    <p>Visit your Google Scholar page to register!</p>
+  </footer>
 </body>
+
 </html>
