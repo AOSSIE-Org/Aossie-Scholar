@@ -49,6 +49,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     alert(response.citations)
                     alert(response.years)
                     alert(response.image)
+                    alert(response.workplace)
+                    alert(response.website)
                 }
             })
         })
