@@ -23,14 +23,21 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
             citArray.push(cit)
             yrArray.push(year)
         }
-        sendResponse({
+        chrome.runtime.sendMessage({
+            purpose: 'profileView',
             titles: titleArray,
             citations:citArray,
             years:yrArray,
-            image:img,
-            workplace:workPlace,
-            website:website
+            image:img
         })
+        // sendResponse({
+        //     titles: titleArray,
+        //     citations:citArray,
+        //     years:yrArray,
+        //     image:img,
+        //     workplace:workPlace,
+        //     website:website
+        // })
     }
      else if (request.intent == 'loadBtn') {
         function check() {
