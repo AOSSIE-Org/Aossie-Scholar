@@ -24,20 +24,10 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
             yrArray.push(year)
         }
         chrome.runtime.sendMessage({
-            purpose: 'profileView',
-            titles: titleArray,
+            intent: 'profileView',
             citations:citArray,
-            years:yrArray,
-            image:img
+            years:yrArray
         })
-        // sendResponse({
-        //     titles: titleArray,
-        //     citations:citArray,
-        //     years:yrArray,
-        //     image:img,
-        //     workplace:workPlace,
-        //     website:website
-        // })
     }
      else if (request.intent == 'loadBtn') {
         function check() {
