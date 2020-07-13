@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
 
         var data = request.scriptOptions
 
-        for(x of data.titles){
+        for (x of data.titles) {
             var d = document.getElementById('di')
             var y = document.createElement('p')
             y.innerHTML = x

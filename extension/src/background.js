@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         var totalCitations = 0
         var gIndex = 0
         for (var i = 0; i < citations.length; i++) {
-            totalCitations += citations[i]
+            totalCitations += parseInt(citations[i])
             if (Math.pow(i + 1, 2) <= totalCitations) {
                 gIndex = i + 1
             }

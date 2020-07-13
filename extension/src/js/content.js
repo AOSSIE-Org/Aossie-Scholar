@@ -1,8 +1,8 @@
-chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
-    if(request.intent=='showRegPanel'){
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    if (request.intent == 'showRegPanel') {
         const div = document.getElementById('gsc_prf_in')
         const authorName = div.innerHTML
-        sendResponse({content:authorName})                                              //Response sent only when on Scholar website
+        sendResponse({ content: authorName })                                              //Response sent only when on Scholar website
     }
     else if (request.intent == 'scrape') {
         var titleArray = []
@@ -25,11 +25,11 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
         }
         chrome.runtime.sendMessage({
             intent: 'profileView',
-            citations:citArray,
-            years:yrArray
+            citations: citArray,
+            years: yrArray
         })
     }
-     else if (request.intent == 'loadBtn') {
+    else if (request.intent == 'loadBtn') {
         function check() {
             setTimeout(function () {
                 var btn = document.getElementById('gsc_bpf_more')
@@ -37,8 +37,8 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
                     btn.click()
                     check()
                 }
-                 else{
-                    sendResponse({status:"true"})
+                else {
+                    sendResponse({ status: "true" })
                 }
             }, 2000)
         }
