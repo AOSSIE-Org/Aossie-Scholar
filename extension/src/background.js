@@ -85,7 +85,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                 if (e == chrome.runtime.lastError) {
                     // The extension isnt supposed to work on chrome://extensions URL
                 }
-                chrome.runtime.sendMessage(null, { scriptOptions: request })
+                chrome.runtime.sendMessage(null, 
+                    {   rawData: request, 
+                        hIndex: hIndex,
+                        gIndex: gIndex,
+                        mIndex: mIndex,
+                        oIndex: oIndex,
+                        hMedian: hMedian,
+                        eIndex: eIndex
+                    })
             })
         })
     }
