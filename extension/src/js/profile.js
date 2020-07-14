@@ -110,21 +110,35 @@ document.addEventListener('DOMContentLoaded', function profile() {
         // Visualise Chart
         graphYears = []
         presentYear = new Date().getFullYear()
-        for(var i=presentYear-10;i<=presentYear;i++){
+        for (var i = presentYear - 10; i <= presentYear; i++) {
             graphYears.push(i)
         }
         var dict = {}
-        for(x of graphYears){
-            count=0
-            for(y of years){
-                if(x==y){
+        for (x of graphYears) {
+            count = 0
+            for (y of years) {
+                if (x == y) {
                     count++
                 }
             }
-            dict[x]=count
+            dict[x] = count
         }
-        console.log(dict)
         console.log(Object.values(dict))
+
+        newDict = {}
+        for (i of graphYears) {
+            sum = 0
+            for (var j = 0; j < response.titles.length; j++) {
+                if (i == years[j]) {
+                    if (citations[j] != "") {
+                        sum += parseInt(citations[j])
+                    }
+                }
+            }
+            newDict[i] = sum
+        }
+        console.log(Object.values(newDict))
+        graphCitations = Object.values(newDict)
         graphPublications = Object.values(dict)
         let myChart = document.getElementById('myChart').getContext('2d')
         let barChart = new Chart(myChart, {
@@ -138,6 +152,12 @@ document.addEventListener('DOMContentLoaded', function profile() {
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
                     data: graphPublications
+                },
+                {
+                    label: 'Citations/ Year',
+                    backgroundColor: 'rgb(231, 203, 138)',
+                    borderColor: 'rgb(231, 203, 138)',
+                    data: graphCitations
                 }]
             },
 
@@ -146,10 +166,17 @@ document.addEventListener('DOMContentLoaded', function profile() {
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
+                    // yAxes: [{
+                    //     ticks: {
+                    //         beginAtZero: true
+                    //     }
+                    // }]
+                    xAxes: [{ stacked: true }],
                     yAxes: [{
+                        stacked: false,
                         ticks: {
-                            beginAtZero: true
-                        }
+                            beginAtZero: true,
+                        },
                     }]
                 }
             }

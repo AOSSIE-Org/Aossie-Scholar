@@ -79,7 +79,7 @@ body {
 
 
 section {
-    padding: 20px;
+    padding: 40px;
 }
 
 /* Table */
@@ -146,7 +146,7 @@ table.alt tbody tr:first-child td {
 
 canvas{
 
-    width:900px !important;
-    height:500px !important;
+    width:1000px !important;
+    height:600px !important;
   
   }
