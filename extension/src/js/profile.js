@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function profile() {
                 break
             }
         }
-        console.log('h-index ' + hIndex)
 
         //g-index
         var totalCitations = 0
@@ -27,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function profile() {
                 break
             }
         }
-        console.log('g-index ' + gIndex)
 
         //m-index
         var mIndex = 0
@@ -35,14 +33,12 @@ document.addEventListener('DOMContentLoaded', function profile() {
         var firstPubYear = (years.filter(Number)).reduce((a, b) => Math.min(a, b))
         timeGap = currentYear - (parseInt(firstPubYear) + 1)
         mIndex = (hIndex / timeGap).toFixed(2)
-        console.log('m-index ' + mIndex)
 
         //o-index
         var oIndex = 0
         maxCitation = citations.reduce((a, b) => Math.max(a, b))
         var product = hIndex * maxCitation
         oIndex = Math.pow(product, (1 / 2)).toFixed(2)
-        console.log('o-index ' + oIndex)
 
         //h-median
         var hCore = []
@@ -67,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function profile() {
             return (values[half - 1] + values[half]) / 2.0;
         }
         hMedian = median(hCore)
-        console.log('h-median ' + hMedian)
 
         //e-index
         var sumCitations = 0
@@ -77,9 +72,6 @@ document.addEventListener('DOMContentLoaded', function profile() {
             }
         }
         var eIndex = ((sumCitations - (hIndex ** 2)) ** (1 / 2)).toFixed(2)
-        console.log('e-index ' + eIndex)
-        console.log(response.titles.length)
-        console.log(sumCitations)
         //Bind data to profile template
         document.getElementById('scholarImage').setAttribute('src', response.image)
         document.getElementById('scholarName').innerText = response.scholarName
@@ -123,7 +115,6 @@ document.addEventListener('DOMContentLoaded', function profile() {
             }
             dict[x] = count
         }
-        console.log(Object.values(dict))
 
         newDict = {}
         for (i of graphYears) {
@@ -137,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function profile() {
             }
             newDict[i] = sum
         }
-        console.log(Object.values(newDict))
         graphCitations = Object.values(newDict)
         graphPublications = Object.values(dict)
         let myChart = document.getElementById('myChart').getContext('2d')
