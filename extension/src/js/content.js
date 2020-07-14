@@ -25,8 +25,12 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         }
         chrome.runtime.sendMessage({
             intent: 'profileView',
+            titles: titleArray,
             citations: citArray,
-            years: yrArray
+            years: yrArray,
+            image: img,
+            workplace: workPlace,
+            website: website
         })
     }
     else if (request.intent == 'loadBtn') {
