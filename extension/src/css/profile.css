@@ -5,7 +5,7 @@ body {
 
 /* Sidenav */
 .sidenav {
-    background: linear-gradient(rgba(0, 0,100, 0.5),rgba(0, 0, 100, 0.5)),url("../images/bg.jpg");
+    background: linear-gradient(rgba(0, 0, 100, 0.5), rgba(0, 0, 100, 0.5)), url("../images/bg.jpg");
     height: 100%;
     width: 480px;
     position: fixed;
@@ -108,7 +108,7 @@ table td {
     padding: 0.75em 0.75em;
 }
 
-table thead tr{
+table thead tr {
     color: red;
 }
 
@@ -144,9 +144,9 @@ table.alt tbody tr:first-child td {
     }
 }
 
-canvas{
+canvas {
 
-    width:1000px !important;
-    height:600px !important;
-  
-  }
+    width: 1000px !important;
+    height: 600px !important;
+
+}

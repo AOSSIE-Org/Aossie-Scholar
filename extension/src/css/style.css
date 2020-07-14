@@ -1,14 +1,14 @@
-body{
+body {
     margin: 0 0 0 0;
     width: 300px;
 }
 
-#registerDiv{
+#registerDiv {
     display: none;
     /* display: block; */
 }
 
-#head{
+#head {
     position: relative;
     top: 0px;
     height: 35px;
@@ -16,7 +16,7 @@ body{
     text-align: center;
 }
 
-#head p{
+#head p {
     margin-top: 0px;
     padding-top: 3px;
     color: rgb(98, 155, 41);
@@ -25,7 +25,7 @@ body{
     letter-spacing: 1px;
 }
 
-#foot{
+#foot {
     position: relative;
     bottom: 0px;
     height: 35px;
@@ -33,16 +33,16 @@ body{
     text-align: center;
 }
 
-#foot p{
+#foot p {
     margin-top: 8px;
     padding-top: 8px;
-    color: 	#383838;
+    color: #383838;
     font-weight: bold;
     font-size: 13px;
     letter-spacing: 1px;
 }
 
-#logo{
+#logo {
     padding-top: 5px;
     display: block;
     margin-left: auto;
@@ -50,7 +50,7 @@ body{
     width: 25%;
 }
 
-#searchInput{
+#searchInput {
     width: 70%;
     padding: 12px 20px 12px 12px;
     margin: 8px 44px 0px 44px;
@@ -61,19 +61,21 @@ body{
     font-weight: bold;
 }
 
-#searchBtn,#regBtn{
-  background-color: #0099FF;
-  border: none;
-  margin: 8px 50px 0px 115px;
-  border-radius: 7px;
-  color: white;
-  padding: 8px 15px;
-  text-decoration: solid;
-  font-weight: bold;
-  cursor: pointer;
+#searchBtn,
+#regBtn {
+    background-color: #0099FF;
+    border: none;
+    margin: 8px 50px 0px 115px;
+    border-radius: 7px;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: solid;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-#regCitationInput,#regCountryInput{
+#regCitationInput,
+#regCountryInput {
     width: 85%;
     padding: 8px 20px 8px 10px;
     display: inline-block;
@@ -84,7 +86,7 @@ body{
     background: white;
 }
 
-#regNameInput{
+#regNameInput {
     width: 85%;
     padding: 8px 20px 8px 10px;
     /* margin-left: 60px; */
@@ -94,7 +96,7 @@ body{
     box-sizing: border-box;
 }
 
-#regLabel{
+#regLabel {
     margin-left: 5px;
     padding-right: 15px;
     font-weight: bold;
