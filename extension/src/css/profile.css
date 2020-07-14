@@ -21,8 +21,8 @@ body {
 .sidenav .profile-image {
     background-color: bisque;
     border-radius: 50%;
-    height: 8em;
-    width: 8em;
+    height: 10em;
+    width: 10em;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -34,7 +34,7 @@ body {
 .sidenav h1 {
     font-family: 'Courier New', Courier, monospace;
     color: #ffffff;
-    font-size: 2em;
+    font-size: 2.5em;
     line-height: 1em;
     margin: 0;
     padding-top: 30px;
@@ -43,7 +43,7 @@ body {
 .sidenav h2 {
     font-family: 'Courier New', Courier, monospace;
     color: #ffffff;
-    font-size: 1.75em;
+    font-size: 2em;
     line-height: 1em;
     margin: 0;
     padding-top: 70px;
@@ -52,7 +52,7 @@ body {
 .sidenav h3 {
     font-family: 'Courier New', Courier, monospace;
     color: #ffffff;
-    font-size: 1.25em;
+    font-size: 1.5em;
     line-height: 1em;
     margin: 0;
     padding-top: 10px;
@@ -62,7 +62,7 @@ body {
     position: relative;
     font-family: 'Courier New', Courier, monospace;
     color: #ffffff;
-    font-size: 1.45em;
+    font-size: 1.6em;
     line-height: 1em;
     margin: 0;
     padding-top: 30px;
