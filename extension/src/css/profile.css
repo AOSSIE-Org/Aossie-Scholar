@@ -28,7 +28,7 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 140px;
-    margin-left: 355px;
+    margin-left: 360px;
 }
 
 .sidenav h1 {
@@ -108,7 +108,7 @@ table td {
     padding: 0.75em 0.75em;
 }
 
-table tbody #thead td{
+table thead tr{
     color: red;
 }
 

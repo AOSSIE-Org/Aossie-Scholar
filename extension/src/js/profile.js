@@ -92,5 +92,20 @@ document.addEventListener('DOMContentLoaded', function profile() {
         document.getElementById('oIndex').innerText = oIndex
         document.getElementById('hMedian').innerText = hMedian
         document.getElementById('eIndex').innerText = eIndex
+        for(var c=0;c<response.titles.length;c++){
+            var thead = document.getElementById('tbody')
+            var tr = document.createElement('tr')
+            var td = document.createElement('td')
+            td.innerText = response.titles[c]
+            tr.appendChild(td)
+            var td = document.createElement('td')
+            td.innerText = response.citations[c]
+            tr.appendChild(td)
+            var td = document.createElement('td')
+            td.innerText = response.years[c]
+            tr.appendChild(td)
+            thead.appendChild(tr)
+        }
+
     })
 })
