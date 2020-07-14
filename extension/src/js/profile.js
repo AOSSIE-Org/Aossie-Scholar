@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
         console.log(response.titles.length)
         console.log(sumCitations)
         //Bind data to profile template
-        document.getElementById('scholarImage').setAttribute('src',response.image)
+        document.getElementById('scholarImage').setAttribute('src', response.image)
         document.getElementById('scholarName').innerText = response.scholarName
         document.getElementById('workplace').innerText = response.workplace
         document.getElementById('pubCount').innerText = response.titles.length
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
         document.getElementById('oIndex').innerText = oIndex
         document.getElementById('hMedian').innerText = hMedian
         document.getElementById('eIndex').innerText = eIndex
-        for(var c=0;c<response.titles.length;c++){
+        for (var c = 0; c < response.titles.length; c++) {
             var thead = document.getElementById('tbody')
             var tr = document.createElement('tr')
             var td = document.createElement('td')
@@ -106,6 +106,54 @@ document.addEventListener('DOMContentLoaded', function profile() {
             tr.appendChild(td)
             thead.appendChild(tr)
         }
+
+        // Visualise Chart
+        graphYears = []
+        presentYear = new Date().getFullYear()
+        for(var i=presentYear-10;i<=presentYear;i++){
+            graphYears.push(i)
+        }
+        var dict = {}
+        for(x of graphYears){
+            count=0
+            for(y of years){
+                if(x==y){
+                    count++
+                }
+            }
+            dict[x]=count
+        }
+        console.log(dict)
+        console.log(Object.values(dict))
+        graphPublications = Object.values(dict)
+        let myChart = document.getElementById('myChart').getContext('2d')
+        let barChart = new Chart(myChart, {
+            type: 'bar',
+
+            // Dataset
+            data: {
+                labels: graphYears,
+                datasets: [{
+                    label: 'Publications/ Year',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: graphPublications
+                }]
+            },
+
+            // Configuration options
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        })
 
     })
 })

@@ -143,3 +143,10 @@ table.alt tbody tr:first-child td {
         font-size: 18px;
     }
 }
+
+canvas{
+
+    width:900px !important;
+    height:500px !important;
+  
+  }

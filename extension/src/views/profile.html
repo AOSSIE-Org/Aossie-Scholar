@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/profile.css">
     <script src="../js/profile.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 
 <body>
@@ -48,6 +49,9 @@
             </table>
         </section>
         <section>
+            <canvas id="myChart"></canvas>
+        </section>
+        <section>
             <div class="table-wrapper">
                 <table class="alt">
                     <thead>
@@ -57,12 +61,7 @@
                             <td>Year</td>
                         </tr>
                     </thead>
-                        <tbody id="tbody">
-                        <!-- <tr>
-                            <td>Item One</td>
-                            <td>Ante turpis integer aliquet porttitor.</td>
-                            <td>29.99</td>
-                        </tr> -->
+                    <tbody id="tbody">
                     </tbody>
                 </table>
             </div>
@@ -70,7 +69,6 @@
 
 
     </div>
-
 </body>
 
 </html>
