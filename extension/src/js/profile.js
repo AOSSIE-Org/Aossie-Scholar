@@ -78,7 +78,19 @@ document.addEventListener('DOMContentLoaded', function profile() {
         }
         var eIndex = ((sumCitations - (hIndex ** 2)) ** (1 / 2)).toFixed(2)
         console.log('e-index ' + eIndex)
-
-        
+        console.log(response.titles.length)
+        console.log(sumCitations)
+        //Bind data to profile template
+        document.getElementById('scholarImage').setAttribute('src',response.image)
+        document.getElementById('scholarName').innerText = response.scholarName
+        document.getElementById('workplace').innerText = response.workplace
+        document.getElementById('pubCount').innerText = response.titles.length
+        document.getElementById('citCount').innerText = sumCitations
+        document.getElementById('hIndex').innerText = hIndex
+        document.getElementById('gIndex').innerText = gIndex
+        document.getElementById('mIndex').innerText = mIndex
+        document.getElementById('oIndex').innerText = oIndex
+        document.getElementById('hMedian').innerText = hMedian
+        document.getElementById('eIndex').innerText = eIndex
     })
 })
