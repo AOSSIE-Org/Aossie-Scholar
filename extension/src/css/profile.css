@@ -5,16 +5,16 @@ body {
 
 /* Sidenav */
 .sidenav {
-    background-image: url("../images/bg.jpg");
+    background: linear-gradient(rgba(0, 0,100, 0.5),rgba(0, 0, 100, 0.5)),url("../images/bg.jpg");
     height: 100%;
-    width: 500px;
+    width: 480px;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
     overflow-x: hidden;
     padding-top: 20px;
-    padding-right: 40px;
+    padding-right: 60px;
     text-align: right;
 }
 
@@ -28,7 +28,7 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 140px;
-    margin-left: 340px;
+    margin-left: 355px;
 }
 
 .sidenav h1 {
@@ -40,11 +40,29 @@ body {
     padding-top: 30px;
 }
 
+.sidenav h2 {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
+    font-size: 1.75em;
+    line-height: 1em;
+    margin: 0;
+    padding-top: 70px;
+}
+
+.sidenav h3 {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
+    font-size: 1.25em;
+    line-height: 1em;
+    margin: 0;
+    padding-top: 10px;
+}
+
 .sidenav p {
     position: relative;
     font-family: 'Courier New', Courier, monospace;
     color: #ffffff;
-    font-size: 1.25em;
+    font-size: 1.45em;
     line-height: 1em;
     margin: 0;
     padding-top: 30px;
@@ -63,8 +81,6 @@ body {
 section {
     padding: 20px;
 }
-
-
 
 /* Table */
 
@@ -92,16 +108,8 @@ table td {
     padding: 0.75em 0.75em;
 }
 
-table th {
-    color: #787878;
-    font-size: 0.9em;
-    font-weight: 400;
-    padding: 0 0.75em 0.75em 0.75em;
-    text-align: left;
-}
-
-table thead {
-    border-bottom: solid 2px #efefef;
+table tbody #thead td{
+    color: red;
 }
 
 table tfoot {
@@ -124,14 +132,6 @@ table.alt tbody tr td:first-child {
 
 table.alt tbody tr:first-child td {
     border-top-width: 2px;
-}
-
-table.alt thead {
-    border-bottom: 0;
-}
-
-table.alt tfoot {
-    border-top: 0;
 }
 
 @media screen and (max-height: 450px) {
