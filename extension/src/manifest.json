@@ -17,7 +17,7 @@
     }
     ],
     "background": {
-        "scripts": ["background.js"],
+        "page": "background.html",
         "persistent": false
     },
     "content_security_policy": "script-src 'self' https://cdn.jsdelivr.net; object-src 'self'",
