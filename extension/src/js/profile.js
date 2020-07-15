@@ -171,6 +171,21 @@ document.addEventListener('DOMContentLoaded', function profile() {
                 }
             }
         })
-
+        chrome.runtime.sendMessage({
+            intent: 'sendToServer',
+            scholarImage:response.image,
+            scholarName:response.scholarName,
+            workplace:response.workplace,
+            pubCount:response.titles.length,
+            citCount:sumCitations,
+            hIndex:hIndex,
+            gIndex:gIndex,
+            mIndex:mIndex,
+            oIndex:oIndex,
+            hMedian:hMedian,
+            eIndex:eIndex,
+            citations: citations,
+            years:years,
+        })
     })
 })
