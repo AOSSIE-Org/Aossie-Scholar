@@ -171,6 +171,8 @@ document.addEventListener('DOMContentLoaded', function profile() {
                 }
             }
         })
+        newCitations=response.citations.filter(Number)
+        newYears=response.years.filter(Number)
         chrome.runtime.sendMessage({
             intent: 'sendToServer',
             scholarImage:response.image,
@@ -184,8 +186,8 @@ document.addEventListener('DOMContentLoaded', function profile() {
             oIndex:oIndex,
             hMedian:hMedian,
             eIndex:eIndex,
-            citations: citations,
-            years:years,
+            citations: newCitations,
+            years:newYears,
         })
     })
 })
