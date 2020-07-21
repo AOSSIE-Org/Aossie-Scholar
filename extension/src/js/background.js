@@ -1,11 +1,33 @@
 var arr=[]
+var purpose = ""
+
+function createProfile() {
+    chrome.tabs.create({
+        url: './views/profile.html'
+    })
+}
+
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.intent == 'profileView') {
         arr=request
-        chrome.tabs.create({ url: './views/profile.html' })
+        purpose = "calculateData"
+        createProfile()
+    }
+    if (request.intent == 'search') {
+        const searchTerm = request.searchTerm.split(" ").join("+")
+        axios.get(`http://127.0.0.1:8000/api?search=${searchTerm}`)
+            .then((response) => {
+                arr = response
+                purpose = "displayData"
+            })
+            .then(createProfile())
+            .catch((error) => console.log(error, error.response))
     }
         if(request=='fromProfileJs'){
-            sendResponse(arr)
+            sendResponse({
+                data: arr,
+                intent: purpose
+            })
         }
         if (request.intent == 'sendToServer') {
             axios.post('http://127.0.0.1:8000/api/',{
