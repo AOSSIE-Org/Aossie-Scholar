@@ -190,45 +190,24 @@ document.addEventListener('DOMContentLoaded', function profile() {
             }
             var eIndex = ((sumCitations - (hIndex ** 2)) ** (1 / 2)).toFixed(2)
 
-            //hc-index
-            // sc=[]
-            // hcIndex=0
-            // for(var i=0;i<response.titles.length;i++){
-            //     if(citations[i]!="" && years[i]!=""){
-            //         sc.push((4/(currentYear-parseInt(years[i])+1))*parseInt(citations[i]))
-            //     }
-            // }
-            // for (var i = 0; i < sc.length; i++) {
-            //     if (i + 1 >= sc[i]) {
-            //         hcIndex = i + 1
-            //         break
-            //     }
-            // }
-            // console.log(hcIndex)
-            // console.log(sc)
-
-            //hc-index(Not less than 1, coeff=4)
-            // sc=[]
-            // hcIndex=0
-            // for(var i=0;i<response.titles.length;i++){
-            //     if(citations[i]!="" && years[i]!=""){
-            //         var temp=(currentYear-parseInt(years[i])+1)
-            //         if(temp<=5){
-            //         sc.push((5/temp)*parseInt(citations[i]))
-            //         }
-            //         sc.push(parseInt(citations[i]))
-            //     }
-            // }
-            // for (var i = 0; i < sc.length; i++) {
-            //     if (i + 1 >= sc[i]) {
-            //         hcIndex = i + 1
-            //         break
-            //     }
-            // }
-            // console.log(hcIndex)
-            // console.log(sc)
-
-
+            //scholar index
+            sc=[]
+            hcIndex=0
+            for(var i=0;i<response.titles.length;i++){
+                if(citations[i]!="" && years[i]!=""){
+                    var temp=(currentYear-parseInt(years[i])+1)
+                    if(temp<=5){
+                    sc.push((5/temp)*parseInt(citations[i]))
+                    }
+                    sc.push(parseInt(citations[i]))
+                }
+            }
+            for (var i = 0; i < sc.length; i++) {
+                if (i + 1 >= sc[i]) {
+                    hcIndex = i + 1
+                    break
+                }
+            }
 
             // //Changes
             newCitations = response.citations.filter(Number)
