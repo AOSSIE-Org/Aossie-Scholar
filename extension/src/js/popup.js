@@ -32,6 +32,15 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     })
 
+    document.getElementById('searchForm').addEventListener('submit',(e)=>{
+        e.preventDefault()
+        const searchTerm = document.getElementById('searchInput').value
+        chrome.runtime.sendMessage({
+            intent: 'search',
+            searchTerm: searchTerm
+        })
+    })
+
     document.getElementById('regBtn').addEventListener('click', function () {
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             chrome.tabs.sendMessage(tabs[0].id, { intent: 'loadBtn' }, function (response) {
