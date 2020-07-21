@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
     function appendToPage(response) {
         var titles = response.titles
         var citations = response.citations
+        var coauthors = response.coauthors
         var years = response.years
         for (var i = 0; i < response.pubCount; i++) {
             if (citations[i] == undefined) {
@@ -24,11 +25,15 @@ document.addEventListener('DOMContentLoaded', function profile() {
         document.getElementById('oIndex').innerText = response.oIndex
         document.getElementById('hMedian').innerText = response.hMedian
         document.getElementById('eIndex').innerText = response.eIndex
+        document.getElementById('sIndex').innerText = response.sIndex
         for (var c = 0; c < response.pubCount; c++) {
             var thead = document.getElementById('tbody')
             var tr = document.createElement('tr')
             var td = document.createElement('td')
             td.innerText = titles[c]
+            tr.appendChild(td)
+            var td = document.createElement('td')
+            td.innerText = coauthors[c]
             tr.appendChild(td)
             var td = document.createElement('td')
             td.innerText = citations[c]
@@ -114,6 +119,46 @@ document.addEventListener('DOMContentLoaded', function profile() {
     chrome.runtime.sendMessage('fromProfileJs', function (response) {
         if (response.intent == "calculateData") {
             response = response.data
+            newCoAuthors = []
+            demoDict = {}
+
+            for (var i = 0; i < response.coAuthors.length; i++) {
+                if (typeof (response.coAuthors[i]) != "number") {
+                    newCoAuthors.push(response.coAuthors[i])
+                }
+            }
+
+
+            var sanitized = []
+
+
+
+            let promises = [];
+            for (var i = 0; i < newCoAuthors.length; i++) {
+                promises.push(
+                    window.axios.get(`https://scholar.google.com${newCoAuthors[i]}`)
+                    .then(response => {
+                        var htmlData = response.data
+                        var newString = htmlData.slice(htmlData.lastIndexOf('<div id="gsc_vcd_table"><div class="gs_scl"><div class="gsc_vcd_field">Authors</div><div class="gsc_vcd_value">') + 111, htmlData.length)
+                        var count = newString.slice(0, newString.indexOf('</div></div>')).split(",").length
+                        var url = response.config.url.slice(26, response.config.url.length)
+                        demoDict[url] = count
+                    })
+                )
+            }
+
+            Promise.all(promises).then(() => {
+                for (var n = 0; n < response.coAuthors.length; n++) {
+                    if (typeof (response.coAuthors[n]) == 'number') {
+                        sanitized.push(response.coAuthors[n])
+                    } else {
+                        for (let key in demoDict) {
+                            if(key==response.coAuthors[n]){
+                                sanitized.push(demoDict[key])
+                            }
+                        }
+                    }
+                }
 
             // Compute metrics
             var citations = response.citations
@@ -192,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
 
             //scholar index
             sc=[]
-            hcIndex=0
+            sIndex=0
             for(var i=0;i<response.titles.length;i++){
                 if(citations[i]!="" && years[i]!=""){
                     var temp=(currentYear-parseInt(years[i])+1)
@@ -204,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
             }
             for (var i = 0; i < sc.length; i++) {
                 if (i + 1 >= sc[i]) {
-                    hcIndex = i + 1
+                    sIndex = i + 1
                     break
                 }
             }
@@ -226,6 +271,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
                 oIndex: oIndex,
                 hMedian: hMedian,
                 eIndex: eIndex,
+                sIndex: sIndex,
                 titles: response.titles,
                 citations: newCitations,
                 coauthors: sanitized,
@@ -233,6 +279,8 @@ document.addEventListener('DOMContentLoaded', function profile() {
             }, function (response) {
                 appendToPage(response)
             })
+        });
+
         }
         
         if (response.intent == "displayData") {
