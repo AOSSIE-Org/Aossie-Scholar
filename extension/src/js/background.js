@@ -31,20 +31,24 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         }
         if (request.intent == 'sendToServer') {
             axios.post('http://127.0.0.1:8000/api/',{
-            "author_name":request.scholarName,
-            "picture_url":request.scholarImage,
-            "workplace":request.workplace,
-            "publications":request.pubCount,
-            "total_citations":request.citCount,
-            "hindex":request.hIndex,
-            "gindex":request.gIndex,
-            "mindex":request.mIndex,
-            "oindex":request.oIndex,
-            "eindex":request.eIndex,
-            "hmedian":request.hMedian,
-            "publication_titles":request.titles,
-            "citations":request.citations,
-            "year":request.years
+                "scholarName": request.scholarName,
+                "scholarImage": request.scholarImage,
+                "workplace": request.workplace,
+                "pubCount": request.pubCount,
+                "citCount": request.citCount,
+                "hIndex": request.hIndex,
+                "gIndex": request.gIndex,
+                "mIndex": request.mIndex,
+                "oIndex": request.oIndex,
+                "eIndex": request.eIndex,
+                "hMedian": request.hMedian,
+                "sIndex": request.sIndex,
+                "TNCc": request.TNCc,
+                "titles": request.titles,
+                "coauthors": request.coauthors,
+                "citations": request.citations,
+                "nCitations": request.nCitations,
+                "years": request.years
         })
             .then((response)=>console.log(response))
             .catch((error)=>console.log(error,error.response))
