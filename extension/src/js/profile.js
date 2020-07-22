@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
         var citations = response.citations
         var coauthors = response.coauthors
         var years = response.years
+        var nCitations = response.nCitations
         for (var i = 0; i < response.pubCount; i++) {
             if (citations[i] == undefined) {
                 citations[i] = ""
@@ -26,6 +27,9 @@ document.addEventListener('DOMContentLoaded', function profile() {
         document.getElementById('hMedian').innerText = response.hMedian
         document.getElementById('eIndex').innerText = response.eIndex
         document.getElementById('sIndex').innerText = response.sIndex
+        document.getElementById('sIndex').innerText = response.sIndex
+        document.getElementById('TNCc').innerText = response.TNCc
+
         for (var c = 0; c < response.pubCount; c++) {
             var thead = document.getElementById('tbody')
             var tr = document.createElement('tr')
@@ -33,10 +37,13 @@ document.addEventListener('DOMContentLoaded', function profile() {
             td.innerText = titles[c]
             tr.appendChild(td)
             var td = document.createElement('td')
+            td.innerText = citations[c]
+            tr.appendChild(td)
+            var td = document.createElement('td')
             td.innerText = coauthors[c]
             tr.appendChild(td)
             var td = document.createElement('td')
-            td.innerText = citations[c]
+            td.innerText = nCitations[c]
             tr.appendChild(td)
             var td = document.createElement('td')
             td.innerText = years[c]
@@ -254,6 +261,44 @@ document.addEventListener('DOMContentLoaded', function profile() {
                 }
             }
 
+            newnCitations = nCitations.filter(Number)
+
+                //TNCc
+                var TNCc=0
+                function getData(country) {
+                    return new Promise(function (resolve, reject) {
+                        var url = "scimagojr.xlsx";
+                        var req = new XMLHttpRequest();
+                        req.open("GET", url, true);
+                        req.responseType = "arraybuffer";
+                        req.onload = () => {
+                            var data = new Uint8Array(req.response);
+                            var workbook = XLSX.read(data, {
+                                type: "array"
+                            })
+                            var first_sheet_name = workbook.SheetNames[0];
+                            var worksheet = workbook.Sheets[first_sheet_name];
+                            var excelData = XLSX.utils.sheet_to_json(worksheet, {
+                                raw: true
+                            })
+                            for (var i = 0; i < excelData.length; i++) {
+                                if (excelData[i]['Country'] == country) {
+                                    resolve(excelData[i]['Citations per document'])
+                                }
+                            }
+
+                        }
+                        req.send()
+                    })
+
+                }
+                getData('Brazil').then(function (data) {
+                    var sumNCitations = 0
+                    for (var i = 0; i < newnCitations.length; i++) {
+                        sumNCitations += newnCitations[i]
+                    }
+                TNCc =sumNCitations * (24.66 / data)
+
             // //Changes
             newCitations = response.citations.filter(Number)
             newYears = response.years.filter(Number)
@@ -279,6 +324,8 @@ document.addEventListener('DOMContentLoaded', function profile() {
             }, function (response) {
                 appendToPage(response)
             })
+        })
+
         });
 
         }
