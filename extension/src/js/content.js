@@ -16,6 +16,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         const img = document.getElementById('gsc_prf_pup-img').getAttribute('src')
         const workPlace = document.getElementsByClassName("gsc_prf_il")[0].innerText
         const website = document.getElementById("gsc_prf_ivh").getElementsByTagName("a")[0].getAttribute("href")
+        var country = request.country
 
         for (var i = 0; i < titles.length; i++) {
             var title = titles[i].textContent
@@ -33,7 +34,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             years: yrArray,
             image: img,
             workplace: workPlace,
-            website: website
+            website: website,
+            country: country
         })
     }
     else if (request.intent == 'loadBtn') {

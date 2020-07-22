@@ -41,18 +41,22 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     })
 
-    document.getElementById('regBtn').addEventListener('click', function () {
+    function scrape(country) {
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, { intent: 'scrape', country:country })
+        })
+    }
+
+    document.getElementById('regForm').addEventListener('submit',(e)=>{
+        e.preventDefault()
+        const country = document.getElementById('regCountryInput').value
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             chrome.tabs.sendMessage(tabs[0].id, { intent: 'loadBtn' }, function (response) {
                 if (response.status) {
-                    scrape()
+                    scrape(country)
                 }
             })
         })
     })
-    function scrape() {
-        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, { intent: 'scrape' })
-        })
-    }
+
 })

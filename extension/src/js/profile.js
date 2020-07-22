@@ -264,6 +264,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
             newnCitations = nCitations.filter(Number)
 
                 //TNCc
+                var country = response.country
                 var TNCc=0
                 function getData(country) {
                     return new Promise(function (resolve, reject) {
@@ -292,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
                     })
 
                 }
-                getData('Brazil').then(function (data) {
+                getData(country).then(function (data) {
                     var sumNCitations = 0
                     for (var i = 0; i < newnCitations.length; i++) {
                         sumNCitations += newnCitations[i]
