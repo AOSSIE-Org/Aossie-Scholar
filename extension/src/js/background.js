@@ -30,6 +30,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             })
         }
         if (request.intent == 'sendToServer') {
+            sendResponse(request)
             axios.post('http://127.0.0.1:8000/api/',{
                 "scholarName": request.scholarName,
                 "scholarImage": request.scholarImage,
