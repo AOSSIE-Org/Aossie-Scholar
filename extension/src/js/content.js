@@ -4,9 +4,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         const div = document.getElementById('gsc_prf_in')
         const authorName = div.innerHTML
         scholarName = authorName
-        sendResponse({ content: authorName })                                              //Response sent only when on Scholar website
-    }
-    else if (request.intent == 'scrape') {
+        sendResponse({
+            content: authorName
+        }) //Response sent only when on Scholar website
+    } else if (request.intent == 'scrape') {
         var titleArray = []
         var citArray = []
         var yrArray = []
@@ -37,17 +38,17 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             website: website,
             country: country
         })
-    }
-    else if (request.intent == 'loadBtn') {
+    } else if (request.intent == 'loadBtn') {
         function check() {
             setTimeout(function () {
                 var btn = document.getElementById('gsc_bpf_more')
                 if (btn.getAttribute('disabled') == null) {
                     btn.click()
                     check()
-                }
-                else {
-                    sendResponse({ status: "true" })
+                } else {
+                    sendResponse({
+                        status: "true"
+                    })
                 }
             }, 2000)
         }

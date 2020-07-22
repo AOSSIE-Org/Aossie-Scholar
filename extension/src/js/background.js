@@ -1,4 +1,4 @@
-var arr=[]
+var arr = []
 var purpose = ""
 
 function createProfile() {
@@ -9,7 +9,7 @@ function createProfile() {
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.intent == 'profileView') {
-        arr=request
+        arr = request
         purpose = "calculateData"
         createProfile()
     }
@@ -23,15 +23,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             .then(createProfile())
             .catch((error) => console.log(error, error.response))
     }
-        if(request=='fromProfileJs'){
-            sendResponse({
-                data: arr,
-                intent: purpose
-            })
-        }
-        if (request.intent == 'sendToServer') {
-            sendResponse(request)
-            axios.post('http://127.0.0.1:8000/api/',{
+    if (request == 'fromProfileJs') {
+        sendResponse({
+            data: arr,
+            intent: purpose
+        })
+    }
+    if (request.intent == 'sendToServer') {
+        sendResponse(request)
+        axios.post('http://127.0.0.1:8000/api/', {
                 "scholarName": request.scholarName,
                 "scholarImage": request.scholarImage,
                 "workplace": request.workplace,
@@ -50,8 +50,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                 "citations": request.citations,
                 "nCitations": request.nCitations,
                 "years": request.years
-        })
-            .then((response)=>console.log(response))
-            .catch((error)=>console.log(error,error.response))
-        }
+            })
+            .then((response) => console.log(response))
+            .catch((error) => console.log(error, error.response))
+    }
 })

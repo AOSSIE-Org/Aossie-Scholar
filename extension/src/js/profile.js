@@ -160,112 +160,113 @@ document.addEventListener('DOMContentLoaded', function profile() {
                         sanitized.push(response.coAuthors[n])
                     } else {
                         for (let key in demoDict) {
-                            if(key==response.coAuthors[n]){
+                            if (key == response.coAuthors[n]) {
                                 sanitized.push(demoDict[key])
                             }
                         }
                     }
                 }
 
-            // Compute metrics
-            var citations = response.citations
-            citations.sort(function (a, b) {
-                return b - a
-            })
-            var years = response.years
+                // Compute metrics
+                var citations = response.citations
+                citations.sort(function (a, b) {
+                    return b - a
+                })
+                var years = response.years
 
-            //h-index
-            var hIndex = 0
-            for (var i = 0; i < citations.length; i++) {
-                if (i + 1 >= citations[i]) {
-                    hIndex = i + 1
-                    break
-                }
-            }
-
-            //g-index
-            var totalCitations = 0
-            var gIndex = 0
-            for (var i = 0; i < citations.length; i++) {
-                totalCitations += parseInt(citations[i])
-                if (Math.pow(i + 1, 2) <= totalCitations) {
-                    gIndex = i + 1
-                } else {
-                    break
-                }
-            }
-
-            //m-index
-            var mIndex = 0
-            currentYear = new Date().getFullYear()
-            var firstPubYear = (years.filter(Number)).reduce((a, b) => Math.min(a, b))
-            timeGap = currentYear - (parseInt(firstPubYear) + 1)
-            mIndex = (hIndex / timeGap).toFixed(2)
-
-            //o-index
-            var oIndex = 0
-            maxCitation = citations.reduce((a, b) => Math.max(a, b))
-            var product = hIndex * maxCitation
-            oIndex = Math.pow(product, (1 / 2)).toFixed(2)
-
-            //h-median
-            var hCore = []
-            var hMedian = 0
-            citations.forEach(el => {
-                if (el > hIndex) {
-                    hCore.push(el)
-                }
-            })
-
-            function median(values) {
-                if (values.length === 0) return 0;
-
-                values.sort(function (a, b) {
-                    return a - b;
-                });
-
-                var half = Math.floor(values.length / 2);
-
-                if (values.length % 2)
-                    return values[half];
-
-                return (values[half - 1] + values[half]) / 2.0;
-            }
-            hMedian = median(hCore)
-
-            //e-index
-            var sumCitations = 0
-            for (var i = 0; i < citations.length; i++) {
-                if (citations[i] != "") {
-                    sumCitations += parseInt(citations[i])
-                }
-            }
-            var eIndex = ((sumCitations - (hIndex ** 2)) ** (1 / 2)).toFixed(2)
-
-            //scholar index
-            sc=[]
-            sIndex=0
-            for(var i=0;i<response.titles.length;i++){
-                if(citations[i]!="" && years[i]!=""){
-                    var temp=(currentYear-parseInt(years[i])+1)
-                    if(temp<=5){
-                    sc.push((5/temp)*parseInt(citations[i]))
+                //h-index
+                var hIndex = 0
+                for (var i = 0; i < citations.length; i++) {
+                    if (i + 1 >= citations[i]) {
+                        hIndex = i + 1
+                        break
                     }
-                    sc.push(parseInt(citations[i]))
                 }
-            }
-            for (var i = 0; i < sc.length; i++) {
-                if (i + 1 >= sc[i]) {
-                    sIndex = i + 1
-                    break
-                }
-            }
 
-            newnCitations = nCitations.filter(Number)
+                //g-index
+                var totalCitations = 0
+                var gIndex = 0
+                for (var i = 0; i < citations.length; i++) {
+                    totalCitations += parseInt(citations[i])
+                    if (Math.pow(i + 1, 2) <= totalCitations) {
+                        gIndex = i + 1
+                    } else {
+                        break
+                    }
+                }
+
+                //m-index
+                var mIndex = 0
+                currentYear = new Date().getFullYear()
+                var firstPubYear = (years.filter(Number)).reduce((a, b) => Math.min(a, b))
+                timeGap = currentYear - (parseInt(firstPubYear) + 1)
+                mIndex = (hIndex / timeGap).toFixed(2)
+
+                //o-index
+                var oIndex = 0
+                maxCitation = citations.reduce((a, b) => Math.max(a, b))
+                var product = hIndex * maxCitation
+                oIndex = Math.pow(product, (1 / 2)).toFixed(2)
+
+                //h-median
+                var hCore = []
+                var hMedian = 0
+                citations.forEach(el => {
+                    if (el > hIndex) {
+                        hCore.push(el)
+                    }
+                })
+
+                function median(values) {
+                    if (values.length === 0) return 0;
+
+                    values.sort(function (a, b) {
+                        return a - b;
+                    });
+
+                    var half = Math.floor(values.length / 2);
+
+                    if (values.length % 2)
+                        return values[half];
+
+                    return (values[half - 1] + values[half]) / 2.0;
+                }
+                hMedian = median(hCore)
+
+                //e-index
+                var sumCitations = 0
+                for (var i = 0; i < citations.length; i++) {
+                    if (citations[i] != "") {
+                        sumCitations += parseInt(citations[i])
+                    }
+                }
+                var eIndex = ((sumCitations - (hIndex ** 2)) ** (1 / 2)).toFixed(2)
+
+                //scholar index
+                sc = []
+                sIndex = 0
+                for (var i = 0; i < response.titles.length; i++) {
+                    if (citations[i] != "" && years[i] != "") {
+                        var temp = (currentYear - parseInt(years[i]) + 1)
+                        if (temp <= 5) {
+                            sc.push((5 / temp) * parseInt(citations[i]))
+                        }
+                        sc.push(parseInt(citations[i]))
+                    }
+                }
+                for (var i = 0; i < sc.length; i++) {
+                    if (i + 1 >= sc[i]) {
+                        sIndex = i + 1
+                        break
+                    }
+                }
+
+                newnCitations = nCitations.filter(Number)
 
                 //TNCc
                 var country = response.country
-                var TNCc=0
+                var TNCc = 0
+
                 function getData(country) {
                     return new Promise(function (resolve, reject) {
                         var url = "scimagojr.xlsx";
@@ -298,45 +299,45 @@ document.addEventListener('DOMContentLoaded', function profile() {
                     for (var i = 0; i < newnCitations.length; i++) {
                         sumNCitations += newnCitations[i]
                     }
-                TNCc =sumNCitations * (24.66 / data)
+                    TNCc = sumNCitations * (24.66 / data)
 
-            // //Changes
-            newCitations = response.citations.filter(Number)
-            newYears = response.years.filter(Number)
+                    // //Changes
+                    newCitations = response.citations.filter(Number)
+                    newYears = response.years.filter(Number)
 
-            chrome.runtime.sendMessage({
-                intent: 'sendToServer',
-                    scholarImage: response.image,
-                    scholarName: response.scholarName,
-                    workplace: response.workplace,
-                    pubCount: response.titles.length,
-                    citCount: sumCitations,
-                    hIndex: hIndex,
-                    gIndex: gIndex,
-                    mIndex: mIndex,
-                    oIndex: oIndex,
-                    hMedian: hMedian,
-                    eIndex: eIndex,
-                    sIndex: sIndex,
-                    titles: response.titles,
-                    citations: newCitations,
-                    nCitations: newnCitations,
-                    TNCc: TNCc,
-                    coauthors: sanitized,
-                    years: newYears,
-            }, function (response) {
-                appendToPage(response)
-            })
-        })
+                    chrome.runtime.sendMessage({
+                        intent: 'sendToServer',
+                        scholarImage: response.image,
+                        scholarName: response.scholarName,
+                        workplace: response.workplace,
+                        pubCount: response.titles.length,
+                        citCount: sumCitations,
+                        hIndex: hIndex,
+                        gIndex: gIndex,
+                        mIndex: mIndex,
+                        oIndex: oIndex,
+                        hMedian: hMedian,
+                        eIndex: eIndex,
+                        sIndex: sIndex,
+                        titles: response.titles,
+                        citations: newCitations,
+                        nCitations: newnCitations,
+                        TNCc: TNCc,
+                        coauthors: sanitized,
+                        years: newYears,
+                    }, function (response) {
+                        appendToPage(response)
+                    })
+                })
 
-        });
+            });
 
         }
-        
+
         if (response.intent == "displayData") {
             appendToPage(response.data.data[0])
         }
     })
-    
+
 
 })
