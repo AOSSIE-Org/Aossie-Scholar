@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from metrics.models import ScholarProfile
+from metrics.models import ScholarData
 
-class ScholarProfileSerializer(serializers.ModelSerializer):
-	class Meta:
-		model = ScholarProfile
-		fields = '__all__'
+class ScholarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ScholarData
+        fields = '__all__'
