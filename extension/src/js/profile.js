@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', function profile() {
             if (years[i] == undefined) {
                 years[i] = ""
             }
+            if (nCitations[i] == undefined) {
+                nCitations[i] = ""
+            }
         }
 
         //Bind data to profile template
