@@ -51,7 +51,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                 "nCitations": request.nCitations,
                 "years": request.years
             })
-            .then((response) => console.log(response))
             .catch((error) => console.log(error, error.response))
     }
 })

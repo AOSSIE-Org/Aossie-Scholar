@@ -261,6 +261,14 @@ document.addEventListener('DOMContentLoaded', function profile() {
                     }
                 }
 
+                //Normalized Citations
+                var nCitations = []
+                for (var i = 0; i < citations.length; i++) {
+                    if (citations != "") {
+                        nCitations.push(Math.round(parseInt(citations[i]) / sanitized[i]))
+                    }
+                }
+
                 newnCitations = nCitations.filter(Number)
 
                 //TNCc
