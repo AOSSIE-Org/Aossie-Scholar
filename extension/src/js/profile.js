@@ -33,25 +33,47 @@ document.addEventListener('DOMContentLoaded', function profile() {
         document.getElementById('sIndex').innerText = response.sIndex
         document.getElementById('TNCc').innerText = response.TNCc
 
-        for (var c = 0; c < response.pubCount; c++) {
-            var thead = document.getElementById('tbody')
-            var tr = document.createElement('tr')
-            var td = document.createElement('td')
-            td.innerText = titles[c]
-            tr.appendChild(td)
-            var td = document.createElement('td')
-            td.innerText = citations[c]
-            tr.appendChild(td)
-            var td = document.createElement('td')
-            td.innerText = coauthors[c]
-            tr.appendChild(td)
-            var td = document.createElement('td')
-            td.innerText = nCitations[c]
-            tr.appendChild(td)
-            var td = document.createElement('td')
-            td.innerText = years[c]
-            tr.appendChild(td)
-            thead.appendChild(tr)
+        var currentPage = 1
+        sendData(currentPage)
+
+        function scrollHandler() {
+            var wrap = document.getElementById('tbody')
+            var height = wrap.offsetHeight
+            var yoffset = window.pageYOffset
+            var y = yoffset + window.innerHeight
+            if (y > height) {
+                currentPage += 1
+                sendData(currentPage)
+            }
+        }
+        window.onscroll = scrollHandler
+
+        function sendData(page) {
+            var pagenumber = page
+            var startrow = ((pagenumber - 1) * 10) + 1
+            var endrow = pagenumber * 10
+            for (var c = startrow; c < endrow; c++) {
+                if (titles[c] != undefined) {
+                    var thead = document.getElementById('tbody')
+                    var tr = document.createElement('tr')
+                    var td = document.createElement('td')
+                    td.innerText = titles[c]
+                    tr.appendChild(td)
+                    var td = document.createElement('td')
+                    td.innerText = citations[c]
+                    tr.appendChild(td)
+                    var td = document.createElement('td')
+                    td.innerText = coauthors[c]
+                    tr.appendChild(td)
+                    var td = document.createElement('td')
+                    td.innerText = nCitations[c]
+                    tr.appendChild(td)
+                    var td = document.createElement('td')
+                    td.innerText = years[c]
+                    tr.appendChild(td)
+                    thead.appendChild(tr)
+                }
+            }
         }
 
         // Visualise Chart
