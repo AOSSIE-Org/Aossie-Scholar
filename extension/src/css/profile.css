@@ -1,0 +1,152 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+
+/* Sidenav */
+.sidenav {
+    background: linear-gradient(rgba(0, 0, 100, 0.5), rgba(0, 0, 100, 0.5)), url("../images/bg.jpg");
+    height: 100%;
+    width: 480px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    padding-right: 60px;
+    text-align: right;
+}
+
+.sidenav .profile-image {
+    background-color: bisque;
+    border-radius: 50%;
+    height: 10em;
+    width: 10em;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 140px;
+    margin-left: 360px;
+}
+
+.sidenav h1 {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
+    font-size: 2.5em;
+    line-height: 1em;
+    margin: 0;
+    padding-top: 30px;
+}
+
+.sidenav h2 {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
+    font-size: 2em;
+    line-height: 1em;
+    margin: 0;
+    padding-top: 70px;
+}
+
+.sidenav h3 {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
+    font-size: 1.5em;
+    line-height: 1em;
+    margin: 0;
+    padding-top: 10px;
+}
+
+.sidenav p {
+    position: relative;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
+    font-size: 1.6em;
+    line-height: 1em;
+    margin: 0;
+    padding-top: 30px;
+}
+
+/* Content */
+.main {
+    margin-left: 550px;
+    /* Same as the width of the sidenav */
+    font-size: 18px;
+    /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+
+section {
+    padding: 40px;
+}
+
+/* Table */
+
+.table-wrapper {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+}
+
+table {
+    margin: 0 0 2em 0;
+    width: 100%;
+}
+
+table tbody tr {
+    border: solid 1px #efefef;
+    border-left: 0;
+    border-right: 0;
+}
+
+table tbody tr:nth-child(2n + 1) {
+    background-color: #f7f7f7;
+}
+
+table td {
+    padding: 0.75em 0.75em;
+}
+
+table thead tr {
+    color: red;
+}
+
+table tfoot {
+    border-top: solid 2px #efefef;
+}
+
+table.alt {
+    border-collapse: separate;
+}
+
+table.alt tbody tr td {
+    border: solid 2px #efefef;
+    border-left-width: 0;
+    border-top-width: 0;
+}
+
+table.alt tbody tr td:first-child {
+    border-left-width: 2px;
+}
+
+table.alt tbody tr:first-child td {
+    border-top-width: 2px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+canvas {
+
+    width: 1000px !important;
+    height: 600px !important;
+
+}

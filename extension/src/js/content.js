@@ -1,8 +1,10 @@
-chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
-    if(request.intent=='showRegPanel'){
+scholarName = []
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    if (request.intent == 'showRegPanel') {
         const div = document.getElementById('gsc_prf_in')
         const authorName = div.innerHTML
-        sendResponse({content:authorName})                                              //Response sent only when on Scholar website
+        scholarName = authorName
+        sendResponse({ content: authorName })                                              //Response sent only when on Scholar website
     }
     else if (request.intent == 'scrape') {
         var titleArray = []
@@ -23,16 +25,18 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
             citArray.push(cit)
             yrArray.push(year)
         }
-        sendResponse({
+        chrome.runtime.sendMessage({
+            intent: 'profileView',
+            scholarName: scholarName,
             titles: titleArray,
-            citations:citArray,
-            years:yrArray,
-            image:img,
-            workplace:workPlace,
-            website:website
+            citations: citArray,
+            years: yrArray,
+            image: img,
+            workplace: workPlace,
+            website: website
         })
     }
-     else if (request.intent == 'loadBtn') {
+    else if (request.intent == 'loadBtn') {
         function check() {
             setTimeout(function () {
                 var btn = document.getElementById('gsc_bpf_more')
@@ -40,8 +44,8 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
                     btn.click()
                     check()
                 }
-                 else{
-                    sendResponse({status:"true"})
+                else {
+                    sendResponse({ status: "true" })
                 }
             }, 2000)
         }
