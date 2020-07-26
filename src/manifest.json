@@ -5,10 +5,10 @@
     "browser_action": {
         "default_popup": "./views/popup.html",
         "default_icon": {
-            "16": "./images/get_started16.png",
-            "32": "./images/get_started32.png",
-            "48": "./images/get_started48.png",
-            "128": "./images/get_started128.png"
+            "16": "./images/default_icon_16.png",
+            "32": "./images/default_icon_32.png",
+            "48": "./images/default_icon_48.png",
+            "128": "./images/default_icon_128.png"
           }
     },
     "content_scripts": [
