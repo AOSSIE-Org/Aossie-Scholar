@@ -31,4 +31,28 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
     })
+
+    document.getElementById('regBtn').addEventListener('click',function(){
+        chrome.tabs.query({active:true, currentWindow:true}, function(tabs){
+            chrome.tabs.sendMessage(tabs[0].id,{intent:'loadBtn'},function(response){
+                if(response.status){
+                    scrape()
+                }
+            })
+        })
+    })
+    function scrape(){
+        chrome.tabs.query({active:true, currentWindow:true}, function(tabs){
+            chrome.tabs.sendMessage(tabs[0].id,{intent:'scrape'},function(response){
+                if(response){
+                    alert(response.titles)
+                    alert(response.citations)
+                    alert(response.years)
+                    alert(response.image)
+                    alert(response.workplace)
+                    alert(response.website)
+                }
+            })
+        })
+    }
   })
