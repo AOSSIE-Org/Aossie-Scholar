@@ -17,11 +17,13 @@
   },
   "homepage": "https://gitlab.com/aossie/aossie-scholar#readme",
   "devDependencies": {
+    "eslint": "^7.5.0",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^7.1.0",
     "gulp-terser": "^1.2.0",
-    "gulp-uglify": "^3.0.2"
+    "gulp-uglify": "^3.0.2",
+    "prettier": "^2.0.5"
   },
   "dependencies": {
     "del": "^5.1.0"
