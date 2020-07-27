@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
 
                 function getData(country) {
                     return new Promise(function (resolve, reject) {
-                        var url = "scimagojr.xlsx";
+                        var url = "../lib/scimagojr.xlsx";
                         var req = new XMLHttpRequest();
                         req.open("GET", url, true);
                         req.responseType = "arraybuffer";
