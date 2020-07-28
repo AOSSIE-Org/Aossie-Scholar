@@ -1,32 +1,40 @@
 {
-  "name": "aossie-scholar-extension",
-  "version": "1.0.0",
-  "description": "Extension which computes better metrics for scholars and researchers",
-  "main": "index.js",
-  "scripts": {
-    "lint": "eslint src/js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/aossie/aossie-scholar.git"
-  },
-  "author": "Aditya Bisoi",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://gitlab.com/aossie/aossie-scholar/issues"
-  },
-  "homepage": "https://gitlab.com/aossie/aossie-scholar#readme",
-  "devDependencies": {
-    "eslint": "^7.5.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "gulp": "^4.0.2",
-    "gulp-concat": "^2.6.1",
-    "gulp-imagemin": "^7.1.0",
-    "gulp-terser": "^1.2.0",
-    "gulp-uglify": "^3.0.2",
-    "prettier": "^2.0.5"
-  },
-  "dependencies": {
-    "del": "^5.1.0"
-  }
+    "name": "aossie-scholar-extension",
+    "version": "1.0.0",
+    "description": "Extension which computes better metrics for scholars and researchers",
+    "main": "index.js",
+    "scripts": {
+        "lint": "eslint src/js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://gitlab.com/aossie/aossie-scholar.git"
+    },
+    "author": "Aditya Bisoi",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://gitlab.com/aossie/aossie-scholar/issues"
+    },
+    "homepage": "https://gitlab.com/aossie/aossie-scholar#readme",
+    "devDependencies": {
+        "eslint": "^7.2.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-import": "^2.22.0",
+        "eslint-plugin-prettier": "^3.1.4",
+        "gulp": "^4.0.2",
+        "gulp-concat": "^2.6.1",
+        "gulp-imagemin": "^7.1.0",
+        "gulp-terser": "^1.2.0",
+        "gulp-uglify": "^3.0.2",
+        "husky": "^4.2.5",
+        "prettier": "2.0.5"
+    },
+    "dependencies": {
+        "del": "^5.1.0"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run lint"
+        }
+    }
 }

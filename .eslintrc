@@ -1,14 +1,12 @@
 {
-  "extends": "eslint:recommended",
+  "extends": ["prettier"],
   "plugins": ["prettier"],
-  "rules": {
-    "prettier/prettier": "error",
-    "no-undef": 0,
-    "no-redeclare": 0
-  },
   "env": {
     "browser": true,
     "webextensions": true
+  },
+  "rules": {
+    "prettier/prettier": "error"
   },
   "parserOptions": {
     "ecmaVersion": 6
