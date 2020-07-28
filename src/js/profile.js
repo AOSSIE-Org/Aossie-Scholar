@@ -18,9 +18,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
         }
 
         // Bind data to profile template
-        document
-            .getElementById('scholarImage')
-            .setAttribute('src', response.scholarImage)
+        document.getElementById('scholarImage').setAttribute('src', response.scholarImage)
         document.getElementById('scholarName').innerText = response.scholarName
         document.getElementById('workplace').innerText = response.workplace
         document.getElementById('pubCount').innerText = response.pubCount
@@ -186,10 +184,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
                             const count = newString
                                 .slice(0, newString.indexOf('</div></div>'))
                                 .split(',').length
-                            const url = response.config.url.slice(
-                                26,
-                                response.config.url.length
-                            )
+                            const url = response.config.url.slice(26, response.config.url.length)
                             demoDict[url] = count
                         })
                 )
@@ -239,9 +234,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
                 // m-index
                 let mIndex = 0
                 currentYear = new Date().getFullYear()
-                const firstPubYear = years
-                    .filter(Number)
-                    .reduce((a, b) => Math.min(a, b))
+                const firstPubYear = years.filter(Number).reduce((a, b) => Math.min(a, b))
                 timeGap = currentYear - (parseInt(firstPubYear) + 1)
                 mIndex = (hIndex / timeGap).toFixed(2)
 
@@ -284,10 +277,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
                         sumCitations += parseInt(citations[i])
                     }
                 }
-                const eIndex = Math.pow(
-                    sumCitations - Math.pow(hIndex, 2),
-                    1 / 2
-                ).toFixed(2)
+                const eIndex = Math.pow(sumCitations - Math.pow(hIndex, 2), 1 / 2).toFixed(2)
 
                 // scholar index
                 sc = []
@@ -312,9 +302,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
                 const nCitations = []
                 for (let i = 0; i < citations.length; i++) {
                     if (citations != '') {
-                        nCitations.push(
-                            Math.round(parseInt(citations[i]) / sanitized[i])
-                        )
+                        nCitations.push(Math.round(parseInt(citations[i]) / sanitized[i]))
                     }
                 }
 
@@ -337,17 +325,12 @@ document.addEventListener('DOMContentLoaded', function profile() {
                             })
                             const first_sheet_name = workbook.SheetNames[0]
                             const worksheet = workbook.Sheets[first_sheet_name]
-                            const excelData = XLSX.utils.sheet_to_json(
-                                worksheet,
-                                {
-                                    raw: true,
-                                }
-                            )
+                            const excelData = XLSX.utils.sheet_to_json(worksheet, {
+                                raw: true,
+                            })
                             for (let i = 0; i < excelData.length; i++) {
                                 if (excelData[i].Country === country) {
-                                    resolve(
-                                        excelData[i]['Citations per document']
-                                    )
+                                    resolve(excelData[i]['Citations per document'])
                                 }
                             }
                         }

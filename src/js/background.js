@@ -9,9 +9,7 @@ function createProfile() {
 
 function checkDB(data) {
     axios
-        .get(
-            `http://127.0.0.1:8000/api/?search=${data.scholarName}+${data.workplace}`
-        )
+        .get(`http://127.0.0.1:8000/api/?search=${data.scholarName}+${data.workplace}`)
         .then((response) => {
             const request = data
             if (response.data[0] === undefined) {
