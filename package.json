@@ -18,6 +18,7 @@
   "homepage": "https://gitlab.com/aossie/aossie-scholar#readme",
   "devDependencies": {
     "eslint": "^7.5.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^7.1.0",
