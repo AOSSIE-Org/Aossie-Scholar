@@ -60,19 +60,19 @@ document.addEventListener('DOMContentLoaded', function profile() {
                     const tr = document.createElement('tr')
                     let titletd = document.createElement('td')
                     titletd.innerText = titles[c]
-                    tr.appendChild(td)
+                    tr.appendChild(titletd)
                     let cittd = document.createElement('td')
                     cittd.innerText = citations[c]
-                    tr.appendChild(td)
+                    tr.appendChild(cittd)
                     let coauthtd = document.createElement('td')
                     coauthtd.innerText = coauthors[c]
-                    tr.appendChild(td)
+                    tr.appendChild(coauthtd)
                     let ncittd = document.createElement('td')
                     ncittd.innerText = nCitations[c]
-                    tr.appendChild(td)
+                    tr.appendChild(ncittd)
                     let yrtd = document.createElement('td')
                     yrtd.innerText = years[c]
-                    tr.appendChild(td)
+                    tr.appendChild(yrtd)
                     thead.appendChild(tr)
                 }
             }
@@ -81,14 +81,14 @@ document.addEventListener('DOMContentLoaded', function profile() {
         // Visualise Chart
         graphYears = []
         presentYear = new Date().getFullYear()
-        for (let i = presentYear - 10; i <= presentYear; i++) {
+        for (var i = presentYear - 10; i <= presentYear; i++) {
             graphYears.push(i)
         }
-        const dict = {}
+        var dict = {}
         for (x of graphYears) {
             count = 0
             for (y of years) {
-                if (x === y) {
+                if (x == y) {
                     count++
                 }
             }
@@ -98,8 +98,8 @@ document.addEventListener('DOMContentLoaded', function profile() {
         newDict = {}
         for (i of graphYears) {
             sum = 0
-            for (let j = 0; j < response.pubCount; j++) {
-                if (i === years[j]) {
+            for (var j = 0; j < response.pubCount; j++) {
+                if (i == years[j]) {
                     if (citations[j] != '') {
                         sum += parseInt(citations[j])
                     }
@@ -107,9 +107,10 @@ document.addEventListener('DOMContentLoaded', function profile() {
             }
             newDict[i] = sum
         }
+
         graphCitations = Object.values(newDict)
         graphPublications = Object.values(dict)
-        const myChart = document.getElementById('myChart').getContext('2d')
+        let myChart = document.getElementById('myChart').getContext('2d')
         new Chart(myChart, {
             type: 'bar',
 
@@ -154,6 +155,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
             },
         })
     }
+
     chrome.runtime.sendMessage('fromProfileJs', function (response) {
         if (response.intent === 'calculateData') {
             response = response.data
