@@ -171,22 +171,18 @@ document.addEventListener('DOMContentLoaded', function profile() {
             const promises = []
             for (let i = 0; i < newCoAuthors.length; i++) {
                 promises.push(
-                    window.axios
-                        .get(`https://scholar.google.com${newCoAuthors[i]}`)
-                        .then((response) => {
-                            const htmlData = response.data
-                            const newString = htmlData.slice(
-                                htmlData.lastIndexOf(
-                                    '<div id="gsc_vcd_table"><div class="gs_scl"><div class="gsc_vcd_field">Authors</div><div class="gsc_vcd_value">'
-                                ) + 111,
-                                htmlData.length
-                            )
-                            const count = newString
-                                .slice(0, newString.indexOf('</div></div>'))
-                                .split(',').length
-                            const url = response.config.url.slice(26, response.config.url.length)
-                            demoDict[url] = count
-                        })
+                    window.axios.get(`https://scholar.google.com${newCoAuthors[i]}`).then((response) => {
+                        const htmlData = response.data
+                        const newString = htmlData.slice(
+                            htmlData.lastIndexOf(
+                                '<div id="gsc_vcd_table"><div class="gs_scl"><div class="gsc_vcd_field">Authors</div><div class="gsc_vcd_value">'
+                            ) + 111,
+                            htmlData.length
+                        )
+                        const count = newString.slice(0, newString.indexOf('</div></div>')).split(',').length
+                        const url = response.config.url.slice(26, response.config.url.length)
+                        demoDict[url] = count
+                    })
                 )
             }
 

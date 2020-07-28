@@ -18,10 +18,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         const years = document.getElementsByClassName('gsc_a_h gsc_a_hc gs_ibl')
         const img = document.getElementById('gsc_prf_pup-img').getAttribute('src')
         const workPlace = document.getElementsByClassName('gsc_prf_il')[0].innerText
-        const website = document
-            .getElementById('gsc_prf_ivh')
-            .getElementsByTagName('a')[0]
-            .getAttribute('href')
+        const website = document.getElementById('gsc_prf_ivh').getElementsByTagName('a')[0].getAttribute('href')
         const { country } = request
 
         for (let i = 0; i < titles.length; i++) {
@@ -31,14 +28,11 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             titleArray.push(title)
             citArray.push(cit)
             yrArray.push(year)
-            const authorsPerPublication = coAuthors[i].getElementsByClassName('gs_gray')[0]
-                .innerText
+            const authorsPerPublication = coAuthors[i].getElementsByClassName('gs_gray')[0].innerText
             if (authorsPerPublication.indexOf('...') === -1) {
                 coAuthorArray.push(authorsPerPublication.split(',').length)
             } else {
-                coAuthorArray.push(
-                    coAuthors[i].getElementsByClassName('gsc_a_at')[0].getAttribute('data-href')
-                )
+                coAuthorArray.push(coAuthors[i].getElementsByClassName('gsc_a_at')[0].getAttribute('data-href'))
             }
         }
         chrome.runtime.sendMessage({
