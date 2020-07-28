@@ -108,24 +108,24 @@ document.addEventListener('DOMContentLoaded', function profile() {
         graphCitations = Object.values(newDict)
         graphPublications = Object.values(dict)
         let myChart = document.getElementById('myChart').getContext('2d')
-        let barChart = new Chart(myChart, {
+        new Chart(myChart, {
             type: 'bar',
 
             // Dataset
             data: {
                 labels: graphYears,
                 datasets: [{
-                        label: 'Publications/ Year',
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: graphPublications
-                    },
-                    {
-                        label: 'Citations/ Year',
-                        backgroundColor: 'rgb(231, 203, 138)',
-                        borderColor: 'rgb(231, 203, 138)',
-                        data: graphCitations
-                    }
+                    label: 'Publications/ Year',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: graphPublications
+                },
+                {
+                    label: 'Citations/ Year',
+                    backgroundColor: 'rgb(231, 203, 138)',
+                    borderColor: 'rgb(231, 203, 138)',
+                    data: graphCitations
+                }
                 ]
             },
 
@@ -169,13 +169,13 @@ document.addEventListener('DOMContentLoaded', function profile() {
             for (var i = 0; i < newCoAuthors.length; i++) {
                 promises.push(
                     window.axios.get(`https://scholar.google.com${newCoAuthors[i]}`)
-                    .then(response => {
-                        var htmlData = response.data
-                        var newString = htmlData.slice(htmlData.lastIndexOf('<div id="gsc_vcd_table"><div class="gs_scl"><div class="gsc_vcd_field">Authors</div><div class="gsc_vcd_value">') + 111, htmlData.length)
-                        var count = newString.slice(0, newString.indexOf('</div></div>')).split(",").length
-                        var url = response.config.url.slice(26, response.config.url.length)
-                        demoDict[url] = count
-                    })
+                        .then(response => {
+                            var htmlData = response.data
+                            var newString = htmlData.slice(htmlData.lastIndexOf('<div id="gsc_vcd_table"><div class="gs_scl"><div class="gsc_vcd_field">Authors</div><div class="gsc_vcd_value">') + 111, htmlData.length)
+                            var count = newString.slice(0, newString.indexOf('</div></div>')).split(",").length
+                            var url = response.config.url.slice(26, response.config.url.length)
+                            demoDict[url] = count
+                        })
                 )
             }
 
@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
                         sumCitations += parseInt(citations[i])
                     }
                 }
-                var eIndex = ((sumCitations - (hIndex ** 2)) ** (1 / 2)).toFixed(2)
+                var eIndex = Math.pow((sumCitations - Math.pow(hIndex, 2)), (1 / 2)).toFixed(2)
 
                 //scholar index
                 sc = []
@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
                 var TNCc = 0
 
                 function getData(country) {
-                    return new Promise(function (resolve, reject) {
+                    return new Promise(function (resolve) {
                         var url = "../lib/scimagojr.xlsx";
                         var req = new XMLHttpRequest();
                         req.open("GET", url, true);

@@ -1,0 +1,14 @@
+{
+  "extends": "eslint:recommended",
+  "rules": {
+    "no-undef": 0,
+    "no-redeclare": 0
+  },
+  "env": {
+    "browser": true,
+    "webextensions": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6
+  }
+}

@@ -10,8 +10,8 @@ function createProfile() {
 function checkDB(data) {
     axios.get(`http://127.0.0.1:8000/api/?search=${data.scholarName}+${data.workplace}`)
         .then(response => {
+            var request = data
             if (response.data[0] == undefined) {
-                var request = data
                 axios.post('http://127.0.0.1:8000/api/', {
                     "scholarName": request.scholarName,
                     "scholarImage": request.scholarImage,
@@ -35,7 +35,6 @@ function checkDB(data) {
                     .catch((error) => console.log(error))
             }
             else {
-                var request = data
                 var id = response.data[0].id
                 axios.put(`http://127.0.0.1:8000/api/${id}/`, {
                     "scholarName": request.scholarName,
