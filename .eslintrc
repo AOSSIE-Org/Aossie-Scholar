@@ -1,6 +1,8 @@
 {
   "extends": "eslint:recommended",
+  "plugins": ["prettier"],
   "rules": {
+    "prettier/prettier": "error",
     "no-undef": 0,
     "no-redeclare": 0
   },
