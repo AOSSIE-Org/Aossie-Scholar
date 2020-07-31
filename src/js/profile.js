@@ -338,7 +338,7 @@ document.addEventListener('DOMContentLoaded', function profile() {
                     for (let i = 0; i < newnCitations.length; i++) {
                         sumNCitations += newnCitations[i]
                     }
-                    TNCc = sumNCitations * (24.66 / data).toFixed(3)
+                    TNCc = Math.round(sumNCitations * (24.66 / data) * 100) / 100
 
                     // //Changes
                     newCitations = response.citations.filter(Number)
