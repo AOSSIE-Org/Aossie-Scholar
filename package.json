@@ -4,7 +4,8 @@
     "description": "Extension which computes better metrics for scholars and researchers",
     "main": "index.js",
     "scripts": {
-        "lint": "eslint src/js"
+        "lint": "eslint src/js",
+        "test": "jest"
     },
     "repository": {
         "type": "git",
