@@ -254,7 +254,14 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             return sIndex
         }
-        function getNcitations(citations) {
+        function getTncc(data, newnCitations) {
+            let sumNCitations = 0
+            for (let i = 0; i < newnCitations.length; i++) {
+                sumNCitations += newnCitations[i]
+            }
+            return Math.round(sumNCitations * (24.66 / data) * 100) / 100
+        }
+        function getNcitations(citations, sanitized) {
             const nCitations = []
             for (let i = 0; i < citations.length; i++) {
                 if (citations != '') {
@@ -262,6 +269,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
             return nCitations
+        }
+        function getCitPerDoc(country) {
+            return new Promise(function (resolve) {
+                const url = '../lib/scimagojr.xlsx'
+                const req = new XMLHttpRequest()
+                req.open('GET', url, true)
+                req.responseType = 'arraybuffer'
+                req.onload = () => {
+                    const data = new Uint8Array(req.response)
+                    const workbook = XLSX.read(data, {
+                        type: 'array',
+                    })
+                    const first_sheet_name = workbook.SheetNames[0]
+                    const worksheet = workbook.Sheets[first_sheet_name]
+                    const excelData = XLSX.utils.sheet_to_json(worksheet, {
+                        raw: true,
+                    })
+                    for (let i = 0; i < excelData.length; i++) {
+                        if (excelData[i].Country === country) {
+                            resolve(excelData[i]['Citations per document'])
+                        }
+                    }
+                }
+                req.send()
+            })
         }
         if (response.intent === 'calculateData') {
             response = response.data
@@ -320,72 +352,41 @@ document.addEventListener('DOMContentLoaded', function () {
                 hMedian = getHmedian(citations, hIndex)
                 eIndex = getEindex(citations, hIndex)
                 sIndex = getSindex(titles, citations, years)
-                nCitations = getNcitations(citations)
+                nCitations = getNcitations(citations, sanitized)
                 sumCitations = getTotalCitations(citations)
                 newCitations = response.citations.filter(Number)
                 newYears = response.years.filter(Number)
                 newnCitations = nCitations.filter(Number)
-                // TNCc
-                let TNCc = 0
-
-                function getData(country) {
-                    return new Promise(function (resolve) {
-                        const url = '../lib/scimagojr.xlsx'
-                        const req = new XMLHttpRequest()
-                        req.open('GET', url, true)
-                        req.responseType = 'arraybuffer'
-                        req.onload = () => {
-                            const data = new Uint8Array(req.response)
-                            const workbook = XLSX.read(data, {
-                                type: 'array',
-                            })
-                            const first_sheet_name = workbook.SheetNames[0]
-                            const worksheet = workbook.Sheets[first_sheet_name]
-                            const excelData = XLSX.utils.sheet_to_json(worksheet, {
-                                raw: true,
-                            })
-                            for (let i = 0; i < excelData.length; i++) {
-                                if (excelData[i].Country === country) {
-                                    resolve(excelData[i]['Citations per document'])
-                                }
+                getCitPerDoc(country)
+                    .then((data) => getTncc(data, newnCitations))
+                    .then((TNCc) => {
+                        chrome.runtime.sendMessage(
+                            {
+                                intent: 'sendToServer',
+                                scholarImage: response.image,
+                                scholarName: response.scholarName,
+                                workplace: response.workplace,
+                                pubCount: response.titles.length,
+                                citCount: sumCitations,
+                                hIndex: hIndex,
+                                gIndex: gIndex,
+                                mIndex: mIndex,
+                                oIndex: oIndex,
+                                hMedian: hMedian,
+                                eIndex: eIndex,
+                                sIndex: sIndex,
+                                titles: response.titles,
+                                citations: newCitations,
+                                nCitations: newnCitations,
+                                TNCc: TNCc,
+                                coauthors: sanitized,
+                                years: newYears,
+                            },
+                            function (response) {
+                                appendToPage(response)
                             }
-                        }
-                        req.send()
+                        )
                     })
-                }
-                getData(country).then(function (data) {
-                    let sumNCitations = 0
-                    for (let i = 0; i < newnCitations.length; i++) {
-                        sumNCitations += newnCitations[i]
-                    }
-                    TNCc = Math.round(sumNCitations * (24.66 / data) * 100) / 100
-                    chrome.runtime.sendMessage(
-                        {
-                            intent: 'sendToServer',
-                            scholarImage: response.image,
-                            scholarName: response.scholarName,
-                            workplace: response.workplace,
-                            pubCount: response.titles.length,
-                            citCount: sumCitations,
-                            hIndex: hIndex,
-                            gIndex: gIndex,
-                            mIndex: mIndex,
-                            oIndex: oIndex,
-                            hMedian: hMedian,
-                            eIndex: eIndex,
-                            sIndex: sIndex,
-                            titles: response.titles,
-                            citations: newCitations,
-                            nCitations: newnCitations,
-                            TNCc: TNCc,
-                            coauthors: sanitized,
-                            years: newYears,
-                        },
-                        function (response) {
-                            appendToPage(response)
-                        }
-                    )
-                })
             })
         }
 
