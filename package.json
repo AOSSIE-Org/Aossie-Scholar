@@ -27,6 +27,7 @@
         "gulp-terser": "^1.2.0",
         "gulp-uglify": "^3.0.2",
         "husky": "^4.2.5",
+        "jest": "^26.2.2",
         "prettier": "2.0.5"
     },
     "dependencies": {
