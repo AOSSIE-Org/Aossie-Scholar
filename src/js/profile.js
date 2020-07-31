@@ -1,10 +1,6 @@
 document.addEventListener('DOMContentLoaded', function profile() {
     function appendToPage(response) {
-        const { titles } = response
-        const { citations } = response
-        const { coauthors } = response
-        const { years } = response
-        const { nCitations } = response
+        const { titles, citations, coauthors, years, nCitations } = response
         for (let i = 0; i < response.pubCount; i++) {
             if (citations[i] === undefined) {
                 citations[i] = ''
@@ -340,7 +336,6 @@ document.addEventListener('DOMContentLoaded', function profile() {
                     }
                     TNCc = Math.round(sumNCitations * (24.66 / data) * 100) / 100
 
-                    // //Changes
                     newCitations = response.citations.filter(Number)
                     newYears = response.years.filter(Number)
 
