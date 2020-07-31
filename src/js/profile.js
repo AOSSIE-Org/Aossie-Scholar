@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function profile() {
+document.addEventListener('DOMContentLoaded', function () {
     function appendToPage(response) {
         const { titles, citations, coauthors, years, nCitations } = response
         for (let i = 0; i < response.pubCount; i++) {
@@ -151,6 +151,118 @@ document.addEventListener('DOMContentLoaded', function profile() {
     }
 
     chrome.runtime.sendMessage('fromProfileJs', function (response) {
+        function getTotalCitations(citations) {
+            let sumCitations = 0
+            for (let i = 0; i < citations.length; i++) {
+                if (citations[i] != '') {
+                    sumCitations += parseInt(citations[i])
+                }
+            }
+            return sumCitations
+        }
+        function getHindex(citations) {
+            let hIndex = 0
+            for (let i = 0; i < citations.length; i++) {
+                if (i + 1 >= citations[i]) {
+                    hIndex = i + 1
+                    break
+                }
+            }
+            return hIndex
+        }
+        function getGindex(citations) {
+            let totalCitations = 0
+            let gIndex = 0
+            for (let i = 0; i < citations.length; i++) {
+                totalCitations += parseInt(citations[i])
+                if (Math.pow(i + 1, 2) <= totalCitations) {
+                    gIndex = i + 1
+                } else {
+                    break
+                }
+            }
+            return gIndex
+        }
+        function getMindex(years) {
+            let mIndex = 0
+            currentYear = new Date().getFullYear()
+            const firstPubYear = years.filter(Number).reduce((a, b) => Math.min(a, b))
+            timeGap = currentYear - (parseInt(firstPubYear) + 1)
+            mIndex = (hIndex / timeGap).toFixed(2)
+            return mIndex
+        }
+        function getOindex(citations, hIndex) {
+            let oIndex = 0
+            let maxCitation = 0
+            maxCitation = citations.reduce((a, b) => Math.max(a, b))
+            const product = hIndex * maxCitation
+            oIndex = Math.pow(product, 1 / 2).toFixed(2)
+            return oIndex
+        }
+        function getHmedian(citations, hIndex) {
+            const hCore = []
+            let hMedian = 0
+            citations.forEach((el) => {
+                if (el > hIndex) {
+                    hCore.push(el)
+                }
+            })
+            function median(values) {
+                if (values.length === 0) {
+                    return 0
+                }
+
+                values.sort(function (a, b) {
+                    return a - b
+                })
+
+                const half = Math.floor(values.length / 2)
+
+                if (values.length % 2) return values[half]
+
+                return (values[half - 1] + values[half]) / 2.0
+            }
+            hMedian = median(hCore)
+            return hMedian
+        }
+        function getEindex(citations, hIndex) {
+            let sumCitations = 0
+            for (let i = 0; i < citations.length; i++) {
+                if (citations[i] != '') {
+                    sumCitations += parseInt(citations[i])
+                }
+            }
+            return Math.pow(sumCitations - Math.pow(hIndex, 2), 1 / 2).toFixed(2)
+        }
+        function getSindex(titles, citations, years) {
+            sc = []
+            sIndex = 0
+            for (let i = 0; i < response.titles.length; i++) {
+                if (citations[i] != '' && years[i] != '') {
+                    const temp = currentYear - parseInt(years[i]) + 1
+                    if (temp <= 5) {
+                        sc.push((5 / temp) * parseInt(citations[i]))
+                    }
+                    sc.push(parseInt(citations[i]))
+                }
+            }
+            for (let i = 0; i < sc.length; i++) {
+                if (i + 1 >= sc[i]) {
+                    sIndex = i + 1
+                    break
+                }
+            }
+            return sIndex
+        }
+        function getNcitations(citations) {
+            const nCitations = []
+            for (let i = 0; i < citations.length; i++) {
+                if (citations != '') {
+                    nCitations.push(Math.round(parseInt(citations[i]) / sanitized[i]))
+                }
+            }
+            return nCitations
+        }
         if (response.intent === 'calculateData') {
             response = response.data
             newCoAuthors = []
@@ -196,112 +308,24 @@ document.addEventListener('DOMContentLoaded', function profile() {
                 }
 
                 // Compute metrics
-                const { citations } = response
+                const { titles, citations, years, country } = response
                 citations.sort(function (a, b) {
                     return b - a
                 })
-                const { years } = response
 
-                // h-index
-                let hIndex = 0
-                for (let i = 0; i < citations.length; i++) {
-                    if (i + 1 >= citations[i]) {
-                        hIndex = i + 1
-                        break
-                    }
-                }
-
-                // g-index
-                let totalCitations = 0
-                let gIndex = 0
-                for (let i = 0; i < citations.length; i++) {
-                    totalCitations += parseInt(citations[i])
-                    if (Math.pow(i + 1, 2) <= totalCitations) {
-                        gIndex = i + 1
-                    } else {
-                        break
-                    }
-                }
-
-                // m-index
-                let mIndex = 0
-                currentYear = new Date().getFullYear()
-                const firstPubYear = years.filter(Number).reduce((a, b) => Math.min(a, b))
-                timeGap = currentYear - (parseInt(firstPubYear) + 1)
-                mIndex = (hIndex / timeGap).toFixed(2)
-
-                // o-index
-                let oIndex = 0
-                maxCitation = citations.reduce((a, b) => Math.max(a, b))
-                const product = hIndex * maxCitation
-                oIndex = Math.pow(product, 1 / 2).toFixed(2)
-
-                // h-median
-                const hCore = []
-                let hMedian = 0
-                citations.forEach((el) => {
-                    if (el > hIndex) {
-                        hCore.push(el)
-                    }
-                })
-
-                function median(values) {
-                    if (values.length === 0) {
-                        return 0
-                    }
-
-                    values.sort(function (a, b) {
-                        return a - b
-                    })
-
-                    const half = Math.floor(values.length / 2)
-
-                    if (values.length % 2) return values[half]
-
-                    return (values[half - 1] + values[half]) / 2.0
-                }
-                hMedian = median(hCore)
-
-                // e-index
-                let sumCitations = 0
-                for (let i = 0; i < citations.length; i++) {
-                    if (citations[i] != '') {
-                        sumCitations += parseInt(citations[i])
-                    }
-                }
-                const eIndex = Math.pow(sumCitations - Math.pow(hIndex, 2), 1 / 2).toFixed(2)
-
-                // scholar index
-                sc = []
-                sIndex = 0
-                for (let i = 0; i < response.titles.length; i++) {
-                    if (citations[i] != '' && years[i] != '') {
-                        const temp = currentYear - parseInt(years[i]) + 1
-                        if (temp <= 5) {
-                            sc.push((5 / temp) * parseInt(citations[i]))
-                        }
-                        sc.push(parseInt(citations[i]))
-                    }
-                }
-                for (let i = 0; i < sc.length; i++) {
-                    if (i + 1 >= sc[i]) {
-                        sIndex = i + 1
-                        break
-                    }
-                }
-
-                // Normalized Citations
-                const nCitations = []
-                for (let i = 0; i < citations.length; i++) {
-                    if (citations != '') {
-                        nCitations.push(Math.round(parseInt(citations[i]) / sanitized[i]))
-                    }
-                }
-
+                hIndex = getHindex(citations)
+                gIndex = getGindex(citations)
+                mIndex = getMindex(years)
+                oIndex = getOindex(citations, hIndex)
+                hMedian = getHmedian(citations, hIndex)
+                eIndex = getEindex(citations, hIndex)
+                sIndex = getSindex(titles, citations, years)
+                nCitations = getNcitations(citations)
+                sumCitations = getTotalCitations(citations)
+                newCitations = response.citations.filter(Number)
+                newYears = response.years.filter(Number)
                 newnCitations = nCitations.filter(Number)
-
                 // TNCc
-                const { country } = response
                 let TNCc = 0
 
                 function getData(country) {
@@ -335,10 +359,6 @@ document.addEventListener('DOMContentLoaded', function profile() {
                         sumNCitations += newnCitations[i]
                     }
                     TNCc = Math.round(sumNCitations * (24.66 / data) * 100) / 100
-
-                    newCitations = response.citations.filter(Number)
-                    newYears = response.years.filter(Number)
-
                     chrome.runtime.sendMessage(
                         {
                             intent: 'sendToServer',
