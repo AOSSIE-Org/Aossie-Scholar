@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 const regDiv = document.getElementById('registerDiv')
                 const nameInput = document.getElementById('regNameInput')
 
-                fetch('https://restcountries.eu/rest/v2/all?fields=name') // Fetch from API and iterate adding options
+                axios
+                    .get('https://restcountries.eu/rest/v2/all?fields=name') // Fetch from API and iterate adding options
                     .then((res) => res.json())
                     .then((data) => {
                         for (let i = 0; i < data.length; i++) {

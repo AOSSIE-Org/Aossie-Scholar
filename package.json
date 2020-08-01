@@ -29,7 +29,9 @@
         "gulp-uglify": "^3.0.2",
         "husky": "^4.2.5",
         "jest": "^26.2.2",
-        "prettier": "2.0.5"
+        "jest-puppeteer": "^4.4.0",
+        "prettier": "2.0.5",
+        "puppeteer": "^5.2.1"
     },
     "dependencies": {
         "del": "^5.1.0"
