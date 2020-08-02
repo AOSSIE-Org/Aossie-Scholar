@@ -1,8 +1,9 @@
 const puppeteer = require('puppeteer')
 const extensionPath = 'src'
+let browser
 
-test('Test redirect to profile page', async () => {
-    const browser = await puppeteer.launch({
+beforeAll(async () => {
+    browser = await puppeteer.launch({
         headless: false, // extension are allowed only in the head-full mode
         slowMo: 80,
         args: [
@@ -11,6 +12,15 @@ test('Test redirect to profile page', async () => {
             `--load-extension=${extensionPath}`,
         ],
     })
+    pages = await browser.pages()
+    pages[0].close()
+})
+
+afterAll(() => {
+    browser.close()
+})
+
+test('Test redirect to profile page', async () => {
     const extensionID = 'pfgmjkmlifhekiegffjndhpioapgcopk'
     const extensionPopupHtml = 'views/popup.html'
     const page = await browser.newPage()
@@ -19,6 +29,6 @@ test('Test redirect to profile page', async () => {
     await page.click('button#searchBtn')
     const newPage = await newPagePromise
     const testData = await newPage.$eval('.sidenav h3', (el) => el.innerText)
-    await browser.close()
     expect(testData).toBe('Publications')
+    await page.close()
 }, 10000)
