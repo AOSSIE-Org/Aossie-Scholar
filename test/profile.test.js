@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer')
 const extensionPath = 'src'
 
-test('Test profile page redirect', async () => {
+test('Test redirect to profile page', async () => {
     const browser = await puppeteer.launch({
         headless: false, // extension are allowed only in the head-full mode
         slowMo: 80,
@@ -19,7 +19,6 @@ test('Test profile page redirect', async () => {
     await page.click('button#searchBtn')
     const newPage = await newPagePromise
     const testData = await newPage.$eval('.sidenav h3', (el) => el.innerText)
-    await newPage.close()
     await browser.close()
     expect(testData).toBe('Publications')
 }, 10000)
