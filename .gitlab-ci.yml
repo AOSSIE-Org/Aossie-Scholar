@@ -1,0 +1,5 @@
+job_1:
+    tags:
+        - ci
+    script:
+        - echo Hello World
