@@ -6,7 +6,7 @@
     "scripts": {
         "lint": "eslint src/js",
         "test": "jest",
-        "prettier-check": "prettier-check src/js/*.js"
+        "prettier": "prettier-check src/js/*.js"
     },
     "repository": {
         "type": "git",
