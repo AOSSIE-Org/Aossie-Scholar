@@ -1,0 +1,28 @@
+image: adityabisoi/aossie_scholar:latest
+
+stages:
+    - format
+    - build
+    - test
+
+cache:
+    paths:
+        - node_modules/
+
+before_script:
+    - npm install
+
+format:
+    stage: format
+    script:
+        - npm run prettier
+
+build:
+    stage: build
+    script:
+        - gulp build
+        
+test:
+    stage: test
+    script:
+        - xvfb-run -s "-screen 0 1920x1080x24" -a npm test
