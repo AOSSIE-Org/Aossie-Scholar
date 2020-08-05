@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer')
-const extensionPath = 'src'
+const extensionPath = 'dist'
 let browser
 
 beforeAll(async () => {
@@ -17,7 +17,7 @@ afterAll(() => {
 })
 
 test('Test redirect to profile page', async () => {
-    const extensionID = 'pfgmjkmlifhekiegffjndhpioapgcopk'
+    const extensionID = 'famcbfmbjnbbjfgcbkiiklfeebdlljhd'
     const extensionPopupHtml = 'views/popup.html'
     const page = await browser.newPage()
     await page.goto(`chrome-extension://${extensionID}/${extensionPopupHtml}`)
