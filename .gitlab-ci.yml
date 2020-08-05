@@ -20,7 +20,7 @@ format:
 build:
     stage: build
     script:
-        - npm install gulp
+        - npm -g install gulp-cli
         - gulp build
         
 test:
