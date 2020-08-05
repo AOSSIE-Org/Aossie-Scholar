@@ -3,7 +3,7 @@ image: adityabisoi/aossie_scholar:latest
 stages:
     - format
     - build
-    # - test
+    - test
 
 before_script:
     - npm install
@@ -23,12 +23,8 @@ build:
     script:
         - npm -g install gulp-cli
         - gulp build
-        - xvfb-run -s "-screen 0 1920x1080x24" -a npm test
-    # artifacts:
-    #     paths:
-    #         - ./dist
         
-# test:
-#     stage: test
-#     script:
-#         - xvfb-run -s "-screen 0 1920x1080x24" -a npm test
+test:
+    stage: test
+    script:
+        - xvfb-run -s "-screen 0 1920x1080x24" -a npm test
