@@ -5,12 +5,12 @@ stages:
     - build
     - test
 
+before_script:
+    - npm install
+
 cache:
     paths:
         - node_modules/
-
-script:
-    - npm install
 
 format:
     stage: format
@@ -21,7 +21,7 @@ build:
     stage: build
     script:
         - gulp build
-
+        
 test:
     stage: test
     script:
