@@ -6,7 +6,9 @@ beforeAll(async () => {
     browser = await puppeteer.launch({
         headless: false, // extension are allowed only in the head-full mode
         slowMo: 80,
-        args: ['--no-sandbox',`--disable-extensions-except=${extensionPath}`, `--load-extension=${extensionPath}`],
+        args: ['--no-sandbox',
+        `--disable-extensions-except=${extensionPath}`,
+        `--load-extension=${extensionPath}`],
     })
     pages = await browser.pages()
     pages[0].close()
