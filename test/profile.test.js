@@ -5,8 +5,8 @@ let browser
 beforeAll(async () => {
     browser = await puppeteer.launch({
         headless: false, // extension are allowed only in the head-full mode
-        slowMo: 80,
-        args: ['--no-sandbox',
+        slowMo: 100,
+        args: [
         `--disable-extensions-except=${extensionPath}`,
         `--load-extension=${extensionPath}`],
     })
