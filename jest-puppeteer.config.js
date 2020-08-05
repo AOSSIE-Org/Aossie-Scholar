@@ -1,7 +1,7 @@
 module.exports = {
     launch: {
         headless: false,
-        slowMo: true,
+        slowMo: false,
         devtools: false,
     },
 }
