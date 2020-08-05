@@ -9,6 +9,7 @@ before_script:
     - npm install
 
 cache:
+    key: ${CI_COMMIT_REF_SLUG}
     paths:
         - node_modules/
 
@@ -22,6 +23,9 @@ build:
     script:
         - npm -g install gulp-cli
         - gulp build
+    artifacts:
+        paths:
+            - ./dist
         
 test:
     stage: test
