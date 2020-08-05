@@ -1,5 +1,7 @@
 FROM node:12
 
+RUN apt-get update; apt-get clean
+
 RUN apt-get install -y xvfb
 
 RUN \
