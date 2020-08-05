@@ -9,7 +9,7 @@ cache:
     paths:
         - node_modules/
 
-before_script:
+script:
     - npm install
 
 format:
@@ -21,7 +21,7 @@ build:
     stage: build
     script:
         - gulp build
-        
+
 test:
     stage: test
     script:
