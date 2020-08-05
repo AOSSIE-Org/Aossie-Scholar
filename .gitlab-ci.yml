@@ -27,4 +27,7 @@ build:
 test:
     stage: test
     script:
+        - rm -rf node_modules
+        - rm package-lock.json
+        - npm install
         - xvfb-run -s "-screen 0 1920x1080x24" -a npm test
