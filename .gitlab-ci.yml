@@ -27,4 +27,5 @@ build:
 test:
     stage: test
     script:
-        - xvfb-run -s "-screen 0 1920x1080x24" -a npm test
+        # - xvfb-run -s "-screen 0 1920x1080x24" -a npm test
+        - xvfb-run --server-args="-screen 0, 1024x768x24" npm run test
