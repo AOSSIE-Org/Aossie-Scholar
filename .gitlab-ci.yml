@@ -13,18 +13,18 @@ cache:
     paths:
         - node_modules/
 
-# format:
-#     stage: format
-#     script:
-#         - npm run prettier
-
-# build:
-#     stage: build
-#     script:
-#         - npm -g install gulp-cli
-#         - gulp build
-        
-test:
-    stage: test
+format:
+    stage: format
     script:
-        - xvfb-run -s "-screen 0 1920x1080x24" -a npm test
+        - npm run prettier
+
+build:
+    stage: build
+    script:
+        - npm -g install gulp-cli
+        - gulp build
+        
+# test:
+#     stage: test
+#     script:
+#         - xvfb-run -s "-screen 0 1920x1080x24" -a npm test
