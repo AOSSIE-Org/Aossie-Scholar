@@ -13,16 +13,16 @@ cache:
     paths:
         - node_modules/
 
-format:
-    stage: format
-    script:
-        - npm run prettier
+# format:
+#     stage: format
+#     script:
+#         - npm run prettier
 
-build:
-    stage: build
-    script:
-        - npm -g install gulp-cli
-        - gulp build
+# build:
+#     stage: build
+#     script:
+#         - npm -g install gulp-cli
+#         - gulp build
         
 test:
     stage: test
