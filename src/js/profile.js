@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function () {
         function getSindex(titles, citations, years) {
             sc = []
             sIndex = 0
-            for (let i = 0; i < response.titles.length; i++) {
+            for (let i = 0; i < titles.length; i++) {
                 if (citations[i] != '' && years[i] != '') {
                     const temp = currentYear - parseInt(years[i]) + 1
                     if (temp <= 5) {
