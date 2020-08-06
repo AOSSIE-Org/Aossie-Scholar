@@ -13,10 +13,8 @@ test('Test redirect to profile page', async () => {
             deviceScaleFactor: 1,
         },
     })
-    const extensionID = 'pfgmjkmlifhekiegffjndhpioapgcopk'
-    const extensionPopupHtml = 'views/popup.html'
     const page = await browser.newPage()
-    await page.goto(`chrome-extension://${extensionID}/${extensionPopupHtml}`)
+    await page.goto('chrome-extension://pfgmjkmlifhekiegffjndhpioapgcopk/views/popup.html')
     const newPagePromise = new Promise((resolve) => browser.once('targetcreated', (target) => resolve(target.page())))
     await page.click('button#searchBtn')
     const newPage = await newPagePromise
