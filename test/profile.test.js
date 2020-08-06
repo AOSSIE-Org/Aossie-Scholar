@@ -6,7 +6,7 @@ test('Test redirect to profile page', async () => {
     browser = await puppeteer.launch({
         headless: false, // extension are allowed only in the head-full mode
         slowMo: 100,
-        args: [`--disable-extensions-except=${extensionPath}`, `--load-extension=${extensionPath}`],
+        args: ['--no-sandbox', `--disable-extensions-except=${extensionPath}`, `--load-extension=${extensionPath}`],
         defaultViewport: {
             width: 1300,
             height: 600,
