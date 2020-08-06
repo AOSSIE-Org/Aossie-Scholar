@@ -79,7 +79,7 @@ function getEindex(citations, hIndex) {
             sumCitations += parseInt(citations[i])
         }
     }
-    return Math.pow(sumCitations - Math.pow(hIndex, 2), 1 / 2).toFixed(2)
+    return parseFloat(Math.pow(sumCitations - Math.pow(hIndex, 2), 1 / 2).toFixed(2))
 }
 function getSindex(titles, citations, years) {
     sc = []
@@ -395,3 +395,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 })
+module.exports = { getHindex, getEindex }
