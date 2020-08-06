@@ -24,7 +24,7 @@ build:
         - npm -g install gulp-cli
         - gulp build
         
-# test:
-#     stage: test
-#     script:
-#         - xvfb-run -s "-screen 0 1920x1080x24" -a npm test
+test:
+    stage: test
+    script:
+        - xvfb-run -s "-screen 0 1920x1080x24" -a npm test
