@@ -6,6 +6,8 @@
     "scripts": {
         "lint": "eslint src/js",
         "test": "jest",
+        "unit-test": "export environment=unitonly && jest",
+        "ee-test": "export environment=eeonly && jest",
         "prettier": "prettier-check src/js/*.js"
     },
     "repository": {
