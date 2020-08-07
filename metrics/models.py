@@ -8,6 +8,8 @@ class ScholarData(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     pubCount = models.CharField(max_length=100, null=True)
     citCount = models.CharField(max_length=100, null=True)
+    website = models.CharField(max_length=100, null=True)
+    country = models.CharField(max_length=100, null=True)
     hIndex = models.CharField(max_length=100, null=True)
     gIndex = models.CharField(max_length=100, null=True)
     mIndex = models.CharField(max_length=100, null=True)
