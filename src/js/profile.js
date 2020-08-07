@@ -145,7 +145,6 @@ function getCitPerDoc(country) {
 document.addEventListener('DOMContentLoaded', function () {
     function appendToPage(response) {
         const { titles, citations, coauthors, years, nCitations } = response
-        console.log(country, website)
         for (let i = 0; i < response.pubCount; i++) {
             if (citations[i] === undefined) {
                 citations[i] = ''
@@ -160,9 +159,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Bind data to profile template
         document.getElementById('scholarImage').setAttribute('src', response.scholarImage)
+        document.getElementById('website').setAttribute('href', response.website)
         document.getElementById('scholarName').innerText = response.scholarName
         document.getElementById('workplace').innerText = response.workplace
-        document.getElementById('website').setAttribute('href', response.website)
         document.getElementById('country').innerText = response.country
         document.getElementById('pubCount').innerText = response.pubCount
         document.getElementById('citCount').innerText = response.citCount
