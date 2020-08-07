@@ -294,6 +294,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
             },
         })
+        document.getElementById('star-button').addEventListener('click', () => {
+            console.log('Clicked')
+        })
     }
 
     chrome.runtime.sendMessage('fromProfileJs', function (response) {
