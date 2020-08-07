@@ -295,7 +295,8 @@ document.addEventListener('DOMContentLoaded', function () {
             },
         })
         document.getElementById('star-button').addEventListener('click', () => {
-            console.log('Clicked')
+            document.getElementById('star').setAttribute('class', 'fas fa-star fa-5x checked')
+            console.log(response.scholarName, response.workplace)
         })
     }
 
