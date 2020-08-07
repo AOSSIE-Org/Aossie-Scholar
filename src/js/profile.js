@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 // Compute metrics
-                const { titles, citations, years, country } = response
+                const { titles, citations, years, country, website } = response
                 citations.sort(function (a, b) {
                     return b - a
                 })
@@ -366,6 +366,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 scholarImage: response.image,
                                 scholarName: response.scholarName,
                                 workplace: response.workplace,
+                                website: website,
+                                country: country,
                                 pubCount: response.titles.length,
                                 citCount: sumCitations,
                                 hIndex: hIndex,
