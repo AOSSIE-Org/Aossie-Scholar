@@ -294,13 +294,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
             },
         })
-        document.getElementById('star-button').addEventListener('click', () => {
-            document.getElementById('star').setAttribute('class', 'fas fa-star fa-5x checked')
-            chrome.runtime.sendMessage({
-                intent: 'saveStarred',
-                name: response.scholarName,
-                work: response.workplace,
-            })
+        const starBtn = document.getElementById('star-button')
+        const star = document.getElementById('star')
+        starBtn.addEventListener('click', () => {
+            if (star.getAttribute('class') === 'fas fa-star fa-5x unchecked') {
+                star.setAttribute('class', 'fas fa-star fa-5x checked')
+                chrome.runtime.sendMessage({
+                    intent: 'saveStarred',
+                    name: response.scholarName,
+                    work: response.workplace,
+                })
+            } else {
+                star.setAttribute('class', 'fas fa-star fa-5x unchecked')
+                chrome.runtime.sendMessage({
+                    intent: 'deleteStarred',
+                    name: response.scholarName,
+                    work: response.workplace,
+                })
+            }
         })
     }
 

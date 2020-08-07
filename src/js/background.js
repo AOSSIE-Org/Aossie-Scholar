@@ -98,4 +98,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             work: request.work,
         })
     }
+    if (request.intent === 'deleteStarred') {
+        axios.get(`http://127.0.0.1:8000/api/starred/?search=${request.name}+${request.work}`).then((response) => {
+            const { id } = response.data[0]
+            axios.delete(`http://127.0.0.1:8000/api/starred/${id}`)
+        })
+    }
 })
