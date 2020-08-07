@@ -8,11 +8,11 @@ function createProfile() {
 }
 
 function checkDB(data) {
-    axios.get(`http://127.0.0.1:8000/api/?search=${data.scholarName}+${data.workplace}`).then((response) => {
+    axios.get(`http://127.0.0.1:8000/api/scholar/?search=${data.scholarName}+${data.workplace}`).then((response) => {
         const request = data
         if (response.data[0] === undefined) {
             axios
-                .post('http://127.0.0.1:8000/api/', {
+                .post('http://127.0.0.1:8000/api/scholar/', {
                     scholarName: request.scholarName,
                     scholarImage: request.scholarImage,
                     workplace: request.workplace,
@@ -38,7 +38,7 @@ function checkDB(data) {
         } else {
             const { id } = response.data[0]
             axios
-                .put(`http://127.0.0.1:8000/api/${id}/`, {
+                .put(`http://127.0.0.1:8000/api/scholar/${id}/`, {
                     scholarName: request.scholarName,
                     scholarImage: request.scholarImage,
                     workplace: request.workplace,
@@ -74,7 +74,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.intent === 'search') {
         const searchTerm = request.searchTerm.split(' ').join('+')
         axios
-            .get(`http://127.0.0.1:8000/api?search=${searchTerm}/`)
+            .get(`http://127.0.0.1:8000/api/scholar?search=${searchTerm}/`)
             .then((response) => {
                 arr = response
                 purpose = 'displayData'
@@ -91,5 +91,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.intent === 'sendToServer') {
         sendResponse(request)
         checkDB(request)
+    }
+    if (request.intent === 'saveStarred') {
+        axios.post('')
     }
 })

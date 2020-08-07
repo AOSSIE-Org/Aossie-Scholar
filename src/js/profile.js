@@ -296,7 +296,11 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         document.getElementById('star-button').addEventListener('click', () => {
             document.getElementById('star').setAttribute('class', 'fas fa-star fa-5x checked')
-            console.log(response.scholarName, response.workplace)
+            chrome.runtime.sendMessage({
+                intent: 'saveStarred',
+                name: response.scholarName,
+                work: response.workplace,
+            })
         })
     }
 
