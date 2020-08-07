@@ -2,6 +2,13 @@ body {
     font-family: "Lato", sans-serif;
 }
 
+.checked {
+    color: orange;
+}
+
+.unchecked {
+    color: white;
+}
 
 /* Sidenav */
 .sidenav {
