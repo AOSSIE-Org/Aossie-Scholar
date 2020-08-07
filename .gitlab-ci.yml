@@ -1,30 +1,30 @@
-image: adityabisoi/aossie_scholar:latest
+# image: adityabisoi/aossie_scholar:latest
 
-stages:
-    - format
-    - build
-    - test
+# stages:
+#     - format
+#     - build
+#     - test
 
-before_script:
-    - npm install
+# before_script:
+#     - npm install
 
-cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-        - node_modules/
+# cache:
+#     key: ${CI_COMMIT_REF_SLUG}
+#     paths:
+#         - node_modules/
 
-format:
-    stage: format
-    script:
-        - npm run prettier
+# format:
+#     stage: format
+#     script:
+#         - npm run prettier
 
-build:
-    stage: build
-    script:
-        - npm -g install gulp-cli
-        - gulp build
+# build:
+#     stage: build
+#     script:
+#         - npm -g install gulp-cli
+#         - gulp build
         
-test:
-    stage: test
-    script:
-        - xvfb-run -s "-screen 0 1920x1080x24" -a npm run unit-test
+# test:
+#     stage: test
+#     script:
+#         - xvfb-run -s "-screen 0 1920x1080x24" -a npm run unit-test
