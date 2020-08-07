@@ -93,6 +93,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         checkDB(request)
     }
     if (request.intent === 'saveStarred') {
-        axios.post('')
+        axios.post('http://127.0.0.1:8000/api/starred/', {
+            name: request.name,
+            work: request.work,
+        })
     }
 })
