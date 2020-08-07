@@ -144,7 +144,8 @@ function getCitPerDoc(country) {
 }
 document.addEventListener('DOMContentLoaded', function () {
     function appendToPage(response) {
-        const { titles, citations, coauthors, years, nCitations } = response
+        const { titles, citations, coauthors, years, nCitations, country, website } = response
+        console.log(country, website)
         for (let i = 0; i < response.pubCount; i++) {
             if (citations[i] === undefined) {
                 citations[i] = ''
@@ -161,6 +162,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('scholarImage').setAttribute('src', response.scholarImage)
         document.getElementById('scholarName').innerText = response.scholarName
         document.getElementById('workplace').innerText = response.workplace
+        document.getElementById('website').setAttribute('href', website)
+        document.getElementById('country').innerText = country
         document.getElementById('pubCount').innerText = response.pubCount
         document.getElementById('citCount').innerText = response.citCount
         document.getElementById('hIndex').innerText = response.hIndex

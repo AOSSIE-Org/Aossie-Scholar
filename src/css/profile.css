@@ -68,6 +68,10 @@ body {
     padding-top: 30px;
 }
 
+.sidenav a {
+    text-decoration: none;
+}
+
 /* Content */
 .main {
     margin-left: 550px;
