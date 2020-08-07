@@ -7,7 +7,7 @@ if (environment === 'eeonly') testMatch = ['**/test/profile.test.js']
 module.exports = {
     preset: 'jest-puppeteer',
     testPathIgnorePatterns: ['/node_modules/'],
-    testMatch,
+    testMatch: ['**/test/*.test.js'],
     verbose: true,
     testEnvironment: 'jsdom',
 }

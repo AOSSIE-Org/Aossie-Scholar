@@ -1,8 +1,8 @@
 image: adityabisoi/aossie_scholar:latest
 
 stages:
-    # - format
-    # - build
+    - format
+    - build
     - test
 
 before_script:
