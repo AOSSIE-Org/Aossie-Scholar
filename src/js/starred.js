@@ -1,3 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('dwdwd')
+    chrome.runtime.sendMessage('fetchStarred', function (response) {
+        console.log(response)
+    })
 })

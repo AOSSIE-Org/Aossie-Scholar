@@ -130,5 +130,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                 })
             })
     }
+    if (request === 'fetchStarred') {
+        axios.get('http://127.0.0.1:8000/api/?search=true').then((data) => {
+            sendResponse(data)
+        })
+    }
     return true
 })
