@@ -157,6 +157,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
         // Check if the Scholar is starred
+        const starBtn = document.getElementById('star-button')
+        const star = document.getElementById('star')
+
         chrome.runtime.sendMessage(
             {
                 intent: 'checkStarred',
@@ -164,9 +167,30 @@ document.addEventListener('DOMContentLoaded', function () {
                 work: response.workplace,
             },
             function (data) {
-                console.log(data.isStarred)
+                if (data.isStarred === 'true') {
+                    star.setAttribute('class', 'fas fa-star fa-5x checked')
+                } else {
+                    star.setAttribute('class', 'fas fa-star fa-5x unchecked')
+                }
             }
         )
+        starBtn.addEventListener('click', () => {
+            if (star.getAttribute('class') === 'fas fa-star fa-5x unchecked') {
+                star.setAttribute('class', 'fas fa-star fa-5x checked')
+                chrome.runtime.sendMessage({
+                    intent: 'saveStarred',
+                    name: response.scholarName,
+                    work: response.workplace,
+                })
+            } else {
+                star.setAttribute('class', 'fas fa-star fa-5x unchecked')
+                chrome.runtime.sendMessage({
+                    intent: 'deleteStarred',
+                    name: response.scholarName,
+                    work: response.workplace,
+                })
+            }
+        })
 
         // Bind data to profile template
         document.getElementById('scholarImage').setAttribute('src', response.scholarImage)
@@ -304,25 +328,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     ],
                 },
             },
-        })
-        const starBtn = document.getElementById('star-button')
-        const star = document.getElementById('star')
-        starBtn.addEventListener('click', () => {
-            if (star.getAttribute('class') === 'fas fa-star fa-5x unchecked') {
-                star.setAttribute('class', 'fas fa-star fa-5x checked')
-                chrome.runtime.sendMessage({
-                    intent: 'saveStarred',
-                    name: response.scholarName,
-                    work: response.workplace,
-                })
-            } else {
-                star.setAttribute('class', 'fas fa-star fa-5x unchecked')
-                chrome.runtime.sendMessage({
-                    intent: 'deleteStarred',
-                    name: response.scholarName,
-                    work: response.workplace,
-                })
-            }
         })
     }
 
