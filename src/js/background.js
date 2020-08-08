@@ -92,6 +92,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         sendResponse(request)
         checkDB(request)
     }
+    if (request.intent === 'checkStarred') {
+        axios.get(`http://127.0.0.1:8000/api/starred/?search=${request.name}+${request.work}`).then((response) => {
+            if (response.data[0]) {
+                sendResponse({ isStarred: 'true' })
+            } else {
+                sendResponse({ isStarred: 'false' })
+            }
+        })
+    }
     if (request.intent === 'saveStarred') {
         axios.post('http://127.0.0.1:8000/api/starred/', {
             name: request.name,
@@ -104,4 +113,5 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             axios.delete(`http://127.0.0.1:8000/api/starred/${id}`)
         })
     }
+    return true
 })

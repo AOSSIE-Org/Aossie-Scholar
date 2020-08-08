@@ -156,6 +156,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 nCitations[i] = ''
             }
         }
+        // Check if the Scholar is starred
+        chrome.runtime.sendMessage(
+            {
+                intent: 'checkStarred',
+                name: response.scholarName,
+                work: response.workplace,
+            },
+            function (data) {
+                console.log(data.isStarred)
+            }
+        )
 
         // Bind data to profile template
         document.getElementById('scholarImage').setAttribute('src', response.scholarImage)
