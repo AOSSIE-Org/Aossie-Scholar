@@ -29,10 +29,3 @@ class ScholarData(models.Model):
 
     def __str__(self):
         return self.scholarName
-
-class StarredScholar(models.Model):
-    name = models.CharField(max_length=100, null=True)
-    work = models.CharField(max_length=100, null=True)
-
-    def __str__(self):
-        return self.name

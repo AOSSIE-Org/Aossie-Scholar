@@ -93,7 +93,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         checkDB(request)
     }
     if (request.intent === 'checkStarred') {
-        axios.get(`http://127.0.0.1:8000/api/starred/?search=${request.name}+${request.work}`).then((response) => {
+        axios.get(`http://127.0.0.1:8000/api/scholar/?search=${request.name}+${request.work}`).then((response) => {
             if (response.data[0]) {
                 sendResponse({ isStarred: 'true' })
             } else {
@@ -102,15 +102,21 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         })
     }
     if (request.intent === 'saveStarred') {
-        axios.post('http://127.0.0.1:8000/api/starred/', {
-            name: request.name,
-            work: request.work,
+        axios.get(`http://127.0.0.1:8000/api/scholar/?search=${request.name}+${request.work}`).then((response) => {
+            console.log(response)
+            const { id } = response.data[0]
+            axios.put(`http://127.0.0.1:8000/api/scholar/${id}/`, {
+                isStarred: true,
+            })
         })
     }
     if (request.intent === 'deleteStarred') {
-        axios.get(`http://127.0.0.1:8000/api/starred/?search=${request.name}+${request.work}`).then((response) => {
+        axios.get(`http://127.0.0.1:8000/api/scholar/?search=${request.name}+${request.work}`).then((response) => {
+            console.log(response)
             const { id } = response.data[0]
-            axios.delete(`http://127.0.0.1:8000/api/starred/${id}`)
+            axios.put(`http://127.0.0.1:8000/api/scholar/${id}/`, {
+                isStarred: false,
+            })
         })
     }
     return true
