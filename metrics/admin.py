@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-from .models import ScholarData, StarredScholar
+from .models import ScholarData
 
 admin.site.register(ScholarData)
-admin.site.register(StarredScholar)

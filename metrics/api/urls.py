@@ -1,7 +1,6 @@
 from rest_framework import routers
-from metrics.api.views import ScholarViewSet, StarredScholarViewSet
+from metrics.api.views import ScholarViewSet
 
 router = routers.DefaultRouter()
-router.register('scholar', ScholarViewSet)
-router.register('starred', StarredScholarViewSet)
+router.register('', ScholarViewSet)
 urlpatterns = router.urls
