@@ -8,11 +8,11 @@ function createProfile() {
 }
 
 function checkDB(data) {
-    axios.get(`http://127.0.0.1:8000/api/scholar/?search=${data.scholarName}+${data.workplace}`).then((response) => {
+    axios.get(`http://127.0.0.1:8000/api/?search=${data.scholarName}+${data.workplace}`).then((response) => {
         const request = data
         if (response.data[0] === undefined) {
             axios
-                .post('http://127.0.0.1:8000/api/scholar/', {
+                .post('http://127.0.0.1:8000/api/', {
                     scholarName: request.scholarName,
                     scholarImage: request.scholarImage,
                     workplace: request.workplace,
@@ -38,7 +38,7 @@ function checkDB(data) {
         } else {
             const { id } = response.data[0]
             axios
-                .put(`http://127.0.0.1:8000/api/scholar/${id}/`, {
+                .put(`http://127.0.0.1:8000/api/${id}/`, {
                     scholarName: request.scholarName,
                     scholarImage: request.scholarImage,
                     workplace: request.workplace,
@@ -74,7 +74,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.intent === 'search') {
         const searchTerm = request.searchTerm.split(' ').join('+')
         axios
-            .get(`http://127.0.0.1:8000/api/scholar?search=${searchTerm}/`)
+            .get(`http://127.0.0.1:8000/api?search=${searchTerm}/`)
             .then((response) => {
                 arr = response
                 purpose = 'displayData'
@@ -93,7 +93,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         checkDB(request)
     }
     if (request.intent === 'checkStarred') {
-        axios.get(`http://127.0.0.1:8000/api/scholar/?search=${request.name}+${request.work}`).then((response) => {
+        axios.get(`http://127.0.0.1:8000/api/?search=${request.name}+${request.work}`).then((response) => {
             if (response.data[0]) {
                 sendResponse({ isStarred: 'true' })
             } else {
@@ -102,19 +102,19 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         })
     }
     if (request.intent === 'saveStarred') {
-        axios.get(`http://127.0.0.1:8000/api/scholar/?search=${request.name}+${request.work}`).then((response) => {
+        axios.get(`http://127.0.0.1:8000/api/?search=${request.name}+${request.work}`).then((response) => {
             console.log(response)
             const { id } = response.data[0]
-            axios.put(`http://127.0.0.1:8000/api/scholar/${id}/`, {
+            axios.put(`http://127.0.0.1:8000/api/${id}/`, {
                 isStarred: true,
             })
         })
     }
     if (request.intent === 'deleteStarred') {
-        axios.get(`http://127.0.0.1:8000/api/scholar/?search=${request.name}+${request.work}`).then((response) => {
+        axios.get(`http://127.0.0.1:8000/api/?search=${request.name}+${request.work}`).then((response) => {
             console.log(response)
             const { id } = response.data[0]
-            axios.put(`http://127.0.0.1:8000/api/scholar/${id}/`, {
+            axios.put(`http://127.0.0.1:8000/api/${id}/`, {
                 isStarred: false,
             })
         })
