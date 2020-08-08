@@ -60,4 +60,10 @@ document.addEventListener('DOMContentLoaded', function () {
             })
         })
     })
+
+    document.getElementById('star-button').addEventListener('click', () => {
+        chrome.tabs.create({
+            url: './views/starred.html',
+        })
+    })
 })

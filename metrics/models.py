@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.postgres.fields import ArrayField
 
 class ScholarData(models.Model):
+    isStarred = models.BooleanField(default=False)
     scholarName = models.CharField(max_length=40)
     scholarImage = models.URLField(max_length=200)
     workplace = models.CharField(max_length=100, null=True)
