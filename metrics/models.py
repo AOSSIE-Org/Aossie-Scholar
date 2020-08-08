@@ -3,8 +3,8 @@ from django.contrib.postgres.fields import ArrayField
 
 class ScholarData(models.Model):
     isStarred = models.BooleanField(default=False)
-    scholarName = models.CharField(max_length=40)
-    scholarImage = models.URLField(max_length=200)
+    scholarName = models.CharField(max_length=40, null=True)
+    scholarImage = models.URLField(max_length=200, null=True)
     workplace = models.CharField(max_length=100, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     pubCount = models.CharField(max_length=100, null=True)
@@ -21,7 +21,7 @@ class ScholarData(models.Model):
     sIndex = models.CharField(max_length=100, null=True)
 
     # Array of data
-    titles = ArrayField(models.CharField(max_length=500))
+    titles = ArrayField(models.CharField(max_length=500), null=True)
     nCitations = ArrayField(models.CharField(max_length=50), null=True)
     citations = ArrayField(models.CharField(max_length=50), null=True)
     coauthors = ArrayField(models.CharField(max_length=50), null=True)
