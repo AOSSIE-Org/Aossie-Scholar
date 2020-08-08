@@ -93,31 +93,42 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         checkDB(request)
     }
     if (request.intent === 'checkStarred') {
-        axios.get(`http://127.0.0.1:8000/api/?search=${request.name}+${request.work}`).then((response) => {
-            if (response.data[0]) {
-                sendResponse({ isStarred: 'true' })
-            } else {
-                sendResponse({ isStarred: 'false' })
-            }
-        })
+        axios
+            .get(`http://127.0.0.1:8000/api/?search=${request.name}+${request.work}`)
+            .then((response) => {
+                return response.data[0].isStarred
+            })
+            .then((isStarred) => {
+                if (isStarred === true) {
+                    sendResponse({ isStarred: 'true' })
+                } else {
+                    sendResponse({ isStarred: 'false' })
+                }
+            })
     }
     if (request.intent === 'saveStarred') {
-        axios.get(`http://127.0.0.1:8000/api/?search=${request.name}+${request.work}`).then((response) => {
-            console.log(response)
-            const { id } = response.data[0]
-            axios.put(`http://127.0.0.1:8000/api/${id}/`, {
-                isStarred: true,
+        axios
+            .get(`http://127.0.0.1:8000/api/?search=${request.name}+${request.work}`)
+            .then((response) => {
+                return response.data[0].id
             })
-        })
+            .then((id) => {
+                axios.put(`http://127.0.0.1:8000/api/${id}/`, {
+                    isStarred: true,
+                })
+            })
     }
     if (request.intent === 'deleteStarred') {
-        axios.get(`http://127.0.0.1:8000/api/?search=${request.name}+${request.work}`).then((response) => {
-            console.log(response)
-            const { id } = response.data[0]
-            axios.put(`http://127.0.0.1:8000/api/${id}/`, {
-                isStarred: false,
+        axios
+            .get(`http://127.0.0.1:8000/api/?search=${request.name}+${request.work}`)
+            .then((response) => {
+                return response.data[0].id
             })
-        })
+            .then((id) => {
+                axios.put(`http://127.0.0.1:8000/api/${id}/`, {
+                    isStarred: false,
+                })
+            })
     }
     return true
 })
