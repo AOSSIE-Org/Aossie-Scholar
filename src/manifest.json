@@ -26,7 +26,7 @@
         "page": "views/background.html",
         "persistent": false
     },
-    "content_security_policy": "script-src 'self' https://cdn.jsdelivr.net; object-src 'self'",
+    "content_security_policy": "script-src 'self' https://cdn.jsdelivr.net https://stackpath.bootstrapcdn.com https://code.jquery.com; object-src 'self'",
     "permissions": [
         "tabs",
         "activeTab",
