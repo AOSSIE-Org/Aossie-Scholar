@@ -5,7 +5,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const parentDiv = document.getElementById('parent-div')
             const div = document.createElement('div')
             div.setAttribute('id', 'name')
-            div.textContent = response.data[i].scholarName
+            const btn = document.createElement('button')
+            btn.setAttribute('type', 'submit')
+            btn.setAttribute('id', 'star-button')
+            btn.textContent = response.data[i].scholarName
+            div.appendChild(btn)
             parentDiv.appendChild(div)
             const image = document.createElement('img')
             image.setAttribute('id', 'picture')

@@ -9,6 +9,7 @@ html {
     width: 100px;
     border-radius: 100.5px;
 }
+
 #name {
     padding-left: 22px;
     padding-top: 12px;
@@ -20,9 +21,7 @@ html {
     font-size: 15px;
     background-color: #333;
     border-radius: 5px;
-    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: antiquewhite;
-    text-decoration: none;
+
 }
 
 #workplace {
@@ -37,6 +36,17 @@ html {
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+#star-button {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: antiquewhite;
+    text-decoration: none;
+}
 
 hr {
     width: 83%;
