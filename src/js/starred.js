@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
     chrome.runtime.sendMessage('fetchStarred', function (response) {
-        console.log(response)
         for (var i = 0; i < response.data.length; i += 1) {
             const parentDiv = document.getElementById('parent-div')
             const div = document.createElement('div')
