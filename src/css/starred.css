@@ -11,7 +11,7 @@ html {
 }
 
 #name {
-    padding-left: 22px;
+    padding-left: 2px;
     padding-top: 12px;
     position: relative;
     left: 145px;
@@ -21,7 +21,6 @@ html {
     font-size: 15px;
     background-color: #333;
     border-radius: 5px;
-
 }
 
 #workplace {
@@ -37,6 +36,7 @@ html {
 }
 
 #star-button {
+    position: absolute;
     background-color: Transparent;
     background-repeat: no-repeat;
     border: none;
