@@ -91,7 +91,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             }
         })
     }
-    if (request === 'fetchSearchResults'){
+    if (request === 'fetchSearchResults') {
         sendResponse({
             data: arr,
             intent: purpose,
