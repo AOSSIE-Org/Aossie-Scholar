@@ -441,6 +441,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (response.intent === 'displayData') {
             appendToPage(response.data.data[0])
         }
+        if (response.intent === 'showData') {
+            appendToPage(response.data)
+        }
     })
 })
 module.exports = {

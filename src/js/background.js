@@ -91,6 +91,11 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             }
         })
     }
+    if (request.intent === 'createProfile') {
+        arr = request.data
+        purpose = 'showData'
+        createProfile()
+    }
     if (request === 'fetchSearchResults') {
         sendResponse({
             data: arr,
