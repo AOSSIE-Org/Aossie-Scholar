@@ -95,11 +95,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
     if (request.intent === 'checkStarred') {
         axios.get(`http://127.0.0.1:8000/api/?search=${request.name}+${request.work}`).then((response) => {
-            var isStarred = response.data[0].isStarred
-            if (isStarred === true) {
-                sendResponse({ isStarred: 'true' })
-            } else {
+            if (response.data[0] === undefined) {
                 sendResponse({ isStarred: 'false' })
+            } else {
+                var isStarred = response.data[0].isStarred
+                if (isStarred === true) {
+                    sendResponse({ isStarred: 'true' })
+                } else {
+                    sendResponse({ isStarred: 'false' })
+                }
             }
         })
     }
