@@ -73,11 +73,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
     if (request.intent === 'search') {
         const searchTerm = request.searchTerm.split(' ').join('+')
+        console.log(searchTerm)
         axios
-            .get(`http://127.0.0.1:8000/api?search=${searchTerm}/`)
+            .get(`http://127.0.0.1:8000/api?search=${searchTerm}`)
             .then((response) => {
                 arr = response
                 purpose = 'displayData'
+            })
+            .then(() => {
+                console.log(response)
             })
             .then(createProfile())
             .catch((error) => console.log(error))

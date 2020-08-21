@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const btn = document.createElement('button')
             btn.setAttribute('type', 'submit')
             btn.setAttribute('id', 'star-button')
-            btn.setAttribute('class', i)
             btn.textContent = response.data[i].scholarName
             div.appendChild(btn)
             parentDiv.appendChild(div)

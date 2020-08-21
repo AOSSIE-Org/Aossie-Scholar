@@ -430,6 +430,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (response.intent === 'displayData') {
+            console.log(response)
             appendToPage(response.data.data[0])
         }
     })
