@@ -28,20 +28,24 @@ document.addEventListener('DOMContentLoaded', function () {
             const hr = document.createElement('hr')
             parentDiv.appendChild(hr)
         }
-        addBtn()
+        addBtn(response)
     })
-    function redirectToProfile(e) {
-        const searchTerm = e.path[0].innerText
-        chrome.runtime.sendMessage({
-            intent: 'search',
-            searchTerm: searchTerm,
-        })
+    function redirectToProfile(e, response) {
+        const scholar = e.path[0].innerText
+        for (var i = 0; i < response.data.length; i += 1) {
+            if (response.data[i].scholarName === scholar) {
+                chrome.runtime.sendMessage({
+                    intent: 'createProfile',
+                    data: response.data[i],
+                })
+            }
+        }
     }
-    function addBtn() {
+    function addBtn(response) {
         const button = document.getElementsByTagName('button')
         for (var i = 0; i < button.length; i++) {
             button[i].addEventListener('click', function (e) {
-                redirectToProfile(e)
+                redirectToProfile(e, response)
             })
         }
     }
