@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
             }
         })
-
+        console.log(response.workplace)
         // Bind data to profile template
         document.getElementById('scholarImage').setAttribute('src', response.scholarImage)
         document.getElementById('website').setAttribute('href', response.website)
@@ -430,7 +430,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (response.intent === 'displayData') {
-            console.log(response)
             appendToPage(response.data.data[0])
         }
     })

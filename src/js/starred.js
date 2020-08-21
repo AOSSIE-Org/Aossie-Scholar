@@ -28,7 +28,11 @@ document.addEventListener('DOMContentLoaded', function () {
         addBtn()
     })
     function redirectToProfile(e) {
-        console.log(e.path[0].innerText)
+        const searchTerm = e.path[0].innerText
+        chrome.runtime.sendMessage({
+            intent: 'search',
+            searchTerm: searchTerm,
+        })
     }
     function addBtn() {
         const button = document.getElementsByTagName('button')

@@ -80,9 +80,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                 arr = response
                 purpose = 'displayData'
             })
-            .then(() => {
-                console.log(response)
-            })
             .then(createProfile())
             .catch((error) => console.log(error))
     }
@@ -97,18 +94,14 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         checkDB(request)
     }
     if (request.intent === 'checkStarred') {
-        axios
-            .get(`http://127.0.0.1:8000/api/?search=${request.name}+${request.work}`)
-            .then((response) => {
-                return response.data[0].isStarred
-            })
-            .then((isStarred) => {
-                if (isStarred === true) {
-                    sendResponse({ isStarred: 'true' })
-                } else {
-                    sendResponse({ isStarred: 'false' })
-                }
-            })
+        axios.get(`http://127.0.0.1:8000/api/?search=${request.name}+${request.work}`).then((response) => {
+            isStarred = response.data[0].isStarred
+            if (isStarred === true) {
+                sendResponse({ isStarred: 'true' })
+            } else {
+                sendResponse({ isStarred: 'false' })
+            }
+        })
     }
     if (request.intent === 'saveStarred') {
         axios
