@@ -2,7 +2,6 @@ from rest_framework import viewsets, permissions
 from metrics.models import ScholarData
 from .serializers import ScholarSerializer
 from rest_framework.filters import SearchFilter
-from django_filters.rest_framework import DjangoFilterBackend
 
 class ScholarViewSet(viewsets.ModelViewSet):
     queryset = ScholarData.objects.all()
