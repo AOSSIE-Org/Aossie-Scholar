@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const btn = document.createElement('button')
             btn.setAttribute('type', 'submit')
             btn.setAttribute('id', 'star-button')
+            btn.setAttribute('class', i)
             btn.textContent = response.data[i].scholarName
             div.appendChild(btn)
             parentDiv.appendChild(div)
@@ -25,5 +26,17 @@ document.addEventListener('DOMContentLoaded', function () {
             const hr = document.createElement('hr')
             parentDiv.appendChild(hr)
         }
+        addBtn()
     })
+    function redirectToProfile(e) {
+        console.log(e.path[0].innerText)
+    }
+    function addBtn() {
+        const button = document.getElementsByTagName('button')
+        for (var i = 0; i < button.length; i++) {
+            button[i].addEventListener('click', function (e) {
+                redirectToProfile(e)
+            })
+        }
+    }
 })
