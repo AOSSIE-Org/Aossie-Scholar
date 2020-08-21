@@ -7,6 +7,7 @@ function getTotalCitations(citations) {
     }
     return sumCitations
 }
+
 function getHindex(citations) {
     let hIndex = 0
     for (let i = 0; i < citations.length; i++) {
@@ -17,6 +18,7 @@ function getHindex(citations) {
     }
     return hIndex
 }
+
 function getGindex(citations) {
     let totalCitations = 0
     let gIndex = 0
@@ -30,6 +32,7 @@ function getGindex(citations) {
     }
     return gIndex
 }
+
 function getMindex(years) {
     let mIndex = 0
     currentYear = new Date().getFullYear()
@@ -38,6 +41,7 @@ function getMindex(years) {
     mIndex = (hIndex / timeGap).toFixed(2)
     return mIndex
 }
+
 function getOindex(citations, hIndex) {
     let oIndex = 0
     let maxCitation = 0
@@ -46,6 +50,7 @@ function getOindex(citations, hIndex) {
     oIndex = Math.pow(product, 1 / 2).toFixed(2)
     return oIndex
 }
+
 function getHmedian(citations, hIndex) {
     const hCore = []
     let hMedian = 0
@@ -54,6 +59,7 @@ function getHmedian(citations, hIndex) {
             hCore.push(el)
         }
     })
+
     function median(values) {
         if (values.length === 0) {
             return 0
@@ -72,6 +78,7 @@ function getHmedian(citations, hIndex) {
     hMedian = median(hCore)
     return hMedian
 }
+
 function getEindex(citations, hIndex) {
     let sumCitations = 0
     for (let i = 0; i < citations.length; i++) {
@@ -81,6 +88,7 @@ function getEindex(citations, hIndex) {
     }
     return parseFloat(Math.pow(sumCitations - Math.pow(hIndex, 2), 1 / 2).toFixed(2))
 }
+
 function getSindex(titles, citations, years) {
     sc = []
     sIndex = 0
@@ -101,6 +109,7 @@ function getSindex(titles, citations, years) {
     }
     return sIndex
 }
+
 function getTncc(data, newnCitations) {
     let sumNCitations = 0
     for (let i = 0; i < newnCitations.length; i++) {
@@ -108,6 +117,7 @@ function getTncc(data, newnCitations) {
     }
     return Math.round(sumNCitations * (24.66 / data) * 100) / 100
 }
+
 function getNcitations(citations, sanitized) {
     const nCitations = []
     for (let i = 0; i < citations.length; i++) {
@@ -117,6 +127,7 @@ function getNcitations(citations, sanitized) {
     }
     return nCitations
 }
+
 function getCitPerDoc(country) {
     return new Promise(function (resolve) {
         const url = '../lib/scimagojr.xlsx'
@@ -156,42 +167,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 nCitations[i] = ''
             }
         }
-        // Check if the Scholar is starred
-        const starBtn = document.getElementById('star-button')
-        const star = document.getElementById('star')
-
-        chrome.runtime.sendMessage(
-            {
-                intent: 'checkStarred',
-                name: response.scholarName,
-                work: response.workplace,
-            },
-            function (data) {
-                if (data.isStarred === 'true') {
-                    star.setAttribute('class', 'fas fa-star fa-5x checked')
-                } else {
-                    star.setAttribute('class', 'fas fa-star fa-5x unchecked')
-                }
-            }
-        )
-        starBtn.addEventListener('click', () => {
-            if (star.getAttribute('class') === 'fas fa-star fa-5x unchecked') {
-                star.setAttribute('class', 'fas fa-star fa-5x checked')
-                chrome.runtime.sendMessage({
-                    intent: 'saveStarred',
-                    name: response.scholarName,
-                    work: response.workplace,
-                })
-            } else {
-                star.setAttribute('class', 'fas fa-star fa-5x unchecked')
-                chrome.runtime.sendMessage({
-                    intent: 'deleteStarred',
-                    name: response.scholarName,
-                    work: response.workplace,
-                })
-            }
-        })
-        console.log(response.workplace)
         // Bind data to profile template
         document.getElementById('scholarImage').setAttribute('src', response.scholarImage)
         document.getElementById('website').setAttribute('href', response.website)
@@ -252,7 +227,41 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
         }
+        // Check if the Scholar is starred
+        const starBtn = document.getElementById('star-button')
+        const star = document.getElementById('star')
 
+        chrome.runtime.sendMessage(
+            {
+                intent: 'checkStarred',
+                name: response.scholarName,
+                work: response.workplace,
+            },
+            function (data) {
+                if (data.isStarred === 'true') {
+                    star.setAttribute('class', 'fas fa-star fa-4x checked')
+                } else {
+                    star.setAttribute('class', 'fas fa-star fa-4x unchecked')
+                }
+            }
+        )
+        starBtn.addEventListener('click', () => {
+            if (star.getAttribute('class') === 'fas fa-star fa-4x unchecked') {
+                star.setAttribute('class', 'fas fa-star fa-4x checked')
+                chrome.runtime.sendMessage({
+                    intent: 'saveStarred',
+                    name: response.scholarName,
+                    work: response.workplace,
+                })
+            } else {
+                star.setAttribute('class', 'fas fa-star fa-4x unchecked')
+                chrome.runtime.sendMessage({
+                    intent: 'deleteStarred',
+                    name: response.scholarName,
+                    work: response.workplace,
+                })
+            }
+        })
         // Visualise Chart
         graphYears = []
         presentYear = new Date().getFullYear()
@@ -434,4 +443,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 })
-module.exports = { getHindex, getEindex }
+module.exports = {
+    getHindex,
+    getEindex,
+}
