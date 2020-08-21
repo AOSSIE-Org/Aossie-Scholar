@@ -7,6 +7,12 @@ function createProfile() {
     })
 }
 
+function createSearchResults() {
+    chrome.tabs.create({
+        url: './views/search.html',
+    })
+}
+
 function checkDB(data) {
     axios.get(`http://127.0.0.1:8000/api/?search=${data.scholarName}+${data.workplace}`).then((response) => {
         const request = data
@@ -73,15 +79,23 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
     if (request.intent === 'search') {
         const searchTerm = request.searchTerm.split(' ').join('+')
-        console.log(searchTerm)
-        axios
-            .get(`http://127.0.0.1:8000/api?search=${searchTerm}`)
-            .then((response) => {
+        axios.get(`http://127.0.0.1:8000/api?search=${searchTerm}`).then((response) => {
+            if (response.data.length === 1) {
                 arr = response
                 purpose = 'displayData'
-            })
-            .then(createProfile())
-            .catch((error) => console.log(error))
+                createProfile()
+            } else {
+                arr = response
+                purpose = 'searchResults'
+                createSearchResults()
+            }
+        })
+    }
+    if (request === 'fetchSearchResults'){
+        sendResponse({
+            data: arr,
+            intent: purpose,
+        })
     }
     if (request === 'fromProfileJs') {
         sendResponse({
