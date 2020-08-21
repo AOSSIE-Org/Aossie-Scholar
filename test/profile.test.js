@@ -29,7 +29,7 @@ test('Test redirect to profile page', async () => {
     const newPagePromise = new Promise((resolve) => browser.once('targetcreated', (target) => resolve(target.page())))
     await page.click('button#searchBtn')
     const newPage = await newPagePromise
-    const testData = await newPage.$eval('.sidenav h3', (el) => el.innerText)
-    expect(testData).toBe('Publications')
+    const testData = await newPage.$eval('body h2', (el) => el.innerText)
+    expect(testData).toBe('Search Results')
     await page.close()
 }, 10000)
