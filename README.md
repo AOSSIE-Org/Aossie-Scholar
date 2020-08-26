@@ -35,6 +35,8 @@ A Google Chrome extension which calculates performance-based metrics for researc
 #### Code linting and formatting
 Aossie Scholar uses **Prettier + Eslint** for code listing and formatting. To check if your code follows the guidelines, run `npm run prettier`
 
+**Note :** The project uses **Husky**, a pre-commit GIT hook which checks if the code follows linting guidelines before commiting. This helps prevent unwanted linting errors in the pipelines.
+
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://gitlab.com/aossie/aossie-scholar/-/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
