@@ -1,24 +1,21 @@
 # Aossie Scholar
 A Google Chrome extension which calculates performance-based metrics for researchers from Google Scholar profile.
 
+## Install from Chrome Web Store
+[<img src="https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_340x96.png">](https://chrome.google.com/webstore/detail/scholar/bgoiffehmhngmehlbmcepkfikalopkgo?hl=en-GB)
+
+
 ### Prerequisites
 
-Minimum Node requirements:
+* `node: v8.10.0`
+* `npm: v6.14.41`
+* `Postgres`
 
-`
-node: v8.10.0
-`
-`
-npm: v6.14.4
-`
-Postgres - see the download instructions [here](https://www.postgresql.org/download/)
-
-## Installing
+## Installing on Local Machine
 
 * Fork to get your own copy of the project 
 * Clone the repo
 * `cd aossie-scholar/`
-##### Fire up the server 
 * `pip install -r requirements.txt`
 * Enter your database credentials in `settings.py`
 * `python manage.py makemigrations`
@@ -29,6 +26,14 @@ Postgres - see the download instructions [here](https://www.postgresql.org/downl
 * Run `gulp` for workflow automation. Any changes made in the `src/` folder will be automatically reflected in a `dist/` folder
 * In Google Chrome, go to Extensions>Enable Developer Mode(On top-right)>Click on Load Unpacked(On top-left)>Browse to the project directory>Select `dist/`
 * Visit your Google Scholar profile to register
+
+#### Testing
+* For unit testing, run `npm run unit-test`
+* For e2e testing, run `npm run ee-test`
+* For all testing, run `npm test`
+
+#### Code linting and formatting
+Aossie Scholar uses **Prettier + Eslint** for code listing and formatting. To check if your code follows the guidelines, run `npm run prettier`
 
 ## Contributing
 
