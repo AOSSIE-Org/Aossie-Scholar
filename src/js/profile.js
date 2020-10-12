@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('website').setAttribute('href', response.website)
         document.getElementById('scholarName').innerText = response.scholarName
         document.getElementById('workplace').innerText = response.workplace
-        document.getElementById('country').innerText = response.country
+        // document.getElementById('country').innerText = response.country
         document.getElementById('pubCount').innerText = response.pubCount
         document.getElementById('citCount').innerText = response.citCount
         document.getElementById('hIndex').innerText = response.hIndex
