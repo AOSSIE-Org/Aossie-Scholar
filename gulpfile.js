@@ -20,13 +20,13 @@ gulp.task('uglify', async function () {
         .pipe(gulp.dest('./dist/js'));
 })
 
-gulp.task('imageMin', async function () {
+gulp.task('compress-img', async function () {
     gulp.src('./src/images/*')
         .pipe(imagemin())
         .pipe(gulp.dest('./dist/images'))
 })
 
-gulp.task('run', gulp.series('copy', 'uglify', 'imageMin'))
+gulp.task('build', gulp.series('copy', 'uglify', 'compress-img'))
 
 gulp.task('watch', async function () {
     gulp.watch('./src/views/*.html', gulp.series('copy'))
@@ -34,7 +34,7 @@ gulp.task('watch', async function () {
     gulp.src('./src/lib/*').pipe(gulp.dest('./dist/lib'))
     gulp.watch('./src/manifest.json', gulp.series('copy'))
     gulp.watch('./src/js/*.js', gulp.series('uglify'))
-    gulp.watch('./src/images/*', gulp.series('imageMin'))
+    gulp.watch('./src/images/*', gulp.series('compress-img'))
 })
 
-gulp.task('default', gulp.series('run', 'watch'))
+gulp.task('default', gulp.series('build', 'watch'))

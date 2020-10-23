@@ -1,13 +1,14 @@
 const puppeteer = require('puppeteer')
-const extensionPath = 'src'
+const extensionPath = './src/'
 let browser
 
 beforeAll(async () => {
     browser = await puppeteer.launch({
         headless: false, // extension are allowed only in the head-full mode
-        slowMo: 80,
+        slowMo: 100,
         args: [
-            '--window-size=1920,1080',
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
             `--disable-extensions-except=${extensionPath}`,
             `--load-extension=${extensionPath}`,
         ],
