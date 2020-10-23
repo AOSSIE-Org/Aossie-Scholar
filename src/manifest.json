@@ -1,6 +1,6 @@
 {
-    "name": "scholar",
-    "version": "1.0",
+    "name": "AOSSIE Scholar",
+    "version": "1.1",
     "manifest_version": 2,
     "browser_action": {
         "default_popup": "./views/popup.html",
@@ -29,7 +29,6 @@
     "content_security_policy": "script-src 'self' https://cdn.jsdelivr.net; object-src 'self'",
     "permissions": [
         "tabs",
-        "activeTab",
-        "storage"
+        "activeTab"
     ]
 }

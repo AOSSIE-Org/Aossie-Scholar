@@ -7,6 +7,12 @@ function createProfile() {
     })
 }
 
+function createSearchResults() {
+    chrome.tabs.create({
+        url: './views/search.html',
+    })
+}
+
 function checkDB(data) {
     axios.get(`http://127.0.0.1:8000/api/?search=${data.scholarName}+${data.workplace}`).then((response) => {
         const request = data
@@ -73,14 +79,28 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
     if (request.intent === 'search') {
         const searchTerm = request.searchTerm.split(' ').join('+')
-        axios
-            .get(`http://127.0.0.1:8000/api?search=${searchTerm}/`)
-            .then((response) => {
+        axios.get(`http://127.0.0.1:8000/api?search=${searchTerm}`).then((response) => {
+            if (response.data.length === 1) {
                 arr = response
                 purpose = 'displayData'
-            })
-            .then(createProfile())
-            .catch((error) => console.log(error))
+                createProfile()
+            } else {
+                arr = response
+                purpose = 'searchResults'
+                createSearchResults()
+            }
+        })
+    }
+    if (request.intent === 'createProfile') {
+        arr = request.data
+        purpose = 'showData'
+        createProfile()
+    }
+    if (request === 'fetchSearchResults') {
+        sendResponse({
+            data: arr,
+            intent: purpose,
+        })
     }
     if (request === 'fromProfileJs') {
         sendResponse({
@@ -92,4 +112,48 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         sendResponse(request)
         checkDB(request)
     }
+    if (request.intent === 'checkStarred') {
+        axios.get(`http://127.0.0.1:8000/api/?search=${request.name}+${request.work}`).then((response) => {
+            if (response.data[0] === undefined) {
+                sendResponse({ isStarred: 'false' })
+            } else {
+                var isStarred = response.data[0].isStarred
+                if (isStarred === true) {
+                    sendResponse({ isStarred: 'true' })
+                } else {
+                    sendResponse({ isStarred: 'false' })
+                }
+            }
+        })
+    }
+    if (request.intent === 'saveStarred') {
+        axios
+            .get(`http://127.0.0.1:8000/api/?search=${request.name}+${request.work}`)
+            .then((response) => {
+                return response.data[0].id
+            })
+            .then((id) => {
+                axios.put(`http://127.0.0.1:8000/api/${id}/`, {
+                    isStarred: true,
+                })
+            })
+    }
+    if (request.intent === 'deleteStarred') {
+        axios
+            .get(`http://127.0.0.1:8000/api/?search=${request.name}+${request.work}`)
+            .then((response) => {
+                return response.data[0].id
+            })
+            .then((id) => {
+                axios.put(`http://127.0.0.1:8000/api/${id}/`, {
+                    isStarred: false,
+                })
+            })
+    }
+    if (request === 'fetchStarred') {
+        axios.get('http://127.0.0.1:8000/api/?search=true').then((data) => {
+            sendResponse(data)
+        })
+    }
+    return true
 })

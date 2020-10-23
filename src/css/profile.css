@@ -2,7 +2,6 @@ body {
     font-family: "Lato", sans-serif;
 }
 
-
 /* Sidenav */
 .sidenav {
     background: linear-gradient(rgba(0, 0, 100, 0.5), rgba(0, 0, 100, 0.5)), url("../images/bg.jpg");
@@ -66,6 +65,27 @@ body {
     line-height: 1em;
     margin: 0;
     padding-top: 30px;
+}
+
+.sidenav a {
+    text-decoration: none;
+}
+
+.checked {
+    color: orange;
+}
+
+.unchecked {
+    color: white;
+}
+
+#star-button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
 }
 
 /* Content */
