@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../js/popup.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <header id="head">
+    <p>AOSSIE Scholar</p>
+    <div style="font-size: 0.5rem;">
+      <button id="star-button" type="submit"><i id="star" class="fas fa-star fa-2x checked"></i></button>
+    </div>
+  </header>
+
+
+  <div id="searchDiv">
+
+    <img id="logo" src="../images/logo_only.png">
+    <form id="searchForm">
+      <input type="text" name="scholarName" id="searchInput">
+      <button type="submit" id="searchBtn">Search</button>
+    </form>
+  </div>
+
+  <div id="registerDiv">
+    <hr>
+    <form id="regForm">
+      <table>
+        <tr>
+          <td><label id="regLabel" for="regNameInput">Scholar:</label></td>
+          <td><input type="text" name="scholarName" id="regNameInput" disabled></td>
+        </tr>
+        <tr>
+          <td><label id="regLabel" for="regCountryInput">Country:</label></td>
+          <td>
+            <select name="countryName" id="regCountryInput">
+            </select>
+          </td>
+        </tr>
+      </table>
+      <button type="submit" id="regBtn">Register</button>
+    </form>
+  </div>
+
+  <footer id="foot">
+    <p>Visit your Google Scholar page to register!</p>
+  </footer>
+</body>
+
+</html>

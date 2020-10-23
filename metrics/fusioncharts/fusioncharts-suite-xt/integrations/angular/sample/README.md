@@ -1,2 +1,0 @@
-# Angular FusionCharts
-We have created multiple samples using **Angular FusionCharts** for your reference. To view the samples click [here](https://fusioncharts.github.io/angular-fusioncharts/#/ex1 "Angular FusionCharts").

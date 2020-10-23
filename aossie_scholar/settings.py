@@ -1,11 +1,10 @@
-
+from dotenv import load_dotenv
 import os
 import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-from dotenv import load_dotenv
 load_dotenv()
 
 
@@ -18,7 +17,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'sleepy-oasis-20032.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -30,13 +29,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_tables2',
     'metrics',
     'rest_framework',
-    
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -76,11 +75,11 @@ WSGI_APPLICATION = 'aossie_scholar.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'DATABASE NAME HERE',         
-        'USER': 'USERNAME HERE',
-        'PASSWORD': 'PASSWORD HERE',
-        'HOST': '127.0.0.1',                #Default host and ports
-        'PORT': '5432',  
+        'NAME': 'rest',
+        'USER': 'rest',
+        'PASSWORD': 'rest',
+        'HOST': '127.0.0.1',  # Default host and ports
+        'PORT': '5432',
     }
 }
 
@@ -121,11 +120,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ]
+}
 
-STATICfiLES_DIRS = (
-    os.path.join(BASE_DIR,'metrics/static'),)
+CORS_ORIGIN_ALLOW_ALL = True

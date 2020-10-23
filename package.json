@@ -1,0 +1,49 @@
+{
+    "name": "aossie-scholar-extension",
+    "version": "1.0.0",
+    "description": "Extension which computes better metrics for scholars and researchers",
+    "main": "index.js",
+    "scripts": {
+        "lint": "eslint src/js",
+        "test": "jest",
+        "unit-test": "export environment=unitonly && jest",
+        "ee-test": "export environment=eeonly && jest",
+        "prettier": "prettier-check src/js/*.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://gitlab.com/aossie/aossie-scholar.git"
+    },
+    "author": "Aditya Bisoi",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://gitlab.com/aossie/aossie-scholar/issues"
+    },
+    "homepage": "https://gitlab.com/aossie/aossie-scholar#readme",
+    "devDependencies": {
+        "babel-eslint": "^10.1.0",
+        "eslint": "^7.2.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-import": "^2.22.0",
+        "eslint-plugin-prettier": "^3.1.4",
+        "gulp": "^4.0.2",
+        "gulp-concat": "^2.6.1",
+        "gulp-imagemin": "^7.1.0",
+        "gulp-terser": "^1.2.0",
+        "gulp-uglify": "^3.0.2",
+        "husky": "^4.2.5",
+        "jest": "^26.2.2",
+        "jest-puppeteer": "^4.4.0",
+        "prettier": "^2.0.5",
+        "prettier-check": "^2.0.0",
+        "puppeteer": "^5.2.1"
+    },
+    "dependencies": {
+        "del": "^5.1.0"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run lint"
+        }
+    }
+}

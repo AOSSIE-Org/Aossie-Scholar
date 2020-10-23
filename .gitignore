@@ -5,3 +5,7 @@
 __pycache__/
 local_settings.py
 .vscode/
+node_modules/
+package-lock.json
+dist/
+aossie_scholar/settings.py

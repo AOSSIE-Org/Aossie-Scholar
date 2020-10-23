@@ -1,0 +1,119 @@
+body {
+    margin: 0 0 0 0;
+    width: 300px;
+}
+
+#registerDiv {
+    display: none;
+    /* display: block; */
+}
+
+.checked {
+    color: orange;
+}
+
+#star-button {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+}
+
+#head {
+    position: relative;
+    top: 0px;
+    height: 35px;
+    background-color: #E8E8E8;
+    text-align: center;
+}
+
+#head p {
+    margin-top: 0px;
+    padding-top: 3px;
+    color: rgb(98, 155, 41);
+    font-weight: bold;
+    font-size: x-large;
+    letter-spacing: 1px;
+}
+
+#foot {
+    position: relative;
+    bottom: 0px;
+    height: 35px;
+    background-color: #E8E8E8;
+    text-align: center;
+}
+
+#foot p {
+    margin-top: 8px;
+    padding-top: 8px;
+    color: #383838;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+#logo {
+    padding-top: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+#searchInput {
+    width: 70%;
+    padding: 12px 20px 12px 12px;
+    margin: 8px 44px 0px 44px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+#searchBtn,
+#regBtn {
+    background-color: #0099FF;
+    border: none;
+    margin: 8px 50px 0px 115px;
+    border-radius: 7px;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: solid;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#regCitationInput,
+#regCountryInput {
+    width: 85%;
+    padding: 8px 20px 8px 10px;
+    display: inline-block;
+    /* margin-left: 60px; */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: white;
+}
+
+#regNameInput {
+    width: 85%;
+    padding: 8px 20px 8px 10px;
+    /* margin-left: 60px; */
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#regLabel {
+    margin-left: 5px;
+    padding-right: 15px;
+    font-weight: bold;
+}

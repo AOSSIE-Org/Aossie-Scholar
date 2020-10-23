@@ -1,0 +1,56 @@
+html {
+    overflow-x: hidden;
+}
+
+#picture {
+    position: absolute;
+    left: 15px;
+    height: 100px;
+    width: 100px;
+    border-radius: 100.5px;
+}
+
+#name {
+    padding-left: 2px;
+    padding-top: 12px;
+    position: relative;
+    left: 145px;
+    top: 95px;
+    height: 50px;
+    width: 210px;
+    font-size: 15px;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+#workplace {
+    position: relative;
+    left: 147px;
+    top: -16px;
+    color: #333333;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    letter-spacing: 1px;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#star-button {
+    position: absolute;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+hr {
+    width: 83%;
+    height: 1px;
+    background: #333;
+    border: 0;
+}
