@@ -4,7 +4,8 @@
     "description": "Extension which computes better metrics for scholars and researchers",
     "main": "index.js",
     "scripts": {
-        "lint": "eslint src/js"
+        "lint": "eslint src/js",
+        "test": "jest"
     },
     "repository": {
         "type": "git",
@@ -17,6 +18,7 @@
     },
     "homepage": "https://gitlab.com/aossie/aossie-scholar#readme",
     "devDependencies": {
+        "babel-eslint": "^10.1.0",
         "eslint": "^7.2.0",
         "eslint-config-prettier": "^6.11.0",
         "eslint-plugin-import": "^2.22.0",
@@ -27,7 +29,10 @@
         "gulp-terser": "^1.2.0",
         "gulp-uglify": "^3.0.2",
         "husky": "^4.2.5",
-        "prettier": "2.0.5"
+        "jest": "^26.2.2",
+        "jest-puppeteer": "^4.4.0",
+        "prettier": "2.0.5",
+        "puppeteer": "^5.2.1"
     },
     "dependencies": {
         "del": "^5.1.0"
