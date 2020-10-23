@@ -10,4 +10,4 @@ class ScholarViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = ScholarSerializer
     filter_backends = [SearchFilter]
-    search_fields = ['scholarName']
+    search_fields = ['scholarName','workplace']

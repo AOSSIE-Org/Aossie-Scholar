@@ -6,6 +6,7 @@ const del = require('del');
 gulp.task('copy', async function () {
     gulp.src('./src/views/*.html').pipe(gulp.dest('./dist/views'))
     gulp.src('./src/css/*.css').pipe(gulp.dest('./dist/css'))
+    gulp.src('./src/lib/*').pipe(gulp.dest('./dist/lib'))
     gulp.src('./src/manifest.json').pipe(gulp.dest('./dist'))
 })
 
@@ -30,6 +31,7 @@ gulp.task('run', gulp.series('copy', 'uglify', 'imageMin'))
 gulp.task('watch', async function () {
     gulp.watch('./src/views/*.html', gulp.series('copy'))
     gulp.watch('./src/css/*.css', gulp.series('copy'))
+    gulp.src('./src/lib/*').pipe(gulp.dest('./dist/lib'))
     gulp.watch('./src/manifest.json', gulp.series('copy'))
     gulp.watch('./src/js/*.js', gulp.series('uglify'))
     gulp.watch('./src/images/*', gulp.series('imageMin'))

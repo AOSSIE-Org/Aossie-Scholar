@@ -1,119 +1,38 @@
-# Aossie-Scholar
+# Aossie Scholar
+A Google Chrome extension which calculates performance-based metrics for researchers from Google Scholar profile.
 
-Aossie scholar is a metric computation system for researchers with a Google Scholar profile. Google Scholar provides researchers with stats such as the number of publications, citations, h-index and i10 index. But, these metrics are flawed. Aossie Scholar extracts some basic information form Google Scholar and computes better metrics, and displays them on another website. So, researchers can now see better, effective metrics with a single click.
+### Prerequisites
 
-## Requirements
+Minimum Node requirements:
 
-Aossie Scholar requires Django 2.2.x, which and more dependencies are installed by ```requirements.txt```.
+`
+node: v8.10.0
+`
+`
+npm: v6.14.4
+`
+Postgres - see the download instructions [here](https://www.postgresql.org/download/)
 
-Postgres as a database server is required. For downloading and documentation, visit https://www.postgresql.org/
+## Installing
 
-
-### Installation
-
-* #### Installing the extension:
-    * Go to `Extensions` tab of Google Chrome, i.e., `chrome://extensions/`
-    * Enable "Developer mode" from top-right section of the tab.
-    * Click on `Load unpacked` and then select the project's extension folder(`aossie-scholar/extension`)
-    * The extension is loaded and ready to use.
-
-* #### Workflow automation (Gulp)
-    * Run `npm install` to install required dependencies
-    * Run `gulp` to compile the files to a `dist` folder
-    * The gulp server watches for file changes and automatically   compiles them
-    
- 
-* #### setting up postgres - 
-
-* Dependencies required to run Server
-    * Python 3.7
-    * Postgres
-    ### For mac users
-        ```sh
-        brew install postgresql
-        ````
-    ### For debian-based linux users
-        ```sh
-        sudo apt-get update
-        sudo apt-get install postgresql postgresql-contrib libssl-dev
-        ```
-        Also, Linux users need to install some dependencies for PostgreSQL to work with Python.
-        ```
-        sudo apt-get install libpq-dev python3-dev
-        ```
-    * **Next Step ** - Create the database. For that we first open the psql shell. Go to the directory where your postgres file is stored.
-    
-        ```sh
-        # For linux users
-        sudo -u postgres psql
-        
-        # For macOS users
-        psql -d postgres
-        ```
-    
-    * When inside psql, create a user for project and then using the user create the database. Commands below will create user and database with name aossie.
-    
-        ```sql
-        CREATE USER aossie WITH PASSWORD 'aossie';
-        CREATE DATABASE aossie WITH OWNER aossie;
-        
-        ```
-    * Now, all we need to do is give our database user access rights to the database we created:
-        ```
-        GRANT ALL PRIVILEGES ON DATABASE aossie TO aossie;
-        ```
-    * Go to Settings.py and change accordingly -
-        ```
-        DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'aossie',
-            'USER': 'aossie',
-            'PASSWORD': 'aossie',
-            'HOST': 'localhost',
-            'PORT': '',
-                }
-            }
-        ```
-    
-    * Once the databases are created, exit the psql shell with `\q` followed by ENTER.
-    
-    * ###follow this blog if you have any doubts remaining - 
-    * https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-14-04   
-*  ## Using pipenv
-    
-    Using pipenv, you will not need to set up virtualenv. It will do it automatically for you
-    
-    To setup a virtual environment and install the dependices, enter in a terminal
-    
-    ```sh
-    pipenv --python 3.7.3 install
-    ```
-    
-    Now to activate the virtual environemnt, type
-    
-    ```sh
-    pipenv shell
-        
-
-* git remote add origin https://gitlab.com/aossie/aossie-scholar.git
-* cd aossie-scholar
-* 
-* git pull origin master
-* pip install -r requirements.txt
-* Enter your Postgresql credentials in ```settings.py```
-* Make sure selenium webdriver is in correct path(eg. for Ubuntu in `usr/local/bin`)
-* python manage.py makemigrations
-* python manage.py migrate
-* python manage.py runserver
-
-## Running
-After running the server, point your browser to http://127.0.0.1:8000/metrics/ .To register, enter your Google Scholar profile URL(such as https://scholar.google.com/citations?hl=en&user=m8dFEawAAAAJ) and click ```Register```. You will be directed to the profiles page showing better stats. You can click on individual metrics for details. To search for an already registered scholar, simply search his/her name in the search bar.
+* Fork to get your own copy of the project 
+* Clone the repo
+* `cd aossie-scholar/`
+##### Fire up the server 
+* `pip install -r requirements.txt`
+* Enter your database credentials in `settings.py`
+* `python manage.py makemigrations`
+* `python manage.py migrate`
+* `python manage.py runserver`
+#### Build and load the extension
+* `npm install`
+* Run `gulp` for workflow automation. Any changes made in the `src/` folder will be automatically reflected in a `dist/` folder
+* In Google Chrome, go to Extensions>Enable Developer Mode(On top-right)>Click on Load Unpacked(On top-left)>Browse to the project directory>Select `dist/`
+* Visit your Google Scholar profile to register
 
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://gitlab.com/aossie/aossie-scholar/-/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
 
 ## License
 
@@ -121,4 +40,4 @@ This project is licensed under the GNU General Public License - see the [LICENSE
 
 ## Support
 
-If you would like to talk to other Aossie Scholar users and developers, visit our [Gitter channel](https://gitter.im/AOSSIE/AossieScholar)
+Join our [Gitter](https://gitter.im/AOSSIE/AossieScholar) to talk to developers of this project.
