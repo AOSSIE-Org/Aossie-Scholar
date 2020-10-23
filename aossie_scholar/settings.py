@@ -33,10 +33,11 @@ INSTALLED_APPS = [
     'django_tables2',
     'metrics',
     'rest_framework',
-    
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -129,3 +130,13 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 STATICfiLES_DIRS = (
     os.path.join(BASE_DIR,'metrics/static'),)
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ]
+}
+
+CORS_ORIGIN_ALLOW_ALL=True
