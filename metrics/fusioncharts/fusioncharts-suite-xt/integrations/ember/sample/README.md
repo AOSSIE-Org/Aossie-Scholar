@@ -1,2 +1,0 @@
-# Ember FusionCharts
-We have created multiple samples using **Ember FusionCharts** for your reference. To view the samples click [here](https://fusioncharts.github.io/ember-fusioncharts "Ember FusionCharts").

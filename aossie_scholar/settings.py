@@ -1,4 +1,3 @@
-
 import os
 import django_heroku
 
@@ -18,7 +17,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'sleepy-oasis-20032.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -30,7 +29,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_tables2',
     'metrics',
     'rest_framework',
     'corsheaders',
@@ -122,14 +120,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
 STATIC_URL = '/static/'
-
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
-
-STATICfiLES_DIRS = (
-    os.path.join(BASE_DIR,'metrics/static'),)
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,

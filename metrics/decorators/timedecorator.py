@@ -1,4 +1,3 @@
-
 def my_timer(func):
 	import time
 
@@ -9,7 +8,3 @@ def my_timer(func):
 		print ('{} ran in: {} sec'.format(func.__name__,t2))
 		return result
 	return wrapper
-
-
-
-

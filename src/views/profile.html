@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/profile.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/xlsx.full.min.js"></script>
+    <script src="../js/profile.js"></script>
+</head>
+
+<body>
+
+    <div class="sidenav">
+        <div class="profile-image">
+            <img id="scholarImage" src="" alt="Profile">
+        </div>
+        <h1 id="scholarName"></h1>
+        <p id="workplace"></p>
+        <h2 id="pubCount"></h2>
+        <h3>Publications</h3>
+        <h2 id="citCount"></h2>
+        <h3>Citations</h3>
+    </div>
+
+    <div class="main">
+        <section>
+            <table>
+                <tr>
+                    <td>h-index</td>
+                    <td id="hIndex"></td>
+                    <td>g-index</td>
+                    <td id="gIndex"></td>
+                </tr>
+                <tr>
+                    <td>m-index</td>
+                    <td id="mIndex"></td>
+                    <td>o-index</td>
+                    <td id="oIndex"></td>
+                </tr>
+                <tr>
+                    <td>h-median</td>
+                    <td id="hMedian"></td>
+                    <td>e-index</td>
+                    <td id="eIndex"></td>
+                </tr>
+                <tr>
+                    <td>s-index</td>
+                    <td id="sIndex"></td>
+                    <td>TNCc</td>
+                    <td id="TNCc"></td>
+                </tr>
+            </table>
+        </section>
+        <section>
+            <canvas id="myChart"></canvas>
+        </section>
+        <section>
+            <div class="table-wrapper">
+                <table class="alt">
+                    <thead>
+                        <tr>
+                            <td>Title</td>
+                            <td>Citations</td>
+                            <td>Co-Authors</td>
+                            <td>Normalized Citations</td>
+                            <td>Year</td>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                    </tbody>
+                    <!-- <div id="wrap">
+
+                    </div> -->
+                </table>
+            </div>
+        </section>
+
+
+    </div>
+</body>
+
+</html>
