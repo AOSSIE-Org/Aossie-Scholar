@@ -169,7 +169,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         // Bind data to profile template
         document.getElementById('scholarImage').setAttribute('src', response.scholarImage)
-        document.getElementById('website').setAttribute('href', response.website)
+        if (response.website !== undefined) {
+            document.getElementById('website').setAttribute('href', response.website)
+        }
         document.getElementById('scholarName').innerText = response.scholarName
         document.getElementById('workplace').innerText = response.workplace
         // document.getElementById('country').innerText = response.country
