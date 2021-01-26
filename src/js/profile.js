@@ -153,6 +153,14 @@ function getCitPerDoc(country) {
         req.send()
     })
 }
+
+function getScholarImage(image) {
+    if (image == '/citations/images/avatar_scholar_128.png') {
+        image = 'https://scholar.google.com/citations/images/avatar_scholar_128.png'
+    }
+    return image
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     function appendToPage(response) {
         const { titles, citations, coauthors, years, nCitations } = response
@@ -393,6 +401,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     return b - a
                 })
 
+                scholarImage = getScholarImage(response.image)
                 hIndex = getHindex(citations)
                 gIndex = getGindex(citations)
                 mIndex = getMindex(years)
@@ -411,7 +420,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         chrome.runtime.sendMessage(
                             {
                                 intent: 'sendToServer',
-                                scholarImage: response.image,
+                                scholarImage: scholarImage,
                                 scholarName: response.scholarName,
                                 workplace: response.workplace,
                                 website: website,
