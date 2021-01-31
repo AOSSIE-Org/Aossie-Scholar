@@ -16,6 +16,7 @@ function createSearchResults() {
 function checkDB(data) {
     axios.get(`http://127.0.0.1:8000/api/?search=${data.scholarName}+${data.workplace}`).then((response) => {
         const request = data
+        // if data is not available in the database then add it in Database
         if (response.data[0] === undefined) {
             axios
                 .post('http://127.0.0.1:8000/api/', {
@@ -42,6 +43,7 @@ function checkDB(data) {
                 })
                 .catch((error) => console.log(error))
         } else {
+            // if available then update the data in Database
             const { id } = response.data[0]
             axios
                 .put(`http://127.0.0.1:8000/api/${id}/`, {
