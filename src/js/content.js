@@ -27,12 +27,12 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         const { country } = request
 
         for (let i = 0; i < titles.length; i++) {
-            const title = titles[i].textContent
-            const cit = citations[i].textContent
-            const year = years[i].textContent
-            titleArray.push(title)
-            citArray.push(cit)
-            yrArray.push(year)
+            //const title = titles[i].textContent
+            //const cit = citations[i].textContent
+            //const year = years[i].textContent
+            titleArray.push(titles[i].textContent)
+            citArray.push(citations[i].textContent)
+            yrArray.push(years[i].textContent)
             const authorsPerPublication = coAuthors[i].getElementsByClassName('gs_gray')[0].innerText
             if (authorsPerPublication.indexOf('...') === -1) {
                 coAuthorArray.push(authorsPerPublication.split(',').length)
