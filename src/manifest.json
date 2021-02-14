@@ -22,7 +22,9 @@
         {
             "matches": [
                 "https://scholar.google.com/citations?hl=*&user=*",
-                "https://scholar.google.com/citations?user=*&hl=*"
+                "https://scholar.google.com/citations?user=*&hl=*",
+                "https://scholar.google.co.in/citations?user=*&hl=*",
+                "https://scholar.google.co.in/citations?hl=*&user=*"
             ],
             "js": [
                 "./js/content.js"
