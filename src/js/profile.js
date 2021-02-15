@@ -162,6 +162,8 @@ function getScholarImage(image) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+
+
     function appendToPage(response) {
         const { titles, citations, coauthors, years, nCitations } = response
         for (let i = 0; i < response.pubCount; i++) {
@@ -181,7 +183,8 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('website').setAttribute('href', response.website)
         }
         document.getElementById('scholarName').innerText = response.scholarName
-        document.getElementById('workplace').innerText = response.workplace
+        if (response.workplace !== undefined && response.workplace.length > 1)
+            document.getElementById('workplace').innerText = response.workplace
         // document.getElementById('country').innerText = response.country
         document.getElementById('pubCount').innerText = response.pubCount
         document.getElementById('citCount').innerText = response.citCount
@@ -256,13 +259,18 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         )
         starBtn.addEventListener('click', () => {
+
             if (star.getAttribute('class') === 'fas fa-star fa-4x unchecked') {
                 star.setAttribute('class', 'fas fa-star fa-4x checked')
                 chrome.runtime.sendMessage({
                     intent: 'saveStarred',
                     name: response.scholarName,
                     work: response.workplace,
-                })
+                }/*, function (data) {
+                    if (data.isStarred)
+                        alert("Hey there ! You starred the " + response.scholarName);
+                }*/
+                )
             } else {
                 star.setAttribute('class', 'fas fa-star fa-4x unchecked')
                 chrome.runtime.sendMessage({
@@ -351,6 +359,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     chrome.runtime.sendMessage('fromProfileJs', function (response) {
+        document.title = response.data.scholarName
         if (response.intent === 'calculateData') {
             response = response.data
             newCoAuthors = []
@@ -457,6 +466,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 })
+
 module.exports = {
     getHindex,
     getEindex,
