@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
             parentDiv.appendChild(image)
             const p = document.createElement('p')
             p.setAttribute('id', 'workplace')
-            p.textContent = response.data[i].workplace
+            if (response.data[i].workplace !== undefined && response.data[i].workplace.length > 1) { p.textContent = response.data[i].workplace }
             const br = document.createElement('br')
             parentDiv.appendChild(br)
             parentDiv.appendChild(p)
@@ -26,6 +26,10 @@ document.addEventListener('DOMContentLoaded', function () {
             parentDiv.appendChild(hr)
         }
         addBtn(response)
+        var spinner = document.getElementById("spinner")
+        spinner.style.display = " none"
+        var overlay = document.getElementById("spinlay")
+        overlay.style.display = " none"
     })
     function redirectToProfile(e, response) {
         const scholar = e.path[0].innerText
@@ -43,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
         for (var i = 0; i < button.length; i++) {
             button[i].addEventListener('click', function (e) {
                 redirectToProfile(e, response)
+
             })
         }
     }

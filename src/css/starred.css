@@ -9,6 +9,47 @@ html {
     width: 100px;
     border-radius: 100.5px;
 }
+.overlay {
+   
+    position: fixed; /* Sit on top of the page content */
+    display: block; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(190, 236, 25, 0.1); /* Black background with opacity */
+    opacity: 0.5;
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+     /* Add a pointer on hover */
+}
+.loader {
+    border: 5px solid #f3f3f3;
+    visibility: visible;
+    border-radius: 50%;
+    z-index: 100;
+    top: 47%;
+    left:44%;
+    position: absolute;
+    border-top: 5px solid rgb(9, 9, 31);
+    /*border-bottom: 5px solid blue;*/
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
 
 #name {
     padding-left: 2px;
