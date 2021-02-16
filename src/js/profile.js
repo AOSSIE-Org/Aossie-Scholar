@@ -163,8 +163,10 @@ function getScholarImage(image) {
 
 document.addEventListener('DOMContentLoaded', function () {
 
+    /*var overlay = document.getElementsByName('loader')
+    overlay.style.visibility = "hidden"*/
 
-    function appendToPage(response) {
+    async function appendToPage(response) {
         const { titles, citations, coauthors, years, nCitations } = response
         for (let i = 0; i < response.pubCount; i++) {
             if (citations[i] === undefined) {
@@ -212,6 +214,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
         window.onscroll = scrollHandler
+
 
         function sendData(page) {
             const pagenumber = page
@@ -356,6 +359,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
             },
         })
+        var spinner = document.getElementById("spinner")
+        spinner.style.display = " none"
+        var overlay = document.getElementById("spinlay")
+        overlay.style.display = " none"
+        //alert(document.getElementsByClassName("overlay").style.cursor);
+
+
+
     }
 
     chrome.runtime.sendMessage('fromProfileJs', function (response) {
@@ -452,6 +463,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             },
                             function (response) {
                                 appendToPage(response)
+
                             }
                         )
                     })
@@ -467,7 +479,7 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 })
 
-module.exports = {
+/*module.exports = {
     getHindex,
     getEindex,
-}
+}*/

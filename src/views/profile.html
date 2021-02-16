@@ -8,11 +8,19 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
     <script src="../lib/xlsx.full.min.js"></script>
+
     <script src="../js/profile.js"></script>
 </head>
 
 <body>
+    <center>
+        <div class="overlay" id="spinlay">
+            <div class="loader" id="spinner"></div>
+        </div>
+    </center>
+
 
     <div class="sidenav">
         <div style="font-size: 0.5rem;">
@@ -20,7 +28,8 @@
         </div>
 
         <div class="profile-image">
-            <img id="scholarImage" src="" alt="Profile">
+            <img id="scholarImage" src="https://img.icons8.com/ios-filled/50/000000/motarboard.png" alt="Profile"
+                width="100%" height="100%">
         </div>
         <a id="website" target="_blank">
             <h1 id="scholarName"></h1>
