@@ -2,6 +2,7 @@
     "name": "AOSSIE Scholar",
     "version": "1.1",
     "manifest_version": 2,
+
     "browser_action": {
         "default_popup": "./views/popup.html",
         "default_icon": {
@@ -9,26 +10,23 @@
             "32": "./images/default_icon_32.png",
             "48": "./images/default_icon_48.png",
             "128": "./images/default_icon_128.png"
-          }
+        }
     },
     "content_scripts": [
         {
-        "matches": [
-            "https://scholar.google.com/citations?hl=*&user=*",
-            "https://scholar.google.com/citations?user=*&hl=*"
-        ],
-        "js": [
-            "./js/content.js"
-        ]
-    }
+            "matches": [
+                "https://scholar.google.com/citations?hl=*&user=*",
+                "https://scholar.google.com/citations?user=*&hl=*",
+                "https://scholar.google.co.in/citations?user=*&hl=*",
+                "https://scholar.google.co.in/citations?hl=*&user=*"
+            ],
+            "js": ["./js/content.js"]
+        }
     ],
     "background": {
         "page": "views/background.html",
         "persistent": false
     },
     "content_security_policy": "script-src 'self' https://cdn.jsdelivr.net; object-src 'self'",
-    "permissions": [
-        "tabs",
-        "activeTab"
-    ]
+    "permissions": ["tabs", "activeTab"]
 }
