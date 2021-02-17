@@ -2,6 +2,7 @@
     "name": "AOSSIE Scholar",
     "version": "1.1",
     "manifest_version": 2,
+    "description": " Calculates performance-based metrics for researchers from Google Scholar profile.",
     "icons": {
         "16": "./images/default_icon_16.png",
         "32": "./images/default_icon_32.png",
