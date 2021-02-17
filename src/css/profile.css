@@ -57,6 +57,7 @@ body {
     height: 100%;
     width: 480px;
     position: fixed;
+    display: none;
     z-index: 1;
     top: 0;
     left: 0;
@@ -144,6 +145,7 @@ body {
     font-size: 18px;
     /* Increased text to enable scrolling */
     padding: 0px 10px;
+    display: none;
 }
 
 section {
