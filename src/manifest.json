@@ -18,7 +18,9 @@
                 "https://scholar.google.com/citations?hl=*&user=*",
                 "https://scholar.google.com/citations?user=*&hl=*",
                 "https://scholar.google.co.in/citations?user=*&hl=*",
-                "https://scholar.google.co.in/citations?hl=*&user=*"
+                "https://scholar.google.co.in/citations?hl=*&user=*",
+                "https://scholar.google.ca/citations?hl=*&user=*",
+                "https://scholar.google.ca/citations?user=*&hl=*"
             ],
             "js": ["./js/content.js"]
         }
