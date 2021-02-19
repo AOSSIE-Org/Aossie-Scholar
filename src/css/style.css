@@ -28,7 +28,7 @@ body {
     position: relative;
     top: 0px;
     height: 35px;
-    background-color: #E8E8E8;
+    background-color: #e8e8e8;
     text-align: center;
 }
 
@@ -44,14 +44,14 @@ body {
 #foot {
     position: relative;
     bottom: 0px;
-    height: 35px;
-    background-color: #E8E8E8;
+    height: 38px;
+    background-color: #e8e8e8;
     text-align: center;
 }
 
 #foot p {
-    margin-top: 8px;
-    padding-top: 8px;
+    margin-top: 4px;
+    padding-top: 2px;
     color: #383838;
     font-weight: bold;
     font-size: 13px;
@@ -79,7 +79,7 @@ body {
 
 #searchBtn,
 #regBtn {
-    background-color: #0099FF;
+    background-color: #0099ff;
     border: none;
     margin: 8px 50px 0px 115px;
     border-radius: 7px;
