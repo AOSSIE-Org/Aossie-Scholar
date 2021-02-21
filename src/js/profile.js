@@ -351,6 +351,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     chrome.runtime.sendMessage('fromProfileJs', function (response) {
+        document.title = response.data.scholarName
         if (response.intent === 'calculateData') {
             response = response.data
             newCoAuthors = []
