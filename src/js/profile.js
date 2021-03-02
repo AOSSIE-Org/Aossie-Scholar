@@ -348,6 +348,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
             },
         })
+        var main = document.getElementById('mainid')
+        main.style.display = 'block'
+        var sidenav = document.getElementById('sidenavid')
+        sidenav.style.display = 'block'
+
+        var spinner = document.getElementById('spinner')
+        spinner.style.display = ' none'
+        var overlay = document.getElementById('spinlay')
+        overlay.style.display = ' none'
     }
 
     chrome.runtime.sendMessage('fromProfileJs', function (response) {
