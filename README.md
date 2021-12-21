@@ -2,7 +2,7 @@
 A Google Chrome extension which calculates performance-based metrics for researchers from Google Scholar profile.
 
 ## Install from Chrome Web Store
-[<img src="https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_340x96.png">](https://chrome.google.com/webstore/detail/scholar/bgoiffehmhngmehlbmcepkfikalopkgo?hl=en-GB)
+[<img src="https://storage.googleapis.com/chrome-gcs-uploader.appspot.com/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/iNEddTyWiMfLSwFD6qGq.png">](https://chrome.google.com/webstore/detail/scholar/bgoiffehmhngmehlbmcepkfikalopkgo?hl=en-GB)
 
 
 ### Prerequisites

@@ -26,6 +26,10 @@ document.addEventListener('DOMContentLoaded', function () {
             parentDiv.appendChild(hr)
         }
         addBtn(response)
+        var overlay = document.getElementById('spinlay')
+        overlay.style.display = ' none'
+        var spinner = document.getElementById('spinner')
+        spinner.style.display = ' none'
     })
     function redirectToProfile(e, response) {
         const scholar = e.path[0].innerText

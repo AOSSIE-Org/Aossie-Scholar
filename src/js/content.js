@@ -18,7 +18,12 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         const years = document.getElementsByClassName('gsc_a_h gsc_a_hc gs_ibl')
         const img = document.getElementById('gsc_prf_pup-img').getAttribute('src')
         const workPlace = document.getElementsByClassName('gsc_prf_il')[0].innerText
-        const website = document.getElementById('gsc_prf_ivh').getElementsByTagName('a')[0].getAttribute('href')
+        let website
+        try {
+            website = document.getElementById('gsc_prf_ivh').getElementsByTagName('a')[0].getAttribute('href')
+        } catch (error) {
+            website = undefined
+        }
         const { country } = request
 
         for (let i = 0; i < titles.length; i++) {

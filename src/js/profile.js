@@ -153,6 +153,14 @@ function getCitPerDoc(country) {
         req.send()
     })
 }
+
+function getScholarImage(image) {
+    if (image == '/citations/images/avatar_scholar_128.png') {
+        image = 'https://scholar.google.com/citations/images/avatar_scholar_128.png'
+    }
+    return image
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     function appendToPage(response) {
         const { titles, citations, coauthors, years, nCitations } = response
@@ -169,7 +177,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         // Bind data to profile template
         document.getElementById('scholarImage').setAttribute('src', response.scholarImage)
-        document.getElementById('website').setAttribute('href', response.website)
+        if (response.website !== undefined) {
+            document.getElementById('website').setAttribute('href', response.website)
+        }
         document.getElementById('scholarName').innerText = response.scholarName
         document.getElementById('workplace').innerText = response.workplace
         // document.getElementById('country').innerText = response.country
@@ -338,9 +348,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
             },
         })
+        var main = document.getElementById('mainid')
+        main.style.display = 'block'
+        var sidenav = document.getElementById('sidenavid')
+        sidenav.style.display = 'block'
+
+        var spinner = document.getElementById('spinner')
+        spinner.style.display = ' none'
+        var overlay = document.getElementById('spinlay')
+        overlay.style.display = ' none'
     }
 
     chrome.runtime.sendMessage('fromProfileJs', function (response) {
+        document.title = response.data.scholarName
         if (response.intent === 'calculateData') {
             response = response.data
             newCoAuthors = []
@@ -391,6 +411,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     return b - a
                 })
 
+                scholarImage = getScholarImage(response.image)
                 hIndex = getHindex(citations)
                 gIndex = getGindex(citations)
                 mIndex = getMindex(years)
@@ -409,7 +430,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         chrome.runtime.sendMessage(
                             {
                                 intent: 'sendToServer',
-                                scholarImage: response.image,
+                                scholarImage: scholarImage,
                                 scholarName: response.scholarName,
                                 workplace: response.workplace,
                                 website: website,

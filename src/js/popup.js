@@ -51,10 +51,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('regForm').addEventListener('submit', (e) => {
         e.preventDefault()
+        document.getElementById('spinlay').style.display = 'block'
+        document.getElementById('spinner').style.display = 'block'
+
         const country = document.getElementById('regCountryInput').value
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             chrome.tabs.sendMessage(tabs[0].id, { intent: 'loadBtn' }, function (response) {
                 if (response.status) {
+                    document.getElementById('spinlay').style.display = 'none'
+                    document.getElementById('spinner').style.display = 'none'
                     scrape(country)
                 }
             })
