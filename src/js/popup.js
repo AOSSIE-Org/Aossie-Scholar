@@ -6,14 +6,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 const regDiv = document.getElementById('registerDiv')
                 const nameInput = document.getElementById('regNameInput')
 
-                fetch('https://restcountries.eu/rest/v2/all?fields=name') // Fetch from API and iterate adding options
+                fetch('https://countriesnow.space/api/v0.1/countries/') // Fetch from API and iterate adding options
                     .then((res) => res.json())
-                    .then((data) => {
-                        for (let i = 0; i < data.length; i++) {
+                    .then((jsondata) => {
+                    array = jsondata.data
+                        for (let i = 0; i < array.length; i++) {
                             const regSelect = document.getElementById('regCountryInput')
                             const regOption = document.createElement('option')
-                            regOption.innerHTML = data[i].name
-                            regOption.value = data[i].name
+                            regOption.innerHTML = array[i].country
+                            regOption.value = array[i].country
                             regSelect.options.add(regOption)
                         }
                     })
