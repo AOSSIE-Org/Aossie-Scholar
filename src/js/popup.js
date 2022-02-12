@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 fetch('https://countriesnow.space/api/v0.1/countries/') // Fetch from API and iterate adding options
                     .then((res) => res.json())
                     .then((jsondata) => {
-                    array = jsondata.data
+                        array = jsondata.data
                         for (let i = 0; i < array.length; i++) {
                             const regSelect = document.getElementById('regCountryInput')
                             const regOption = document.createElement('option')
