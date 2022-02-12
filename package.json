@@ -33,13 +33,13 @@
         "gulp-uglify": "^3.0.2",
         "husky": "^4.2.5",
         "jest": "^26.2.2",
-        "jest-puppeteer": "^4.4.0",
         "prettier": "^2.0.5",
-        "prettier-check": "^2.0.0",
-        "puppeteer": "^5.2.1"
+        "prettier-check": "^2.0.0"
     },
     "dependencies": {
-        "del": "^5.1.0"
+        "del": "^5.1.0",
+        "jest-puppeteer": "^6.0.3",
+        "puppeteer": "^13.0.1"
     },
     "husky": {
         "hooks": {
