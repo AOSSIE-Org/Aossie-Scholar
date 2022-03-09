@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const promises = []
             for (let i = 0; i < newCoAuthors.length; i++) {
                 promises.push(
-                    window.axios.get(`https://scholar.google.com${newCoAuthors[i]}`).then((response) => {
+                    window.axios.get(`https://scholar.google.com/${newCoAuthors[i]}`).then((response) => {
                         const htmlData = response.data
                         const newString = htmlData.slice(
                             htmlData.lastIndexOf(
