@@ -1,6 +1,5 @@
 from dotenv import load_dotenv
 import os
-import django_heroku
 import json
 from django.core.exceptions import ImproperlyConfigured
 
@@ -90,6 +89,8 @@ DATABASES = {
         'NAME': get_secret('DB_NAME'),
         'USER': get_secret('DB_USERNAME'),
         'PASSWORD': get_secret('DB_PASSWORD'),
+        'HOST': '127.0.0.1',  # Default host and ports
+        'PORT': '5432',
     },
 }
 
