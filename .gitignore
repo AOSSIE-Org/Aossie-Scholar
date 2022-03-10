@@ -2,6 +2,7 @@
 *.log
 *.pot
 *.pyc
+/secrets.json
 __pycache__/
 local_settings.py
 .vscode/
