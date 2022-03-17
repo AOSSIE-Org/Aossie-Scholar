@@ -23,14 +23,10 @@
     "content_scripts": [
         {
             "matches": [
-                "https://scholar.google.com/citations?hl=*&user=*",
-                "https://scholar.google.com/citations?user=*&hl=*",
-                "https://scholar.google.co.in/citations?user=*&hl=*",
-                "https://scholar.google.co.in/citations?hl=*&user=*",
-                "https://scholar.google.ca/citations?hl=*&user=*",
-                "https://scholar.google.ca/citations?user=*&hl=*",
-                "https://scholar.google.com/citations?user=*&hl=*"
+                "https://*/citations?hl=*&user=*",
+                "https://*/citations?user=*&hl=*"
             ],
+            "include_globs":  ["https://scholar.google.*/*"],
             "js": ["./js/content.js"]
         }
     ],
