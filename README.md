@@ -24,6 +24,7 @@ A Google Chrome extension which calculates performance-based metrics for researc
 * `python manage.py runserver`
 #### Build and load the extension
 * `npm install`
+* `npm install gulp-cli -g`
 * Run `gulp` for workflow automation. Any changes made in the `src/` folder will be automatically reflected in a `dist/` folder
 * In Google Chrome, go to Extensions>Enable Developer Mode(On top-right)>Click on Load Unpacked(On top-left)>Browse to the project directory>Select `dist/`
 * Visit your Google Scholar profile to register
