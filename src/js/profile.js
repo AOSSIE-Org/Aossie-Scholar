@@ -33,7 +33,7 @@ function getGindex(citations) {
     return gIndex
 }
 
-function getMindex(years) {
+function getMindex(years, hIndex) {
     let mIndex = 0
     currentYear = new Date().getFullYear()
     const firstPubYear = years.filter(Number).reduce((a, b) => Math.min(a, b))
@@ -414,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 scholarImage = getScholarImage(response.image)
                 hIndex = getHindex(citations)
                 gIndex = getGindex(citations)
-                mIndex = getMindex(years)
+                mIndex = getMindex(years, hIndex)
                 oIndex = getOindex(citations, hIndex)
                 hMedian = getHmedian(citations, hIndex)
                 eIndex = getEindex(citations, hIndex)
@@ -470,4 +470,9 @@ document.addEventListener('DOMContentLoaded', function () {
 module.exports = {
     getHindex,
     getEindex,
+    getTotalCitations,
+    getGindex,
+    getMindex,
+    getOindex,
+    getHmedian,
 }
