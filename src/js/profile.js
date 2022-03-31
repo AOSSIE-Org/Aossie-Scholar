@@ -38,7 +38,7 @@ function getMindex(years, hIndex) {
     currentYear = new Date().getFullYear()
     const firstPubYear = years.filter(Number).reduce((a, b) => Math.min(a, b))
     timeGap = currentYear - (parseInt(firstPubYear) + 1)
-    mIndex = (hIndex / timeGap).toFixed(2)
+    mIndex = Number((hIndex / timeGap).toFixed(2))
     return mIndex
 }
 
@@ -47,7 +47,7 @@ function getOindex(citations, hIndex) {
     let maxCitation = 0
     maxCitation = citations.reduce((a, b) => Math.max(a, b))
     const product = hIndex * maxCitation
-    oIndex = Math.pow(product, 1 / 2).toFixed(2)
+    oIndex = Number(Math.pow(product, 1 / 2).toFixed(2))
     return oIndex
 }
 

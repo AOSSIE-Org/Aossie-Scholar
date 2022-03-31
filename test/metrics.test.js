@@ -27,14 +27,14 @@ test('get g-index as 12', () => {
     expect(getGindex(citationArray)).toBe(12)
 })
 
-test('get m-index as 6.00', () => {
+test('get m-index as 6.0', () => {
     const hIndex = getHindex(citationArray)
-    expect(getMindex(years, hIndex)).toBe('6.00')
+    expect(getMindex(years, hIndex)).toBe(6.0)
 })
 
 test('get o-index as 20.35', () => {
     const hIndex = getHindex(citationArray)
-    expect(getOindex(citationArray, hIndex)).toBe('20.35')
+    expect(getOindex(citationArray, hIndex)).toBe(20.35)
 })
 
 test('get h-median as 19', () => {
