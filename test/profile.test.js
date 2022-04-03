@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer')
 const extensionPath = './src/'
 let browser
+const extensionID = 'ikcppfgpmdnojilgipnlboojlhhemglf'
 
 beforeAll(async () => {
     browser = await puppeteer.launch({
@@ -22,7 +23,6 @@ afterAll(() => {
 })
 
 test('Should redirect to profile page', async () => {
-    const extensionID = 'ikcppfgpmdnojilgipnlboojlhhemglf'
     const extensionPopupHtml = 'views/popup.html'
     const page = await browser.newPage()
     await page.goto(`chrome-extension://${extensionID}/${extensionPopupHtml}`)
@@ -35,7 +35,6 @@ test('Should redirect to profile page', async () => {
 }, 10000)
 
 test('Should redirect to star page', async () => {
-    const extensionID = 'ikcppfgpmdnojilgipnlboojlhhemglf'
     const extensionPopupHtml = 'views/popup.html'
     const page = await browser.newPage()
     await page.goto(`chrome-extension://${extensionID}/${extensionPopupHtml}`)
@@ -48,7 +47,6 @@ test('Should redirect to star page', async () => {
 }, 10000)
 
 test('Should redirect to profile page', async () => {
-    const extensionID = 'ikcppfgpmdnojilgipnlboojlhhemglf'
     const extensionPopupHtml = 'views/popup.html'
     const page = await browser.newPage()
     await page.goto(`chrome-extension://${extensionID}/${extensionPopupHtml}`)
