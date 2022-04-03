@@ -16,6 +16,8 @@ A Google Chrome extension which calculates performance-based metrics for researc
 * Fork to get your own copy of the project 
 * Clone the repo
 * `cd aossie-scholar/`
+* `python -m venv env`
+* `source env/bin/activate`
 * `pip install -r requirements.txt`
 * Rename `secrets.json.example` to `secrets.json`
 * Enter your database credentials in `secrets.json`
