@@ -222,16 +222,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     titletd.innerText = titles[c]
                     tr.appendChild(titletd)
                     let cittd = document.createElement('td')
-                    cittd.innerText = citations[c]
+                    cittd.innerText = citations[c] ? citations[c] : ''
                     tr.appendChild(cittd)
                     let coauthtd = document.createElement('td')
-                    coauthtd.innerText = coauthors[c]
+                    coauthtd.innerText = coauthors[c] ? coauthors[c] : ''
                     tr.appendChild(coauthtd)
                     let ncittd = document.createElement('td')
-                    ncittd.innerText = nCitations[c]
+                    ncittd.innerText = nCitations[c] ? nCitations[c] : ''
                     tr.appendChild(ncittd)
                     let yrtd = document.createElement('td')
-                    yrtd.innerText = years[c]
+                    yrtd.innerText = years[c] ? years[c] : ''
                     tr.appendChild(yrtd)
                     thead.appendChild(tr)
                 }
