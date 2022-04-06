@@ -16,13 +16,17 @@ A Google Chrome extension which calculates performance-based metrics for researc
 * Fork to get your own copy of the project 
 * Clone the repo
 * `cd aossie-scholar/`
+* `python -m venv env`
+* `source env/bin/activate`
 * `pip install -r requirements.txt`
-* Enter your database credentials in `settings.py`
+* Rename `secrets.json.example` to `secrets.json`
+* Enter your database credentials in `secrets.json`
 * `python manage.py makemigrations`
 * `python manage.py migrate`
 * `python manage.py runserver`
 #### Build and load the extension
 * `npm install`
+* `npm install gulp-cli -g`
 * Run `gulp` for workflow automation. Any changes made in the `src/` folder will be automatically reflected in a `dist/` folder
 * In Google Chrome, go to Extensions>Enable Developer Mode(On top-right)>Click on Load Unpacked(On top-left)>Browse to the project directory>Select `dist/`
 * Visit your Google Scholar profile to register

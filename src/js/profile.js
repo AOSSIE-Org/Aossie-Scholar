@@ -33,12 +33,12 @@ function getGindex(citations) {
     return gIndex
 }
 
-function getMindex(years) {
+function getMindex(years, hIndex) {
     let mIndex = 0
     currentYear = new Date().getFullYear()
     const firstPubYear = years.filter(Number).reduce((a, b) => Math.min(a, b))
     timeGap = currentYear - (parseInt(firstPubYear) + 1)
-    mIndex = (hIndex / timeGap).toFixed(2)
+    mIndex = Number((hIndex / timeGap).toFixed(2))
     return mIndex
 }
 
@@ -47,7 +47,7 @@ function getOindex(citations, hIndex) {
     let maxCitation = 0
     maxCitation = citations.reduce((a, b) => Math.max(a, b))
     const product = hIndex * maxCitation
-    oIndex = Math.pow(product, 1 / 2).toFixed(2)
+    oIndex = Number(Math.pow(product, 1 / 2).toFixed(2))
     return oIndex
 }
 
@@ -222,16 +222,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     titletd.innerText = titles[c]
                     tr.appendChild(titletd)
                     let cittd = document.createElement('td')
-                    cittd.innerText = citations[c]
+                    cittd.innerText = citations[c] ? citations[c] : ''
                     tr.appendChild(cittd)
                     let coauthtd = document.createElement('td')
-                    coauthtd.innerText = coauthors[c]
+                    coauthtd.innerText = coauthors[c] ? coauthors[c] : ''
                     tr.appendChild(coauthtd)
                     let ncittd = document.createElement('td')
-                    ncittd.innerText = nCitations[c]
+                    ncittd.innerText = nCitations[c] ? nCitations[c] : ''
                     tr.appendChild(ncittd)
                     let yrtd = document.createElement('td')
-                    yrtd.innerText = years[c]
+                    yrtd.innerText = years[c] ? years[c] : ''
                     tr.appendChild(yrtd)
                     thead.appendChild(tr)
                 }
@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const promises = []
             for (let i = 0; i < newCoAuthors.length; i++) {
                 promises.push(
-                    window.axios.get(`https://scholar.google.com${newCoAuthors[i]}`).then((response) => {
+                    window.axios.get(`https://scholar.google.com/${newCoAuthors[i]}`).then((response) => {
                         const htmlData = response.data
                         const newString = htmlData.slice(
                             htmlData.lastIndexOf(
@@ -414,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 scholarImage = getScholarImage(response.image)
                 hIndex = getHindex(citations)
                 gIndex = getGindex(citations)
-                mIndex = getMindex(years)
+                mIndex = getMindex(years, hIndex)
                 oIndex = getOindex(citations, hIndex)
                 hMedian = getHmedian(citations, hIndex)
                 eIndex = getEindex(citations, hIndex)
@@ -470,4 +470,9 @@ document.addEventListener('DOMContentLoaded', function () {
 module.exports = {
     getHindex,
     getEindex,
+    getTotalCitations,
+    getGindex,
+    getMindex,
+    getOindex,
+    getHmedian,
 }

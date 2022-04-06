@@ -1,6 +1,17 @@
 let arr = []
 let purpose = ''
 
+chrome.contextMenus.create({
+    id: 'AOSSIE Scholar Extension',
+    title: 'Search in Google Scholar',
+    contexts: ['selection'], // selection, link, image, page
+})
+
+chrome.contextMenus.onClicked.addListener((selectedText) => {
+    var encodedText = selectedText.selectionText.split(' ').join('+')
+    window.open('https://scholar.google.com/scholar?q=' + encodedText, '_blank').focus()
+})
+
 function createProfile() {
     chrome.tabs.create({
         url: './views/profile.html',

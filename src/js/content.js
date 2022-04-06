@@ -37,7 +37,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             if (authorsPerPublication.indexOf('...') === -1) {
                 coAuthorArray.push(authorsPerPublication.split(',').length)
             } else {
-                coAuthorArray.push(coAuthors[i].getElementsByClassName('gsc_a_at')[0].getAttribute('data-href'))
+                coAuthorArray.push(coAuthors[i].getElementsByClassName('gsc_a_at')[0].getAttribute('href'))
             }
         }
         chrome.runtime.sendMessage({
