@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer')
 const extensionPath = './src/'
 let browser
-const extensionID = 'lpmepkndnnpfjooidnfkemjcahkcdopc'
+const extensionID = 'ikcppfgpmdnojilgipnlboojlhhemglf'
 
 beforeAll(async () => {
     browser = await puppeteer.launch({
@@ -34,7 +34,7 @@ test('Should redirect to star page', async () => {
     await page.close()
 }, 10000)
 
-test('Should redirect to profile page', async () => {
+test('Should redirect to search results page', async () => {
     const extensionPopupHtml = 'views/popup.html'
     const page = await browser.newPage()
     await page.goto(`chrome-extension://${extensionID}/${extensionPopupHtml}`)
@@ -42,7 +42,7 @@ test('Should redirect to profile page', async () => {
     await page.$eval('input[name=scholarName]', (el) => (el.value = 'bruno'))
     await page.click('button#searchBtn')
     const newPage = await newPagePromise
-    const testData = await newPage.$eval('.sidenav h3', (el) => el.innerText)
-    expect(testData).toBe('Publications')
+    const testData = await newPage.$eval('#search-header', (el) => el.innerText)
+    expect(testData).toBe('Search Results')
     await page.close()
 }, 10000)
