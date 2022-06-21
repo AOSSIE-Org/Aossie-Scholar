@@ -1,125 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../css/profile.css" />
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
-        <script src="../lib/xlsx.full.min.js"></script>
-        <script src="../js/profile.js"></script>
-    </head>
 
-    <body>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/profile.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../lib/xlsx.full.min.js"></script>
+    <script src="../js/profile.js"></script>
+</head>
+
+<body>
 
 
-  <center>
-            <div class="overlay" id="spinlay">
-                <div class="loader" id="spinner"></div>
-            </div>
-        </center>
-        <div class="sidenav" id="sidenavid">
-            <div style="font-size: 0.5rem">
-                <button id="star-button" type="submit"><i id="star" class=""></i></button>
-            </div>
-
-            <div class="profile-image">
-                <img id="scholarImage" src="" alt="Profile" width="100%" height="100%" />
-            </div>
-            <a id="website" target="_blank">
-                <h1 id="scholarName"></h1>
-            </a>
-            <p id="workplace"></p>
-            <!-- <p id="country"></p> -->
-            <h2 id="pubCount"></h2>
-            <h3>Publications</h3>
-            <h2 id="citCount"></h2>
-            <h3>Citations</h3>
+    <center>
+        <div class="overlay" id="spinlay">
+            <div class="loader" id="spinner"></div>
         </div>
+    </center>
 
+    <div id="mainbody">
+        <header>
+            <div class="user">
+                <img id="scholarImage" src="" alt="Profile" width="100%" height="100%" />
+                <a id="website" target="_blank">
+                    <h1 id="scholarName"></h1>
+                </a>
+                <p id="workplace"></p>
+            </div>
 
+            <div class="count">
+                <h2 id="pubCount"></h2>
+                <h3 id="pubtext">Publications</h3>
+                <h2 id="citCount"></h2>
+                <h3 id="cittext">Citations</h3>
+            </div>
+        </header>
+        <div>
 
-        <div class="main" id="mainid">
-            <section>
-                <table>
-                    <tr>
-                        <td
-                            title="The Hirsch’s h-index of a scholar is the maximum value of h such that the scholar has published h articles with each being cited at least h times"
-                        >
-                            h-index
-                        </td>
-                        <td id="hIndex"></td>
-                        <td
-                            title="g-index is the largest unique number, such that the top g articles received at least g2 citations"
-                        >
-                            g-index
-                        </td>
-                        <td id="gIndex"></td>
-                    </tr>
-                    <tr>
-                        <td
-                            title="m-index of a researcher is the h-index divided by the number of years he/she has been active."
-                        >
-                            m-index
-                        </td>
-                        <td id="mIndex"></td>
-                        <td
-                            title="o-index is the geometric mean of the h-index and the most cited article of the researcher"
-                        >
-                            o-index
-                        </td>
-                        <td id="oIndex"></td>
-                    </tr>
-                    <tr>
-                        <td
-                            title="h-median is the geometric median of the number of citations in the set of the top-cited h articles of a publication"
-                        >
-                            h-median
-                        </td>
-                        <td id="hMedian"></td>
-                        <td
-                            title="When using h-index, the excess citations which are not there in h-core of a publication are ignored. e-index is used to complement the h-index for these ignored excess citations"
-                        >
-                            e-index
-                        </td>
-                        <td id="eIndex"></td>
-                    </tr>
-                    <tr>
-                        <td
-                            title="s-index adds age-related weighting to each article, prioritizing latest articles and decreasing the priority with time"
-                        >
-                            s-index
-                        </td>
-                        <td id="sIndex"></td>
-                        <td
-                            title="TNCc takes Citations per Document of the country of the author and uses it to normalize the total number of normalized citations of the author "
-                        >
-                            TNCc
-                        </td>
-                        <td id="TNCc"></td>
-                    </tr>
-                </table>
+            <section class="visualizer" id="visualizer">
+                <h1 class="heading"> <span>Visualizer</span></h1>
+                <div class="box-container">
+                    <div class="row">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
             </section>
-            <section>
-                <canvas id="myChart"></canvas>
-            </section>
-            <section>
-                <div class="table-wrapper">
-                    <table class="alt">
-                        <thead>
-                            <tr>
-                                <td>Title</td>
-                                <td>Citations</td>
-                                <td>Co-Authors</td>
-                                <td>Normalized Citations</td>
-                                <td>Year</td>
-                            </tr>
-                        </thead>
-                        <tbody id="tbody"></tbody>
+            <section class="metrics" id="metrics">
+                <h1 class="heading"><span>Metrics</span></h1>
+                <div class="box-container">
+                    <table>
+                        <tr>
+                            <td
+                                title="The Hirsch’s h-index of a scholar is the maximum value of h such that the scholar has published h articles with each being cited at least h times">
+                                h-index
+                            </td>
+                            <td id="hIndex"></td>
+                            <td
+                                title="g-index is the largest unique number, such that the top g articles received at least g2 citations">
+                                g-index
+                            </td>
+                            <td id="gIndex"></td>
+                        </tr>
+                        <tr>
+                            <td
+                                title="m-index of a researcher is the h-index divided by the number of years he/she has been active.">
+                                m-index
+                            </td>
+                            <td id="mIndex"></td>
+                            <td
+                                title="o-index is the geometric mean of the h-index and the most cited article of the researcher">
+                                o-index
+                            </td>
+                            <td id="oIndex"></td>
+                        </tr>
+                        <tr>
+                            <td
+                                title="h-median is the geometric median of the number of citations in the set of the top-cited h articles of a publication">
+                                h-median
+                            </td>
+                            <td id="hMedian"></td>
+                            <td
+                                title="When using h-index, the excess citations which are not there in h-core of a publication are ignored. e-index is used to complement the h-index for these ignored excess citations">
+                                e-index
+                            </td>
+                            <td id="eIndex"></td>
+                        </tr>
+                        <tr>
+                            <td
+                                title="s-index adds age-related weighting to each article, prioritizing latest articles and decreasing the priority with time">
+                                s-index
+                            </td>
+                            <td id="sIndex"></td>
+                            <td
+                                title="TNCc takes Citations per Document of the country of the author and uses it to normalize the total number of normalized citations of the author ">
+                                TNCc
+                            </td>
+                            <td id="TNCc"></td>
+                        </tr>
                     </table>
                 </div>
             </section>
+            <section class="publications" id="publications">
+                <h1 class="heading"><span>Publications</span></h1>
+                <div class="box-container">
+                    <div class="table-wrapper">
+                        <table class="alt">
+                            <thead>
+                                <tr>
+                                    <td>Title</td>
+                                    <td>Citations</td>
+                                    <td>Co-Authors</td>
+                                    <td>Normalized Citations</td>
+                                    <td>Year</td>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
         </div>
-    </body>
+
+    </div>
+
+</body>
+
 </html>

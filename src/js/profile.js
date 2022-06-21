@@ -163,7 +163,13 @@ function getScholarImage(image) {
 
 document.addEventListener('DOMContentLoaded', function () {
     function appendToPage(response) {
-        const { titles, citations, coauthors, years, nCitations } = response
+        const {
+            titles,
+            citations,
+            coauthors,
+            years,
+            nCitations
+        } = response
         for (let i = 0; i < response.pubCount; i++) {
             if (citations[i] === undefined) {
                 citations[i] = ''
@@ -238,40 +244,40 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
         // Check if the Scholar is starred
-        const starBtn = document.getElementById('star-button')
-        const star = document.getElementById('star')
+        // const starBtn = document.getElementById('star-button')
+        // const star = document.getElementById('star')
 
-        chrome.runtime.sendMessage(
-            {
-                intent: 'checkStarred',
-                name: response.scholarName,
-                work: response.workplace,
-            },
-            function (data) {
-                if (data.isStarred === 'true') {
-                    star.setAttribute('class', 'fas fa-star fa-4x checked')
-                } else {
-                    star.setAttribute('class', 'fas fa-star fa-4x unchecked')
-                }
-            }
-        )
-        starBtn.addEventListener('click', () => {
-            if (star.getAttribute('class') === 'fas fa-star fa-4x unchecked') {
-                star.setAttribute('class', 'fas fa-star fa-4x checked')
-                chrome.runtime.sendMessage({
-                    intent: 'saveStarred',
-                    name: response.scholarName,
-                    work: response.workplace,
-                })
-            } else {
-                star.setAttribute('class', 'fas fa-star fa-4x unchecked')
-                chrome.runtime.sendMessage({
-                    intent: 'deleteStarred',
-                    name: response.scholarName,
-                    work: response.workplace,
-                })
-            }
-        })
+        // chrome.runtime.sendMessage(
+        //     {
+        //         intent: 'checkStarred',
+        //         name: response.scholarName,
+        //         work: response.workplace,
+        //     },
+        //     function (data) {
+        //         if (data.isStarred === 'true') {
+        //             star.setAttribute('class', 'fas fa-star fa-4x checked')
+        //         } else {
+        //             star.setAttribute('class', 'fas fa-star fa-4x unchecked')
+        //         }
+        //     }
+        // )
+        // starBtn.addEventListener('click', () => {
+        //     if (star.getAttribute('class') === 'fas fa-star fa-4x unchecked') {
+        //         star.setAttribute('class', 'fas fa-star fa-4x checked')
+        //         chrome.runtime.sendMessage({
+        //             intent: 'saveStarred',
+        //             name: response.scholarName,
+        //             work: response.workplace,
+        //         })
+        //     } else {
+        //         star.setAttribute('class', 'fas fa-star fa-4x unchecked')
+        //         chrome.runtime.sendMessage({
+        //             intent: 'deleteStarred',
+        //             name: response.scholarName,
+        //             work: response.workplace,
+        //         })
+        //     }
+        // })
         // Visualise Chart
         graphYears = []
         presentYear = new Date().getFullYear()
@@ -311,8 +317,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Dataset
             data: {
                 labels: graphYears,
-                datasets: [
-                    {
+                datasets: [{
                         label: 'Publications/ Year',
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(255, 99, 132)',
@@ -332,27 +337,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
-                    xAxes: [
-                        {
-                            stacked: true,
+                    xAxes: [{
+                        stacked: true,
+                    }, ],
+                    yAxes: [{
+                        stacked: false,
+                        ticks: {
+                            beginAtZero: true,
                         },
-                    ],
-                    yAxes: [
-                        {
-                            stacked: false,
-                            ticks: {
-                                beginAtZero: true,
-                            },
-                        },
-                    ],
+                    }, ],
                 },
             },
         })
-        var main = document.getElementById('mainid')
+        var main = document.getElementById('mainbody')
         main.style.display = 'block'
-        var sidenav = document.getElementById('sidenavid')
-        sidenav.style.display = 'block'
-
         var spinner = document.getElementById('spinner')
         spinner.style.display = ' none'
         var overlay = document.getElementById('spinlay')
@@ -406,7 +404,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 // Compute metrics
-                const { titles, citations, years, country, website } = response
+                const {
+                    titles,
+                    citations,
+                    years,
+                    country,
+                    website
+                } = response
                 citations.sort(function (a, b) {
                     return b - a
                 })
@@ -427,8 +431,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 getCitPerDoc(country)
                     .then((data) => getTncc(data, newnCitations))
                     .then((TNCc) => {
-                        chrome.runtime.sendMessage(
-                            {
+                        chrome.runtime.sendMessage({
                                 intent: 'sendToServer',
                                 scholarImage: scholarImage,
                                 scholarName: response.scholarName,
@@ -476,3 +479,42 @@ module.exports = {
     getOindex,
     getHmedian,
 }
+
+// $(document).ready(function(){
+
+//     $('#menu').click(function(){
+//       $(this).toggleClass('fa-times');
+//       $('header').toggleClass('toggle');
+//     });
+
+//     $(window).on('scroll load',function(){
+
+//       $('#menu').removeClass('fa-times');
+//       $('header').removeClass('toggle');
+
+//       if($(window).scrollTop() > 0){
+//         $('.top').show();
+//       }else{
+//         $('.top').hide();
+//       }
+
+//     });
+
+//     // smooth scrolling 
+
+//     $('a[href*="#"]').on('click',function(e){
+
+//       e.preventDefault();
+
+//       $('html, body').animate({
+
+//         scrollTop : $($(this).attr('href')).offset().top,
+
+//       },
+//         500, 
+//         'linear'
+//       );
+
+//     });
+
+//   });
