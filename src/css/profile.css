@@ -176,7 +176,7 @@ table tbody tr {
     border: solid 1px #efefef;
     border-left: 0;
     border-right: 0;
-    font-size: 18px;
+    font-size: 14px;
 }
 
 table tbody tr:nth-child(2n + 1) {
@@ -189,11 +189,11 @@ table td {
 
 table thead tr {
     color: red;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 table tfoot {
-    border-top: solid 2px #efefef;
+    /* border-top: solid 2px #efefef; */
 }
 
 table.alt {
@@ -201,7 +201,7 @@ table.alt {
 }
 
 table.alt tbody tr td {
-    border: solid 2px #efefef;
+    /* border: solid 2px #efefef; */
     border-left-width: 0;
     border-top-width: 0;
 }
