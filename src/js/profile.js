@@ -163,13 +163,7 @@ function getScholarImage(image) {
 
 document.addEventListener('DOMContentLoaded', function () {
     function appendToPage(response) {
-        const {
-            titles,
-            citations,
-            coauthors,
-            years,
-            nCitations
-        } = response
+        const { titles, citations, coauthors, years, nCitations } = response
         for (let i = 0; i < response.pubCount; i++) {
             if (citations[i] === undefined) {
                 citations[i] = ''
@@ -317,7 +311,8 @@ document.addEventListener('DOMContentLoaded', function () {
             // Dataset
             data: {
                 labels: graphYears,
-                datasets: [{
+                datasets: [
+                    {
                         label: 'Publications/ Year',
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(255, 99, 132)',
@@ -337,15 +332,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
-                    xAxes: [{
-                        stacked: true,
-                    }, ],
-                    yAxes: [{
-                        stacked: false,
-                        ticks: {
-                            beginAtZero: true,
+                    xAxes: [
+                        {
+                            stacked: true,
                         },
-                    }, ],
+                    ],
+                    yAxes: [
+                        {
+                            stacked: false,
+                            ticks: {
+                                beginAtZero: true,
+                            },
+                        },
+                    ],
                 },
             },
         })
@@ -404,13 +403,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 // Compute metrics
-                const {
-                    titles,
-                    citations,
-                    years,
-                    country,
-                    website
-                } = response
+                const { titles, citations, years, country, website } = response
                 citations.sort(function (a, b) {
                     return b - a
                 })
@@ -431,7 +424,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 getCitPerDoc(country)
                     .then((data) => getTncc(data, newnCitations))
                     .then((TNCc) => {
-                        chrome.runtime.sendMessage({
+                        chrome.runtime.sendMessage(
+                            {
                                 intent: 'sendToServer',
                                 scholarImage: scholarImage,
                                 scholarName: response.scholarName,
@@ -500,7 +494,7 @@ module.exports = {
 
 //     });
 
-//     // smooth scrolling 
+//     // smooth scrolling
 
 //     $('a[href*="#"]').on('click',function(e){
 
@@ -511,7 +505,7 @@ module.exports = {
 //         scrollTop : $($(this).attr('href')).offset().top,
 
 //       },
-//         500, 
+//         500,
 //         'linear'
 //       );
 
