@@ -224,11 +224,21 @@ table.alt tbody tr:first-child td {
     }
 } */
 
-canvas {
+#bar {
     width: 1000px !important;
     height: 600px !important;
 }
 
+#pie {
+    width: 500px !important;
+    height: 500px !important;
+    
+}
+
+#pieChart{
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
 
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600&display=swap');
@@ -533,3 +543,9 @@ header .user p {
     }
 
 }
+
+* {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }

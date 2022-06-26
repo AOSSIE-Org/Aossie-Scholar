@@ -304,6 +304,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         graphCitations = Object.values(newDict)
         graphPublications = Object.values(dict)
+        console.log(graphYears)
+        console.log(graphPublications)
+        console.log(graphCitations)
         let myChart = document.getElementById('myChart').getContext('2d')
         new Chart(myChart, {
             type: 'bar',
@@ -312,12 +315,12 @@ document.addEventListener('DOMContentLoaded', function () {
             data: {
                 labels: graphYears,
                 datasets: [
-                    {
-                        label: 'Publications/ Year',
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: graphPublications,
-                    },
+                    // {
+                    //     label: 'Publications/ Year',
+                    //     backgroundColor: 'rgb(255, 99, 132)',
+                    //     borderColor: 'rgb(255, 99, 132)',
+                    //     data: graphPublications,
+                    // },
                     {
                         label: 'Citations/ Year',
                         backgroundColor: 'rgb(231, 203, 138)',
@@ -348,6 +351,100 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
             },
         })
+
+        // data block
+        const data = {
+            labels: graphYears,
+            datasets: [
+                {
+                    label: 'Publications/ Year',
+                    data: graphPublications,
+                    backgroundColor: [
+                        'rgba(255, 51, 153, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(154, 34, 34, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(76, 0, 153, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 0, 0, 0.2)',
+                        'rgba(0, 255, 0, 0.2)',
+                        'rgba(241, 95, 95, 0.2)',
+                        'rgba(188, 229, 92, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
+                    ],
+                    borderWidth: 1,
+                    holeSize: 0.6,
+                    animationSpeed: 0.5,
+                },
+            ],
+        }
+
+        // hoverLabels plugin block
+        const hoverLabels = {
+            id: 'hoverLabels',
+            afterDatasetsDraw(chart, args, options) {
+                const {
+                    ctx,
+                    chartArea: { top, bottom, left, right, width, height },
+                } = chart
+                ctx.save()
+
+                //console.log(chart._active)
+
+                if (chart._active[0]) {
+                    //console.log(chart.config.data.labels[chart._active[0].index])
+                    //console.log(chart.config.data.datasets[chart._active[0].datasetIndex].borderColor[chart._active[0].index])
+                    // console.log(chart._active[0].datasetIndex)
+                    // console.log(chart._active[0].index)
+
+                    const textLabel = chart.config.data.labels[chart._active[0].index]
+                    const dataLabel =
+                        chart.config.data.datasets[chart._active[0].datasetIndex].data[chart._active[0].index]
+                    const color =
+                        chart.config.data.datasets[chart._active[0].datasetIndex].borderColor[chart._active[0].index]
+
+                    ctx.font = 'bolder 40px Arial'
+                    ctx.fillStyle = color
+                    ctx.textAlign = 'center'
+                    ctx.fillText(`${textLabel}: ${dataLabel}`, width / 2, height / 2 + 25)
+                }
+                ctx.restore()
+            },
+        }
+
+        // config block
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Publications/ Year',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                    },
+                    legend: {
+                        display: false,
+                    },
+                },
+            },
+            plugins: [hoverLabels],
+        }
+
+        // init render block
+        const pieChart = new Chart(document.getElementById('pieChart'), config)
         var main = document.getElementById('mainbody')
         main.style.display = 'block'
         var spinner = document.getElementById('spinner')
