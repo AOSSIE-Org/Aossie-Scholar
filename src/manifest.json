@@ -27,6 +27,7 @@
                 "https://*/citations?user=*&hl=*"
             ],
             "include_globs":  ["https://scholar.google.*/*"],
+            "css": ["./css/button.css"],
             "js": ["./js/content.js"]
         }
     ],

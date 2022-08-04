@@ -52,11 +52,6 @@ body {
     }
 }
 
-#registerDiv {
-    display: none;
-    /* display: block; */
-}
-
 .checked {
     color: orange;
 }
@@ -126,8 +121,7 @@ body {
     font-weight: bold;
 }
 
-#searchBtn,
-#regBtn {
+#searchBtn{
     background-color: #0099ff;
     border: none;
     margin: 8px 50px 0px 115px;
@@ -139,30 +133,5 @@ body {
     cursor: pointer;
 }
 
-#regCitationInput,
-#regCountryInput {
-    width: 85%;
-    padding: 8px 20px 8px 10px;
-    display: inline-block;
-    /* margin-left: 60px; */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    background: white;
-}
 
-#regNameInput {
-    width: 85%;
-    padding: 8px 20px 8px 10px;
-    /* margin-left: 60px; */
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
 
-#regLabel {
-    margin-left: 5px;
-    padding-right: 15px;
-    font-weight: bold;
-}
