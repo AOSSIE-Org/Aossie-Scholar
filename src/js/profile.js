@@ -238,40 +238,40 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
         // Check if the Scholar is starred
-        const starBtn = document.getElementById('star-button')
-        const star = document.getElementById('star')
+        // const starBtn = document.getElementById('star-button')
+        // const star = document.getElementById('star')
 
-        chrome.runtime.sendMessage(
-            {
-                intent: 'checkStarred',
-                name: response.scholarName,
-                work: response.workplace,
-            },
-            function (data) {
-                if (data.isStarred === 'true') {
-                    star.setAttribute('class', 'fas fa-star fa-4x checked')
-                } else {
-                    star.setAttribute('class', 'fas fa-star fa-4x unchecked')
-                }
-            }
-        )
-        starBtn.addEventListener('click', () => {
-            if (star.getAttribute('class') === 'fas fa-star fa-4x unchecked') {
-                star.setAttribute('class', 'fas fa-star fa-4x checked')
-                chrome.runtime.sendMessage({
-                    intent: 'saveStarred',
-                    name: response.scholarName,
-                    work: response.workplace,
-                })
-            } else {
-                star.setAttribute('class', 'fas fa-star fa-4x unchecked')
-                chrome.runtime.sendMessage({
-                    intent: 'deleteStarred',
-                    name: response.scholarName,
-                    work: response.workplace,
-                })
-            }
-        })
+        // chrome.runtime.sendMessage(
+        //     {
+        //         intent: 'checkStarred',
+        //         name: response.scholarName,
+        //         work: response.workplace,
+        //     },
+        //     function (data) {
+        //         if (data.isStarred === 'true') {
+        //             star.setAttribute('class', 'fas fa-star fa-4x checked')
+        //         } else {
+        //             star.setAttribute('class', 'fas fa-star fa-4x unchecked')
+        //         }
+        //     }
+        // )
+        // starBtn.addEventListener('click', () => {
+        //     if (star.getAttribute('class') === 'fas fa-star fa-4x unchecked') {
+        //         star.setAttribute('class', 'fas fa-star fa-4x checked')
+        //         chrome.runtime.sendMessage({
+        //             intent: 'saveStarred',
+        //             name: response.scholarName,
+        //             work: response.workplace,
+        //         })
+        //     } else {
+        //         star.setAttribute('class', 'fas fa-star fa-4x unchecked')
+        //         chrome.runtime.sendMessage({
+        //             intent: 'deleteStarred',
+        //             name: response.scholarName,
+        //             work: response.workplace,
+        //         })
+        //     }
+        // })
         // Visualise Chart
         graphYears = []
         presentYear = new Date().getFullYear()
@@ -348,11 +348,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
             },
         })
-        var main = document.getElementById('mainid')
+        var main = document.getElementById('mainbody')
         main.style.display = 'block'
-        var sidenav = document.getElementById('sidenavid')
-        sidenav.style.display = 'block'
-
         var spinner = document.getElementById('spinner')
         spinner.style.display = ' none'
         var overlay = document.getElementById('spinlay')
