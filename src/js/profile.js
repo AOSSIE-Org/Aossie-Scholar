@@ -111,12 +111,18 @@ function getSindex(titles, citations, years) {
 }
 
 function getLindex(coauthors, citations, years) {
+    // console.log(coauthors)
+    // console.log(citations)
+    // console.log(years)
     sum = 0
     currentYear = new Date().getFullYear()
     for (let i = 0; i < years.length; i++) {
-        ageOfPublication = currentYear - years[i]
-        if (coauthors[i] && ageOfPublication != 0) {
-            sum += citations[i] / (coauthors[i] * ageOfPublication)
+        if (coauthors[i] != 0 && citations[i] != '' && years[i] != '') {
+            ageOfPublication = currentYear - parseInt(years[i])
+            if (ageOfPublication != 0) {
+                sum += parseInt(citations[i]) / (coauthors[i] * ageOfPublication)
+                console.log(sum)
+            }
         }
     }
     lIndex = Math.log(sum) + 1
@@ -127,13 +133,17 @@ function getARindex(citations, years) {
     sum = 0
     currentYear = new Date().getFullYear()
     for (let i = 0; i < citations.length; i++) {
-        if (i + 1 >= citations[i]) {
-            break
+        if (citations[i] != '' && years[i] != '') {
+            if (i + 1 >= citations[i]) {
+                break
+            }
+            ageOfPublication = currentYear - parseInt(years[i])
+            if (ageOfPublication != 0) {
+                sum += parseInt(citations[i]) / ageOfPublication
+            }
         }
-        ageOfPublication = currentYear - years[i]
-        sum += citations[i] / ageOfPublication
-        ARIndex = Math.sqrt(sum)
     }
+    ARIndex = Math.sqrt(sum)
     return ARIndex
 }
 
@@ -538,8 +548,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 hMedian = getHmedian(citations, hIndex)
                 eIndex = getEindex(citations, hIndex)
                 sIndex = getSindex(titles, citations, years)
-                lIndex = getLindex(coauthors, citations, years)
+                lIndex = getLindex(response.coAuthors, citations, years)
                 ARIndex = getARindex(citations, years)
+                console.log(lIndex)
+                console.log(ARIndex)
                 nCitations = getNcitations(citations, sanitized)
                 sumCitations = getTotalCitations(citations)
                 newCitations = response.citations.filter(Number)
