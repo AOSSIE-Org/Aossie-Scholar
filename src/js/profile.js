@@ -110,6 +110,43 @@ function getSindex(titles, citations, years) {
     return sIndex
 }
 
+function getLindex(coauthors, citations, years) {
+    console.log(coauthors)
+    console.log(citations)
+    console.log(years)
+    sum = 0
+    currentYear = new Date().getFullYear()
+    for (let i = 0; i < years.length; i++) {
+        if (coauthors[i] != 0 && citations[i] != '' && years[i] != '') {
+            ageOfPublication = currentYear - parseInt(years[i])
+            if (ageOfPublication != 0) {
+                sum += parseInt(citations[i]) / (coauthors[i] * ageOfPublication)
+                console.log(sum)
+            }
+        }
+    }
+    lIndex = Math.log(sum) + 1
+    return Math.round(lIndex * 100) / 100
+}
+
+function getARindex(citations, years) {
+    sum = 0
+    currentYear = new Date().getFullYear()
+    for (let i = 0; i < citations.length; i++) {
+        if (citations[i] != '' && years[i] != '') {
+            if (i + 1 >= citations[i]) {
+                break
+            }
+            ageOfPublication = currentYear - parseInt(years[i])
+            if (ageOfPublication != 0) {
+                sum += parseInt(citations[i]) / ageOfPublication
+            }
+        }
+    }
+    ARIndex = Math.sqrt(sum)
+    return Math.round(ARIndex * 100) / 100
+}
+
 function getTncc(data, newnCitations) {
     let sumNCitations = 0
     for (let i = 0; i < newnCitations.length; i++) {
@@ -192,7 +229,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('hMedian').innerText = response.hMedian
         document.getElementById('eIndex').innerText = response.eIndex
         document.getElementById('sIndex').innerText = response.sIndex
-        document.getElementById('sIndex').innerText = response.sIndex
+        document.getElementById('lIndex').innerText = response.lIndex
+        document.getElementById('ARIndex').innerText = response.ARIndex
         document.getElementById('TNCc').innerText = response.TNCc
 
         let currentPage = 1
@@ -304,9 +342,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         graphCitations = Object.values(newDict)
         graphPublications = Object.values(dict)
-        console.log(graphYears)
-        console.log(graphPublications)
-        console.log(graphCitations)
         let myChart = document.getElementById('myChart').getContext('2d')
         new Chart(myChart, {
             type: 'bar',
@@ -513,6 +548,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 hMedian = getHmedian(citations, hIndex)
                 eIndex = getEindex(citations, hIndex)
                 sIndex = getSindex(titles, citations, years)
+                lIndex = getLindex(sanitized, citations, years)
+                ARIndex = getARindex(citations, years)
                 nCitations = getNcitations(citations, sanitized)
                 sumCitations = getTotalCitations(citations)
                 newCitations = response.citations.filter(Number)
@@ -538,6 +575,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 hMedian: hMedian,
                                 eIndex: eIndex,
                                 sIndex: sIndex,
+                                lIndex: lIndex,
+                                ARIndex: ARIndex,
                                 titles: response.titles,
                                 citations: newCitations,
                                 nCitations: newnCitations,
@@ -569,4 +608,6 @@ module.exports = {
     getMindex,
     getOindex,
     getHmedian,
+    getLindex,
+    getARindex,
 }

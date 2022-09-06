@@ -19,6 +19,8 @@ class ScholarData(models.Model):
     hMedian = models.CharField(max_length=100, null=True)
     TNCc = models.CharField(max_length=100, null=True)
     sIndex = models.CharField(max_length=100, null=True)
+    lIndex = models.CharField(max_length=100, null=True)
+    ARIndex = models.CharField(max_length=100, null=True)
 
     # Array of data
     titles = ArrayField(models.CharField(max_length=500), null=True)
