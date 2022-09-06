@@ -111,9 +111,9 @@ function getSindex(titles, citations, years) {
 }
 
 function getLindex(coauthors, citations, years) {
-    // console.log(coauthors)
-    // console.log(citations)
-    // console.log(years)
+    console.log(coauthors)
+    console.log(citations)
+    console.log(years)
     sum = 0
     currentYear = new Date().getFullYear()
     for (let i = 0; i < years.length; i++) {
@@ -126,7 +126,7 @@ function getLindex(coauthors, citations, years) {
         }
     }
     lIndex = Math.log(sum) + 1
-    return lIndex
+    return Math.round(lIndex * 100) / 100
 }
 
 function getARindex(citations, years) {
@@ -144,7 +144,7 @@ function getARindex(citations, years) {
         }
     }
     ARIndex = Math.sqrt(sum)
-    return ARIndex
+    return Math.round(ARIndex * 100) / 100
 }
 
 function getTncc(data, newnCitations) {
@@ -548,7 +548,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 hMedian = getHmedian(citations, hIndex)
                 eIndex = getEindex(citations, hIndex)
                 sIndex = getSindex(titles, citations, years)
-                lIndex = getLindex(response.coAuthors, citations, years)
+                lIndex = getLindex(sanitized, citations, years)
                 ARIndex = getARindex(citations, years)
                 console.log(lIndex)
                 console.log(ARIndex)
