@@ -550,8 +550,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 sIndex = getSindex(titles, citations, years)
                 lIndex = getLindex(sanitized, citations, years)
                 ARIndex = getARindex(citations, years)
-                console.log(lIndex)
-                console.log(ARIndex)
                 nCitations = getNcitations(citations, sanitized)
                 sumCitations = getTotalCitations(citations)
                 newCitations = response.citations.filter(Number)
