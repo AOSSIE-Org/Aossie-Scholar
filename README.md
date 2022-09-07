@@ -41,6 +41,10 @@ Aossie Scholar uses **Prettier + Eslint** for code listing and formatting. To ch
 
 **Note :** The project uses **Husky**, a pre-commit GIT hook which checks if the code follows linting guidelines before commiting. This helps prevent unwanted linting errors in the pipelines.
 
+## Documentation
+
+Please read [the documentation](https://subhangichoudhary.medium.com ci-cd-integration-testing-gulp-automation-and-jest-puppeteer-testing-fb521f9dbfc7) for details on the functionalities, automation workflow and the unit testing done in the project.
+
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://gitlab.com/aossie/aossie-scholar/-/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
