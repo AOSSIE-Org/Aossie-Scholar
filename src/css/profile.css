@@ -7,7 +7,7 @@
 .dark section {
     min-height: 40vh;
     padding: 0.5rem;
-    background-color: #efefef;
+    background-color:  #D3D3D3;
 }
 
 .dark  table td {
@@ -293,8 +293,7 @@ table.alt tbody tr:first-child td {
 
 #pie {
     width: 500px !important;
-    height: 500px !important;
-    
+    height: 500px !important; 
 }
 
 #pieChart{
