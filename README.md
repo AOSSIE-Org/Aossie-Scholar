@@ -43,7 +43,7 @@ Aossie Scholar uses **Prettier + Eslint** for code listing and formatting. To ch
 
 ## Documentation
 
-Please read [the documentation](https://subhangichoudhary.medium.com ci-cd-integration-testing-gulp-automation-and-jest-puppeteer-testing-fb521f9dbfc7) for details on the functionalities, automation workflow and the unit testing done in the project.
+Please read [the documentation](https://subhangichoudhary.medium.com/ci-cd-integration-testing-gulp-automation-and-jest-puppeteer-testing-fb521f9dbfc7) for details on the functionalities, automation workflow and the unit testing done in the project.
 
 ## Contributing
 
