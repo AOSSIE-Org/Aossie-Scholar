@@ -1,3 +1,13 @@
+function darkMode() {
+    var element = document.body
+    element.classList.toggle('dark')
+    if (element.className == 'light') {
+        document.getElementById('changemode').src = '../images/lightmode.png'
+    } else {
+        document.getElementById('changemode').src = '../images/darkmode.png'
+    }
+}
+
 function getTotalCitations(citations) {
     let sumCitations = 0
     for (let i = 0; i < citations.length; i++) {
@@ -111,9 +121,6 @@ function getSindex(titles, citations, years) {
 }
 
 function getLindex(coauthors, citations, years) {
-    console.log(coauthors)
-    console.log(citations)
-    console.log(years)
     sum = 0
     currentYear = new Date().getFullYear()
     for (let i = 0; i < years.length; i++) {
@@ -121,7 +128,6 @@ function getLindex(coauthors, citations, years) {
             ageOfPublication = currentYear - parseInt(years[i])
             if (ageOfPublication != 0) {
                 sum += parseInt(citations[i]) / (coauthors[i] * ageOfPublication)
-                console.log(sum)
             }
         }
     }
@@ -217,6 +223,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (response.website !== undefined) {
             document.getElementById('website').setAttribute('href', response.website)
         }
+        document.getElementById('changemode').addEventListener('click', function () {
+            darkMode()
+        })
         document.getElementById('scholarName').innerText = response.scholarName
         document.getElementById('workplace').innerText = response.workplace
         // document.getElementById('country').innerText = response.country
@@ -407,18 +416,18 @@ document.addEventListener('DOMContentLoaded', function () {
                         'rgba(188, 229, 92, 0.2)',
                     ],
                     borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 99, 132, 1)',
+                        'rgb(255, 255, 255)',
+                        'rgb(255, 255, 255)',
+                        'rgb(255, 255, 255)',
+                        'rgb(255, 255, 255)',
+                        'rgb(255, 255, 255)',
+                        'rgb(255, 255, 255)',
+                        'rgb(255, 255, 255)',
+                        'rgb(255, 255, 255)',
+                        'rgb(255, 255, 255)',
+                        'rgb(255, 255, 255)',
                     ],
-                    borderWidth: 1,
+                    borderWidth: 0.5,
                     holeSize: 0.6,
                     animationSpeed: 0.5,
                 },

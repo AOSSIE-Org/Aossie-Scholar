@@ -8,11 +8,12 @@
     <script src="../lib/axios.min.js"></script>
     <link rel="stylesheet" href="../lib/all.min.css" />
     <script src="../lib/xlsx.full.min.js"></script>
+    <script src="../lib/darkmode.min.js"></script>
     <script src="../js/profile.js"></script>
     <script src="../lib/chart.js"></script>
 </head>
 
-<body>
+<body class="light">
 
 
     <center>
@@ -20,9 +21,11 @@
             <div class="loader" id="spinner"></div>
         </div>
     </center>
+    
 
     <div id="mainbody">
         <header>
+            <img id="changemode" src="../images/lightmode.png" alt="lightmodeicon" width="20%%" height="5%"/>
             <div class="user">
                 <img id="scholarImage" src="" alt="Profile" width="100%" height="100%" />
                 <a id="website" target="_blank">
