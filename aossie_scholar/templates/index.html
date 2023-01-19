@@ -1,11 +1,11 @@
-{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <link rel="stylesheet" href="../static/styles.css">
 
         <!-- =====BOX ICONS===== -->
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
@@ -40,12 +40,12 @@
 
                 <div class="about__container bd-grid">
                     <div class="about__img">
-                        <img src="{% static 'about.png' %}" alt="">
+                        <img src="../static/about.png " alt="">
                     </div>
                     
                     <div>
                         <h2 class="about__subtitle">AOSSIE Scholar</h2>
-                        <p class="about__text">AOSSIE Scholar is a Google Chrome extension which calculates performance-based metrics for researchers from Google Scholar profile.It helps determine the performance of scholars and researchers effectively by calculating their respective indexes and metrices.</p>           
+                        <p class="about__text">AOSSIE Scholar is a Google Chrome extension which calculates performance-based metrics for researchers from Google Scholar profile.It helps determine the performance of scholars and researchers effectively by calculating their respective indexes and metrices.It scrapes raw data from the Google Scholar website and then populates the contents like the number of publications and citations done by the author per year, the list of visualization metrics such as h-index, m-index, g-index, o-index, and the co-authors with which he has worked with. </p>           
                     </div>                                   
                 </div>
             </section>
@@ -56,6 +56,6 @@
         <script src="https://unpkg.com/scrollreveal"></script>
 
         <!--===== MAIN JS =====-->
-        <script src="{% static 'main.js' %}"></script>
+        <script src="../static/main.js"></script>
     </body>
 </html>
