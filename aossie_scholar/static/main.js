@@ -48,8 +48,8 @@ const sr = ScrollReveal({
     distance: '60px',
     duration: 2000,
     delay: 200,
-    //     reset: true
+    //   reset: true
 })
 
-sr.reveal('.about__img', {})
-sr.reveal('.about__subtitle, .about__text', { delay: 400 })
+sr.reveal('.about__img', {delay : 400})
+sr.reveal('.about__subtitle, .about__text', { delay: 450 })
